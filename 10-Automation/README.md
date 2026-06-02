@@ -1,5 +1,57 @@
 # Linux Automation & Configuration Management Guide
 
+
+---
+
+## 🎬 Infrastructure Automation — Animated Workflow
+
+```mermaid
+graph TD
+    subgraph IaC["🤖 Infrastructure as Code Flow"]
+        direction TB
+        CODE["📝 Define Infrastructure"]:::code --> VCS["📂 Git Repository"]:::vcs
+        VCS --> PLAN["📋 Plan Changes"]:::plan
+        PLAN --> REVIEW{"🔍 Review?"}:::review
+        REVIEW -->|Approve| APPLY["🚀 Apply"]:::apply
+        REVIEW -->|Reject| CODE
+        APPLY --> VERIFY["✅ Verify State"]:::verify
+    end
+
+    subgraph CONFIG["⚙️ Configuration Management"]
+        direction LR
+        ANSIBLE["🤖 Ansible"]:::tool --> |Playbook| TARGETS["🖥️ Target Servers"]:::target
+        PUPPET["🎭 Puppet"]:::tool --> |Manifest| TARGETS
+        CHEF["👨‍🍳 Chef"]:::tool --> |Recipe| TARGETS
+        SALT["🧂 Salt"]:::tool --> |State| TARGETS
+        TARGETS --> CONFIGURED["✅ Configured"]:::done
+    end
+
+    subgraph PIPELINE["🔄 GitOps Workflow"]
+        direction LR
+        PR["📝 Pull Request"]:::pr --> MERGE["🔀 Merge"]:::merge
+        MERGE --> DETECT["🔍 Change Detected"]:::detect
+        DETECT --> SYNC["🔄 Sync to Cluster"]:::sync
+        SYNC --> HEALTHY["💚 Healthy"]:::healthy
+    end
+
+    classDef code fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef vcs fill:#0f3460,stroke:#16213e,color:#fff
+    classDef plan fill:#FF9800,stroke:#E65100,color:#fff
+    classDef review fill:#FF9800,stroke:#E65100,color:#fff,stroke-width:3px
+    classDef apply fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:2px
+    classDef verify fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+    classDef tool fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef target fill:#607D8B,stroke:#37474F,color:#fff
+    classDef done fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:2px
+    classDef pr fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef merge fill:#e94560,stroke:#b71c1c,color:#fff
+    classDef detect fill:#FF9800,stroke:#E65100,color:#fff
+    classDef sync fill:#00BCD4,stroke:#00838F,color:#fff
+    classDef healthy fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+```
+
+---
+
 ## Overview
 
 This guide is organized into focused topics covering automation fundamentals, major configuration management and provisioning tools, infrastructure CI/CD, advanced operating patterns, and monitoring-driven remediation on Linux.
