@@ -4,6 +4,61 @@
 >
 > Audience: administrators, DevOps engineers, SREs, platform engineers, students, and anyone building or troubleshooting Linux networks.
 
+
+---
+
+## 🎬 Network Packet Journey — Animated Workflow
+
+```mermaid
+graph TD
+    subgraph OSI["📶 OSI Model — Data Flow"]
+        direction TB
+        O7["7️⃣ Application (HTTP/SSH)"]:::app --> O6["6️⃣ Presentation (SSL/TLS)"]:::pres
+        O6 --> O5["5️⃣ Session"]:::sess
+        O5 --> O4["4️⃣ Transport (TCP/UDP)"]:::trans
+        O4 --> O3["3️⃣ Network (IP)"]:::net
+        O3 --> O2["2️⃣ Data Link (Ethernet)"]:::link
+        O2 --> O1["1️⃣ Physical (Cable/WiFi)"]:::phys
+    end
+
+    subgraph PACKET["📦 Packet Journey"]
+        direction LR
+        S["🖥️ Source"]:::src --> FW{"🔥 Firewall"}:::fw
+        FW -->|Allow| R1["🔀 Router 1"]:::router
+        FW -->|Deny| DROP["🚫 Dropped"]:::drop
+        R1 --> R2["🔀 Router 2"]:::router
+        R2 --> DNS{"🌐 DNS Resolve"}:::dns
+        DNS --> D["🖥️ Destination"]:::dest
+    end
+
+    subgraph TROUBLESHOOT["🔧 Network Debug Flow"]
+        direction LR
+        T1["ping"]:::tool --> T2["traceroute"]:::tool
+        T2 --> T3["netstat/ss"]:::tool
+        T3 --> T4["tcpdump"]:::tool
+        T4 --> T5["wireshark"]:::tool
+        T5 --> T6["✅ Issue Found"]:::found
+    end
+
+    classDef app fill:#4CAF50,stroke:#2E7D32,color:#fff
+    classDef pres fill:#8BC34A,stroke:#558B2F,color:#fff
+    classDef sess fill:#CDDC39,stroke:#9E9D24,color:#333
+    classDef trans fill:#FF9800,stroke:#E65100,color:#fff
+    classDef net fill:#e94560,stroke:#b71c1c,color:#fff
+    classDef link fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef phys fill:#607D8B,stroke:#37474F,color:#fff
+    classDef src fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef fw fill:#FF9800,stroke:#E65100,color:#fff,stroke-width:3px
+    classDef router fill:#0f3460,stroke:#16213e,color:#fff
+    classDef drop fill:#F44336,stroke:#C62828,color:#fff
+    classDef dns fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef dest fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+    classDef tool fill:#0f3460,stroke:#16213e,color:#fff
+    classDef found fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+```
+
+---
+
 ## Overview
 
 This guide has been split into focused topic files so you can study progressively or jump straight to the area you need. Labs, checklists, practical scenarios, and quick-reference material were redistributed into the most relevant files.

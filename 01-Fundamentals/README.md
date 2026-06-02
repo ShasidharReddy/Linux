@@ -2,6 +2,68 @@
 
 > Foundation concepts from basic to intermediate — start here if you're new to Linux.
 
+
+---
+
+## 🎬 How Linux Works — Animated Workflow
+
+```mermaid
+graph TD
+    subgraph BOOT["🔄 Boot Sequence"]
+        direction LR
+        B1["⚡ Power On"]:::step --> B2["🔧 BIOS/UEFI"]:::step
+        B2 --> B3["📦 GRUB Bootloader"]:::step
+        B3 --> B4["🧠 Kernel Load"]:::step
+        B4 --> B5["🚀 systemd (PID 1)"]:::step
+        B5 --> B6["🖥️ Login Prompt"]:::step
+    end
+
+    subgraph LAYERS["🏗️ System Architecture"]
+        direction TB
+        L1["👤 User Applications"]:::user
+        L2["🐚 Shell (bash/zsh)"]:::shell
+        L3["📚 GNU C Library (glibc)"]:::lib
+        L4["🔌 System Calls"]:::syscall
+        L5["🧠 Linux Kernel"]:::kernel
+        L6["💾 Hardware"]:::hw
+        L1 --> L2 --> L3 --> L4 --> L5 --> L6
+    end
+
+    subgraph FS["📁 Filesystem Hierarchy"]
+        direction LR
+        F1["/"]:::root --> F2["/etc"]:::dir
+        F1 --> F3["/home"]:::dir
+        F1 --> F4["/var"]:::dir
+        F1 --> F5["/usr"]:::dir
+        F1 --> F6["/tmp"]:::dir
+        F1 --> F7["/proc"]:::dir
+    end
+
+    subgraph PERMS["🔐 Permission Flow"]
+        direction LR
+        P1["📄 File"]:::step --> P2{"Owner?"}:::decision
+        P2 -->|Yes| P3["rwx Owner Perms"]:::allow
+        P2 -->|No| P4{"Group?"}:::decision
+        P4 -->|Yes| P5["rwx Group Perms"]:::allow
+        P4 -->|No| P6["rwx Other Perms"]:::warn
+    end
+
+    classDef step fill:#2196F3,stroke:#1565C0,color:#fff,stroke-width:2px
+    classDef user fill:#4CAF50,stroke:#2E7D32,color:#fff
+    classDef shell fill:#FF9800,stroke:#E65100,color:#fff
+    classDef lib fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef syscall fill:#F44336,stroke:#C62828,color:#fff
+    classDef kernel fill:#1a1a2e,stroke:#e94560,color:#fff,stroke-width:2px
+    classDef hw fill:#607D8B,stroke:#37474F,color:#fff
+    classDef root fill:#e94560,stroke:#b71c1c,color:#fff
+    classDef dir fill:#0f3460,stroke:#16213e,color:#fff
+    classDef decision fill:#FF9800,stroke:#E65100,color:#fff
+    classDef allow fill:#4CAF50,stroke:#2E7D32,color:#fff
+    classDef warn fill:#F44336,stroke:#C62828,color:#fff
+```
+
+---
+
 This fundamentals guide has been split into topic-focused files so you can learn one area at a time without scrolling through a single massive document.
 
 ## 📑 Topics

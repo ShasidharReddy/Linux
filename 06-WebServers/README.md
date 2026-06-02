@@ -1,5 +1,51 @@
 # Linux Web Servers & Services Guide
 
+
+---
+
+## 🎬 Web Request Lifecycle — Animated Workflow
+
+```mermaid
+graph LR
+    subgraph REQUEST["🌐 HTTP Request Flow"]
+        direction LR
+        C["🖥️ Client"]:::client --> DNS["🌐 DNS"]:::dns
+        DNS --> LB["⚖️ Load Balancer"]:::lb
+        LB --> N1["🟢 Nginx/Apache"]:::web
+        LB --> N2["🟢 Nginx/Apache"]:::web
+        N1 --> APP["⚙️ App Server"]:::app
+        N2 --> APP
+        APP --> DB["🗄️ Database"]:::db
+        APP --> CACHE["⚡ Cache (Redis)"]:::cache
+        DB --> APP
+        CACHE --> APP
+        APP --> N1
+        N1 --> C
+    end
+
+    subgraph SSL["🔐 TLS Handshake"]
+        direction TB
+        S1["👋 ClientHello"]:::hello --> S2["👋 ServerHello"]:::hello
+        S2 --> S3["📜 Certificate"]:::cert
+        S3 --> S4["🔑 Key Exchange"]:::key
+        S4 --> S5["✅ Encrypted Channel"]:::done
+    end
+
+    classDef client fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef dns fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef lb fill:#FF9800,stroke:#E65100,color:#fff,stroke-width:3px
+    classDef web fill:#4CAF50,stroke:#2E7D32,color:#fff
+    classDef app fill:#e94560,stroke:#b71c1c,color:#fff
+    classDef db fill:#0f3460,stroke:#16213e,color:#fff
+    classDef cache fill:#00BCD4,stroke:#00838F,color:#fff
+    classDef hello fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef cert fill:#FF9800,stroke:#E65100,color:#fff
+    classDef key fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef done fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+```
+
+---
+
 ## Table of Contents
 
 1. [Web Server Fundamentals](#1-web-server-fundamentals)

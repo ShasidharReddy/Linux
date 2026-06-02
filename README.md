@@ -1,27 +1,76 @@
-# 🐧 Linux — Comprehensive Guide (Basic → Advanced)
+<div align="center">
 
-> Complete Linux documentation covering fundamentals to kernel internals — with Mermaid diagrams, practical commands, real-world scripts, and 103,000+ lines of content.
+```
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║   ███████╗██╗  ██╗ █████╗ ███████╗██╗      ██╗     ██╗███╗   ██╗██╗   ██╗║
+║   ██╔════╝██║  ██║██╔══██╗██╔════╝██║      ██║     ██║████╗  ██║██║   ██║║
+║   ███████╗████████║███████║███████╗██║█████╗██║     ██║██╔██╗ ██║██║   ██║║
+║   ╚════██║██╔══██║██╔══██║╚════██║██║╚════╝██║     ██║██║╚██╗██║██║   ██║║
+║   ███████║██║  ██║██║  ██║███████║██║      ███████╗██║██║ ╚████║╚██████╔╝║
+║   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝      ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝║
+║                                                                            ║
+║            Comprehensive Linux Guide — Basic → Advanced                    ║
+║                                                                            ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                                                                            ║
+║   Kernel  : 6.x LTS                    Arch   : x86_64 / ARM64            ║
+║   Distros : RHEL · Ubuntu · Debian     Shell  : bash 5.x                  ║
+║   Guides  : 18 modules · 235 files     Lines  : 103,000+                  ║
+║                                                                            ║
+║   Last login: Mon Jun  2 10:47:00 2025 from github.com/ShasidharReddy     ║
+║                                                                            ║
+╠════════════════════════════════════════════════════════════════════════════╣
+║                                                                            ║
+║   root@shasi-linux:~$  cat /etc/motd                                       ║
+║                                                                            ║
+║   Welcome to Shasi-Linux! 🐧                                              ║
+║   Your complete Linux learning environment.                                ║
+║                                                                            ║
+║   📖 Fundamentals → 📜 Shell Scripting → 🌐 Networking → ⚙️  SysAdmin    ║
+║   🔒 Security → 🐳 Containers → 🔧 DevOps → 🧠 Kernel Internals         ║
+║                                                                            ║
+║   Type 'ls' to explore modules. Happy learning!                            ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+```
+
+</div>
+
+# 🐧 Shasi-Linux — Comprehensive Guide (Basic → Advanced)
+
+> Complete Linux documentation covering fundamentals to kernel internals — with Mermaid diagrams, animated workflows, practical commands, real-world scripts, and 103,000+ lines of content.
+
+---
+
+## 🎬 System Overview — Animated Module Map
 
 ```mermaid
 graph LR
-    A["🐧 Linux"] --> B["📖 Fundamentals"]
-    A --> C["📜 Shell Scripting"]
-    A --> D["🌐 Networking"]
-    A --> E["⚙️ System Admin"]
-    A --> F["🔒 Security"]
-    A --> G["📊 Performance"]
-    A --> H["🐳 Containers"]
-    A --> I["🤖 Automation"]
-    A --> J["🌍 Web Servers"]
-    A --> K["🔧 DevOps"]
-    A --> L["🔍 Troubleshooting"]
-    A --> M["🧠 Advanced Internals"]
-    A --> N["❓ Interview Questions"]
-    A --> O["🗄️ Databases"]
-    A --> P["🚀 Build & Deploy"]
-    A --> Q["💥 Kdump & Crash"]
-    A --> R["📋 Daily Tasks"]
-    A --> S["🔗 Resources"]
+    A["🐧 Shasi-Linux"]:::core --> B["📖 Fundamentals"]:::basic
+    A --> C["📜 Shell Scripting"]:::basic
+    A --> D["🌐 Networking"]:::mid
+    A --> E["⚙️ System Admin"]:::mid
+    A --> F["🔒 Security"]:::adv
+    A --> G["📊 Performance"]:::adv
+    A --> H["🐳 Containers"]:::adv
+    A --> I["🤖 Automation"]:::adv
+    A --> J["🌍 Web Servers"]:::mid
+    A --> K["🔧 DevOps"]:::adv
+    A --> L["🔍 Troubleshooting"]:::adv
+    A --> M["🧠 Advanced Internals"]:::expert
+    A --> N["❓ Interview Q&A"]:::basic
+    A --> O["🗄️ Databases"]:::adv
+    A --> P["🚀 Build & Deploy"]:::mid
+    A --> Q["💥 Kdump & Crash"]:::expert
+    A --> R["📋 Daily Tasks"]:::basic
+    A --> S["🔗 Resources"]:::basic
+
+    classDef core fill:#1a1a2e,stroke:#e94560,stroke-width:3px,color:#eee
+    classDef basic fill:#0f3460,stroke:#16213e,color:#eee
+    classDef mid fill:#533483,stroke:#2b2d42,color:#eee
+    classDef adv fill:#e94560,stroke:#1a1a2e,color:#fff
+    classDef expert fill:#b80000,stroke:#1a1a2e,color:#fff,stroke-width:2px
 ```
 
 ---
@@ -30,53 +79,65 @@ graph LR
 
 | Directory | Level | Description |
 |-----------|-------|-------------|
-| [`Fundamentals/`](./Fundamentals/) | 🟢 Basic | Linux overview, FHS, boot process, file types, commands, permissions, users, I/O redirection, text processing |
-| [`ShellScripting/`](./ShellScripting/) | 🟢🟡 Basic–Intermediate | Variables, arrays, conditionals, loops, functions, regex, error handling, real-world scripts |
-| [`Networking/`](./Networking/) | 🟡 Intermediate | TCP/IP, DNS, firewalls, SSH, VPN, network troubleshooting, bonding, VLANs, namespaces |
-| [`SystemAdministration/`](./SystemAdministration/) | 🟡 Intermediate | Package management, systemd, process management, LVM, RAID, filesystems, cron, backups, kernel |
-| [`Security/`](./Security/) | 🟡🔴 Intermediate–Advanced | SELinux, AppArmor, encryption (LUKS/GPG), auditing, IDS, hardening, container security, incident response |
-| [`PerformanceTuning/`](./PerformanceTuning/) | 🔴 Advanced | CPU/memory/disk/network performance, perf, flamegraphs, sysctl tuning, benchmarking |
-| [`Containers/`](./Containers/) | 🟡🔴 Intermediate–Advanced | Docker, Dockerfile, Compose, container runtimes, security, networking, orchestration |
-| [`Automation/`](./Automation/) | 🟡🔴 Intermediate–Advanced | Ansible, Terraform, Puppet, Chef, SaltStack, cloud-init, Packer, CI/CD, GitOps |
-| [`WebServers/`](./WebServers/) | 🟡 Intermediate | Apache, Nginx, SSL/TLS, reverse proxy, load balancing, databases, DNS, HA clusters |
-| [`DevOps/`](./DevOps/) | 🟡🔴 Intermediate–Advanced | Git, CI/CD, Kubernetes, monitoring, log aggregation, secrets management, SRE practices |
-| [`Troubleshooting/`](./Troubleshooting/) | 🟡🔴 Intermediate–Advanced | Boot, disk, memory, CPU, network, service, permission issues — 20+ real-world scenarios |
-| [`AdvancedInternals/`](./AdvancedInternals/) | 🔴 Advanced | Kernel architecture, process internals, memory management, VFS, eBPF, syscalls, IPC, device drivers |
-| [`InterviewQuestions/`](./InterviewQuestions/) | 🟢🟡🔴 All Levels | 200+ questions with answers — basic, intermediate, advanced, scenario-based, DevOps/SRE |
-| [`Databases/`](./Databases/) | 🟡🔴 Intermediate–Advanced | MySQL, PostgreSQL, MongoDB, Redis, Elasticsearch, SQLite — admin, replication, tuning, backups |
-| [`BuildAndDeploy/`](./BuildAndDeploy/) | 🟡 Intermediate | Java, Python, Node.js, Go, .NET — build systems, deployment, CI/CD, process management |
-| [`KdumpAndCrashAnalysis/`](./KdumpAndCrashAnalysis/) | 🔴 Advanced | kdump, crash utility, core dumps, SysRq, kernel debugging, ftrace, SystemTap, memory debugging |
-| [`DailyTasks/`](./DailyTasks/) | 🟢🟡 Basic–Intermediate | Health checks, user management, backups, deployments, cron jobs, Docker/K8s daily ops, DR scenarios |
-| [`Resources/`](./Resources/) | 📚 Reference | 100+ curated bookmarks — RFCs, tools (cidr.xyz, uptime.is, crontab.guru), cheat sheets, learning platforms |
+| Directory | Level | Description |
+|-----------|-------|-------------|
+| [`01-Fundamentals/`](./01-Fundamentals/) | 🟢 Basic | Linux overview, FHS, boot process, file types, commands, permissions, users, I/O redirection, text processing |
+| [`02-ShellScripting/`](./02-ShellScripting/) | 🟢🟡 Basic–Intermediate | Variables, arrays, conditionals, loops, functions, regex, error handling, real-world scripts |
+| [`03-Networking/`](./03-Networking/) | 🟡 Intermediate | TCP/IP, DNS, firewalls, SSH, VPN, network troubleshooting, bonding, VLANs, namespaces |
+| [`04-SystemAdministration/`](./04-SystemAdministration/) | 🟡 Intermediate | Package management, systemd, process management, LVM, RAID, filesystems, cron, backups, kernel |
+| [`05-Security/`](./05-Security/) | 🟡🔴 Intermediate–Advanced | SELinux, AppArmor, encryption (LUKS/GPG), auditing, IDS, hardening, container security, incident response |
+| [`06-WebServers/`](./06-WebServers/) | 🟡 Intermediate | Apache, Nginx, SSL/TLS, reverse proxy, load balancing, databases, DNS, HA clusters |
+| [`07-Databases/`](./07-Databases/) | 🟡🔴 Intermediate–Advanced | MySQL, PostgreSQL, MongoDB, Redis, Elasticsearch, SQLite — admin, replication, tuning, backups |
+| [`08-Containers/`](./08-Containers/) | 🟡🔴 Intermediate–Advanced | Docker, Dockerfile, Compose, container runtimes, security, networking, orchestration |
+| [`09-BuildAndDeploy/`](./09-BuildAndDeploy/) | 🟡 Intermediate | Java, Python, Node.js, Go, .NET — build systems, deployment, CI/CD, process management |
+| [`10-Automation/`](./10-Automation/) | 🟡🔴 Intermediate–Advanced | Ansible, Terraform, Puppet, Chef, SaltStack, cloud-init, Packer, CI/CD, GitOps |
+| [`11-DevOps/`](./11-DevOps/) | 🟡🔴 Intermediate–Advanced | Git, CI/CD, Kubernetes, monitoring, log aggregation, secrets management, SRE practices |
+| [`12-PerformanceTuning/`](./12-PerformanceTuning/) | 🔴 Advanced | CPU/memory/disk/network performance, perf, flamegraphs, sysctl tuning, benchmarking |
+| [`13-Troubleshooting/`](./13-Troubleshooting/) | 🟡🔴 Intermediate–Advanced | Boot, disk, memory, CPU, network, service, permission issues — 20+ real-world scenarios |
+| [`14-AdvancedInternals/`](./14-AdvancedInternals/) | 🔴 Advanced | Kernel architecture, process internals, memory management, VFS, eBPF, syscalls, IPC, device drivers |
+| [`15-KdumpAndCrashAnalysis/`](./15-KdumpAndCrashAnalysis/) | 🔴 Advanced | kdump, crash utility, core dumps, SysRq, kernel debugging, ftrace, SystemTap, memory debugging |
+| [`16-DailyTasks/`](./16-DailyTasks/) | 🟢🟡 Basic–Intermediate | Health checks, user management, backups, deployments, cron jobs, Docker/K8s daily ops, DR scenarios |
+| [`17-Resources/`](./17-Resources/) | 📚 Reference | 100+ curated bookmarks — RFCs, tools (cidr.xyz, uptime.is, crontab.guru), cheat sheets, learning platforms |
+| [`18-InterviewQuestions/`](./18-InterviewQuestions/) | 🟢🟡🔴 All Levels | 200+ questions with answers — basic, intermediate, advanced, scenario-based, DevOps/SRE |
 
 ---
 
-## 🗺️ Learning Path
+## 🗺️ Learning Path — Animated Progression
 
 ```mermaid
 graph TD
-    START["🚀 Start Here"] --> F["📖 Fundamentals"]
-    F --> SS["📜 Shell Scripting"]
-    F --> DT["📋 Daily Tasks"]
-    SS --> SA["⚙️ System Admin"]
-    SS --> NET["🌐 Networking"]
-    SA --> SEC["🔒 Security"]
-    SA --> DB["🗄️ Databases"]
+    START["🚀 Start Here"]:::start --> F["📖 Fundamentals"]:::basic
+    F --> SS["📜 Shell Scripting"]:::basic
+    F --> DT["📋 Daily Tasks"]:::basic
+    SS --> SA["⚙️ System Admin"]:::mid
+    SS --> NET["🌐 Networking"]:::mid
+    SA --> SEC["🔒 Security"]:::adv
+    SA --> DB["🗄️ Databases"]:::adv
     NET --> SEC
-    NET --> WS["🌍 Web Servers"]
-    WS --> BD["🚀 Build & Deploy"]
-    BD --> CON["🐳 Containers"]
-    CON --> DO["🔧 DevOps"]
-    SEC --> PT["📊 Performance Tuning"]
-    DO --> AUTO["🤖 Automation"]
-    PT --> AI["🧠 Advanced Internals"]
-    AI --> KD["💥 Kdump & Crash"]
-    PT --> TS["🔍 Troubleshooting"]
+    NET --> WS["🌍 Web Servers"]:::mid
+    WS --> BD["🚀 Build & Deploy"]:::mid
+    BD --> CON["🐳 Containers"]:::adv
+    CON --> DO["🔧 DevOps"]:::adv
+    SEC --> PT["📊 Performance Tuning"]:::adv
+    DO --> AUTO["🤖 Automation"]:::adv
+    PT --> AI["🧠 Advanced Internals"]:::expert
+    AI --> KD["💥 Kdump & Crash"]:::expert
+    PT --> TS["🔍 Troubleshooting"]:::adv
 
-    style START fill:#4CAF50,color:#fff
-    style F fill:#2196F3,color:#fff
-    style AI fill:#f44336,color:#fff
-    style KD fill:#f44336,color:#fff
+    classDef start fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+    classDef basic fill:#2196F3,stroke:#1565C0,color:#fff,stroke-width:2px
+    classDef mid fill:#FF9800,stroke:#E65100,color:#fff,stroke-width:2px
+    classDef adv fill:#e94560,stroke:#b71c1c,color:#fff,stroke-width:2px
+    classDef expert fill:#b80000,stroke:#7f0000,color:#fff,stroke-width:3px
+```
+
+### 🎯 Difficulty Legend
+
+```
+🟢 Basic          → Start here, no prerequisites
+🟡 Intermediate   → Requires fundamentals knowledge
+🔴 Advanced       → Requires intermediate experience
+⚫ Expert          → Deep kernel/system internals
 ```
 
 ---

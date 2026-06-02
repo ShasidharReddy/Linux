@@ -1,5 +1,58 @@
 # Build Systems & Application Deployment Guide for Linux
 
+
+---
+
+## 🎬 Build & Deploy Pipeline — Animated Workflow
+
+```mermaid
+graph LR
+    subgraph CICD["🚀 CI/CD Pipeline"]
+        direction LR
+        G["📝 Git Push"]:::git --> CI["🔄 CI Trigger"]:::ci
+        CI --> B["🔨 Build"]:::build
+        B --> T["🧪 Test"]:::test
+        T --> L["🔍 Lint/Scan"]:::lint
+        L --> PKG["📦 Package"]:::pkg
+        PKG --> STG["🟡 Staging"]:::stage
+        STG --> APPROVE{"✅ Approve?"}:::approve
+        APPROVE -->|Yes| PROD["🟢 Production"]:::prod
+        APPROVE -->|No| G
+    end
+
+    subgraph DEPLOY["📦 Deployment Strategies"]
+        direction TB
+        D1["🔵🟢 Blue-Green"]:::strategy
+        D2["🎚️ Canary"]:::strategy
+        D3["🔄 Rolling Update"]:::strategy
+        D4["🔁 Rollback"]:::rollback
+    end
+
+    subgraph LANGUAGES["🔧 Build Tools"]
+        direction TB
+        JAVA["☕ Maven/Gradle"]:::lang --> JAR["📦 JAR/WAR"]:::artifact
+        PY["🐍 pip/poetry"]:::lang --> WHEEL["📦 wheel/sdist"]:::artifact
+        NODE["📗 npm/yarn"]:::lang --> BUNDLE["📦 bundle"]:::artifact
+        GO["🔵 go build"]:::lang --> BIN["📦 binary"]:::artifact
+    end
+
+    classDef git fill:#2196F3,stroke:#1565C0,color:#fff
+    classDef ci fill:#FF9800,stroke:#E65100,color:#fff
+    classDef build fill:#9C27B0,stroke:#6A1B9A,color:#fff
+    classDef test fill:#00BCD4,stroke:#00838F,color:#fff
+    classDef lint fill:#795548,stroke:#4E342E,color:#fff
+    classDef pkg fill:#0f3460,stroke:#16213e,color:#fff
+    classDef stage fill:#FF9800,stroke:#E65100,color:#fff
+    classDef approve fill:#FF9800,stroke:#E65100,color:#fff,stroke-width:3px
+    classDef prod fill:#4CAF50,stroke:#2E7D32,color:#fff,stroke-width:3px
+    classDef strategy fill:#e94560,stroke:#b71c1c,color:#fff
+    classDef rollback fill:#F44336,stroke:#C62828,color:#fff
+    classDef lang fill:#0f3460,stroke:#16213e,color:#fff
+    classDef artifact fill:#4CAF50,stroke:#2E7D32,color:#fff
+```
+
+---
+
 ## Overview
 
 This guide is a production-focused reference for building, packaging, deploying, operating, and troubleshooting applications on Linux.
