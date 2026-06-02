@@ -2,6 +2,14 @@
 
 ## 3.1 Big Picture
 
+### 📸 Linux Kernel Architecture
+![Linux Kernel](https://upload.wikimedia.org/wikipedia/commons/5/5b/Linux_kernel_map.png)
+> *Source: Wikimedia Commons — Linux kernel interactive map*
+
+### 📸 Linux Architecture Layers
+![Linux Architecture](https://upload.wikimedia.org/wikipedia/commons/3/3a/Linux_kernel_ubiquity.svg)
+> *Source: Wikimedia Commons — Linux kernel in system architecture*
+
 Linux systems are layered.
 
 The lower layers talk to hardware.

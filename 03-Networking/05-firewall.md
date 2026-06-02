@@ -61,6 +61,10 @@ User-space tools include:
 
 ## 4.6 `iptables` packet flow Mermaid diagram
 
+### 📸 Netfilter/iptables Packet Flow
+![iptables flow](https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
+> *Source: Wikimedia Commons — Netfilter packet traversal through Linux networking*
+
 ```mermaid
 graph TD
     A["Packet enters host"] --> B["PREROUTING"]

@@ -91,6 +91,10 @@ Often used with:
 
 VPNs securely connect remote users, sites, or workloads over untrusted networks.
 
+### 📸 VPN Tunnel Concept
+![VPN Tunnel](https://upload.wikimedia.org/wikipedia/commons/0/0f/VPN_overview-en.svg)
+> *Source: Wikimedia Commons — VPN tunnel overview*
+
 ## 10.1 Common VPN use cases
 
 - Remote user access
@@ -637,6 +641,10 @@ Benefits:
 ### IPsec VPN
 
 IPsec is a standards-based suite for securing IP traffic.
+
+### 📸 IPsec Architecture
+![IPsec](https://upload.wikimedia.org/wikipedia/commons/6/6b/Ipsec-ah.svg)
+> *Source: Wikimedia Commons — IPsec Authentication Header*
 
 Core terms:
 

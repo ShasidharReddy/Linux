@@ -4,6 +4,10 @@ SSH is the standard secure remote administration protocol on Linux.
 
 ## 5.1 SSH components
 
+### 📸 SSH Protocol Architecture
+![SSH Layers](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ssh_binary_packet_alt.svg)
+> *Source: Wikimedia Commons — SSH binary packet protocol*
+
 | Component | Purpose |
 |---|---|
 | `ssh` | Client command |

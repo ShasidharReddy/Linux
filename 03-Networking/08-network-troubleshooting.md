@@ -52,6 +52,10 @@ Interpretation:
 
 Shows hop-by-hop path.
 
+### 📸 Traceroute Visualization
+![Traceroute](https://upload.wikimedia.org/wikipedia/commons/5/5a/Traceroute-Graz-Los-Angeles.png)
+> *Source: Wikimedia Commons — Traceroute path visualization*
+
 Examples:
 
 ```bash

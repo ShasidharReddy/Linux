@@ -4,6 +4,10 @@
 
 ## 5. File System Hierarchy (FHS)
 
+### 📸 Linux Filesystem Hierarchy
+![FHS](https://upload.wikimedia.org/wikipedia/commons/f/f3/Standard-unix-filesystem-hierarchy.svg)
+> *Source: Wikimedia Commons — Standard Unix/Linux filesystem hierarchy*
+
 ### 5.1 What Is FHS?
 
 FHS stands for Filesystem Hierarchy Standard.

@@ -98,6 +98,14 @@ Meaning:
 
 ## 3.6 DNS resolution flow Mermaid diagram
 
+### 📸 DNS Resolution Process
+![DNS Resolution](https://upload.wikimedia.org/wikipedia/commons/a/a5/Example_of_an_iterative_DNS_resolver.svg)
+> *Source: Wikimedia Commons — Iterative DNS resolution*
+
+### 📸 DNS Hierarchy
+![DNS Hierarchy](https://upload.wikimedia.org/wikipedia/commons/b/b1/Domain_name_space.svg)
+> *Source: Wikimedia Commons — Domain name hierarchy*
+
 ```mermaid
 graph TD
     A["Application requests<br/>www.example.com"] --> B["glibc resolver"]

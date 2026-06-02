@@ -153,6 +153,11 @@ git reset --hard HEAD~1
 ```
 
 ### 2.11 Git branching strategies diagram
+
+### 📸 Git Branching Model
+![Git Flow](https://upload.wikimedia.org/wikipedia/commons/e/e0/Git-logo.svg)
+> *Git — Distributed version control system*
+
 ```mermaid
 graph TD
 A["main<br/>Production Ready"] --> B["feature/*<br/>Short Lived Work"]

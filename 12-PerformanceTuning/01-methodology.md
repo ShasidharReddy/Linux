@@ -4,6 +4,10 @@
 
 ## Introduction
 
+### 📸 Linux Performance Observability Tools
+![Linux Performance Tools](https://www.brendangregg.com/Perf/linux_perf_tools_full.png)
+> *Source: Brendan Gregg — Linux performance observability tools map*
+
 Linux performance tuning is the process of:
 
 - measuring behavior

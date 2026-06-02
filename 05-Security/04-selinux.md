@@ -10,6 +10,10 @@ Learn it instead.
 
 ### 4.1 Why SELinux Matters
 
+### 📸 SELinux Architecture
+![SELinux](https://upload.wikimedia.org/wikipedia/commons/2/24/SELinux_admin.png)
+> *Source: Wikimedia Commons — SELinux administration overview*
+
 Traditional permissions answer questions like:
 
 - Is the file readable by this user or group?

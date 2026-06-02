@@ -2,6 +2,10 @@
 
 ## 4.1 Overview
 
+### 📸 Linux Boot Process
+![Boot Process](https://upload.wikimedia.org/wikipedia/commons/2/2e/Linux_boot_process.svg)
+> *Source: Wikimedia Commons — Linux boot sequence from BIOS to desktop*
+
 Linux booting is the chain of events that takes a machine from power-on to a usable login prompt or service-ready state.
 
 Typical stages:

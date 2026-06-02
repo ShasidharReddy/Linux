@@ -4,6 +4,10 @@
 
 A reverse proxy sits in front of one or more backend services.
 
+### 📸 Reverse Proxy Architecture
+![Reverse Proxy](https://upload.wikimedia.org/wikipedia/commons/6/67/Reverse_proxy_h2g2bob.svg)
+> *Source: Wikimedia Commons — Reverse proxy architecture*
+
 Functions:
 
 - Hide backend topology
@@ -39,6 +43,10 @@ Popular tools:
 - Weighted canary routing
 
 ## 5.4 Mermaid Diagram: Load Balancer Architecture
+
+### 📸 Load Balancer
+![Load Balancer](https://upload.wikimedia.org/wikipedia/commons/a/a8/Elasticsearch_Cluster_August_2014.png)
+> *Source: Wikimedia Commons — Load balanced cluster architecture*
 
 ```mermaid
 graph TD

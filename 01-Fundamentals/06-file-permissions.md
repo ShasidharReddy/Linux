@@ -65,6 +65,10 @@ For directories:
 
 ## 8.4 Permission Structure
 
+### 📸 Linux File Permissions
+![File Permissions](https://upload.wikimedia.org/wikipedia/commons/7/78/Unix_permissions.svg)
+> *Source: Wikimedia Commons — Unix file permission bits*
+
 ```mermaid
 graph LR
     A["File Type"] --> B["Owner Bits"]

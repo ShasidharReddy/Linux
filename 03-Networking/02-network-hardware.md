@@ -16,6 +16,14 @@ Linux administrators spend a lot of time looking at logical constructs such as a
 
 A switch is a Layer 2 device that forwards Ethernet frames based on destination MAC address. In a server rack, top-of-rack switches commonly connect Linux hosts, storage arrays, hypervisors, and uplinks to routers or firewalls.
 
+### 📸 Network Topology Example
+![Network Topology](https://upload.wikimedia.org/wikipedia/commons/9/97/NetworkTopologies.svg)
+> *Source: Wikimedia Commons — Common network topologies (bus, star, ring, mesh)*
+
+### 📸 How a Switch Works
+![Switch MAC Learning](https://upload.wikimedia.org/wikipedia/commons/4/4f/Network_switches.jpg)
+> *Source: Wikimedia Commons — Network switches*
+
 #### How a switch learns
 
 A switch builds a MAC address table, often called a CAM table, by observing the source MAC address on incoming frames.
@@ -175,6 +183,10 @@ If the Linux host loses connectivity after a VLAN change, verify these items fir
 ### What is a Router?
 
 A router is a Layer 3 device that forwards packets between different IP networks. In enterprise environments, the default gateway for a subnet is usually a router interface, a firewall interface, or a Layer 3 switch virtual interface.
+
+### 📸 Router vs Switch
+![Router](https://upload.wikimedia.org/wikipedia/commons/e/e1/Networkrouter.jpg)
+> *Source: Wikimedia Commons — Network router*
 
 #### Routing table and default gateway
 
