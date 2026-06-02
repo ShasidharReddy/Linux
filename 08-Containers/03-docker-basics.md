@@ -25,6 +25,10 @@ Docker is not the only container tool, but it remains the most widely recognized
 
 ## 3.3 Docker Architecture
 
+### 📸 Docker Architecture
+![Docker Architecture](https://upload.wikimedia.org/wikipedia/commons/7/79/Docker_%28container_engine%29_logo.svg)
+> *Docker — Build, ship, run containers*
+
 Docker typically follows a client-server model.
 
 - CLI sends commands

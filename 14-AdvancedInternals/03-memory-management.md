@@ -17,6 +17,10 @@ Virtual memory provides:
 
 ## 3.2 Virtual vs Physical Addresses
 
+### 📸 Virtual Memory
+![Virtual Memory](https://upload.wikimedia.org/wikipedia/commons/6/6e/Virtual_memory.svg)
+> *Source: Wikimedia Commons — Virtual memory mapping to physical memory*
+
 Applications use **virtual addresses**.
 
 The MMU translates virtual addresses to physical addresses using page tables managed by the kernel.
@@ -56,6 +60,10 @@ cat /proc/self/smaps
 ```
 
 ## 3.5 Page Tables
+
+### 📸 Page Table
+![Page Table](https://upload.wikimedia.org/wikipedia/commons/3/32/Virtual_address_space_and_physical_address_space_relationship.svg)
+> *Source: Wikimedia Commons — Virtual to physical address translation*
 
 Linux uses multi-level page tables on modern architectures.
 

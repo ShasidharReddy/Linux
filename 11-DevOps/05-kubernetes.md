@@ -6,6 +6,11 @@
 Kubernetes nodes are primarily Linux systems. Kubernetes relies on Linux primitives such as cgroups, namespaces, iptables/nftables, overlay networks, and container runtimes.
 
 ### 5.2 Kubernetes architecture diagram
+
+### 📸 Kubernetes Architecture
+![Kubernetes](https://upload.wikimedia.org/wikipedia/commons/b/be/Kubernetes.png)
+> *Source: Wikimedia Commons — Kubernetes cluster architecture*
+
 ```mermaid
 graph TD
 A["kubectl Client"] --> B["API Server"]

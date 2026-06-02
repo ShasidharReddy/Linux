@@ -61,6 +61,10 @@ curl -I http://127.0.0.1
 
 ## 3.4 Nginx Architecture
 
+### 📸 Nginx Architecture
+![Nginx](https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg)
+> *Nginx — high-performance web server and reverse proxy*
+
 Nginx uses:
 
 - One master process

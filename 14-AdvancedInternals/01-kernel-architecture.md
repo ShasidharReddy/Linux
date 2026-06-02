@@ -67,6 +67,10 @@ The hardware enforces permission checks so user applications cannot arbitrarily 
 
 ## 1.6 Mermaid Diagram: Linux Kernel Subsystems
 
+### 📸 Linux Kernel Subsystems
+![Kernel Map](https://upload.wikimedia.org/wikipedia/commons/5/5b/Linux_kernel_map.png)
+> *Source: Wikimedia Commons — Linux kernel interactive map showing all subsystems*
+
 ```mermaid
 graph TD
     A["User Space Applications"] --> B["System Call Interface"]

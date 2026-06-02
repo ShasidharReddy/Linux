@@ -55,6 +55,10 @@ A good containerized workload usually has these characteristics:
 
 ## 1.4 Container vs Virtual Machine
 
+### 📸 Containers vs Virtual Machines
+![Containers vs VMs](https://upload.wikimedia.org/wikipedia/commons/0/0a/Docker-containerized-and-vm-transparent-bg.png)
+> *Source: Wikimedia Commons — Container vs VM architecture comparison*
+
 Containers and VMs both provide isolation, but they operate at different layers.
 
 ### Containers

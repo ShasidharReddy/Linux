@@ -15,6 +15,19 @@ Common RAID levels:
 
 ## 4.15 RAID levels comparison
 
+### 📸 RAID Levels Comparison
+![RAID 0](https://upload.wikimedia.org/wikipedia/commons/9/9b/RAID_0.svg)
+> *RAID 0 — Striping (performance, no redundancy)*
+
+![RAID 1](https://upload.wikimedia.org/wikipedia/commons/b/b7/RAID_1.svg)
+> *RAID 1 — Mirroring (redundancy)*
+
+![RAID 5](https://upload.wikimedia.org/wikipedia/commons/6/64/RAID_5.svg)
+> *RAID 5 — Striping with distributed parity*
+
+![RAID 10](https://upload.wikimedia.org/wikipedia/commons/b/bb/RAID_10.svg)
+> *RAID 10 — Striped mirrors (performance + redundancy)*
+
 ```mermaid
 graph TD
     A["RAID 0<br/>Fast<br/>No redundancy"] --> B["Use for scratch or non-critical workloads"]

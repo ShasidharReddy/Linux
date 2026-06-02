@@ -20,6 +20,10 @@ Benefits:
 
 ## 4.8 LVM architecture
 
+### 📸 LVM Architecture
+![LVM](https://upload.wikimedia.org/wikipedia/commons/e/e6/Lvm.svg)
+> *Source: Wikimedia Commons — Logical Volume Manager architecture*
+
 ```mermaid
 graph LR
     A["Disk or partition<br/>/dev/sdb1"] --> B["PV<br/>Physical Volume"]
