@@ -1,6 +1,6 @@
 # 🐧 Linux — Comprehensive Guide (Basic → Advanced)
 
-> Complete Linux documentation covering fundamentals to kernel internals — with Mermaid diagrams, practical commands, real-world scripts, and 80,000+ lines of content.
+> Complete Linux documentation covering fundamentals to kernel internals — with Mermaid diagrams, practical commands, real-world scripts, and 103,000+ lines of content.
 
 ```mermaid
 graph LR
@@ -85,8 +85,8 @@ graph TD
 
 | Metric | Value |
 |--------|-------|
-| Total Guides | 18 |
-| Total Lines | 80,000+ |
+| Total Guides | 18 (235 files) |
+| Total Lines | 103,000+ |
 | Mermaid Diagrams | 100+ |
 | Code Examples | 500+ |
 | Interview Questions | 200+ |
