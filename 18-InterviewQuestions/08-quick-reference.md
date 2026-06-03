@@ -279,3 +279,118 @@ Linux interview success comes from combining command knowledge with systems thin
 Study deeply, practice repeatedly, and always verify your assumptions with data.
 
 ---
+
+### 🧪 Practice Labs & Hands-On Platforms
+
+#### Linux Practice Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| KillerCoda | https://killercoda.com/ | Browser-based Linux and Kubernetes scenarios with instant sandbox environments. | Yes |
+| OverTheWire Bandit | https://overthewire.org/wargames/bandit/ | Step-by-step Linux and shell fundamentals through SSH-based wargames. | Yes |
+| OverTheWire Natas | https://overthewire.org/wargames/natas/ | Web and Linux challenge path that builds command-line problem-solving skills. | Yes |
+| Hack The Box | https://www.hackthebox.com/ | Realistic Linux-heavy offensive and defensive labs for advanced practice. | Freemium |
+| TryHackMe | https://tryhackme.com/ | Guided Linux, security, and enumeration rooms for beginners through intermediate users. | Freemium |
+| Linux Survival | https://linuxsurvival.com/ | Interactive browser tutorial for core Linux command-line usage. | Yes |
+| Webminal | https://www.webminal.org/ | Online terminal and Linux tutorial environment with guided exercises. | Freemium |
+| JSLinux | https://bellard.org/jslinux/ | Run lightweight Linux systems directly in the browser for quick experiments. | Yes |
+| Copy.sh | https://copy.sh/ | In-browser x86 emulator for booting Linux images without local setup. | Yes |
+| Katacoda (archived) | https://www.katacoda.com/ | Historical interactive scenario platform; useful as a reference, but no longer actively maintained. | Archived |
+| Linux Journey | https://linuxjourney.com/ | Structured Linux lessons that pair well with hands-on terminal practice. | Yes |
+| edX Linux courses | https://www.edx.org/learn/linux | University and vendor-backed Linux courses with labs and guided exercises. | Freemium |
+| Linux Foundation training | https://training.linuxfoundation.org/ | Official Linux Foundation training catalog for admin, cloud, and Kubernetes skills. | Paid |
+| Codecademy Linux | https://www.codecademy.com/learn/learn-the-command-line | Interactive command-line practice for Linux newcomers. | Freemium |
+| LinuxCommand.org | https://linuxcommand.org/ | Command-line lessons and exercises focused on practical shell usage. | Yes |
+| Red Hat Developer Sandbox | https://developers.redhat.com/developer-sandbox | Free Red Hat sandbox environments for OpenShift, containers, and Linux-adjacent practice. | Yes |
+
+#### Kubernetes Practice Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| KillerCoda Kubernetes | https://killercoda.com/kubernetes | Interactive Kubernetes scenarios for cluster, kubectl, and troubleshooting practice. | Yes |
+| Play with Kubernetes | https://labs.play-with-k8s.com/ | Free browser-based playground for spinning up short-lived Kubernetes clusters. | Yes |
+| Kubernetes.io tutorials | https://kubernetes.io/docs/tutorials/ | Official tutorials covering basics, StatefulSets, services, and cluster concepts. | Yes |
+| KodeKloud | https://kodekloud.com/ | Guided Kubernetes labs and certification-focused hands-on tracks. | Freemium |
+| Instruqt | https://instruqt.com/ | Vendor-built cloud-native scenarios for Kubernetes and platform engineering workflows. | Freemium |
+| Kubernetes The Hard Way | https://github.com/kelseyhightower/kubernetes-the-hard-way | Deep manual cluster build that teaches core Kubernetes internals end to end. | Yes |
+| KillerShell / killer.sh | https://killer.sh/ | Exam-style CKA, CKAD, and CKS simulators with timed practice environments. | Paid |
+| Katacoda Kubernetes (archived) | https://www.katacoda.com/ | Historical Kubernetes scenarios that are now mostly retained as archived references. | Archived |
+| K8s Academy | https://k8sacademy.com/ | Free community Kubernetes learning path with guided cluster topics. | Yes |
+| Collabnix | https://collabnix.com/ | Hands-on Kubernetes and container labs, walkthroughs, and curated challenge content. | Yes |
+| LFS258 | https://training.linuxfoundation.org/training/kubernetes-fundamentals/ | Linux Foundation Kubernetes fundamentals course aligned to enterprise basics. | Paid |
+
+#### Docker Practice Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| Play with Docker | https://labs.play-with-docker.com/ | Launch Docker playgrounds in the browser for image, networking, and compose practice. | Yes |
+| Docker Labs | https://dockerlabs.collabnix.com/ | Collabnix Docker workshop labs covering containers, images, networking, and orchestration basics. | Yes |
+| KillerCoda Docker | https://killercoda.com/ | Browser-based Docker labs for container build, run, and troubleshooting tasks. | Yes |
+| Instruqt Docker | https://instruqt.com/ | Interactive Docker scenarios created by vendors and training providers. | Freemium |
+
+#### Networking Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| GNS3 | https://www.gns3.com/ | Powerful network emulation platform for routers, switches, and Linux appliances. | Yes |
+| Cisco Packet Tracer | https://www.netacad.com/courses/packet-tracer | Beginner-friendly network simulation for routing, switching, and topology practice. | Yes |
+| EVE-NG | https://www.eve-ng.net/ | Multi-vendor network emulation platform for advanced lab topologies. | Freemium |
+| OverTheWire | https://overthewire.org/wargames/ | Wargames that reinforce Linux networking, SSH, and troubleshooting fundamentals. | Yes |
+
+#### Security Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| Hack The Box | https://www.hackthebox.com/ | Realistic security labs with strong Linux enumeration and privilege-escalation content. | Freemium |
+| TryHackMe | https://tryhackme.com/ | Guided rooms for Linux, SOC, web, and offensive security practice. | Freemium |
+| PentesterLab | https://pentesterlab.com/ | Web exploitation labs that strengthen Linux, HTTP, and application security workflows. | Freemium |
+| VulnHub | https://www.vulnhub.com/ | Downloadable vulnerable VMs for self-hosted Linux and network security practice. | Yes |
+| DVWA | https://github.com/digininja/DVWA | Deliberately Vulnerable Web Application for hands-on web security testing. | Yes |
+| OWASP Juice Shop | https://owasp.org/www-project-juice-shop/ | Modern insecure web app packed with guided security challenges. | Yes |
+| CyberDefenders | https://cyberdefenders.org/ | Blue-team and DFIR labs for SOC, incident response, and log analysis practice. | Freemium |
+
+#### CI/CD and DevOps Labs
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| GitLab CI tutorials | https://docs.gitlab.com/ci/ | Official tutorials for pipelines, runners, variables, and deployment automation. | Yes |
+| GitHub Actions Learning Lab / GitHub Skills | https://skills.github.com/ | GitHub's current interactive learning platform for Actions and workflow automation. | Yes |
+| Jenkins tutorials | https://www.jenkins.io/doc/tutorials/ | Official Jenkins tutorials for jobs, pipelines, and automation server setup. | Yes |
+| Instruqt | https://instruqt.com/ | Scenario-based DevOps labs spanning CI/CD, platform engineering, and cloud-native tooling. | Freemium |
+
+#### Cloud Practice
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| AWS Free Tier | https://aws.amazon.com/free/ | Entry point for practicing EC2, IAM, S3, networking, and cloud automation. | Free tier |
+| Azure Free Account | https://azure.microsoft.com/free/ | Free credits and always-free services for Azure fundamentals practice. | Free tier |
+| GCP Free Tier | https://cloud.google.com/free | Free Google Cloud services and credits for compute, storage, and networking labs. | Free tier |
+| LocalStack | https://www.localstack.cloud/ | Local AWS cloud emulator for practicing automation without full cloud spend. | Freemium |
+| Cloud Academy | https://cloudacademy.com/ | Structured cloud labs and learning paths for AWS, Azure, and GCP. | Paid |
+| A Cloud Guru | https://acloudguru.com/ | Cloud training and labs, now part of Pluralsight Cloud Guru. | Paid |
+
+#### Certification Exam Practice
+
+| Platform | URL | Description | Free? |
+|---|---|---|---|
+| KillerShell / killer.sh | https://killer.sh/ | Best-known exam simulator for CNCF Kubernetes certifications. | Paid |
+| KodeKloud | https://kodekloud.com/ | Certification-aligned labs for Linux, Kubernetes, Ansible, and DevOps tracks. | Freemium |
+| Whizlabs | https://www.whizlabs.com/ | Practice tests and hands-on labs for Linux, cloud, and DevOps certifications. | Paid |
+| Linux Foundation exams | https://training.linuxfoundation.org/certification/ | Official certification catalog for LFCS, CKA, CKAD, CKS, and related exams. | Paid |
+| CompTIA Linux+ | https://www.comptia.org/certifications/linux | Vendor-neutral Linux certification overview with exam objectives and prep guidance. | Paid |
+
+```mermaid
+flowchart TD
+    A[Linux basics] --> B[Linux command-line labs]
+    B --> C[Networking fundamentals]
+    B --> D[Docker practice]
+    B --> E[Security basics]
+    D --> F[Kubernetes labs]
+    C --> F
+    E --> G[Security challenge labs]
+    F --> H[CI/CD and DevOps labs]
+    H --> I[Cloud practice]
+    F --> J[Certification simulators]
+    G --> J
+    I --> J
+```

@@ -101,3 +101,4 @@ K --> L["Scenarios"]
 10. [Log Analysis](10-log-analysis.md)
 11. [Recovery](11-recovery.md)
 12. [Real-World Scenarios](12-real-world-scenarios.md)
+13. [VM and SSH Access Issues](13-vm-ssh-access-issues.md)

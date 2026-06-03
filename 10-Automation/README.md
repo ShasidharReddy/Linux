@@ -87,6 +87,7 @@ graph LR
 
 - [Automation Fundamentals](01-fundamentals.md)
 - [Ansible](02-ansible.md)
+- [Ansible Deep Dive](12-ansible-deep-dive.md)
 - [Terraform for Linux](03-terraform.md)
 - [Puppet](04-puppet.md)
 - [Chef](05-chef.md)
