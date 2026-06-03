@@ -82,8 +82,10 @@ This guide has been split into smaller, topic-focused files. Reference material 
 13. [NFS Setup](./13-nfs-setup.md)
 14. [DNS Server (BIND9)](./14-dns-server.md)
 15. [System Hardening](./15-system-hardening.md)
-16. [DHCP Server](./16-dhcp-server.md)
-17. [Time Synchronization (NTP/Chrony)](./17-time-synchronization.md)
+16. [Cloud Migration](./16-cloud-migration.md)
+17. [DHCP Server](./16-dhcp-server.md)
+18. [Patching and Vulnerabilities](./17-patching-and-vulnerabilities.md)
+19. [Time Synchronization (NTP/Chrony)](./17-time-synchronization.md)
 
 ## Notes
 

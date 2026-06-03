@@ -1,39 +1,38 @@
 <div align="center">
 
-```
-╔════════════════════════════════════════════════════════════════════════════╗
-║                                                                            ║
-║   ███████╗██╗  ██╗ █████╗ ███████╗██╗      ██╗     ██╗███╗   ██╗██╗   ██╗║
-║   ██╔════╝██║  ██║██╔══██╗██╔════╝██║      ██║     ██║████╗  ██║██║   ██║║
-║   ███████╗████████║███████║███████╗██║█████╗██║     ██║██╔██╗ ██║██║   ██║║
-║   ╚════██║██╔══██║██╔══██║╚════██║██║╚════╝██║     ██║██║╚██╗██║██║   ██║║
-║   ███████║██║  ██║██║  ██║███████║██║      ███████╗██║██║ ╚████║╚██████╔╝║
-║   ╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚═╝      ╚══════╝╚═╝╚═╝  ╚═══╝ ╚═════╝║
-║                                                                            ║
-║            Comprehensive Linux Guide — Basic → Advanced                    ║
-║                                                                            ║
-╠════════════════════════════════════════════════════════════════════════════╣
-║                                                                            ║
-║   Kernel  : 6.x LTS                    Arch   : x86_64 / ARM64            ║
-║   Distros : RHEL · Ubuntu · Debian     Shell  : bash 5.x                  ║
-║   Guides  : 18 modules · 235 files     Lines  : 103,000+                  ║
-║                                                                            ║
-║   Last login: Mon Jun  2 10:47:00 2025 from github.com/ShasidharReddy     ║
-║                                                                            ║
-╠════════════════════════════════════════════════════════════════════════════╣
-║                                                                            ║
-║   root@shasi-linux:~$  cat /etc/motd                                       ║
-║                                                                            ║
-║   Welcome to Shasi-Linux! 🐧                                              ║
-║   Your complete Linux learning environment.                                ║
-║                                                                            ║
-║   📖 Fundamentals → 📜 Shell Scripting → 🌐 Networking → ⚙️  SysAdmin    ║
-║   🔒 Security → 🐳 Containers → 🔧 DevOps → 🧠 Kernel Internals         ║
-║                                                                            ║
-║   Type 'ls' to explore modules. Happy learning!                            ║
-║                                                                            ║
-╚════════════════════════════════════════════════════════════════════════════╝
-```
+<pre>
+┌──────────────────────────────────────────────────────────────────────┐
+│                                                                      │
+│   ____  _               _       _     _                              │
+│  / ___|| |__   __ _ ___(_)     | |   (_)_ __  _   ___  __           │
+│  \___ \| '_ \ / _` / __| |____| |   | | '_ \| | | \ \/ /           │
+│   ___) | | | | (_| \__ \ |____| |___| | | | | |_| |>  <            │
+│  |____/|_| |_|\__,_|___/_|    |_____|_|_| |_|\__,_/_/\_\           │
+│                                                                      │
+│            Comprehensive Linux Guide  —  Basic to Advanced           │
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   Kernel  : 6.x LTS                  Arch    : x86_64 / ARM64       │
+│   Distros : RHEL / Ubuntu / Debian   Shell   : bash 5.x             │
+│   Guides  : 18 modules, 235 files   Lines   : 103,000+              │
+│                                                                      │
+│   Last login: Tue Jun 3 09:23:58 2025 from github.com/ShasidharReddy│
+│                                                                      │
+├──────────────────────────────────────────────────────────────────────┤
+│                                                                      │
+│   root@shasi-linux:~$ cat /etc/motd                                  │
+│                                                                      │
+│   Welcome to Shasi-Linux!                                            │
+│   Your complete Linux learning environment.                          │
+│                                                                      │
+│   Fundamentals > Shell Scripting > Networking > SysAdmin             │
+│   Security > Containers > DevOps > Kernel Internals                  │
+│                                                                      │
+│   Type 'ls' to explore modules. Happy learning!                      │
+│                                                                      │
+└──────────────────────────────────────────────────────────────────────┘
+</pre>
 
 </div>
 

@@ -66,3 +66,4 @@ This guide has been split into smaller, topic-focused files for easier navigatio
 9. [Security](09-security.md) — Auth, encryption, secret handling, SQL injection prevention, and audit guidance
 10. [Containers](10-containers.md) — Docker, Compose, Kubernetes StatefulSets, operators, and container backup concerns
 11. [Troubleshooting](11-troubleshooting.md) — Connection issues, slow queries, replication lag, corruption recovery, and runbook summaries
+12. [Database Essentials](12-database-essentials.md) — End-to-end guide covering database concepts, selection, connectivity, remote access, administration, security, containers, and quick references
