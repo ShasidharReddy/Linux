@@ -124,6 +124,14 @@ flowchart TD
     E --> F[05 Disaster Recovery and HA]
     C --> F
     D --> F
+    F --> G[06 Detailed Architecture Diagrams]
+    D --> H[07 AWS Reference Architecture]
+    B --> H
+    G --> I[08 System Design Deep Dive]
+    H --> I
+    G --> J[09 Complete System Diagrams]
+    H --> J
+    I --> J
 ```
 
 ---
@@ -135,6 +143,10 @@ flowchart TD
 - [03 — Cloud infrastructure](./03-cloud-infrastructure.md)
 - [04 — On-prem to cloud migration](./04-onprem-to-cloud-migration.md)
 - [05 — Disaster recovery and high availability](./05-disaster-recovery-and-ha.md)
+- [06 — Detailed architecture diagrams](./06-detailed-architecture-diagrams.md)
+- [07 — AWS reference architecture](./07-aws-reference-architecture.md)
+- [08 — System design deep dive](./08-system-design-deep-dive.md)
+- [09 — Complete system diagrams](./09-complete-system-diagrams.md)
 
 ---
 
