@@ -70,6 +70,7 @@ A production-focused Linux security guide covering foundational controls, harden
 11. [Network Security](./11-network-security.md)
 12. [Container Security](./12-container-security.md)
 13. [Incident Response](./13-incident-response.md)
+14. [Kerberos Authentication](./14-kerberos-authentication.md)
 
 ## Appendix Material
 

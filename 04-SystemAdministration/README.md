@@ -85,7 +85,10 @@ This guide has been split into smaller, topic-focused files. Reference material 
 16. [Cloud Migration](./16-cloud-migration.md)
 17. [DHCP Server](./16-dhcp-server.md)
 18. [Patching and Vulnerabilities](./17-patching-and-vulnerabilities.md)
-19. [Time Synchronization (NTP/Chrony)](./17-time-synchronization.md)
+19. [Advanced RPM Patching](./18-rpm-patching-advanced.md)
+20. [Time Synchronization (NTP/Chrony)](./17-time-synchronization.md)
+21. [PXE Boot and Network Installation](./19-pxe-network-boot.md)
+22. [Advanced Network Services for Linux Infrastructure](./20-network-services-advanced.md)
 
 ## Notes
 
