@@ -132,6 +132,10 @@ flowchart TD
     G --> J[09 Complete System Diagrams]
     H --> J
     I --> J
+    J --> K[10 High-Level Design]
+    K --> L[11 Low-Level Design]
+    L --> M[12 Checkout System Design]
+    M --> N[13 CRM System Architecture]
 ```
 
 ---
@@ -147,6 +151,10 @@ flowchart TD
 - [07 — AWS reference architecture](./07-aws-reference-architecture.md)
 - [08 — System design deep dive](./08-system-design-deep-dive.md)
 - [09 — Complete system diagrams](./09-complete-system-diagrams.md)
+- [10 — High-Level Design](./10-high-level-design.md)
+- [11 — Low-Level Design](./11-low-level-design.md)
+- [12 — Checkout System Design](./12-checkout-system-design.md)
+- [13 — CRM System Architecture](./13-crm-system-architecture.md)
 
 ---
 
@@ -204,6 +212,9 @@ flowchart TD
 3. Read [`03-cloud-infrastructure.md`](./03-cloud-infrastructure.md) for network and managed-service layout.
 4. Use [`04-onprem-to-cloud-migration.md`](./04-onprem-to-cloud-migration.md) for execution planning.
 5. Finish with [`05-disaster-recovery-and-ha.md`](./05-disaster-recovery-and-ha.md) to operationalize resilience.
+6. Use [`10-high-level-design.md`](./10-high-level-design.md) for HLD framing, sizing, data-flow views, and technology decisions.
+7. Continue to [`11-low-level-design.md`](./11-low-level-design.md) for schema, API, state machine, and pattern-level implementation detail.
+8. End with [`12-checkout-system-design.md`](./12-checkout-system-design.md) for the most critical transactional workflow in the platform.
 
 ## Decision shorthand used in the rest of this directory
 
