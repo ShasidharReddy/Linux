@@ -102,3 +102,5 @@ K --> L["Scenarios"]
 11. [Recovery](11-recovery.md)
 12. [Real-World Scenarios](12-real-world-scenarios.md)
 13. [VM and SSH Access Issues](13-vm-ssh-access-issues.md)
+14. [Advanced Troubleshooting](14-advanced-troubleshooting.md)
+15. [Production Incident Playbooks](15-production-incident-playbooks.md)
