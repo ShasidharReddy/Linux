@@ -250,6 +250,16 @@ flowchart TD
 | Incident handling | [08-troubleshooting-guide.md](./08-troubleshooting-guide.md) | [../13-Troubleshooting/](../13-Troubleshooting/) |
 | Kubernetes deployment | [09-kubernetes-deployment.md](./09-kubernetes-deployment.md) | [../Virtual-Setup/07-production-kubernetes-setup.md](../Virtual-Setup/07-production-kubernetes-setup.md) |
 
+## Cloud Deployment Variants
+
+The guides above cover on-prem bare-metal deployment. For the same workloads on public cloud:
+
+| Cloud | Directory | Status |
+|-------|-----------|--------|
+| GCP | [GCP-Cloud-Deployment/](./GCP-Cloud-Deployment/) | ✅ Complete |
+| AWS | Coming soon | Planned |
+| Azure | Coming soon | Planned |
+
 ## Interview Delivery Notes
 
 - Lead with dependency order, not tools.
