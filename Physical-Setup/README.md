@@ -110,6 +110,10 @@ flowchart TD
   - Backup strategy
   - PITR and hot backup
   - DR runbooks and testing
+- [09 Architecture Diagrams](./09-architecture-diagrams.md)
+  - Physical topology and rack layout
+  - Network zones and traffic flows
+  - Application, storage, and DR architecture maps
 
 ## Prerequisites
 
