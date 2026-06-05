@@ -1,5 +1,19 @@
 # 7. Basic Commands
 
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the complete command reference.
+
+- **`pwd` — Print Working Directory:** Shows your current path before you make changes.
+- **`ls` — List:** Lists directory contents.
+- **`cd` — Change Directory:** Moves your shell into another directory.
+- **`cp` — Copy:** Copies files and directories.
+- **`mv` — Move:** Moves or renames files.
+- **`rm` — Remove:** Deletes files or directories.
+- **`mkdir` — Make Directory:** Creates new directories.
+- **`cat` — Concatenate:** Prints file contents to standard output.
+
+
 ## 7.1 Command Usage Principles
 
 Before learning individual commands, remember these patterns:
@@ -845,4 +859,3 @@ wc -l /etc/passwd
 > If you can master `ls`, `cd`, `cp`, `mv`, `rm`, `find`, and `tail`, you can already do useful Linux work every day.
 
 ---
-

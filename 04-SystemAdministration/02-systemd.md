@@ -1,5 +1,14 @@
 # Service Management with systemd
 
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the broader operations glossary.
+
+- **`systemctl` — System Control:** Main command for managing systemd units.
+- **`journalctl` — Journal Control:** Reads logs from the systemd journal.
+- **PID — Process ID:** Numeric identifier assigned to a running process.
+
+
 ---
 
 `systemd` is the standard init and service manager on most modern Linux distributions.

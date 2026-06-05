@@ -1,5 +1,8 @@
 # Boot Issues
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 2.1 Boot stages
 
 1. Firmware initializes hardware.

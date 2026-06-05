@@ -1,5 +1,8 @@
 # Nginx
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 3.1 Overview
 
 Nginx is a high-performance web server, reverse proxy, and load balancer.

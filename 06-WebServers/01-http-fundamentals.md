@@ -1,5 +1,8 @@
 # HTTP Fundamentals
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 A deep visual guide to how HTTP actually works.
 
 This version is intentionally long.

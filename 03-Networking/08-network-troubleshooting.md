@@ -1,5 +1,8 @@
 # Network Troubleshooting
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 Troubleshooting becomes much easier when you move layer by layer.
 
 ## 6.1 Troubleshooting mindset

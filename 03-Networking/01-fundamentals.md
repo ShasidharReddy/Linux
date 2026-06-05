@@ -1,5 +1,22 @@
 # Networking Fundamentals
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the full networking reference.
+
+- **TCP — Transmission Control Protocol:** Reliable, ordered transport.
+- **UDP — User Datagram Protocol:** Lightweight, connectionless transport.
+- **ICMP — Internet Control Message Protocol:** Used by tools such as `ping` and `traceroute`.
+- **ARP — Address Resolution Protocol:** Maps IPv4 addresses to MAC addresses.
+- **NAT — Network Address Translation:** Translates private and public addresses.
+- **VLAN — Virtual Local Area Network:** Logical Layer 2 segmentation.
+- **CIDR — Classless Inter-Domain Routing:** Compact network notation such as `/24`.
+- **MTU — Maximum Transmission Unit:** Largest frame or packet payload a link can carry.
+
+
 > A deep visual guide to how TCP/IP and practical networking actually work on Linux systems, switches, routers, and the public Internet.
 
 This chapter replaces the earlier summary with a much more comprehensive walkthrough.
@@ -2228,4 +2245,3 @@ Use these drills to practice thinking like the host, the switch, the router, and
 - Ask which layer is the lowest confirmed working layer.
 - Ask what changed between healthy and unhealthy traffic.
 - Ask what evidence proves the answer instead of merely suggesting it.
-

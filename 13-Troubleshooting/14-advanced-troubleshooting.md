@@ -1,5 +1,8 @@
 # Advanced Troubleshooting
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This chapter collects production-grade investigations that go beyond basic service restarts and simple log checks. Use it with [01-methodology.md](./01-methodology.md), [09-package-issues.md](./09-package-issues.md), [15-production-incident-playbooks.md](./15-production-incident-playbooks.md), and [05-Security/14-kerberos-authentication.md](../05-Security/14-kerberos-authentication.md).
 
 ## 14.1 Methodology for high-pressure incidents

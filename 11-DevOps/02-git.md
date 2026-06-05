@@ -1,5 +1,8 @@
 # Git and Version Control
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 [Back to guide index](README.md)
 
 ### 2.1 Why Git matters in DevOps
@@ -56,6 +59,7 @@ git log --oneline --graph --decorate --all
 ```
 
 ### 2.4 Common Git commands for DevOps engineers
+
 | Command | Purpose |
 |---|---|
 | `git init` | Start a new repository |

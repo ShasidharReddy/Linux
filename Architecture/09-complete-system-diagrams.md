@@ -1,5 +1,8 @@
 # 09 — Complete System Diagrams
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Enterprise ecommerce visual reference pack. Use this document when you need large, complete Mermaid diagrams that show the platform from the perspective of architecture review, incident response, scaling, security, or migration planning. Cross-reference the narrative guidance in [06-detailed-architecture-diagrams.md](./06-detailed-architecture-diagrams.md), the AWS mapping in [07-aws-reference-architecture.md](./07-aws-reference-architecture.md), and the internals in [08-system-design-deep-dive.md](./08-system-design-deep-dive.md).
 
 ## How to read the diagrams

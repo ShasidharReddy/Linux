@@ -1,4 +1,16 @@
 # 14. SSH — Secure Shell
+
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the full command and protocol reference.
+
+- **SSH — Secure Shell:** Encrypted remote access and command protocol.
+- **SCP — Secure Copy Protocol:** Copies files over SSH.
+- **SFTP — SSH File Transfer Protocol:** Interactive file transfer over SSH.
+- **ed25519 — Edwards-curve Digital Signature Algorithm using Curve25519:** Recommended modern SSH key type.
+- **RSA — Rivest–Shamir–Adleman:** Older but widely supported public-key algorithm.
+- **MFA — Multi-Factor Authentication:** Adds extra verification beyond a single secret.
+
 ## 14.1 What is SSH?
 SSH stands for Secure Shell. It is the standard encrypted protocol for remote administration, secure command execution, port forwarding, and secure file transfer on Linux and Unix-like systems.
 Key facts:
@@ -7,6 +19,7 @@ Key facts:
 - Modern systems use SSH protocol version 2 only.
 - SSH is used by admins, automation, CI/CD, Git, bastion hosts, and secure tunneling.
 Core components:
+
 | Component | Purpose |
 |---|---|
 | `ssh` | Client used to connect to a server |
@@ -17,6 +30,7 @@ Core components:
 | `/etc/ssh/sshd_config` | Server-side SSH configuration |
 | `ssh-agent` | Holds unlocked private keys in memory |
 | `ssh-add` | Loads keys into the agent |
+
 ## 14.2 How SSH Login Works
 1. The client connects to the server on port `22` or a custom port.
 2. The server presents its host key.
@@ -114,12 +128,14 @@ chmod 600 ~/.ssh/authorized_keys
 ```
 ### Step 3: Set correct permissions
 SSH is strict about key permissions.
+
 | Path | Typical mode |
 |---|---|
 | `~/.ssh` | `700` |
 | `~/.ssh/authorized_keys` | `600` |
 | private key such as `~/.ssh/id_ed25519` | `600` |
 | public key such as `~/.ssh/id_ed25519.pub` | `644` |
+
 Commands:
 ```bash
 chmod 700 ~/.ssh
@@ -364,6 +380,7 @@ redis-cli -h localhost
 - Use bastion hosts for private network access.
 - Consider MFA or SSH certificates in larger environments.
 ## 14.14 Common SSH Troubleshooting
+
 | Problem | Likely cause | Fix |
 |---|---|---|
 | `Permission denied (publickey)` | Wrong key, bad permissions, missing public key | Check `authorized_keys`, key path, and `chmod` values |
@@ -371,6 +388,7 @@ redis-cli -h localhost
 | `Host key verification failed` | Host key changed or stale `known_hosts` entry | Verify the change and update the old entry |
 | Connection hangs | Routing issue, wrong port, firewall, security group | Test with `ping`, `nc`, `ss`, and firewall rules |
 | Too many authentication failures | Client offered too many keys | Use `IdentitiesOnly yes` |
+
 Useful commands:
 ```bash
 ssh -vvv user@server

@@ -1,5 +1,8 @@
 # DNS
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 DNS is one of the most critical services in Linux networking. Many “network problems” are actually DNS problems.
 
 ## 3.1 What DNS does

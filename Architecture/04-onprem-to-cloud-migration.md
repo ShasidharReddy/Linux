@@ -1,5 +1,8 @@
 # 04 — On-Prem to Cloud Migration
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Detailed migration guide for moving the 10-application ecommerce system from on-premises infrastructure to a cloud + Kubernetes target state.
 
 Use this document with [`03-cloud-infrastructure.md`](./03-cloud-infrastructure.md) for landing-zone design and [`05-disaster-recovery-and-ha.md`](./05-disaster-recovery-and-ha.md) for post-migration resilience posture.

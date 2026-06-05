@@ -1,5 +1,8 @@
 # 05 — Disaster Recovery and High Availability
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > High availability and disaster recovery plan for the 10-application ecommerce system, including per-service RPO/RTO, failover runbooks, drills, and chaos testing.
 
 This document should be read after [`02-kubernetes-architecture.md`](./02-kubernetes-architecture.md) and [`03-cloud-infrastructure.md`](./03-cloud-infrastructure.md), because HA and DR depend on the chosen cluster, network, and managed-service topology.

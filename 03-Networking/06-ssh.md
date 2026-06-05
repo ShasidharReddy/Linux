@@ -1,5 +1,8 @@
 # SSH
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 SSH is the standard secure remote administration protocol on Linux.
 
 ## 5.1 SSH components

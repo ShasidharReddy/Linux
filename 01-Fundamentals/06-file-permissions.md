@@ -1,5 +1,8 @@
 # 8. File Permissions and Ownership
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 8.1 Why Permissions Matter
 
 Linux is a multiuser operating system.
@@ -405,4 +408,3 @@ Questions to ask:
 > One parent directory with missing execute permission is enough to block access.
 
 ---
-

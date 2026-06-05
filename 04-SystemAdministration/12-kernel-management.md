@@ -1,5 +1,8 @@
 # Kernel Management
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ---
 
 The Linux kernel manages hardware, scheduling, memory, drivers, filesystems, and system calls.

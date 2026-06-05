@@ -1,5 +1,8 @@
 # 📘 Database Essentials: From Basics to Advanced Operations
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > A Linux-first, operations-friendly database guide that moves from first principles to production-ready administration.
 > Scope: architecture, database selection, connectivity, remote access, backups, monitoring, security, containers, and high availability.
 
@@ -2561,4 +2564,3 @@ Use these labs to turn the concepts in this guide into repeatable muscle memory.
 - I can explain one good use case and one anti-pattern for the engine.
 - I know whether the engine is a source of truth, cache, index, or embedded store in my architecture.
 - I have documented the first-response commands for an outage.
-

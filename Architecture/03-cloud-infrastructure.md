@@ -1,5 +1,8 @@
 # 03 — Cloud Infrastructure
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Multi-cloud infrastructure design for the ecommerce platform, including provider selection, network topology, compute, managed data services, storage, CDN, security, observability, and cost.
 
 This document complements the Kubernetes view in [`02-kubernetes-architecture.md`](./02-kubernetes-architecture.md) and the system decisions in [`01-system-overview-and-design-decisions.md`](./01-system-overview-and-design-decisions.md).

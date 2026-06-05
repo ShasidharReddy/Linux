@@ -1,5 +1,8 @@
 # Disaster Recovery Scenarios
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This guide covers urgent recovery workflows and shared operational appendices, templates, and scripts.
 
 ## 15.1 Server will not boot — recovery steps

@@ -1,5 +1,8 @@
 # Kernel Panic Analysis
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This guide covers panic signatures, oops decoding, call traces, and interpreting fatal kernel failures.
 
 ## 4.1 What is a kernel panic?

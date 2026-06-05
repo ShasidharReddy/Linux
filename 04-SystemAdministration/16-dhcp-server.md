@@ -1,5 +1,16 @@
 # DHCP Server
 
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the networking glossary.
+
+- **DHCP — Dynamic Host Configuration Protocol:** Automatically assigns network settings.
+- **DORA — Discover, Offer, Request, Acknowledge:** The standard DHCP lease exchange.
+- **DNS — Domain Name System:** One of the most common options sent by DHCP.
+- **NTP — Network Time Protocol:** Optional time-service information sent by DHCP.
+- **VLAN — Virtual Local Area Network:** Often requires a relay between DHCP clients and servers.
+
+
 ---
 
 <a id="dhcp-server"></a>

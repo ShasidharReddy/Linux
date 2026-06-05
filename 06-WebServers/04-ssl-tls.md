@@ -1,5 +1,8 @@
 # SSL/TLS Deep Dive — How HTTPS Actually Works
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > A comprehensive, visual, step-by-step reference for understanding SSL/TLS, certificates, HTTPS, ACME, mTLS, and production-grade server configuration.
 
 > Audience: Linux admins, backend engineers, DevOps engineers, SREs, security learners, and anyone who wants to understand what happens between typing `https://example.com` and seeing a padlock.
@@ -2840,4 +2843,3 @@ graph TD
 ## Final Takeaway
 
 TLS is not magic; it is a carefully sequenced set of identity checks, ephemeral key exchange steps, transcript verification, and fast symmetric encryption that turns plain HTTP into HTTPS. If you can explain the browser-to-server flow, the certificate chain, the TLS 1.2 and TLS 1.3 handshakes, the role of ACME automation, and the operational checks that keep certificates valid in production, you understand the core of modern web transport security.
-

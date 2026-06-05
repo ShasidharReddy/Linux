@@ -1,5 +1,8 @@
 # Linux Patching, Vulnerability Management, CVE, CVSS, and CIS Benchmarks
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 A comprehensive operations guide for patching Linux systems, managing vulnerabilities, interpreting CVEs and CVSS scores, applying CIS Benchmarks, and building repeatable compliance reporting workflows.
 
 ---

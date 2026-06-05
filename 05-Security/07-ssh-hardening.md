@@ -1,5 +1,16 @@
 # SSH Hardening
 
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the full SSH and crypto glossary.
+
+- **SSH — Secure Shell:** Encrypted remote administration protocol.
+- **MFA — Multi-Factor Authentication:** Adds another verification step beyond a password or key.
+- **ed25519 — Edwards-curve Digital Signature Algorithm using Curve25519:** Preferred modern SSH key type.
+- **RSA — Rivest–Shamir–Adleman:** Older but common public-key algorithm.
+- **TOTP — Time-Based One-Time Password:** One-time code often used for SSH MFA.
+
+
 SSH is one of the most critical Linux administration services.
 
 It is also one of the most attacked.

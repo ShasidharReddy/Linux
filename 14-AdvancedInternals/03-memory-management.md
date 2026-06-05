@@ -1,5 +1,8 @@
 # Memory Management
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This guide covers address spaces, paging, allocators, NUMA, and memory behavior under pressure.
 
 Linux memory management is one of the most sophisticated parts of the kernel. It deals with virtual memory, physical page allocation, reclaim, page cache, NUMA locality, huge pages, and out-of-memory behavior.

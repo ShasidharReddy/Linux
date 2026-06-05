@@ -1,5 +1,8 @@
 # ☁️ Cloud Migration Guide: On-Premises to Azure, AWS, and GCP
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 A practical, end-to-end operations guide for planning, executing, validating, and optimizing migrations from on-premises environments to Microsoft Azure, Amazon Web Services (AWS), and Google Cloud Platform (GCP).
 
 This guide is written for Linux administrators, systems engineers, cloud architects, project leads, and operations teams that need a repeatable migration playbook with phased execution, example commands, decision points, and rollback planning.
@@ -2045,4 +2048,3 @@ gcloud iam service-accounts list
 - [ ] Compliance evidence archived.
 - [ ] Lessons learned shared with next migration wave.
 - [ ] Project tracker updated to closed or stabilized state.
-

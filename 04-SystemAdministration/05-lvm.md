@@ -1,5 +1,20 @@
 # Logical Volume Management (LVM)
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the full storage glossary.
+
+- **LVM — Logical Volume Manager:** Flexible storage-management layer.
+- **PV — Physical Volume:** Disk or partition managed by LVM.
+- **VG — Volume Group:** Pool of storage built from one or more PVs.
+- **LV — Logical Volume:** Resizable volume carved from a VG.
+- **`lsblk` — List Block Devices:** Shows disks, partitions, and logical volumes.
+- **`mkfs` — Make Filesystem:** Creates a filesystem on a device.
+
+
 ---
 
 ## 4.7 LVM concepts
