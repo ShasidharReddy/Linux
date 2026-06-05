@@ -4,11 +4,11 @@ HTTP and HTTPS carry web pages, APIs, package downloads, and countless service-t
 
 
 > **Key Terms**
-> - **HTTP** — *HyperText Transfer Protocol*: Web request and response protocol.
-> - **HTTPS** — *HyperText Transfer Protocol Secure*: HTTP protected by TLS.
-> - **TLS** — *Transport Layer Security*: Encrypts data in transit.
-> - **TCP** — *Transmission Control Protocol*: Reliable transport used by HTTP and HTTPS.
-> - **curl** — *Client URL*: Common Linux tool for testing HTTP endpoints.
+> - **HTTP (HyperText Transfer Protocol)**: Web request and response protocol.
+> - **HTTPS (HTTP Secure)**: HTTP protected by TLS.
+> - **TLS (Transport Layer Security)**: Encrypts data in transit.
+> - **TCP (Transmission Control Protocol)**: Reliable transport used by HTTP and HTTPS.
+> - **curl (Client URL)**: Common Linux tool for testing HTTP endpoints.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

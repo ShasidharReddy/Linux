@@ -4,11 +4,11 @@ These file-transfer names sound similar but behave very differently on the wire.
 
 
 > **Key Terms**
-> - **FTP** — *File Transfer Protocol*: Legacy plaintext file transfer protocol.
-> - **FTPS** — *FTP Secure (FTP over TLS)*: FTP protected by TLS.
-> - **SFTP** — *SSH File Transfer Protocol*: Secure transfer subsystem over SSH.
-> - **SCP** — *Secure Copy Protocol*: Direct file copy over SSH.
-> - **SSH, TLS, NAT** — *Related terms*: Explain the secure transports and firewall implications behind these protocols.
+> - **FTP (File Transfer Protocol)**: Legacy plaintext file transfer protocol.
+> - **FTPS (FTP Secure)**: FTP protected by TLS.
+> - **SFTP (SSH File Transfer Protocol)**: Secure transfer subsystem over SSH.
+> - **SCP (Secure Copy Protocol)**: Direct file copy over SSH.
+> - **SSH (Secure Shell)**, **TLS (Transport Layer Security)**, and **NAT (Network Address Translation)**: Related terms that explain secure transports and firewall implications.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

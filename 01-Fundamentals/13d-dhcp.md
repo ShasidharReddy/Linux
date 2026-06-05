@@ -4,12 +4,12 @@ DHCP automates IP configuration so hosts can join a network quickly and consiste
 
 
 > **Key Terms**
-> - **DHCP** — *Dynamic Host Configuration Protocol*: Automatically assigns IP settings to clients.
-> - **DORA** — *Discover, Offer, Request, Acknowledge*: Four-step DHCP lease exchange.
-> - **UDP** — *User Datagram Protocol*: Transport used by DHCP.
-> - **DNS** — *Domain Name System*: Common DHCP option distributed to clients.
-> - **NTP** — *Network Time Protocol*: Optional time server information that DHCP can provide.
-> - **VLAN** — *Virtual Local Area Network*: Often requires DHCP relay between segments.
+> - **DHCP (Dynamic Host Configuration Protocol)**: Automatically assigns IP settings to clients.
+> - **DORA (Discover, Offer, Request, Acknowledge)**: Four-step DHCP lease exchange.
+> - **UDP (User Datagram Protocol)**: Transport used by DHCP.
+> - **DNS (Domain Name System)**: Common DHCP option distributed to clients.
+> - **NTP (Network Time Protocol)**: Optional time server information that DHCP can provide.
+> - **VLAN (Virtual Local Area Network)**: Often requires DHCP relay between segments.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

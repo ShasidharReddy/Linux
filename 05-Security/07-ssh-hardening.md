@@ -1,15 +1,6 @@
 # SSH Hardening
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full SSH and crypto glossary.
-
-- **SSH — Secure Shell:** Encrypted remote administration protocol.
-- **MFA — Multi-Factor Authentication:** Adds another verification step beyond a password or key.
-- **ed25519 — Edwards-curve Digital Signature Algorithm using Curve25519:** Preferred modern SSH key type.
-- **RSA — Rivest–Shamir–Adleman:** Older but common public-key algorithm.
-- **TOTP — Time-Based One-Time Password:** One-time code often used for SSH MFA.
-
+SSH (Secure Shell) hardening usually centers on ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), ECDSA (Elliptic Curve Digital Signature Algorithm), MFA (Multi-Factor Authentication), and TOTP (Time-Based One-Time Password) controls.
 
 SSH is one of the most critical Linux administration services.
 

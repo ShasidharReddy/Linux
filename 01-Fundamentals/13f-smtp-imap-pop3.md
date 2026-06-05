@@ -4,11 +4,17 @@ Email delivery is a workflow made of multiple protocols rather than one service.
 
 
 > **Key Terms**
-> - **SMTP** — *Simple Mail Transfer Protocol*: Sends and relays email.
-> - **IMAP** — *Internet Message Access Protocol*: Synchronizes mailboxes while keeping server-side state.
-> - **POP3** — *Post Office Protocol v3*: Downloads mail in a simpler client-side model.
-> - **TLS** — *Transport Layer Security*: Protects modern mail sessions.
-> - **MX, SPF, DKIM, DMARC** — *Mail-related DNS records and policies*: Direct mail flow and authentication checks.
+> - **SMTP (Simple Mail Transfer Protocol)**: Sends and relays email.
+> - **IMAP (Internet Message Access Protocol)**: Synchronizes mailboxes while keeping server-side state.
+> - **POP3 (Post Office Protocol v3)**: Downloads mail in a simpler client-side model.
+> - **MTA (Mail Transfer Agent)**: Relays mail between servers.
+> - **MDA (Mail Delivery Agent)**: Places mail into the destination mailbox.
+> - **MUA (Mail User Agent)**: User-facing mail client or webmail front end.
+> - **TLS (Transport Layer Security)**: Protects modern mail sessions.
+> - **MX (Mail Exchange)**: Directs mail delivery for a domain.
+> - **SPF (Sender Policy Framework)**: Publishes which systems may send mail for a domain.
+> - **DKIM (DomainKeys Identified Mail)**: Signs outbound mail with a domain key.
+> - **DMARC (Domain-based Message Authentication, Reporting & Conformance)**: Tells receivers how to handle SPF and DKIM failures.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

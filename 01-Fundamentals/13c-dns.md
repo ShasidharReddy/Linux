@@ -4,12 +4,18 @@ DNS is one of the highest-leverage protocols in Linux operations because so many
 
 
 > **Key Terms**
-> - **DNS** — *Domain Name System*: Translates names into addresses and other records.
-> - **TCP** — *Transmission Control Protocol*: Used for zone transfers and large DNS replies.
-> - **UDP** — *User Datagram Protocol*: Used by most standard DNS queries.
-> - **TTL** — *Time To Live*: Controls how long answers may be cached.
-> - **A, AAAA, CNAME, MX** — *Common DNS record types*: Map names, aliases, and mail destinations.
-> - **SOA, PTR, SRV, CAA** — *Operational DNS record types*: Support authority, reverse lookups, service discovery, and certificate policy.
+> - **DNS (Domain Name System)**: Translates names into addresses and other records.
+> - **TCP (Transmission Control Protocol)**: Used for zone transfers and large DNS replies.
+> - **UDP (User Datagram Protocol)**: Used by most standard DNS queries.
+> - **CNAME (Canonical Name)**: Alias record that points one name to another.
+> - **SOA (Start of Authority)**: Defines the primary authority and timers for a zone.
+> - **MX (Mail Exchange)**: Directs mail delivery for a domain.
+> - **NS (Name Server)**: Declares the authoritative DNS servers for a zone.
+> - **PTR (Pointer)**: Maps an IP address back to a hostname in reverse DNS.
+> - **SRV (Service)**: Publishes service location and port details.
+> - **CAA (Certification Authority Authorization)**: Restricts which certificate authorities may issue certificates for a domain.
+> - **TTL (Time To Live)**: Controls how long answers may be cached.
+> - **BIND (Berkeley Internet Name Domain)**: Widely used DNS server software on Linux.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

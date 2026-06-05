@@ -1,16 +1,6 @@
 # Security Fundamentals
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full security glossary.
-
-- **SSH — Secure Shell:** Encrypted remote access protocol.
-- **MFA — Multi-Factor Authentication:** Uses more than one factor to verify identity.
-- **SELinux — Security-Enhanced Linux:** Mandatory access control for Linux.
-- **AppArmor — Application Armor:** Profile-based mandatory access control system.
-- **CVE — Common Vulnerabilities and Exposures:** Standard identifier for a known vulnerability.
-- **CVSS — Common Vulnerability Scoring System:** Severity scoring model for vulnerabilities.
-
+Core Linux controls in this chapter include SELinux (Security-Enhanced Linux), AppArmor (Application Armor), IDS (Intrusion Detection System), IPS (Intrusion Prevention System), WAF (Web Application Firewall), PKI (Public Key Infrastructure), CA (Certificate Authority), CSR (Certificate Signing Request), LUKS (Linux Unified Key Setup), GPG (GNU Privacy Guard), and HMAC (Hash-based Message Authentication Code).
 
 Linux security is the practice of reducing the probability and impact of compromise while preserving system availability for legitimate users and workloads.
 

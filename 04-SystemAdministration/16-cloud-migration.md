@@ -9,6 +9,8 @@ This guide is written for Linux administrators, systems engineers, cloud archite
 
 ---
 
+Cloud programs also depend on IaC (Infrastructure as Code), VPC (Virtual Private Cloud), IAM (Identity and Access Management), SLA (Service Level Agreement), RTO (Recovery Time Objective), RPO (Recovery Point Objective), TCO (Total Cost of Ownership), CapEx (Capital Expenditure), OpEx (Operational Expenditure), CUD (Committed Use Discount), and SUD (Sustained Use Discount) planning decisions that influence architecture, risk, and cost.
+
 ## 🗂️ Guide Navigation
 
 1. [☁️ Migration Overview](#☁️-migration-overview)
@@ -272,6 +274,34 @@ az group create   --name rg-migrate-prod   --location eastus
 az network vnet create   --resource-group rg-migrate-prod   --name vnet-prod-eastus   --address-prefix 10.50.0.0/16   --subnet-name snet-app   --subnet-prefix 10.50.10.0/24
 ```
 
+
+```bash
+# Expected output (success):
+# [
+#   {
+#     "cloudName": "AzureCloud",
+#     "id": "<subscription-id>",
+#     "isDefault": true,
+#     "name": "Production-Subscription",
+#     "state": "Enabled"
+#   }
+# ]
+# Sample failure:
+# ERROR: Please run 'az login' to setup account.
+```
+
+```bash
+# Expected output (success):
+# {
+#   "id": "/subscriptions/<subscription-id>/resourceGroups/rg-migrate-prod",
+#   "location": "eastus",
+#   "name": "rg-migrate-prod",
+#   "properties": {"provisioningState": "Succeeded"}
+# }
+# Sample failure:
+# (AuthorizationFailed) The client '<user>' with object id '<object-id>' does not have authorization to perform action 'Microsoft.Resources/subscriptions/resourcegroups/write'.
+```
+
 ### 🔄 Step-by-step VM migration with Azure Site Recovery (ASR)
 
 1. Prepare the target Azure network, resource group, storage policy, and naming standard.
@@ -299,7 +329,7 @@ flowchart LR
     H --> I[Monitoring backup policy tags]
 ```
 
-### �� Azure networking setup: VNet, NSG, Load Balancer
+### 🌐 Azure networking setup: VNet, NSG, Load Balancer
 
 A common target pattern is a hub-and-spoke design. Shared services such as firewalls, DNS forwarders, VPN or ExpressRoute gateways, and Bastion stay in the hub. Application VNets or subnets exist in spokes.
 
@@ -368,6 +398,17 @@ az vm boot-diagnostics enable   --resource-group rg-migrate-prod   --name app01
 az backup vault create   --name rsv-prod-eastus   --resource-group rg-migrate-prod   --location eastus
 ```
 
+```bash
+# Expected output (success):
+# Name    ResourceGroup     PowerState    PublicIps    PrivateIps    Location
+# ------  ----------------  ------------  -----------  ------------  ----------
+# app01   rg-migrate-prod   VM running                 10.50.10.14   eastus
+# db01    rg-migrate-prod   VM running                 10.50.20.10   eastus
+# Sample failure:
+# ERROR: (ResourceGroupNotFound) Resource group 'rg-migrate-prod' could not be found.
+```
+
+
 ### 📋 Azure migration runbook
 
 - Confirm Azure region, subscription, and quota availability for the wave.
@@ -399,6 +440,11 @@ sequenceDiagram
     Ops->>DNS: Update DNS and routing
     App->>Ops: Production sign-off
 ```
+
+
+### 📚 Official References
+- [Azure Migrate Documentation](https://learn.microsoft.com/en-us/azure/migrate/)
+- [Azure Landing Zone](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/)
 
 ## 🟠 Migration to AWS
 
@@ -474,6 +520,20 @@ aws ec2 create-security-group   --group-name sg-web-prod   --description "Allow 
 aws ec2 authorize-security-group-ingress   --group-id sg-xxxxxxxx   --ip-permissions IpProtocol=tcp,FromPort=443,ToPort=443,IpRanges='[{CidrIp=0.0.0.0/0,Description="HTTPS"}]' 
 ```
 
+```bash
+# Expected output (success):
+# {
+#   "Vpc": {
+#     "VpcId": "vpc-0abc123def4567890",
+#     "State": "pending",
+#     "CidrBlock": "10.60.0.0/16"
+#   }
+# }
+# Sample failure:
+# An error occurred (UnauthorizedOperation) when calling the CreateVpc operation: You are not authorized to perform this operation.
+```
+
+
 ```mermaid
 flowchart TD
     DX[Direct Connect or VPN] --> TGW[Transit Gateway / VPC Attachment]
@@ -500,6 +560,21 @@ aws ec2 create-image   --instance-id i-xxxxxxxx   --name app01-precutover-ami   
 # Create CloudWatch alarm for CPU
 aws cloudwatch put-metric-alarm   --alarm-name app01-high-cpu   --metric-name CPUUtilization   --namespace AWS/EC2   --statistic Average   --period 300   --threshold 80   --comparison-operator GreaterThanThreshold   --dimensions Name=InstanceId,Value=i-xxxxxxxx   --evaluation-periods 2
 ```
+
+```bash
+# Expected output (success):
+# --------------------------------------------------------------
+# |                      DescribeInstances                      |
+# +---------+----------------------+-------------+-------------+
+# |   ID    |         Name         |    Type     |  PrivateIP  |
+# +---------+----------------------+-------------+-------------+
+# | i-0123  | app01                | t3.large    | 10.60.10.14 |
+# | i-0456  | db01                 | m6i.xlarge  | 10.60.20.11 |
+# +---------+----------------------+-------------+-------------+
+# Sample failure:
+# An error occurred (AuthFailure) when calling the DescribeInstances operation: AWS was not able to validate the provided access credentials.
+```
+
 
 ### 📋 AWS migration runbook
 
@@ -532,6 +607,11 @@ sequenceDiagram
     Eng->>DNS: Switch DNS and ALB targets
     App->>Eng: Sign off production
 ```
+
+
+### 📚 Official References
+- [AWS Migration Hub](https://docs.aws.amazon.com/migrationhub/)
+- [AWS Well-Architected Migration Lens](https://docs.aws.amazon.com/wellarchitected/latest/migration-lens/)
 
 ## 🔴 Migration to GCP
 
@@ -622,6 +702,25 @@ gcloud compute health-checks create http app-health-check   --port=8080   --requ
 gcloud compute instance-templates create app-template-v1   --machine-type=e2-standard-4   --subnet=subnet-app-uscentral1   --tags=app,web
 ```
 
+```bash
+# Expected output (success):
+# Created [https://www.googleapis.com/compute/v1/projects/my-prod-project/global/networks/vpc-prod].
+# Sample failure:
+# ERROR: (gcloud.compute.networks.create) Could not fetch resource:
+#  - Required 'compute.networks.create' permission for 'projects/my-prod-project'.
+```
+
+```bash
+# Expected output (success):
+# NAME   ZONE           MACHINE_TYPE   INTERNAL_IP   EXTERNAL_IP  STATUS
+# app01  us-central1-a  e2-standard-4  10.70.10.14                RUNNING
+# db01   us-central1-b  e2-standard-8  10.70.20.12                RUNNING
+# Sample failure:
+# ERROR: (gcloud.compute.instances.list) Some requests did not succeed:
+#  - Insufficient Permission
+```
+
+
 ### 📋 GCP migration runbook
 
 - Confirm quotas for CPUs, disks, snapshots, forwarding rules, and addresses in the target region.
@@ -653,6 +752,24 @@ sequenceDiagram
     Eng->>DNS: Update records and forwarding
     App->>Eng: Confirm production health
 ```
+
+
+### 📚 Official References
+- [Google Cloud Migration Center](https://cloud.google.com/migration-center/docs)
+- [Google Cloud Architecture Framework](https://cloud.google.com/architecture/framework)
+
+### 🔧 Common Migration Failures & Fixes
+
+| Issue | Symptoms | Root Cause | Fix |
+|-------|----------|-----------|-----|
+| VM won't boot after migration | Kernel panic, no bootable device | Missing virtio drivers / wrong boot mode | Install virtio drivers pre-migration, verify UEFI/BIOS |
+| Network unreachable after migration | No connectivity, ping fails | NIC naming changed (`eth0` → `ens5`), route missing | Update `/etc/sysconfig/network-scripts` or netplan, check security groups |
+| Application slow after migration | High latency, timeouts | Wrong instance size, disk IOPS limit | Right-size instance, use premium SSD, check proximity |
+| DNS resolution fails | Can't resolve internal names | DNS forwarder not configured | Configure VPC DNS, add conditional forwarders |
+| Permission denied on data | App can't read migrated files | UID/GID mismatch, SELinux context lost | Fix ownership, restore SELinux contexts with `restorecon` |
+| Database replication lag | Data inconsistency, stale reads | WAN latency, insufficient bandwidth | Use database-native migration tools (DMS), schedule during low traffic |
+| License activation fails | App won't start, license error | Hardware fingerprint changed | Contact vendor for cloud-compatible license, use BYOL programs |
+| Time sync issues | Certificates fail, Kerberos errors | NTP not configured for cloud | Configure `chrony` with cloud NTP (`169.254.169.123` for AWS, metadata guidance for GCP) |
 
 ## ✅ Post-Migration Steps
 

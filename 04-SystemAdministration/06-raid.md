@@ -5,6 +5,8 @@
 
 ---
 
+Software RAID (Redundant Array of Independent Disks) design should always be matched to the IOPS (Input/Output Operations Per Second) and resilience requirements of the workload before you build the array.
+
 ## 4.14 RAID basics with mdadm
 
 Software RAID can be managed using `mdadm`.

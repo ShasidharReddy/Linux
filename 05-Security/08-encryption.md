@@ -1,18 +1,6 @@
 # Encryption
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full cryptography glossary.
-
-- **LUKS — Linux Unified Key Setup:** Standard Linux disk-encryption format.
-- **GPG — GNU Privacy Guard:** Open-source implementation of the PGP standard.
-- **PGP — Pretty Good Privacy:** File and email encryption standard.
-- **TLS — Transport Layer Security:** Main protocol for encrypted network sessions.
-- **AES — Advanced Encryption Standard:** Common symmetric cipher.
-- **SHA — Secure Hash Algorithm:** Family of cryptographic hash functions.
-- **MD5 — Message-Digest Algorithm 5:** Legacy hash that is insecure for security-sensitive use.
-- **PKI / CA / CSR / OCSP / CRL:** Core certificate-management terms used in TLS deployments.
-
+This chapter covers LUKS (Linux Unified Key Setup), GPG (GNU Privacy Guard), AES (Advanced Encryption Standard), SHA (Secure Hash Algorithm), and RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers) in the Linux encryption workflow.
 
 Encryption protects data confidentiality and, in some cases, integrity.
 

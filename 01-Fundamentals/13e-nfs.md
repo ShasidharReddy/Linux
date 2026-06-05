@@ -4,11 +4,11 @@ NFS lets Linux systems consume shared storage as mounted filesystems. This file 
 
 
 > **Key Terms**
-> - **NFS** — *Network File System*: Remote file sharing protocol common in Linux environments.
-> - **TCP** — *Transmission Control Protocol*: Primary transport for NFSv4.
-> - **RPC** — *Remote Procedure Call*: Older NFS helper services often depend on RPC mapping.
-> - **NAS** — *Network Attached Storage*: Common platform category that exposes NFS shares.
-> - **Kerberos** — *Network authentication protocol*: Often paired with NFSv4 for stronger authentication.
+> - **NFS (Network File System)**: Remote file sharing protocol common in Linux environments.
+> - **TCP (Transmission Control Protocol)**: Primary transport for NFSv4.
+> - **RPC (Remote Procedure Call)**: Older NFS helper services often depend on RPC mapping.
+> - **NAS (Network Attached Storage)**: Common platform category that exposes NFS shares.
+> - **Kerberos (Network authentication protocol)**: Often paired with NFSv4 for stronger authentication.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

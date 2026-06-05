@@ -4,11 +4,14 @@ LDAP provides structured directory lookup for users, groups, hosts, and service 
 
 
 > **Key Terms**
-> - **LDAP** — *Lightweight Directory Access Protocol*: Directory query and update protocol.
-> - **LDAPS** — *LDAP over SSL/TLS*: LDAP protected by implicit TLS.
-> - **TLS** — *Transport Layer Security*: Encrypts bind and search traffic.
-> - **PAM, NSS, SSSD** — *Linux integration components*: Bridge Linux logins and identity lookups to directories.
-> - **RBAC** — *Role-Based Access Control*: Often enforced using directory group membership.
+> - **LDAP (Lightweight Directory Access Protocol)**: Directory query and update protocol.
+> - **DN (Distinguished Name)**: Unique path-like identifier for a directory entry.
+> - **DIT (Directory Information Tree)**: Hierarchical structure that stores LDAP entries.
+> - **LDIF (LDAP Data Interchange Format)**: Text format for importing and exporting directory data.
+> - **LDAPS (LDAP over SSL/TLS)**: LDAP protected by implicit TLS.
+> - **TLS (Transport Layer Security)**: Encrypts bind and search traffic.
+> - **PAM (Pluggable Authentication Modules)**, **NSS (Name Service Switch)**, and **SSSD (System Security Services Daemon)**: Linux integration components that bridge logins and identity lookups to directories.
+> - **RBAC (Role-Based Access Control)**: Often enforced using directory group membership.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

@@ -1,15 +1,6 @@
 # 14. SSH — Secure Shell
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full command and protocol reference.
-
-- **SSH — Secure Shell:** Encrypted remote access and command protocol.
-- **SCP — Secure Copy Protocol:** Copies files over SSH.
-- **SFTP — SSH File Transfer Protocol:** Interactive file transfer over SSH.
-- **ed25519 — Edwards-curve Digital Signature Algorithm using Curve25519:** Recommended modern SSH key type.
-- **RSA — Rivest–Shamir–Adleman:** Older but widely supported public-key algorithm.
-- **MFA — Multi-Factor Authentication:** Adds extra verification beyond a single secret.
+SSH (Secure Shell) commonly uses ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), and ECDSA (Elliptic Curve Digital Signature Algorithm) key types, plus MFA (Multi-Factor Authentication) where extra login verification is required.
 
 ## 14.1 What is SSH?
 SSH stands for Secure Shell. It is the standard encrypted protocol for remote administration, secure command execution, port forwarding, and secure file transfer on Linux and Unix-like systems.

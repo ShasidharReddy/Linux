@@ -2,7 +2,7 @@
 
 ---
 
-A process is an executing instance of a program.
+A process is an executing instance of a program. PID (Process ID), PPID (Parent Process ID), `ps` (Process Status), `top` (Table of Processes), and `htop` (Hisham's Top) are core terms for understanding process behavior on a Linux host.
 Good process management helps you understand performance, stability, and safety on a Linux host.
 
 ## 3.1 Process identifiers and hierarchy
@@ -78,6 +78,37 @@ Advantages of `htop`:
 - Easier filtering.
 - Tree display.
 - Colorized metrics.
+
+
+### 3.3.1 Sample process outputs
+
+```bash
+$ ps aux | head -5
+# Sample output:
+# USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+# root         1  0.0  0.1 169200 11344 ?        Ss   08:00   0:02 /sbin/init
+# root       812  0.0  0.2 181920 17340 ?        Ssl  08:01   0:01 /usr/lib/systemd/systemd-logind
+# user      2841  0.2  0.5 512344 44212 pts/0    Ss   09:00   0:00 -bash
+```
+
+```bash
+$ top
+# Sample output:
+# top - 09:20:11 up 10 days,  2 users,  load average: 0.15, 0.11, 0.09
+# Tasks: 182 total,   1 running, 181 sleeping,   0 stopped,   0 zombie
+# %Cpu(s):  2.5 us,  1.2 sy, 95.8 id,  0.3 wa,  0.0 hi,  0.2 si,  0.0 st
+# MiB Mem :   7850.0 total,   2132.0 free,   2012.5 used,   3705.5 buff/cache
+```
+
+```bash
+$ systemctl status sshd
+# Sample output:
+# ● sshd.service - OpenSSH server daemon
+#      Loaded: loaded (/usr/lib/systemd/system/sshd.service; enabled; preset: enabled)
+#      Active: active (running) since Tue 2025-01-14 08:01:02 UTC; 1h 13min ago
+#    Main PID: 1220 (sshd)
+#       Tasks: 1 (limit: 2319)
+```
 
 ## 3.4 Signals and termination
 

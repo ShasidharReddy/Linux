@@ -1,15 +1,6 @@
 # Package Management
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full package-management glossary.
-
-- **APT — Advanced Package Tool:** High-level package manager on Debian and Ubuntu.
-- **DPKG — Debian Package:** Low-level Debian package tool.
-- **YUM — Yellowdog Updater Modified:** Older RHEL-family package manager.
-- **DNF — Dandified YUM:** Modern YUM replacement.
-- **RPM — Red Hat Package Manager:** Package format and low-level management tool.
-
+`apt` (Advanced Package Tool), `dpkg` (Debian Package), `yum` (Yellowdog Updater Modified), `dnf` (Dandified YUM), and `rpm` (Red Hat Package Manager) are the package-management names you will see most often in this chapter.
 
 ---
 

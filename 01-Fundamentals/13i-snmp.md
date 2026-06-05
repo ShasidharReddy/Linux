@@ -4,11 +4,12 @@ SNMP remains a foundational protocol for monitoring network devices, power syste
 
 
 > **Key Terms**
-> - **SNMP** — *Simple Network Management Protocol*: Monitoring and management protocol for devices.
-> - **MIB** — *Management Information Base*: Schema that names SNMP objects.
-> - **OID** — *Object Identifier*: Numeric identifier for an SNMP value.
-> - **UDP** — *User Datagram Protocol*: Transport used by classic SNMP polling and traps.
-> - **AES, SHA** — *Security algorithms*: Commonly used by SNMPv3 for privacy and authentication.
+> - **SNMP (Simple Network Management Protocol)**: Monitoring and management protocol for devices.
+> - **OID (Object Identifier)**: Numeric identifier for an SNMP value.
+> - **MIB (Management Information Base)**: Schema that names SNMP objects.
+> - **NMS (Network Management System)**: Monitoring platform that polls devices and receives traps.
+> - **UDP (User Datagram Protocol)**: Transport used by classic SNMP polling and traps.
+> - **AES (Advanced Encryption Standard)** and **SHA (Secure Hash Algorithm)**: Common SNMPv3 privacy and authentication algorithms.
 >
 > **Cross-references**
 > - [Protocol index](13-essential-protocols.md) for the overview, ports, security map, and troubleshooting checklist.

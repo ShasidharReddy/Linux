@@ -5,6 +5,8 @@
 
 SSH is the standard secure remote administration protocol on Linux.
 
+SSH deployments here use ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), and ECDSA (Elliptic Curve Digital Signature Algorithm) host or user keys depending on policy and compatibility.
+
 ## 5.1 SSH components
 
 ### 📸 SSH Protocol Architecture

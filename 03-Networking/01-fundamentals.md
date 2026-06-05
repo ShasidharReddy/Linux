@@ -3,19 +3,7 @@
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
 
-## Full Forms & Terminology
-
-See the [master glossary](../00-glossary-and-full-forms.md) for the full networking reference.
-
-- **TCP — Transmission Control Protocol:** Reliable, ordered transport.
-- **UDP — User Datagram Protocol:** Lightweight, connectionless transport.
-- **ICMP — Internet Control Message Protocol:** Used by tools such as `ping` and `traceroute`.
-- **ARP — Address Resolution Protocol:** Maps IPv4 addresses to MAC addresses.
-- **NAT — Network Address Translation:** Translates private and public addresses.
-- **VLAN — Virtual Local Area Network:** Logical Layer 2 segmentation.
-- **CIDR — Classless Inter-Domain Routing:** Compact network notation such as `/24`.
-- **MTU — Maximum Transmission Unit:** Largest frame or packet payload a link can carry.
-
+TCP (Transmission Control Protocol), UDP (User Datagram Protocol), IP (Internet Protocol), ICMP (Internet Control Message Protocol), ARP (Address Resolution Protocol), DNS (Domain Name System), DHCP (Dynamic Host Configuration Protocol), NAT (Network Address Translation), CIDR (Classless Inter-Domain Routing), VLAN (Virtual Local Area Network), MTU (Maximum Transmission Unit), MAC (Media Access Control), and the OSI (Open Systems Interconnection) model appear constantly in this chapter, along with Linux tools such as `ss` (Socket Statistics), `netstat` (Network Statistics), `ifconfig` (Interface Configuration), `tcpdump` (TCP Dump), and `nmap` (Network Mapper).
 
 > A deep visual guide to how TCP/IP and practical networking actually work on Linux systems, switches, routers, and the public Internet.
 
@@ -1588,6 +1576,56 @@ This section gives you concrete commands and what to look for.
 | Query DNS | `dig` or `resolvectl query` |
 | Capture packets | `tcpdump` |
 | Inspect NIC settings | `ethtool` |
+
+
+### 15.2.1 Sample command outputs
+
+```bash
+$ ip a
+# Expected output:
+# 2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+#     inet 192.168.1.20/24 brd 192.168.1.255 scope global dynamic eth0
+#     inet6 fe80::5054:ff:fe12:3456/64 scope link
+```
+
+```bash
+$ ip route
+# Expected output:
+# default via 192.168.1.1 dev eth0 proto dhcp metric 100
+# 192.168.1.0/24 dev eth0 proto kernel scope link src 192.168.1.20 metric 100
+```
+
+```bash
+$ ss -tulpn
+# Expected output:
+# Netid  State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port  Process
+# tcp    LISTEN  0       128     0.0.0.0:22          0.0.0.0:*          users:(("sshd",pid=1220,fd=3))
+# udp    UNCONN  0       0       127.0.0.53:53       0.0.0.0:*          users:(("systemd-resolve",pid=812,fd=13))
+```
+
+```bash
+$ dig example.com
+# Sample output:
+# ;; ANSWER SECTION:
+# example.com.        300     IN      A       93.184.216.34
+```
+
+```bash
+$ ping -c 2 8.8.8.8
+# Sample output:
+# 64 bytes from 8.8.8.8: icmp_seq=1 ttl=117 time=14.2 ms
+# 64 bytes from 8.8.8.8: icmp_seq=2 ttl=117 time=14.0 ms
+# --- 8.8.8.8 ping statistics ---
+# 2 packets transmitted, 2 received, 0% packet loss
+```
+
+```bash
+$ traceroute example.com
+# Sample output:
+#  1  192.168.1.1  1.021 ms  0.924 ms  0.887 ms
+#  2  10.20.0.1    4.311 ms  4.267 ms  4.120 ms
+#  3  93.184.216.34  18.552 ms  18.311 ms  18.204 ms
+```
 
 ### 15.3 PDU quick reference
 

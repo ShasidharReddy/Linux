@@ -3,6 +3,8 @@
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
 
+CVE (Common Vulnerabilities and Exposures), CVSS (Common Vulnerability Scoring System), CIS (Center for Internet Security), NIST (National Institute of Standards and Technology), and NVD (National Vulnerability Database) are the main vulnerability-management abbreviations used throughout this guide.
+
 A comprehensive operations guide for patching Linux systems, managing vulnerabilities, interpreting CVEs and CVSS scores, applying CIS Benchmarks, and building repeatable compliance reporting workflows.
 
 ---

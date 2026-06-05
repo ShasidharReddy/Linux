@@ -354,7 +354,7 @@ An HTTP request has three major parts.
 ```mermaid
 graph TD
     A["Request Line<br/>GET /api/users?page=1 HTTP/1.1"] --> B["Headers<br/>Host: api.example.com<br/>Accept: application/json<br/>Authorization: Bearer eyJhbGciOi...<br/>User-Agent: Mozilla/5.0<br/>Cookie: session=abc123<br/>Content-Type: application/json"]
-    B --> C["Body<br/>{\"name\": \"John\", \"email\": \"john@example.com\"}"]
+    B --> C["Body<br/>JSON payload with name and email fields"]
 ```
 
 ### 2.3 Raw HTTP example
@@ -550,7 +550,7 @@ The response also has three major parts.
 ```mermaid
 graph TD
     A["Status Line<br/>HTTP/1.1 200 OK"] --> B["Headers<br/>Content-Type: text/html; charset=UTF-8<br/>Content-Length: 1234<br/>Set-Cookie: session=xyz789; HttpOnly; Secure<br/>Cache-Control: max-age=3600<br/>X-Frame-Options: DENY<br/>Strict-Transport-Security: max-age=31536000"]
-    B --> C["Body<br/><!DOCTYPE html><html>...</html>"]
+    B --> C["Body<br/>HTML document response"]
 ```
 
 ### 3.3 Raw response example
