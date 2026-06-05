@@ -1,5 +1,8 @@
 # File System Hierarchy (FHS)
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Includes Linux file types so no fundamentals content is lost during the split.
 
 ## 5. File System Hierarchy (FHS)
@@ -674,4 +677,3 @@ Understanding file types helps when:
 > Use `ls -l` first, then `stat`, then `file` if you need deeper detail.
 
 ---
-

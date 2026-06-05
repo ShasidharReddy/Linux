@@ -1,5 +1,8 @@
 # Firewall
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 Linux firewalling can be managed with `iptables`, `nftables`, `firewalld`, or `ufw` depending on the distribution and preference.
 
 ## 4.1 Firewall concepts

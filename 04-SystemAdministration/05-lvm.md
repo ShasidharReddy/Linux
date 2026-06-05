@@ -1,5 +1,10 @@
 # Logical Volume Management (LVM)
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
+LVM (Logical Volume Manager) organizes storage through PV (Physical Volume), VG (Volume Group), and LV (Logical Volume) layers, and tools such as `lsblk` help you confirm how those layers appear on disk.
+
 ---
 
 ## 4.7 LVM concepts
@@ -84,6 +89,39 @@ lsblk
 ```
 
 These commands show size, free extents, attributes, and layout details.
+
+
+```bash
+$ pvs
+# Expected output:
+# PV         VG     Fmt  Attr PSize   PFree
+# /dev/sdb1  vgdata lvm2 a--  100.00g 20.00g
+# /dev/sdc1  vgdata lvm2 a--  100.00g 30.00g
+```
+
+```bash
+$ vgs
+# Expected output:
+# VG     #PV #LV #SN Attr   VSize   VFree
+# vgdata   2   2   1 wz--n- 199.99g 50.00g
+```
+
+```bash
+$ lvs
+# Expected output:
+# LV          VG     Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+# lvdata      vgdata -wi-ao---- 120.00g
+# lvdata_snap vgdata swi-a-s---  10.00g      lvdata 12.34
+```
+
+```bash
+$ lsblk
+# Expected output:
+# NAME                MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+# sdb                   8:16   0  100G  0 disk
+# └─sdb1                8:17   0  100G  0 part
+#   └─vgdata-lvdata   253:0    0  120G  0 lvm  /data
+```
 
 ## 4.11 Extending LVM volumes
 

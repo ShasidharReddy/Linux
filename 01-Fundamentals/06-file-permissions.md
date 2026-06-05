@@ -1,5 +1,10 @@
 # 8. File Permissions and Ownership
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
+This chapter explains `chmod` (Change Mode), `chown` (Change Owner), `chgrp` (Change Group), SUID (Set User ID), SGID (Set Group ID), ACL (Access Control List), DAC (Discretionary Access Control), and MAC (Mandatory Access Control) so permission changes are clear the first time you see them.
+
 ## 8.1 Why Permissions Matter
 
 Linux is a multiuser operating system.
@@ -405,4 +410,3 @@ Questions to ask:
 > One parent directory with missing execute permission is enough to block access.
 
 ---
-

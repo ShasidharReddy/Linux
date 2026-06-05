@@ -1,5 +1,8 @@
 # 01 — System Overview and Design Decisions
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Detailed architecture style, service decomposition, communication strategy, data model, and technology selection rationale for the 10-application ecommerce system.
 
 Cross-read with [`README.md`](./README.md) for the directory overview, [`02-kubernetes-architecture.md`](./02-kubernetes-architecture.md) for runtime deployment design, and [`03-cloud-infrastructure.md`](./03-cloud-infrastructure.md) for cloud provider mapping.

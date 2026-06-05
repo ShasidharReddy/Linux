@@ -1,5 +1,7 @@
 # 7. Basic Commands
 
+This chapter introduces `pwd` (Print Working Directory), `ls` (List), `cd` (Change Directory), `mkdir` (Make Directory), `cp` (Copy), `mv` (Move), `rm` (Remove), `cat` (Concatenate), `vi` (Visual Interface), `vim` (Vi IMproved), `grep` (Global Regular Expression Print), `awk` (Aho, Weinberger, Kernighan), `sed` (Stream Editor), `chmod` (Change Mode), `chown` (Change Owner), `df` (Disk Free), `du` (Disk Usage), `ps` (Process Status), `top` (Table of Processes), `lsof` (List Open Files), and `ss` (Socket Statistics) so you can recognize them when they appear in daily administration work.
+
 ## 7.1 Command Usage Principles
 
 Before learning individual commands, remember these patterns:
@@ -815,6 +817,109 @@ find ~ -type f -name '*.sh'
 wc -l /etc/passwd
 ```
 
+
+### Sample command outputs
+
+```bash
+$ pwd
+# Expected output:
+# /home/user/linux-lab
+```
+
+```bash
+$ ls -la
+# Expected output:
+# total 16
+# drwxr-xr-x  3 user user 4096 Jan 10 09:00 .
+# drwxr-xr-x 18 user user 4096 Jan 10 08:55 ..
+# -rw-r--r--  1 user user    0 Jan 10 09:00 a.txt
+# -rw-r--r--  1 user user  128 Jan 10 09:00 notes.txt
+```
+
+```bash
+$ mkdir -p app/logs/archive
+# Expected output:
+# (no output on success)
+```
+
+```bash
+$ cp -av /etc/hosts backup/
+# Expected output:
+# '/etc/hosts' -> 'backup/hosts'
+```
+
+```bash
+$ mv -v a.txt archive/a.txt
+# Expected output:
+# renamed 'a.txt' -> 'archive/a.txt'
+```
+
+```bash
+$ cat /etc/hosts
+# Sample output:
+# 127.0.0.1   localhost
+# 192.168.1.20 web01.example.com web01
+```
+
+```bash
+$ find ~ -type f -name '*.sh'
+# Sample output:
+# /home/user/bin/backup.sh
+# /home/user/projects/deploy.sh
+```
+
+```bash
+$ du -sh /var/log
+# Expected output:
+# 1.2G    /var/log
+```
+
+```bash
+$ df -h
+# Expected output:
+# Filesystem      Size  Used Avail Use% Mounted on
+# /dev/sda1        50G   12G   35G  26% /
+# /dev/sdb1       100G   45G   50G  47% /data
+# tmpfs           3.9G     0  3.9G   0% /dev/shm
+```
+
+```bash
+$ lsblk
+# Expected output:
+# NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+# sda      8:0    0   50G  0 disk
+# ├─sda1   8:1    0   49G  0 part /
+# └─sda2   8:2    0    1G  0 part [SWAP]
+# sdb      8:16   0  100G  0 disk
+# └─sdb1   8:17   0  100G  0 part /data
+```
+
+```bash
+$ ps aux | head -5
+# Sample output:
+# USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+# root         1  0.0  0.1 169200 11344 ?        Ss   08:00   0:02 /sbin/init
+# root       732  0.0  0.3 235120 28640 ?        Ssl  08:01   0:01 /usr/lib/systemd/systemd-journald
+# user      2841  0.2  0.5 512344 44212 pts/0    Ss   09:00   0:00 -bash
+```
+
+```bash
+$ top
+# Sample output:
+# top - 09:15:40 up 10 days,  2 users,  load average: 0.08, 0.10, 0.07
+# Tasks: 182 total,   1 running, 181 sleeping,   0 stopped,   0 zombie
+# %Cpu(s):  2.1 us,  1.0 sy, 96.4 id,  0.4 wa,  0.0 hi,  0.1 si,  0.0 st
+# MiB Mem :   7850.0 total,   2140.3 free,   1988.1 used,   3721.6 buff/cache
+```
+
+```bash
+$ ss -tulpn
+# Expected output:
+# Netid  State   Recv-Q  Send-Q  Local Address:Port  Peer Address:Port  Process
+# tcp    LISTEN  0       128     0.0.0.0:22          0.0.0.0:*          users:(("sshd",pid=1234,fd=3))
+# tcp    LISTEN  0       128     0.0.0.0:80          0.0.0.0:*          users:(("nginx",pid=5678,fd=6))
+```
+
 ## 7.28 Command Summary Table
 
 | Command | Primary Use | Common Example |
@@ -845,4 +950,3 @@ wc -l /etc/passwd
 > If you can master `ls`, `cd`, `cp`, `mv`, `rm`, `find`, and `tail`, you can already do useful Linux work every day.
 
 ---
-

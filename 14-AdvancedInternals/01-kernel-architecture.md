@@ -1,5 +1,8 @@
 # Kernel Architecture
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This guide explains Linux kernel organization, subsystem boundaries, modules, and core architecture concepts.
 
 Linux is a **monolithic kernel with modular capabilities**. That single sentence packs several important ideas.
@@ -183,6 +186,7 @@ The Linux source tree is large but methodical.
 | `sound/` | Audio stack |
 | `tools/` | User-space tools such as perf and bpftool |
 |
+
 ## 1.11 Kernel Build Artifacts
 
 | Artifact | Meaning |

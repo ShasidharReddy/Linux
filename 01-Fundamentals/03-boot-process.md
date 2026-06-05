@@ -1,5 +1,8 @@
 # 4. Boot Process
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 4.1 Overview
 
 ### 📸 Linux Boot Process
@@ -262,4 +265,3 @@ Questions to ask:
 > Firmware, bootloader, kernel, filesystem, and init failures each leave different clues.
 
 ---
-

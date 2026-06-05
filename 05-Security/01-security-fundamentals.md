@@ -1,5 +1,7 @@
 # Security Fundamentals
 
+Core Linux controls in this chapter include SELinux (Security-Enhanced Linux), AppArmor (Application Armor), IDS (Intrusion Detection System), IPS (Intrusion Prevention System), WAF (Web Application Firewall), PKI (Public Key Infrastructure), CA (Certificate Authority), CSR (Certificate Signing Request), LUKS (Linux Unified Key Setup), GPG (GNU Privacy Guard), and HMAC (Hash-based Message Authentication Code).
+
 Linux security is the practice of reducing the probability and impact of compromise while preserving system availability for legitimate users and workloads.
 
 Security is not a single feature.

@@ -1,5 +1,8 @@
 # Network Hardware
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 Linux administrators spend a lot of time looking at logical constructs such as addresses, routes, sockets, and firewall rules, but real production networks are built on physical or virtual devices that each have a distinct job. Knowing what the surrounding hardware is supposed to do helps you decide whether a Linux problem is local to the host or caused by switching, routing, filtering, or load-distribution behavior elsewhere in the path.
 
 ### Where these devices fit in the stack

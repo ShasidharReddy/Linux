@@ -322,55 +322,11 @@ You are ready for [04-shared-storage.md](./04-shared-storage.md) and [05-vm-prov
 
 ## Procurement & Cost Analysis
 
-### Firewall appliance comparison
-
-| Option | Example Model | Budgetary Range | Best Fit | Watch-outs |
-|--------|---------------|-----------------|----------|------------|
-| pfSense Plus / Netgate | 6100 / 8200 | $1K-$4K | budget-conscious teams with Linux/network skill | commercial support and advanced security ecosystem are lighter |
-| Fortinet | FortiGate 100F / 200F | $3K-$9K + subscriptions | balanced enterprise branch/DC edge | renewals for UTM/IPS matter |
-| Palo Alto | PA-440 / PA-450 | $5K-$12K + subscriptions | security-first environments needing premium visibility | higher CapEx and subscription costs |
-
-### What to procure
-
-- HA-capable firewall pair if downtime tolerance is low.
-- VPN, IDS/IPS, and URL filtering subscriptions if Internet exposure is meaningful.
-- Bastion host VM, MFA integration, password vault, and certificate management tooling.
-- Vulnerability scanning tooling such as Nessus, Qualys, or OpenVAS depending on budget.
-- External penetration test budget at least annually and after major exposure changes.
-
-### Warranty, sourcing, licensing
-
-- Buy through approved security resellers to align hardware, subscription, and support terms.
-- Plan 3-year support minimum; 5 years is safer for slower on-prem refresh cycles.
-- Free/open-source tiers lower cost, but enterprise audit/compliance often needs signed support contracts.
-- Lead times can run 2-6 weeks for entry appliances and longer for HA bundles or premium subscriptions.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Security capacity planning
-
-| Dimension | Rule | Notes |
-|-----------|------|-------|
-| Firewall throughput | size for 2x expected peak with security services enabled | vendors quote higher numbers without IPS/TLS inspection |
-| Concurrent sessions | model Internet-facing apps + east-west flows | add 30% headroom for incident spikes |
-| Log retention | 90 days hot + 1 year cold for many audits | depends on SOC 2/PCI/HIPAA scope |
-| Vulnerability scans | at least monthly infra scans, weekly Internet-facing scans | more often after critical CVEs |
-
-### Compliance planning map
-
-| Framework | Impact on This Layer |
-|-----------|----------------------|
-| CIS | host firewall, SSH hardening, auditd, secure services |
-| NIST 800-53 | access control, logging, vulnerability management, incident response |
-| SOC 2 | documented reviews, least privilege, change approval, evidence retention |
-| PCI DSS | CDE segmentation, MFA, quarterly scans, tighter admin access |
-| HIPAA | access logs, encryption, break-glass procedures, vendor BAAs where applicable |
-
-### Staffing
-
-- Minimum: 1 security-aware infra engineer plus shared network support.
-- Production 24x7: security engineer, infra engineer, and on-call incident manager rotation.
-- Scale out security tooling before scale-out of appliances if people are the bottleneck.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -391,30 +347,7 @@ You are ready for [04-shared-storage.md](./04-shared-storage.md) and [05-vm-prov
 
 ## Planning & Timeline
 
-### Security rollout timeline
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | policy design | zone matrix, allowed flows, admin path, logging destinations |
-| Week 2 | staged implementation | HA firewall baseline, host firewall templates, bastion rollout |
-| Week 3 | audit and testing | vulnerability scans, access review, external/internal validation |
-| Week 4 | assurance | penetration test scoping, evidence pack, remediation backlog |
-
-### Penetration testing plan
-
-- Internal test after inter-VLAN rules and bastion controls are live.
-- External test after DMZ services and VPN are exposed.
-- Re-test after major network, firewall, or identity changes.
-- Preserve test findings as inputs to runbooks and backlog grooming.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| lockout from management | admins lose access | OOB + timed revert + bastion test first | restore prior rules from console |
-| over-broad allow rule | lateral movement risk | peer review and rule owner field | remove rule and audit logs |
-| under-sized firewall with IPS on | packet loss / latency | size for security-service throughput | disable non-critical inspection temporarily |
-| weak logging retention | lost evidence | forward logs centrally | export and snapshot logs immediately |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

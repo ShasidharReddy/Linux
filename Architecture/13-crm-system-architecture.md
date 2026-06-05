@@ -1,4 +1,7 @@
 # 13 CRM System Architecture
+
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
 > This document extends the architecture series after [01 — System Overview and Design Decisions](./01-system-overview-and-design-decisions.md), [02 — Kubernetes Architecture](./02-kubernetes-architecture.md), [03 — Cloud Infrastructure](./03-cloud-infrastructure.md), [04 — On-Prem to Cloud Migration](./04-onprem-to-cloud-migration.md), [05 — Disaster Recovery and HA](./05-disaster-recovery-and-ha.md), [06 — Detailed Architecture Diagrams](./06-detailed-architecture-diagrams.md), [07 — AWS Reference Architecture](./07-aws-reference-architecture.md), [08 — System Design Deep Dive](./08-system-design-deep-dive.md), [09 — Complete System Diagrams](./09-complete-system-diagrams.md), [10 — High-Level Design](./10-high-level-design.md), [11 — Low-Level Design](./11-low-level-design.md), and [12 — Checkout System Design](./12-checkout-system-design.md).
 A CRM is the business system that holds customer identity, ownership, touchpoints, pipeline state, support conversations, campaign history, documents, consent, and operational analytics. In a company that also runs the e-commerce platform from [10](./10-high-level-design.md), [11](./11-low-level-design.md), and [12](./12-checkout-system-design.md), the CRM becomes the control plane for acquisition, conversion, support, retention, and expansion.
 This file follows the same style as the earlier Architecture series: practical, production-oriented, and explicit about trade-offs.
@@ -7,12 +10,15 @@ This file follows the same style as the earlier Architecture series: practical, 
 A **Customer Relationship Management** system is software for managing customer interactions, sales pipeline, support cases, and marketing execution. It gives the company one customer record instead of fragmented spreadsheets, ticket inboxes, campaign tools, and manual forecast decks.
 A serious CRM usually manages contacts, leads, companies, deals, tasks, calls, meetings, tickets, campaigns, templates, consent, analytics, and integrations. Its value is not just storage; it creates operational discipline, reliable forecasting, better customer handoffs, and measurable lifecycle reporting.
 ### CRM types
+
 | Type | Focus | Typical modules | Primary users |
 |---|---|---|---|
 | Operational CRM | daily execution | contacts, deals, tasks, tickets, workflows | sales, support, success |
 | Analytical CRM | insight and reporting | dashboards, attribution, cohorts, forecasting | leadership, RevOps, finance |
 | Collaborative CRM | shared customer context | omnichannel timeline, notes, mentions, team handoffs | all customer-facing teams |
+
 ### Popular platforms
+
 | Platform | Strengths | Typical fit | Trade-offs |
 |---|---|---|---|
 | Salesforce | deep ecosystem, enterprise security, AppExchange | large enterprise | costly and admin-heavy |
@@ -20,7 +26,9 @@ A serious CRM usually manages contacts, leads, companies, deals, tasks, calls, m
 | Microsoft Dynamics 365 | Microsoft ecosystem integration | Microsoft-first enterprises | implementation complexity |
 | Zoho CRM | lower cost, broad suite | SMB and cost-sensitive teams | lighter ecosystem depth |
 | SugarCRM | deployment flexibility | mid-market with control needs | more self-managed complexity |
+
 ### Build vs buy decision matrix
+
 | Factor | Build Custom | Buy SaaS | Self-Host OSS (SuiteCRM/vtiger) |
 |--------|-------------|----------|--------------------------------|
 | Cost | High upfront, low recurring | Low upfront, high recurring | Medium upfront, low recurring |
@@ -29,6 +37,7 @@ A serious CRM usually manages contacts, leads, companies, deals, tasks, calls, m
 | Maintenance | Your team | Vendor | Your team |
 | Data control | Full | Vendor-hosted | Full |
 | Integration | Custom APIs | Marketplace/APIs | APIs + custom |
+
 ### Practical decision guidance
 Build custom when CRM behavior is part of your competitive advantage, when data residency or workflow control is mandatory, or when deep coupling with commerce/ERP is unavoidable. Buy SaaS when speed matters more than architectural control. Self-host open source when you want ownership and moderate customization without funding a full platform team. The rest of this file assumes a production-grade build or self-host path and should be read alongside [03](./03-cloud-infrastructure.md), [05](./05-disaster-recovery-and-ha.md), and [10](./10-high-level-design.md).
 ---
@@ -108,6 +117,7 @@ flowchart TD
     IntegrationSvc --> Ecommerce
 ```
 ### Layer responsibilities
+
 | Layer | Main responsibility | Real technologies |
 |---|---|---|
 | Frontend | portals for reps, agents, managers, admins | React, Angular, Next.js, Flutter |
@@ -119,7 +129,9 @@ flowchart TD
 | Objects | attachments, PDFs, imports, exports | S3, Azure Blob, GCS |
 | Analytics | heavy aggregations and dashboards | ClickHouse, TimescaleDB, BigQuery |
 | Messaging | async events and jobs | Kafka, RabbitMQ |
+
 ### Service boundaries
+
 | Service | Scope | Important caution |
 |---|---|---|
 | Contact Management | contacts, leads, companies, merge, dedup | identity mistakes ripple everywhere |
@@ -132,6 +144,7 @@ flowchart TD
 | Workflow Engine | triggers, conditions, actions, schedules | guard against loops and retries |
 | Document Management | proposals, contracts, attachments | needs signed URLs and malware scanning |
 | User and Role Management | users, teams, territories, RBAC, SSO | central authorization backbone |
+
 ### Data and event notes
 Keep PostgreSQL authoritative for transactional records, Elasticsearch for search, Redis for short-lived operational acceleration, and ClickHouse or a warehouse path for analytics. Use Kafka when replay and fan-out matter; use RabbitMQ for classic worker queues; use both if the organization is large enough to justify separate patterns.
 Example event names: `crm.contact.created`, `crm.deal.stage_changed`, `crm.ticket.created`, `crm.ticket.sla_breach_warning`, `crm.campaign.email_sent`, `crm.integration.sync_failed`, `crm.workflow.action_executed`.
@@ -318,6 +331,7 @@ erDiagram
     }
 ```
 ### Additional production tables
+
 | Table | Reason |
 |---|---|
 | `users` | owners, agents, managers, admins |
@@ -330,6 +344,7 @@ erDiagram
 | `webhook_deliveries` | connector retries and replay audit |
 | `import_jobs` | spreadsheet load lifecycle |
 | `merge_history` | dedup lineage and recovery |
+
 ### Schema rules
 Use UUIDs, add `tenant_id` consistently, keep hot fields typed, validate dynamic fields through `custom_fields` and `custom_field_values`, and push complex free-text search into Elasticsearch rather than abusing PostgreSQL.
 ### Example DDL pattern
@@ -355,6 +370,7 @@ CREATE INDEX idx_contacts_company ON contacts (tenant_id, company_id);
 CREATE INDEX idx_contacts_created_at ON contacts (tenant_id, created_at DESC);
 ```
 ### Indexing, partitioning, and quality
+
 | Entity | Index examples | Operational note |
 |---|---|---|
 | contacts | `(tenant_id, email)`, `(tenant_id, owner_id, lifecycle_stage)` | normalize email and phone |
@@ -362,6 +378,7 @@ CREATE INDEX idx_contacts_created_at ON contacts (tenant_id, created_at DESC);
 | activities | `(tenant_id, contact_id, created_at DESC)` | month partition when large |
 | tickets | `(tenant_id, status, priority, sla_due)` | queue and SLA views |
 | audit_log | `(tenant_id, entity_type, entity_id, timestamp DESC)` | partition by month |
+
 Normalize email to lowercase, phone to E.164, and company domains to canonical form. Enforce lifecycle stages and ticket states through controlled enums. Audit all create, update, merge, delete, export, and permission-sensitive actions. For search, project flattened contact documents similar to the search model discussed in [11](./11-low-level-design.md) for the e-commerce platform.
 ---
 ## 4. Sales pipeline architecture
@@ -379,6 +396,7 @@ stateDiagram-v2
     Qualified --> Closed_Lost
 ```
 ### Example pipeline
+
 | Stage | Entry criteria | Probability | Target duration |
 |---|---|---:|---:|
 | Lead | prospect exists | 10% | 3 days |
@@ -387,8 +405,10 @@ stateDiagram-v2
 | Negotiation | pricing/legal/procurement active | 75% | 14 days |
 | Closed Won | contract or order confirmed | 100% | Done |
 | Closed Lost | no budget, competitor, no decision, disqualified | 0% | Done |
+
 ### Lead scoring
 Lead scoring should combine demographic fit and behavioral intent.
+
 | Demographic signal | Points |
 |---|---:|
 | VP or above | 20 |
@@ -402,6 +422,7 @@ Lead scoring should combine demographic fit and behavioral intent.
 | Pricing page revisits | 10 |
 | Demo request | 30 |
 | Trial start | 25 |
+
 ```text
 lead_score = demographic_score * 0.45 + behavioral_score * 0.55
 MQL >= 45
@@ -440,6 +461,7 @@ flowchart TD
     Score --> Notify
 ```
 ### Core concepts
+
 | Concept | Examples |
 |---|---|
 | Trigger | form submit, list join, tag added, trial started, page visit |
@@ -447,6 +469,7 @@ flowchart TD
 | Action | send email, wait, branch, add tag, create task, webhook |
 | Goal | stop sequence after conversion |
 | Suppression | unsubscribe, hard bounce, competitor, legal exclusion |
+
 ### Deliverability
 Use SPF, DKIM, and DMARC; suppress bounces and complaints immediately; and keep transactional and marketing sending separated where possible.
 ```dns
@@ -488,13 +511,16 @@ stateDiagram-v2
     Escalated_L3 --> Resolved
 ```
 ### SLA table
+
 | Priority | First Response | Resolution |
 |----------|---------------|-----------|
 | Critical | 15 min | 4 hours |
 | High | 1 hour | 8 hours |
 | Medium | 4 hours | 24 hours |
 | Low | 8 hours | 48 hours |
+
 ### Omnichannel support
+
 | Channel | Intake pattern | Operational note |
 |---|---|---|
 | Email | provider webhook or mailbox sync | preserve thread IDs |
@@ -502,6 +528,7 @@ stateDiagram-v2
 | Phone | telephony integration | store recording reference and wrap-up |
 | Social | mention/DM sync | often triaged into standard queues |
 | Portal | authenticated self-service | best with KB deflection |
+
 Route by language, product line, account tier, region, queue, and issue category. Start SLA timers on creation, optionally pause while waiting on customer, and emit both warning and breach events. Knowledge-base articles should be versioned, searchable, tagged, and linked to tickets so the business can measure deflection and resolution quality.
 ### Feedback loop
 Send CSAT after resolution and NPS on a recurring or milestone cadence. Poor scores should create review tasks or escalation workflows. Support dashboards should track first response time, resolution time, backlog, reopen rate, SLA compliance, and CSAT by queue and category.
@@ -530,13 +557,16 @@ flowchart LR
     Enrichment <--> CRM
 ```
 ### Integration patterns
+
 | Pattern | Good for | Risk |
 |---|---|---|
 | Webhook-based | real-time updates | retries and dedup complexity |
 | Polling/sync | systems without strong events | lag and cursor drift |
 | iPaaS | low-code quick wins | weaker governance at scale |
 | Native connector | strategic high-volume sync | more engineering effort |
+
 ### Source of truth and conflict rules
+
 | Entity | Source of truth | CRM role |
 |---|---|---|
 | Contact profile | CRM | authoritative |
@@ -544,6 +574,7 @@ flowchart LR
 | Orders | e-commerce or ERP | mirrored context |
 | Invoice/payment status | accounting or ERP | read model |
 | Usage events | product analytics | enrichment |
+
 Use source precedence for sensitive fields, last-write-wins only for low-risk enrichment, and a manual merge queue for medium-confidence conflicts. Dedup should combine exact email match, normalized phone match, company domain, and fuzzy company-name similarity.
 ### Webhook processing pattern
 1. verify signature or HMAC;
@@ -557,11 +588,13 @@ Store secrets in Vault or a cloud secret manager, respect provider rate limits, 
 ## 8. Analytics and reporting
 Operational CRM screens tell a rep what to do next; analytics tells leadership what is happening across the business. Keep the analytics path separate enough that dashboard traffic never harms OLTP behavior.
 ### KPI areas
+
 | Function | Example KPIs |
 |---|---|
 | Sales | pipeline value, conversion by stage, avg deal size, cycle length, win rate by rep |
 | Marketing | CAC, LTV, open/click rates, ROI, lead source attribution |
 | Support | CSAT, NPS, avg resolution time, SLA compliance, ticket volume trend |
+
 ### Analytics data flow
 ```mermaid
 flowchart LR
@@ -578,6 +611,7 @@ flowchart LR
 ### Architecture notes
 Model facts such as deals, campaign events, tickets, and activities; dimensions such as contacts, companies, owners, and dates; and snapshots such as daily pipeline state. The custom report builder should support filter/group/aggregate on standard and custom fields, scheduled report delivery, and export to CSV/PDF. Large exports should run asynchronously and be fully audited.
 ### Freshness targets
+
 | Dashboard | Target |
 |---|---|
 | Sales pipeline board | under 1 minute |
@@ -585,12 +619,14 @@ Model facts such as deals, campaign events, tickets, and activities; dimensions 
 | Campaign performance | 15 minutes to 1 hour |
 | Executive summary | hourly |
 | Board pack | daily |
+
 ---
 ## 9. Security and compliance
 CRM security must cover identity, authorization, privacy, encryption, auditability, and export control. The platform contains PII, commercial forecasts, communication logs, and often sensitive attachments.
 ### RBAC model
 Standard roles are Admin, Sales Manager, Sales Rep, Marketing Manager, Support Agent, and Read-Only. Access must combine object-level rights, record-level scope, field-level security, and action-level restrictions.
 ### Example permission matrix
+
 | Role | Contacts | Deals | Campaigns | Tickets | Reports | Admin Settings |
 |---|---|---|---|---|---|---|
 | Admin | Full | Full | Full | Full | Full | Full |
@@ -599,6 +635,7 @@ Standard roles are Admin, Sales Manager, Sales Rep, Marketing Manager, Support A
 | Marketing Manager | View | View | Full | View | Full | Limited |
 | Support Agent | View | View | None | Own/team full | Team | None |
 | Read-Only | View allowed | View allowed | View allowed | View allowed | View allowed | None |
+
 ### Privacy and protection
 Support GDPR consent tracking, right to erasure, data portability, and retention policies. Encrypt data at rest with AES-256 and in transit with TLS 1.3. Use SAML 2.0 or OAuth 2.0 / OIDC for SSO and TOTP or WebAuthn for MFA. Require step-up auth for exports, role changes, bulk deletes, and impersonation.
 ### Audit and detection
@@ -747,11 +784,13 @@ spec:
                   number: 80
 ```
 ### Cloud options
+
 | Cloud | Compute | Database | Cache | Search | Object storage |
 |---|---|---|---|---|---|
 | AWS | ECS or EKS | RDS PostgreSQL | ElastiCache | OpenSearch | S3 |
 | Azure | AKS | Azure Database for PostgreSQL | Azure Cache for Redis | Azure Cognitive Search or Elastic Cloud | Blob Storage |
 | GCP | GKE | Cloud SQL PostgreSQL | Memorystore | Elastic Cloud or equivalent | Cloud Storage |
+
 Back up PostgreSQL continuously, replicate backups cross-region, keep object versioning on for critical attachments, and document restore runbooks. Search is rebuildable; transactional data is not.
 ---
 ## 11. Migration and data import
@@ -783,6 +822,7 @@ flowchart TD
 5. Activities
 6. Tickets
 ### Migration checklist
+
 | Area | What to validate |
 |---|---|
 | Field mapping | standard fields, custom fields, enum mapping |
@@ -791,6 +831,7 @@ flowchart TD
 | Data quality | duplicate emails, malformed phones, bad domains |
 | Attachments | checksum, existence, access policy |
 | Auditability | source IDs and import job IDs |
+
 ### Imports and cutover
 Provide CSV templates, dry-run validation, row-level error reporting, dedup checks, and asynchronous import jobs with progress states such as Uploaded, Validating, Ready to Import, Importing, Completed, Completed with Warnings, and Rolled Back. Use **parallel run** when risk tolerance is low and dual-operation complexity is acceptable; use **big bang** only after strong rehearsal and reconciliation confidence.
 ### CSV example
@@ -814,6 +855,7 @@ CRM performance depends on keeping interactive reads predictable, search respons
 ### API patterns
 Use per-user and per-key rate limiting, cursor pagination for large lists, and bulk create/update APIs with async processing when volume is high. GraphQL is useful for flexible frontends but only with depth limits, complexity budgets, and strict auth checks.
 ### SLO targets
+
 | Capability | Target |
 |---|---|
 | Contact detail fetch | P95 < 200 ms |
@@ -823,6 +865,7 @@ Use per-user and per-key rate limiting, cursor pagination for large lists, and b
 | Ticket create | P95 < 300 ms |
 | Standard report load | P95 < 2 s |
 | Export completion | 95% under 10 min |
+
 ### Anti-patterns to avoid
 Do not run dashboard joins on the write primary, do not send campaign email inline in request threads, do not rely on PostgreSQL `ILIKE` scans for global search, and do not allow one large tenant’s imports or connectors to starve the rest of the platform.
 ---
@@ -845,6 +888,7 @@ flowchart LR
     Marketing --> Ecommerce
 ```
 ### Key use cases
+
 | Flow | CRM outcome |
 |---|---|
 | e-commerce user -> CRM | user becomes contact/account-contact |
@@ -853,6 +897,7 @@ flowchart LR
 | post-purchase event -> support | ticket or follow-up task created |
 | order stream -> analytics | LTV, repeat purchase, retention metrics |
 | purchase behavior -> campaigns | segmentation and personalization |
+
 ### Data model implications
 The CRM contact should display order history, last purchase date, refund count, total spend, favorite categories, open support issues, and lifecycle stage in one place. Identity stitching should support anonymous-to-known transitions after login or checkout capture, while keeping event consumption idempotent and replayable.
 ### Example commerce events

@@ -1,5 +1,7 @@
 # SSH Hardening
 
+SSH (Secure Shell) hardening usually centers on ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), ECDSA (Elliptic Curve Digital Signature Algorithm), MFA (Multi-Factor Authentication), and TOTP (Time-Based One-Time Password) controls.
+
 SSH is one of the most critical Linux administration services.
 
 It is also one of the most attacked.

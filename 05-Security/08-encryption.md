@@ -1,5 +1,7 @@
 # Encryption
 
+This chapter covers LUKS (Linux Unified Key Setup), GPG (GNU Privacy Guard), AES (Advanced Encryption Standard), SHA (Secure Hash Algorithm), and RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers) in the Linux encryption workflow.
+
 Encryption protects data confidentiality and, in some cases, integrity.
 
 On Linux, encryption typically appears in three major places:

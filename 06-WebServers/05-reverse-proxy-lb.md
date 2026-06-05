@@ -1,5 +1,8 @@
 # Reverse Proxy & Load Balancing
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 5.1 Overview
 
 A reverse proxy sits in front of one or more backend services.

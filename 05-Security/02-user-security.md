@@ -6,7 +6,9 @@ Most breaches eventually involve identity abuse.
 
 A well-hardened authentication stack reduces unauthorized access, slows lateral movement, and improves accountability.
 
-### 2.1 Account Inventory
+Password storage examples in this chapter mention SHA (Secure Hash Algorithm)-512 so the hash family name is explicit when reviewing `/etc/shadow` formats.
+
+## 2.1 Account Inventory
 
 Start by identifying who can log in and who has privilege.
 

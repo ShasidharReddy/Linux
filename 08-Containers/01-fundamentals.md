@@ -1,5 +1,8 @@
 # 1. Container Fundamentals
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 1.1 What Is a Container?
 
 A container is a lightweight, isolated execution environment that packages:

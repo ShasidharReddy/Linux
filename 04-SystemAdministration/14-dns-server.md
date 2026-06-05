@@ -1,5 +1,19 @@
 # DNS Server (BIND9)
 
+## Full Forms & Terminology
+
+See the [master glossary](../00-glossary-and-full-forms.md) for the full DNS and protocol glossary.
+
+- **DNS — Domain Name System:** Resolves names into IP addresses and other records.
+- **A / AAAA — Address / IPv6 Address:** Point names to IPv4 or IPv6 addresses.
+- **CNAME — Canonical Name:** Alias that points to another hostname.
+- **MX — Mail Exchange:** Declares a mail server for a domain.
+- **NS — Name Server:** Identifies authoritative nameservers.
+- **SOA — Start of Authority:** Zone metadata such as serial and timers.
+- **PTR — Pointer:** Reverse lookup from IP to name.
+- **SRV — Service:** Record that supplies a target host and port for a named service.
+
+
 ---
 
 <a id="dns-server-bind9-setup"></a>

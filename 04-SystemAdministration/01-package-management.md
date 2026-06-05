@@ -1,5 +1,7 @@
 # Package Management
 
+`apt` (Advanced Package Tool), `dpkg` (Debian Package), `yum` (Yellowdog Updater Modified), `dnf` (Dandified YUM), and `rpm` (Red Hat Package Manager) are the package-management names you will see most often in this chapter.
+
 ---
 
 Package management is the process of installing, updating, verifying, and removing software in a controlled and reproducible way.

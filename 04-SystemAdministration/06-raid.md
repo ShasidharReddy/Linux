@@ -1,6 +1,11 @@
 # Software RAID with mdadm
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ---
+
+Software RAID (Redundant Array of Independent Disks) design should always be matched to the IOPS (Input/Output Operations Per Second) and resilience requirements of the workload before you build the array.
 
 ## 4.14 RAID basics with mdadm
 

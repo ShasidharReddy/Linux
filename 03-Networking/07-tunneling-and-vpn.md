@@ -1,5 +1,8 @@
 # Tunneling and VPN
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 This file groups SSH tunneling, overlay tunnel concepts, VPN implementation details, and scenario-driven examples from the original networking guide.
 
 ---

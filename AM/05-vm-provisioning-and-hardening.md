@@ -441,55 +441,11 @@ You are ready for [06-linux-os-layer.md](./06-linux-os-layer.md) and [07-contain
 
 ## Procurement & Cost Analysis
 
-### Tooling and license view
-
-| Component | Preferred Option | Cost Guidance | Notes |
-|-----------|------------------|---------------|------|
-| Image build | Packer | Free | enterprise support optional via HashiCorp ecosystem partners |
-| Provisioning IaC | Terraform / OpenTofu | Free core | consider commercial support only if policy tooling is needed |
-| Config management | Ansible | Free core | Red Hat Automation Platform if enterprise governance requires it |
-| Compliance scan | OpenSCAP | Free | Nessus/Qualys add broader reporting and agent coverage |
-| Secret storage | Vault / enterprise password manager | $0-$ | depends on team maturity and audit needs |
-
-### Cost of VM sprawl
-
-| Sprawl Signal | Cost Impact | Prevention |
-|--------------|-------------|------------|
-| unused but powered-on VMs | wasted CPU/RAM/storage | TTL tags and monthly ownership review |
-| too many custom templates | patching overhead and drift | standardize per OS family |
-| oversized default flavors | infra CapEx pulled forward | right-size quarterly from utilization data |
-| orphaned snapshots | storage waste and backup bloat | expiry policy + reporting |
-
-### Procurement guidance
-
-- Budget for a small staging cluster or at least one isolated template build target.
-- Procure vulnerability scanning capacity for the expected VM count, not just the first month.
-- Ensure API credentials, cloud-init snippets, and secret storage are governed before scale-out.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Capacity planning rules
-
-| Metric | Rule | Example |
-|--------|------|---------|
-| Image build cadence | monthly rebuild minimum, emergency rebuild on critical CVEs | 12 scheduled image releases/year |
-| Terraform concurrency | cap clones to avoid storage storms | 5-10 concurrent clones on mid-size storage |
-| Fleet management | split into rings at 25, 50, 100+ VMs | patch by role and environment |
-| Growth target | plan for 2x VM count in 18 months | 60 VMs now → process and tooling for 120 |
-
-### Image pipeline planning
-
-1. Weekly: scan current templates and active VMs for drift/CVEs.
-2. Monthly: rebuild baseline images with OS patches and agents.
-3. After build: smoke-test boot, cloud-init, agent health, and compliance scan.
-4. Promotion: tag template as `candidate`, then `prod` after validation.
-5. Retention: keep at least one prior known-good template for rollback.
-
-### Staffing guidance
-
-- 1 platform engineer can manage ~100 well-standardized VMs when image and config pipelines are healthy.
-- Beyond 100 VMs, separate ownership of image pipeline, provisioning workflow, and compliance/reporting reduces bottlenecks.
-- Scale out process before headcount by enforcing tags, ownership, TTL, and golden-image usage.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -509,30 +465,7 @@ You are ready for [06-linux-os-layer.md](./06-linux-os-layer.md) and [07-contain
 
 ## Planning & Timeline
 
-### Rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | pipeline design | template naming, Git repo, secrets flow, tagging standard |
-| Week 2 | image build and tests | Packer build, smoke-test clone, compliance scan |
-| Week 3 | provisioning automation | Terraform modules, cloud-init snippets, Ansible roles |
-| Week 4 | governance at scale | TTL policy, ownership report, image promotion workflow |
-
-### Prerequisites checklist
-
-- Hypervisor API access and storage pools ready.
-- Bastion, package mirrors, and monitoring endpoints available.
-- Approved baseline hardening policy and scanner profiles ready.
-- Naming, tagging, and ownership standard defined.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| bad template promoted | widespread clone failure | candidate ring and smoke tests | switch Terraform variable to prior template ID |
-| secrets baked into image | serious security exposure | use cloud-init/secret backend only | revoke, rebuild, rotate credentials |
-| too many concurrent clones | storage storm | rate-limit pipeline | stagger jobs and retry in waves |
-| scanner false positives block release | delayed rollout | waiver process with evidence | promote prior image until tuning completes |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

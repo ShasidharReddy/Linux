@@ -1,5 +1,8 @@
 # 07 — AWS Reference Architecture
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > AWS-style ecommerce reference implementation for the 10-application platform defined in [01-system-overview-and-design-decisions.md](./01-system-overview-and-design-decisions.md), deployed with the runtime patterns from [02-kubernetes-architecture.md](./02-kubernetes-architecture.md), the infrastructure choices from [03-cloud-infrastructure.md](./03-cloud-infrastructure.md), and the recovery principles from [05-disaster-recovery-and-ha.md](./05-disaster-recovery-and-ha.md).
 
 This guide turns the existing architecture track into a concrete AWS realization modeled after real reference architectures used for enterprise ecommerce estates. It combines the customer-facing stack, the back-office stack, the operational landing zone, the event backbone, the analytics plane, and the security controls required for regulated payment and PII-heavy workloads.

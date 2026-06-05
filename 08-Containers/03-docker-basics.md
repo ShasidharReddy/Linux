@@ -1,5 +1,8 @@
 # 3. Docker
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 ## 3.1 What Is Docker?
 
 Docker is a platform and ecosystem for building, shipping, and running containers.

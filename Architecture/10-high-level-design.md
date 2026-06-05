@@ -1,5 +1,8 @@
 # 10 High-Level Design — E-Commerce Platform
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 > Architecture series continuation after [01 — System overview and design decisions](./01-system-overview-and-design-decisions.md), [02 — Kubernetes architecture](./02-kubernetes-architecture.md), [03 — Cloud infrastructure](./03-cloud-infrastructure.md), [04 — On-prem to cloud migration](./04-onprem-to-cloud-migration.md), [05 — Disaster recovery and high availability](./05-disaster-recovery-and-ha.md), [06 — Detailed architecture diagrams](./06-detailed-architecture-diagrams.md), [07 — AWS reference architecture](./07-aws-reference-architecture.md), [08 — System design deep dive](./08-system-design-deep-dive.md), and [09 — Complete system diagrams](./09-complete-system-diagrams.md).
 
 This document explains how to describe an ecommerce platform at the **high-level design (HLD)** layer. It is intentionally written for architecture reviews, stakeholder alignment, and platform planning rather than for direct code implementation. The examples use an internet-scale storefront with web, mobile, admin, order processing, catalog management, payments, inventory, notifications, recommendations, and shipping integrations.
@@ -117,6 +120,7 @@ This document explains how to describe an ecommerce platform at the **high-level
 - Outputs: assumptions, decisions, open questions, and trade-offs recorded for the next design level.
 
 ## Capacity estimation assumptions
+
 | Metric | Value |
 |---|---|
 | Daily active users | 1,000,000 |
@@ -154,6 +158,7 @@ This document explains how to describe an ecommerce platform at the **high-level
 - Redis hot data can target the top 2% of catalog reads plus active sessions and carts rather than the full dataset.
 
 ### Server sizing
+
 | Tier | Assumption | Estimated need at peak | Recommended production shape |
 |---|---|---:|---|
 | API gateway | One gateway node handles ~5,000 RPS with headroom | 1 | 3 nodes minimum across zones |
@@ -172,6 +177,7 @@ This document explains how to describe an ecommerce platform at the **high-level
 - The CDN should be sized for multi-region edge delivery, image resizing variants, and cache purge propagation during promotions.
 
 ### Database and CDN sizing summary
+
 | Concern | Raw size | Practical production budget | Notes |
 |---|---:|---:|---|
 | Catalog metadata in MongoDB | 50 GB | 70-100 GB | Includes indexes and one replica |
@@ -496,6 +502,7 @@ flowchart TB
 This diagram is useful during flash-sale planning because it makes clear that not every tier scales in the same way. Some tiers scale with replicas, others with shards or partitions.
 
 ## Communication patterns
+
 | Interaction | Pattern | Why | Typical latency target | Failure handling |
 |---|---|---|---|---|
 | Cart read/update | Synchronous REST | The user expects immediate feedback for quantity changes. | <150 ms p95 | Retry once client-side for idempotent reads. |
@@ -585,6 +592,7 @@ This diagram is useful during flash-sale planning because it makes clear that no
 - Separate business-critical topics from analytical or recommendation topics.
 
 ## Technology stack decision matrix
+
 | Component | Choice | Why | Alternatives |
 |---|---|---|---|
 | API Gateway | Kong | Rich plugin ecosystem, Kubernetes friendly, and strong auth/rate-limit support. | AWS API Gateway, Nginx |

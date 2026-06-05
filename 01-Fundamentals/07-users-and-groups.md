@@ -1,5 +1,7 @@
 # 9. Users and Groups
 
+Linux account administration relies on `sudo` (Super User Do), `su` (Switch User), UID (User ID), GID (Group ID), PAM (Pluggable Authentication Modules), and LDAP (Lightweight Directory Access Protocol) concepts that appear throughout this chapter.
+
 ## 9.1 Why User Management Matters
 
 Linux separates identities to control access and accountability.

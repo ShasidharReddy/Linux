@@ -1,5 +1,8 @@
 # SELinux
 
+> **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
+
+
 SELinux is a mandatory access control system that enforces security policy even when traditional Unix permissions would otherwise allow access.
 
 It is one of the most powerful Linux security technologies and one of the most commonly disabled by frustrated administrators.

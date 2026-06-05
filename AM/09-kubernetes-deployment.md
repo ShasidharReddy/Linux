@@ -380,51 +380,11 @@ flowchart LR
 
 ## Procurement & Cost Analysis
 
-### Kubernetes distribution comparison
-
-| Option | Cost Guidance | Best Fit | Watch-outs |
-|--------|---------------|----------|------------|
-| kubeadm | Free | teams wanting upstream control and low software cost | more engineering ownership |
-| Rancher + RKE2 | free core / support optional | multi-cluster management with simpler operations | still needs platform discipline |
-| OpenShift | $$$ enterprise | regulated large estates wanting opinionated platform | license + infra overhead |
-| VMware Tanzu | $$$ enterprise | VMware-centric organizations | high stack dependency and cost |
-
-### Hidden cost areas
-
-- Engineering time for upgrades, CNI/storage choices, and policy management often exceeds software cost.
-- Training on Kubernetes operations, security, and troubleshooting is a real budget line.
-- Extra environments for staging upgrades, conformance tests, and DR drills are usually required.
-- Observability, backup, and registry costs belong to the Kubernetes budget even if hosted elsewhere.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Cluster sizing calculator
-
-1. `Worker CPU needed = sum(requested_cpu) x 1.3 buffer`
-2. `Worker RAM needed = sum(requested_memory) x 1.3 buffer`
-3. `Worker count = max(CPU-needed ÷ CPU-per-worker, RAM-needed ÷ RAM-per-worker)`
-4. Reserve at least one worker worth of spare capacity for maintenance and one control plane node worth of failure tolerance.
-
-### Baseline sizing table
-
-| Cluster Size | Control Plane | Workers | Notes |
-|--------------|---------------|---------|------|
-| Small | 3 x 4 vCPU / 8 GB | 3 x 8 vCPU / 32 GB | suitable for infra + modest apps |
-| Medium | 3 x 4-8 vCPU / 16 GB | 5-8 x 8-16 vCPU / 32-64 GB | mixed stateless/stateful estate |
-| Large starter | 3 x 8 vCPU / 16 GB | 10+ workers with pools | consider multi-cluster instead of one giant cluster |
-
-### etcd performance requirements
-
-- Use fast SSD/NVMe-backed control plane disks; etcd hates latent shared storage.
-- Keep API server and etcd latency low and consistent; noisy neighbors on control plane VMs are a real risk.
-- Watch `etcdctl endpoint status --write-out=table`, fsync latency, and database size growth.
-- Schedule compaction/defrag awareness during maintenance.
-
-### Staffing and multi-cluster planning
-
-- Minimum: 1 strong platform engineer plus shared infra support.
-- For multiple business units or stricter blast-radius needs, prefer multiple smaller clusters over one huge cluster.
-- Plan for 2x growth in 18 months by reserving worker pool headroom, load balancer capacity, and IP ranges.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -445,30 +405,7 @@ flowchart LR
 
 ## Planning & Timeline
 
-### Rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | design and sizing | distro choice, IP ranges, node pools, LB design |
-| Week 2 | bootstrap infra | LB VMs, node templates, firewall rules, package repos |
-| Week 3 | cluster build | kubeadm init/join, CNI, MetalLB, ingress, storage class |
-| Week 4 | day-2 readiness | backup, upgrade rehearsal, policy baseline, tenant onboarding |
-
-### Prerequisites checklist
-
-- Stable hypervisor, storage, DNS, NTP, and monitoring layers.
-- Non-overlapping pod/service CIDRs approved.
-- Secrets strategy, RBAC model, and namespace standards documented.
-- Backup target for etcd and cluster configs prepared.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| under-sized workers | scheduling pressure | request/limit review and spare pool | add workers or move workloads |
-| slow control plane disks | API instability | keep etcd on fast local SSD | migrate CP VMs / rebuild on better storage |
-| bad cluster upgrade | control-plane outage | rehearse in staging first | restore etcd snapshot and roll back node version |
-| one giant shared cluster | large blast radius | use namespaces/quotas first, multi-cluster when justified | split workloads into separate clusters |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 
