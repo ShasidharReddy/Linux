@@ -1,5 +1,5 @@
-# 16. Setting Up Essential Services
-## 16.1 Service Setup Strategy
+# 14. Setting Up Essential Services
+## 14.1 Service Setup Strategy
 For foundational Linux services, follow the same operational pattern every time:
 1. install the package
 2. enable and start the service
@@ -8,7 +8,7 @@ For foundational Linux services, follow the same operational pattern every time:
 5. test locally and from another host
 6. check logs for errors
 7. document the change and rollback steps
-## 16.2 Setting Up SSH Server
+## 14.2 Setting Up SSH Server
 The pattern is the same on most distributions: install the package, enable the service, open the firewall, harden the config, and verify from another machine before signing out.
 ### Ubuntu and Debian
 Install and start OpenSSH server:
@@ -68,7 +68,7 @@ sudo tail -n 50 /var/log/secure
 sudo journalctl -u sshd --no-pager -n 50
 ```
 Always keep one working session open while testing changes.
-## 16.3 Setting Up NFS Server
+## 14.3 Setting Up NFS Server
 ### Ubuntu NFS server
 ```bash
 sudo apt update
@@ -139,7 +139,7 @@ sudo umount /mnt/nfs
 sudo mount -a
 ```
 `autofs` is useful when you want mounts to appear only when accessed.
-## 16.4 Setting Up DNS Server (BIND9)
+## 14.4 Setting Up DNS Server (BIND9)
 BIND is a classic authoritative DNS server package used for internal zones, forward lookups, reverse zones, and lab environments.
 ### Ubuntu or Debian installation
 ```bash
@@ -249,7 +249,7 @@ Expected answer excerpt:
 ;; ANSWER SECTION:
 web1.example.internal. 3600 IN A 192.168.1.20
 ```
-## 16.5 Setting Up HTTP Server
+## 14.5 Setting Up HTTP Server
 ### Quick Nginx setup
 Ubuntu or Debian:
 ```bash
@@ -356,7 +356,7 @@ sudo systemctl reload apache2
 sudo httpd -t
 sudo systemctl reload httpd
 ```
-## 16.6 Service Verification Checklist
+## 14.6 Service Verification Checklist
 For any service you set up, verify the same basics every time:
 1. package installed successfully
 2. service enabled and running
@@ -377,7 +377,7 @@ journalctl -u sshd --no-pager -n 50
 journalctl -u nginx --no-pager -n 50
 journalctl -u httpd --no-pager -n 50
 ```
-## 16.7 Production Notes
+## 14.7 Production Notes
 - Prefer automation or configuration management for repeatable builds.
 - Keep configuration files in version control when possible.
 - Back up configs before major changes.

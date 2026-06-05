@@ -95,7 +95,14 @@ Often used with:
 VPNs securely connect remote users, sites, or workloads over untrusted networks.
 
 ### 📸 VPN Tunnel Concept
-![VPN Tunnel](https://upload.wikimedia.org/wikipedia/commons/0/0f/VPN_overview-en.svg)
+```mermaid
+graph LR
+    A[Client] -->|Encrypted Tunnel| B[VPN Server]
+    B --> C[Internet / Private Network]
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style C fill:#e8f5e9
+```
 > *Source: Wikimedia Commons — VPN tunnel overview*
 
 ## 10.1 Common VPN use cases

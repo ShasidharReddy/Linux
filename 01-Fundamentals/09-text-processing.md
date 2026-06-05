@@ -1,6 +1,6 @@
-# 11. Text Processing
+# 9. Text Processing
 
-## 11.1 Why Text Processing Is a Core Linux Skill
+## 9.1 Why Text Processing Is a Core Linux Skill
 
 Linux treats text as a universal interface.
 
@@ -8,7 +8,7 @@ Logs, config files, command output, and data exports are often plain text.
 
 Being able to filter and transform text is a superpower.
 
-## 11.2 `grep`
+## 9.2 `grep`
 
 ### Purpose
 
@@ -44,7 +44,7 @@ Find failed login attempts:
 grep -i 'failed' /var/log/auth.log
 ```
 
-## 11.3 `sed`
+## 9.3 `sed`
 
 ### Purpose
 
@@ -78,7 +78,7 @@ sed -i 's/^PORT=.*/PORT=8080/' .env
 > Warning:
 > Test `sed` commands without `-i` first so you can review the result before modifying files.
 
-## 11.4 `awk`
+## 9.4 `awk`
 
 ### Purpose
 
@@ -108,7 +108,7 @@ List usernames and shells:
 awk -F: '{print $1 " -> " $7}' /etc/passwd
 ```
 
-## 11.5 `cut`
+## 9.5 `cut`
 
 ### Purpose
 
@@ -130,7 +130,7 @@ Get just usernames from `/etc/passwd`:
 cut -d: -f1 /etc/passwd
 ```
 
-## 11.6 `sort`
+## 9.6 `sort`
 
 ### Purpose
 
@@ -165,7 +165,7 @@ Sort disk usage values:
 du -sh * | sort -h
 ```
 
-## 11.7 `uniq`
+## 9.7 `uniq`
 
 ### Purpose
 
@@ -193,7 +193,7 @@ Count repeated IPs in a log:
 awk '{print $1}' access.log | sort | uniq -c | sort -nr | head
 ```
 
-## 11.8 `tr`
+## 9.8 `tr`
 
 ### Purpose
 
@@ -215,7 +215,7 @@ Normalize case before comparison:
 echo 'Error' | tr 'A-Z' 'a-z'
 ```
 
-## 11.9 `paste`
+## 9.9 `paste`
 
 ### Purpose
 
@@ -236,7 +236,7 @@ Combine usernames and shells from separate files:
 paste -d':' users.txt shells.txt
 ```
 
-## 11.10 `diff`
+## 9.10 `diff`
 
 ### Purpose
 
@@ -258,7 +258,7 @@ Compare config before and after a change:
 diff -u app.conf.bak app.conf
 ```
 
-## 11.11 `comm`
+## 9.11 `comm`
 
 ### Purpose
 
@@ -287,7 +287,7 @@ sort team2.txt > team2-sorted.txt
 comm -12 team1-sorted.txt team2-sorted.txt
 ```
 
-## 11.12 `join`
+## 9.12 `join`
 
 ### Purpose
 
@@ -308,7 +308,7 @@ Join an ID list with a name list:
 join -t, ids.csv names.csv
 ```
 
-## 11.13 End-to-End Text Pipelines
+## 9.13 End-to-End Text Pipelines
 
 ### Example 1: Top IP addresses in a web log
 
@@ -334,7 +334,7 @@ cut -d: -f1,7 /etc/passwd
 grep -i error app.log | awk '{print $5}' | sort | uniq -c | sort -nr
 ```
 
-## 11.14 Choosing the Right Tool
+## 9.14 Choosing the Right Tool
 
 | Need | Tool |
 |---|---|
@@ -350,7 +350,7 @@ grep -i error app.log | awk '{print $5}' | sort | uniq -c | sort -nr
 | Compare sorted lists | `comm` |
 | Join records by key | `join` |
 
-## 11.15 Regex Basics for Text Processing
+## 9.15 Regex Basics for Text Processing
 
 A few useful regex concepts:
 
@@ -372,7 +372,7 @@ grep 'bash$' /etc/passwd
 grep -E 'error|warn' app.log
 ```
 
-## 11.16 Best Practices
+## 9.16 Best Practices
 
 - test commands on small samples first
 - use `sort` before `uniq` when required
