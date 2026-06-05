@@ -78,8 +78,6 @@ graph LR
 
 | Directory | Level | Description |
 |-----------|-------|-------------|
-| Directory | Level | Description |
-|-----------|-------|-------------|
 | [`01-Fundamentals/`](./01-Fundamentals/) | 🟢 Basic | Linux overview, FHS, boot process, file types, commands, permissions, users, I/O redirection, text processing |
 | [`02-ShellScripting/`](./02-ShellScripting/) | 🟢🟡 Basic–Intermediate | Variables, arrays, conditionals, loops, functions, regex, error handling, real-world scripts |
 | [`03-Networking/`](./03-Networking/) | 🟡 Intermediate | TCP/IP, DNS, firewalls, SSH, VPN, network troubleshooting, bonding, VLANs, namespaces |

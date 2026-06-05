@@ -55,6 +55,7 @@ flowchart LR
 - [07 - Production Kubernetes Setup](./07-production-kubernetes-setup.md)
 - [08 - CI/CD and Automation](./08-ci-cd-and-automation.md)
 - [09 - Hybrid and Scaling](./09-hybrid-and-scaling.md)
+- [10 - Architecture Diagrams](./10-architecture-diagrams.md)
 
 ## Recommended Reading Order
 
