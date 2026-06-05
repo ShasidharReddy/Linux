@@ -434,62 +434,11 @@ You are ready for [03-firewall-and-security.md](./03-firewall-and-security.md) a
 
 ## Procurement & Cost Analysis
 
-### Switch platform comparison
-
-| Option | Typical Model | Budgetary Range | Strengths | Watch-outs |
-|--------|---------------|-----------------|-----------|------------|
-| Cisco Catalyst | C9300 / C9500 | $4K-$12K each | Familiar CLI, TAC, strong enterprise ecosystem | licensing can grow quickly |
-| Arista | 7050SX / 720XP series | $5K-$14K each | Excellent telemetry, MLAG, low-latency DC focus | premium pricing |
-| Cumulus Linux on whitebox | Edgecore / Dell S-series | $3K-$8K each | Linux automation model, flexible NOS | requires stronger in-house skills |
-
-### Cabling and optics
-
-| Media | Typical Use | Cost Guidance | Notes |
-|------|-------------|---------------|------|
-| Cat6A | 1/10G short copper runs | $100-$250 per drop installed | practical inside same rack/row |
-| SFP+ DAC | 10G same-rack switch/host | $30-$120 each | lowest-cost short reach |
-| SFP+ SR + OM4 fiber | 10G inter-rack | $80-$250 per optic + fiber | cleaner for longer runs |
-| SFP28/25G optics | growth path for storage/K8s | $150-$400 per optic | budget early if scaling past 10G |
-
-### Procurement guidance
-
-- Buy dual switches from the same family for stack/MLAG support symmetry.
-- Include spare transceivers, DACs, patch panels, and at least 15% extra labeled patch leads.
-- Confirm optics compatibility matrix before ordering third-party modules.
-- Source from Cisco/Arista partners, CDW, SHI, Insight, or an approved networking VAR.
-- Expect 2-8 week lead times depending on switch family and optics availability.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Capacity formulas
-
-| Metric | Rule of Thumb | Example |
-|--------|---------------|---------|
-| General VM bandwidth | 50-200 Mbps average, burst to 1 Gbps | 40 VMs at 100 Mbps avg ≈ 4 Gbps sustained |
-| Storage oversubscription | keep ≤2:1 on storage uplinks | dual 10G storage fabric should not feed >40 Gbps demand |
-| East-west VM fabric | 3:1 oversubscription acceptable for mixed workloads | 20 Gbps uplink for ~60 Gbps aggregate edge ports |
-| OOB network | separate and lightly loaded | 1G is enough; prioritize reliability |
-
-### IP address planning method
-
-Build a spreadsheet or source-of-truth table with these columns:
-
-| Column | Example |
-|--------|---------|
-| VLAN ID | 30 |
-| Network / CIDR | 10.10.30.0/24 |
-| Gateway | 10.10.30.1 |
-| VIP Range | 10.10.30.10-19 |
-| Static Infra Range | 10.10.30.20-79 |
-| DHCP Range | 10.10.30.100-199 |
-| Reverse Zone | 30.10.10.in-addr.arpa |
-| Owner / Notes | Production VMs |
-
-### Growth and staffing
-
-- Reserve at least 30% free switch ports and 25% free IPs per VLAN for 18-month growth.
-- Scale up to 25G for storage or Kubernetes east-west traffic before adding complex overlays.
-- Minimum staffing: 1 network engineer for design plus infra engineer for host-side validation; add NOC coverage if 24x7 support is required.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -509,30 +458,7 @@ Build a spreadsheet or source-of-truth table with these columns:
 
 ## Planning & Timeline
 
-### Rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | Addressing and rack plan | VLAN table, IP spreadsheet, port map, naming standards |
-| Week 2 | Switch bootstrap | base config, MLAG/stack, trunks, OOB management |
-| Week 3 | Host cutover and validation | LACP on hosts, MTU tests, DNS/PTR, bandwidth baseline |
-
-### Prerequisites checklist
-
-- Firewall interface plan approved.
-- Rack elevations and cable paths finalized.
-- Switch OS versions standardized.
-- DNS and reverse zones delegated.
-- Change window includes rollback to prior switch config.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| Wrong trunk VLAN list | hosts or VMs isolated | staged one-rack rollout | restore saved startup-config |
-| MLAG mismatch | blackhole or loop risk | peer consistency checks | disable new port-channel and fall back to single uplink |
-| MTU mismatch | storage errors, intermittent drops | test jumbo path end-to-end first | revert storage interfaces to 1500 |
-| Optics incompatibility | ports stay down | HCL check and spare optics | replace with approved module |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

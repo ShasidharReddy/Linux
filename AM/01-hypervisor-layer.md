@@ -471,54 +471,11 @@ You are ready for [02-network-design.md](./02-network-design.md) and [04-shared-
 
 ## Procurement & Cost Analysis
 
-### Server platform comparison
-
-| Option | Typical Model | Budgetary Range | Strengths | Watch-outs |
-|--------|---------------|-----------------|-----------|------------|
-| Dell PowerEdge | R750 / R760 | $10K-$16K per node | Mature iDRAC, strong global support, broad HCL | OEM parts and rails cost more |
-| HPE ProLiant | DL380 Gen11 | $11K-$17K per node | Excellent iLO, Smart Array ecosystem, enterprise support | Licensing and add-ons can inflate price |
-| Supermicro | SYS-621C / Hyper series | $8K-$13K per node | Lower cost, flexible BOM, strong density | Support quality depends on reseller |
-
-### What to procure for this layer
-
-- 3 or 5 identical hypervisor nodes to keep firmware, drivers, and spare parts simple.
-- 2 CPUs per host when consolidation matters; single-socket EPYC can be cost-efficient for smaller estates.
-- 256-512 GB RAM per host for a mixed VM/K8s footprint.
-- 2 x enterprise SSDs in RAID1 or ZFS mirror for the hypervisor OS.
-- 4 x 10/25 GbE NIC ports minimum plus dedicated BMC port.
-- Rails, redundant PSUs, matching optics/DACs, and one spare disk/NIC per platform.
-
-### Firmware, warranty, and sourcing plan
-
-- Lock BIOS, RAID/HBA, NIC, and BMC firmware to a tested bundle before the first production install.
-- Buy 3-5 year 24x7 NBD or 4-hour support if the platform carries customer-facing workloads.
-- Prefer buying through Dell/HPE direct, TD SYNNEX, Insight, CDW, SHI, or a trusted Supermicro VAR.
-- Expect 2-6 week lead times for standard BOMs and 6-10 weeks for higher-density RAM/NVMe builds.
-- Procure crash carts, labeled console cables, and an extra BMC switch port budget up front.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Host sizing rules of thumb
-
-| Dimension | Rule | Example |
-|-----------|------|---------|
-| CPU | vCPU:pCPU overcommit up to 4:1 for general workloads | 64 physical cores → ~256 vCPU planned |
-| RAM | vRAM:physical RAM overcommit up to 1.5:1 only with strong monitoring | 256 GB RAM → ~384 GB assigned |
-| HA reserve | Keep 20-30% spare across cluster | 4-node cluster should survive one host loss |
-| Storage cache | Avoid host swap under normal state | <80% steady-state RAM commit |
-
-### VMs-per-host calculator
-
-1. `CPU-limited VMs = physical_cores x 4 ÷ avg_vCPU_per_VM`
-2. `RAM-limited VMs = physical_RAM_GB x 1.5 ÷ avg_RAM_GB_per_VM`
-3. `Safe VM count per host = lower of CPU-limited and RAM-limited values, minus HA reserve`
-4. Example: 64 cores and 256 GB RAM with average 4 vCPU / 8 GB VMs gives `64` CPU-limited, `48` RAM-limited, then `~36-40` safe VMs after HA headroom.
-
-### Growth and staffing
-
-- Plan for 2x workload growth in 18 months by leaving rack power, switch ports, and IP space for two more nodes.
-- Scale up when workloads are RAM-heavy but operationally stable; scale out when maintenance windows, quorum, and failure domains matter more.
-- Minimum staffing: 1 virtualization engineer plus shared network/storage support; ideal is 3-person coverage across infra disciplines.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -539,30 +496,7 @@ You are ready for [02-network-design.md](./02-network-design.md) and [04-shared-
 
 ## Planning & Timeline
 
-### Realistic implementation plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | Rack and cable | Rack elevation, power map, BMC addressing, firmware bundle |
-| Week 2 | Install and cluster | Proxmox on all nodes, cluster join, baseline bridges, local ZFS |
-| Week 3 | Test and validate | HA groups, fencing tests, live migration, monitoring hooks |
-
-### Prerequisites checklist
-
-- VLANs and switch trunks approved.
-- Shared storage target design agreed.
-- DNS, NTP, and reverse DNS prepared.
-- BMC credentials stored in vault.
-- Maintenance window and rollback plan signed off.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| Firmware regression | host instability | validate bundle on one node first | revert to prior bundle from vendor baseline |
-| Quorum loss | cluster operations blocked | never work on two nodes at once | restore failed node or use maintenance workflow |
-| Wrong bridge/VLAN mapping | management lockout | OOB access + staged host rollout | revert `/etc/network/interfaces` from console |
-| HA restart on wrong node | outage or split-brain | fencing validation before HA enablement | disable HA manager and recover manually |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

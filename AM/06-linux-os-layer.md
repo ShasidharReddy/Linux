@@ -346,43 +346,11 @@ You are ready for [07-containers-and-monitoring.md](./07-containers-and-monitori
 
 ## Procurement & Cost Analysis
 
-### OS platform comparison
-
-| Option | Support Window | Cost Guidance | Best Fit | Watch-outs |
-|--------|----------------|---------------|----------|------------|
-| RHEL | 10-year lifecycle + EUS options | paid subscription | regulated or support-heavy environments | subscription cost across large fleets |
-| Rocky Linux | community rebuild, long lifecycle | free | cost-sensitive RHEL-compatible estates | no official Red Hat vendor support |
-| Ubuntu LTS | 5 years standard, 10 with Ubuntu Pro | free to paid | mixed Linux teams and cloud-friendly tooling | package/application differences vs RHEL |
-
-### What to budget for
-
-- OS subscriptions if vendor support, live patching, or compliance evidence requires it.
-- Local repo mirror storage, backup space for configs, and patch staging VMs.
-- Training budget for systemd, SELinux/AppArmor, and compliance automation.
-- Optional tooling for live patching, vulnerability management, and PAM/MFA integration.
-
-### Downtime cost framing
-
-`Downtime cost per hour = revenue impact + team response cost + SLA penalty + reputational risk estimate`
-
-Use this to justify subscription support, maintenance windows, and automation investment when comparing “free OS” against paid support.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Capacity and lifecycle planning
-
-| Area | Rule | Notes |
-|------|------|-------|
-| Lifecycle | stay within supported major releases only | plan upgrades 12 months before end of support |
-| Patch waves | dev → non-prod → prod | reduce fleet-wide blast radius |
-| Repo mirror | cache at least current + previous package sets | supports rollback and reproducibility |
-| Config drift | weekly check mode or audit | more frequent for regulated estates |
-
-### Staffing and training
-
-- Minimum skills: systemd, package management, storage/LVM, networking, SELinux/AppArmor, and automation.
-- One experienced Linux platform engineer can own ~100-150 standardized VMs; less if the estate is diverse or heavily regulated.
-- Run quarterly training on journalctl, systemd units, SELinux troubleshooting, and OSCAP/OpenSCAP usage.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -403,31 +371,7 @@ Use this to justify subscription support, maintenance windows, and automation in
 
 ## Planning & Timeline
 
-### Implementation plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | standard selection | distro choice, support model, repo policy, filesystem template |
-| Week 2 | automation baseline | Ansible roles, etckeeper, patch ring definitions |
-| Week 3 | compliance baseline | OSCAP profile, audit rules, sudo/PAM policy |
-| Week 4 | operationalization | patch calendar, drift report, training handoff |
-
-### Prerequisites checklist
-
-- Golden image pipeline established.
-- Package sources and repo mirror approved.
-- Backup/snapshot approach documented.
-- Named admin access model agreed.
-- Monitoring/logging agents available.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| unsupported distro/version | security and support gap | lifecycle review board | rebuild on supported image |
-| patch breaks service | outage | stage and canary first | snapshot rollback or template redeploy |
-| disabled SELinux/AppArmor | security exposure | enforce policy with exceptions process | restore enforcing and fix policy |
-| manual config drift | inconsistent fleet | Ansible + etckeeper + PR workflow | re-apply baseline role |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

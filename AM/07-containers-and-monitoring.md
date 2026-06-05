@@ -315,39 +315,11 @@ You are ready for [08-troubleshooting-guide.md](./08-troubleshooting-guide.md) a
 
 ## Procurement & Cost Analysis
 
-### Monitoring and platform cost comparison
-
-| Option | Cost Guidance | Best Fit | Watch-outs |
-|--------|---------------|----------|------------|
-| Prometheus + Grafana + Alertmanager | Free software | cost-efficient self-managed observability | requires infra and retention planning |
-| Datadog | roughly $15+/host/month before add-ons | fast SaaS adoption | cost scales quickly with logs/APM |
-| New Relic | usage-based / host-based | teams wanting managed observability | budgeting can be harder |
-| Podman | Free | standalone container hosts | less opinionated platform tooling |
-| OpenShift | $$$ enterprise | large regulated estates wanting opinionated platform | high license and skill cost |
-
-### What to procure or budget
-
-- VM capacity for monitoring stack, registry, and log storage.
-- Object storage or additional disks if long-term metrics/log retention is required.
-- TLS certs, SSO/MFA for Grafana/Harbor, and backup for dashboards/rules.
-- Training budget for PromQL, alert design, container runtime troubleshooting, and on-call workflow.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Monitoring sizing rules
-
-| Dimension | Rule of Thumb | Example |
-|-----------|---------------|---------|
-| Prometheus retention | `samples_per_second x bytes_per_sample x retention_days` | 20k samples/s at 2 bytes compressed over 15 days ≈ plan 50-100 GB+ with headroom |
-| Exporter coverage | every host plus storage/network/firewall targets | avoid blind spots on shared dependencies |
-| Alert volume | <5 actionable pages/engineer/week | tune early to prevent fatigue |
-| Growth target | 2x hosts in 18 months | size storage and scrape fan-out now |
-
-### Staffing and alert fatigue management
-
-- One platform engineer can operate a modest self-managed stack, but 24x7 paging needs shared ownership and documented runbooks.
-- Use severity, deduplication, inhibition, and maintenance silences to keep pages actionable.
-- Track noisy alerts by count, ack time, and false-positive rate monthly.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -368,30 +340,7 @@ You are ready for [08-troubleshooting-guide.md](./08-troubleshooting-guide.md) a
 
 ## Planning & Timeline
 
-### Rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | runtime and registry | Podman host baseline, Harbor, image scanning policy |
-| Week 2 | metrics and dashboards | Prometheus, Grafana, core dashboards, exporters |
-| Week 3 | alerting and logs | Alertmanager routes, log shipping, on-call test |
-| Week 4 | tuning | retention, capacity review, noise reduction |
-
-### Prerequisites checklist
-
-- Dedicated container hosts or VMs sized and hardened.
-- DNS, TLS certs, and object/log storage destinations ready.
-- Escalation paths and paging targets defined.
-- Backup policy for dashboards, rules, and registry metadata.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| under-sized Prometheus disk | lost metrics | retention sizing and alerts | reduce retention temporarily, expand storage |
-| alert storm | operator fatigue | inhibition, grouping, maintenance silences | disable bad rule group and review |
-| registry outage | deployment delays | HA Harbor or backup registry strategy | use cached images / fail over |
-| rootful container misuse | security exposure | rootless by default, policy review | redeploy service as managed unit |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

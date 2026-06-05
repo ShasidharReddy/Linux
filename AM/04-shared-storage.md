@@ -353,55 +353,11 @@ You are ready for [05-vm-provisioning-and-hardening.md](./05-vm-provisioning-and
 
 ## Procurement & Cost Analysis
 
-### Storage platform comparison
-
-| Option | Example | Budgetary Range | Best Fit | Watch-outs |
-|--------|---------|-----------------|----------|------------|
-| TrueNAS Enterprise / SCALE | M-series or self-built validated nodes | $8K-$20K | cost-efficient NFS/iSCSI, open ZFS model | requires stronger in-house storage skill |
-| Synology RackStation | RS3621xs+ / HD6500 | $6K-$18K | SMB/mid-market simplicity | less ideal for very high IOPS databases |
-| NetApp | AFF / FAS entry systems | $20K-$60K+ | enterprise support, snapshots, replication | higher license and support cost |
-| Pure Storage | FlashArray //X or //C | $40K-$100K+ | premium low-latency all-flash workloads | premium budget required |
-
-### Disk media economics
-
-| Media | Typical Use | Cost per TB | Relative IOPS per Dollar | Notes |
-|------|-------------|-------------|--------------------------|------|
-| 7.2K HDD | backups, cold VM tiers | $20-$40/TB | Low | capacity-focused only |
-| SATA/SAS SSD | general VM datastore | $80-$180/TB | Medium | strong balance for mixed workloads |
-| NVMe SSD | high-IO DB and metadata | $120-$300/TB | High | needs enough PCIe lanes and cooling |
-
-### Procurement guidance
-
-- Buy dual controllers or dual heads where supported if HA matters.
-- Include 10/25 GbE ports, redundant PSUs, cache protection, and spare drives in the BOM.
-- Verify HCL support for HBAs, multipath, and target features before purchase.
-- Plan shelf expansion and rack depth early; storage chassis often drive rack design.
-- Source from the storage vendor, a certified reseller, or an integrator that will own the support chain.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### Capacity planning formulas
-
-1. `Required usable TB = current dataset + snapshots + backups in tier + projected growth`
-2. `Projected 18-month usable TB = current usable TB x 2` for the requested growth target.
-3. `Raw TB = usable TB ÷ RAID efficiency`
-4. `Thin provisioning ceiling = allocated ÷ physical ≤ 1.5:1` unless strong alerts and cleanup discipline exist.
-
-### Example sizing table
-
-| Workload | Current Need | 18-Month Target | Recommended Tier |
-|----------|--------------|-----------------|------------------|
-| General VMs | 8 TB usable | 16 TB usable | NFS on SSD-backed NAS |
-| Databases | 2 TB usable | 4 TB usable | iSCSI LUNs on SSD/NVMe |
-| Snapshots/overhead | 3 TB | 6 TB | separate reserve pool |
-| Total usable | 13 TB | 26 TB | procure ~40-45 TB raw depending on RAID |
-
-### IOPS and staffing guidance
-
-- Size storage on latency and IOPS before raw TB for databases and Kubernetes stateful sets.
-- Rule of thumb: 4K random write-heavy DBs need NVMe or strong write cache; mixed VM estates often fit SSD-backed hybrid systems.
-- Minimum staffing: 1 infra engineer plus shared storage specialist or strong vendor support contract.
-- Scale up with more cache/NVMe for latency bottlenecks; scale out with additional arrays or tiers when capacity and fault isolation are the main issues.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -422,30 +378,7 @@ You are ready for [05-vm-provisioning-and-hardening.md](./05-vm-provisioning-and
 
 ## Planning & Timeline
 
-### Rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | platform selection and media plan | vendor shortlist, RAID profile, raw/usable sizing |
-| Week 2 | rack and configure | controller setup, VLAN 20 connectivity, exports/LUNs |
-| Week 3 | attach and validate | multipath, benchmarks, live migration, snapshot tests |
-
-### Prerequisites checklist
-
-- Storage VLAN and jumbo-frame decision finalized.
-- Disk layout, RAID policy, and snapshot retention approved.
-- Backup target and replication target identified.
-- CHAP/export restrictions stored securely.
-- Vendor firmware and support portal access ready.
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| Under-sized cache/media | poor latency | benchmark with realistic fio profiles | move hot workloads to faster tier |
-| Thin provisioning exhaustion | outage risk | 70/80/90% alerts and monthly review | reclaim space, extend pool, pause growth |
-| Jumbo-frame mismatch | intermittent I/O failures | end-to-end MTU tests | revert to MTU 1500 |
-| Controller firmware issue | degraded storage | staged upgrade and support case plan | revert firmware if vendor supports |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 

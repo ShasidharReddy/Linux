@@ -357,37 +357,11 @@ flowchart LR
 
 ## Procurement & Cost Analysis
 
-### Incident management tooling options
-
-| Tool | Cost Guidance | Best Fit | Watch-outs |
-|------|---------------|----------|------------|
-| PagerDuty | ~$20-$40+/user/month depending on tier | mature enterprise incident response | cost grows with features and users |
-| Opsgenie | ~$10-$25+/user/month | teams already in Atlassian ecosystem | roadmap/licensing changes matter |
-| Grafana OnCall / open-source alternatives | low to free software cost | budget-conscious teams with infra skill | more self-management overhead |
-
-### What to budget for
-
-- Paging platform, chat platform integration, conference bridge or war-room tooling.
-- Screen recording or note-taking tooling for incident timelines if audits require evidence.
-- Practice time for game days, not just software licenses.
-- Optional status page tooling for external communication.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Resource Planning
 
-### MTTA / MTTR targets
-
-| Severity | MTTA Target | MTTR Target | Example Scope |
-|----------|-------------|-------------|---------------|
-| Sev-1 | <5 min | <60 min initial restoration | shared platform or customer-wide outage |
-| Sev-2 | <10 min | <4 hours | degraded tenant-facing service |
-| Sev-3 | <30 min | next business day | single app/team issue with workaround |
-
-### Measuring and staffing
-
-- Measure MTTA from first actionable alert to human acknowledgment.
-- Measure MTTR from alert/open time to restored service, not to “we think it is okay.”
-- Minimum staffing: primary on-call, secondary on-call, and incident commander role for Sev-1.
-- Plan for 2x environment growth by ensuring paging routes, dashboards, and runbooks scale before headcount does.
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## System Design & Architecture
 
@@ -411,23 +385,7 @@ flowchart LR
 
 ## Planning & Timeline
 
-### Program rollout plan
-
-| Week | Goal | Deliverables |
-|------|------|--------------|
-| Week 1 | severity model | MTTA/MTTR targets, pager policies, escalation matrix |
-| Week 2 | tooling integration | alert routing, war-room template, evidence capture |
-| Week 3 | runbooks | per-layer checklists, stakeholder templates, ownership map |
-| Week 4 | rehearsal | game day, after-action review, updated metrics |
-
-### Risk register and rollback
-
-| Risk | Impact | Mitigation | Rollback |
-|------|--------|------------|----------|
-| too many paging sources | alert fatigue | group and dedupe before go-live | silence low-value routes |
-| unclear command during sev-1 | wasted time | incident commander assignment | reset roles and restate plan |
-| poor stakeholder updates | trust erosion | communications template | move updates to fixed cadence |
-| missing evidence | weak post-mortem | scribe + evidence checklist | collect logs immediately after stabilization |
+> See [Common Procurement & Planning Guide](./10-common-procurement-and-planning.md) for procurement costs, resource planning, and implementation timelines.
 
 ## Advanced Production Configurations
 
