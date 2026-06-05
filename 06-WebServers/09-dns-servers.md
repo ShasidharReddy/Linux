@@ -246,8 +246,7 @@ systemctl status named
 
 ---
 
-### 12.8 DNS Checklist
-
+### 9.8 DNS Checklist
 - SOA serial incremented
 - Zone validates
 - NS records correct
@@ -255,8 +254,7 @@ systemctl status named
 - TTL reasonable
 - Public authoritative server recursion disabled
 
-### 13.6 DNS Troubleshooting
-
+### 9.6 DNS Troubleshooting
 ```bash
 dig example.com A
 dig @ns1.example.com example.com MX
@@ -270,16 +268,14 @@ Look for:
 - Delegation issues
 - Firewall blocking TCP/UDP 53
 
-### 19.9 DNS Reinforcement
-
+### 9.9 DNS Reinforcement
 - Authoritative and recursive roles should usually be separated.
 - TTL affects propagation speed and cache load.
 - Zone serial increments must be consistent.
 - Always validate zone files before reload.
 - Split-horizon DNS can simplify internal naming but increases complexity.
 
-### 20.4 DNS Commands
-
+### 9.4 DNS Commands
 ```bash
 dig example.com A
 host example.com
@@ -287,15 +283,13 @@ nslookup example.com
 rndc reload
 ```
 
-### 22.4 Validate DNS
-
+### 9.4 Validate DNS
 ```bash
 dig @ns1.example.com example.com SOA
 dig @ns1.example.com example.com MX
 ```
 
-### 24.11 BIND Zone Transfer Restriction Example
-
+### 9.11 BIND Zone Transfer Restriction Example
 ```conf
 allow-transfer { 203.0.113.11; 203.0.113.12; };
 ```

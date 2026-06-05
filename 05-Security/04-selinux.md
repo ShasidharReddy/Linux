@@ -14,7 +14,14 @@ Learn it instead.
 ### 4.1 Why SELinux Matters
 
 ### 📸 SELinux Architecture
-![SELinux](https://upload.wikimedia.org/wikipedia/commons/2/24/SELinux_admin.png)
+```mermaid
+graph TD
+    A[Process] -->|Access Request| B{SELinux Policy}
+    B -->|Allowed| C[Resource Access Granted]
+    B -->|Denied| D[AVC Denial Logged]
+    E[Security Context] --> B
+    F[Type Enforcement] --> B
+```
 > *Source: Wikimedia Commons — SELinux administration overview*
 
 Traditional permissions answer questions like:

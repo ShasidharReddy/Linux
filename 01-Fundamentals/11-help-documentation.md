@@ -1,17 +1,14 @@
 # Help and Documentation
 
-## 13. Help and Documentation
-
-### 13.1 Why Documentation Skills Matter
-
+## 11. Help and Documentation
+### 11.1 Why Documentation Skills Matter
 Linux has enormous built-in documentation.
 
 The best administrators are not the ones who memorize everything.
 
 They are the ones who know how to find accurate information quickly.
 
-### 13.2 `man`
-
+### 11.2 `man`
 #### Purpose
 
 Display manual pages.
@@ -43,8 +40,7 @@ man 8 useradd
 - `n` for next match
 - `q` to quit
 
-### 13.3 `info`
-
+### 11.3 `info`
 #### Purpose
 
 Read GNU info documentation.
@@ -60,8 +56,7 @@ info bash
 
 Some GNU tools provide richer detail in `info` than in `man`.
 
-### 13.4 `whatis`
-
+### 11.4 `whatis`
 #### Purpose
 
 Show a one-line manual page description.
@@ -73,8 +68,7 @@ whatis ls
 whatis passwd
 ```
 
-### 13.5 `apropos`
-
+### 11.5 `apropos`
 #### Purpose
 
 Search manual page names and descriptions.
@@ -91,8 +85,7 @@ apropos permissions
 
 Use `apropos` when you know the concept but not the command name.
 
-### 13.6 `--help`
-
+### 11.6 `--help`
 #### Purpose
 
 Display quick command usage.
@@ -109,8 +102,7 @@ tar --help
 
 `--help` is often the fastest way to confirm syntax.
 
-### 13.7 `/usr/share/doc`
-
+### 11.7 `/usr/share/doc`
 Many packages install documentation under `/usr/share/doc`.
 
 Examples:
@@ -128,8 +120,7 @@ Documentation there may include:
 - README files
 - package-specific notes
 
-### 13.8 Other Helpful Documentation Sources on the System
-
+### 11.8 Other Helpful Documentation Sources on the System
 - shell built-ins via `help` in Bash
 - config examples under package directories
 - service unit details via `systemctl cat`
@@ -143,8 +134,7 @@ systemctl cat sshd
 journalctl -u sshd
 ```
 
-### 13.9 Learning Workflow Example
-
+### 11.9 Learning Workflow Example
 When you encounter a new command:
 
 1. run `command --help`
@@ -153,8 +143,7 @@ When you encounter a new command:
 4. inspect examples in `/usr/share/doc`
 5. test in a safe directory
 
-### 13.10 Troubleshooting with Documentation
-
+### 11.10 Troubleshooting with Documentation
 Example process for an unknown option error:
 
 ```bash
@@ -164,16 +153,14 @@ apropos tar
 info tar
 ```
 
-### 13.11 Documentation Best Practices
-
+### 11.11 Documentation Best Practices
 - read the examples section first
 - note whether a command is in section 1, 5, or 8
 - prefer official manual pages over random copy-pasted internet snippets
 - test commands on harmless files before production use
 - keep personal notes of commands you use often
 
-### 13.12 Quick Reference Table
-
+### 11.12 Quick Reference Table
 | Tool | Best Use |
 |---|---|
 | `man` | Full manual pages |

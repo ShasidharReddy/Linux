@@ -1,13 +1,22 @@
-# 4. Boot Process
+# 3. Boot Process
 
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
 
-## 4.1 Overview
+## 3.1 Overview
 
 ### 📸 Linux Boot Process
-![Boot Process](https://upload.wikimedia.org/wikipedia/commons/2/2e/Linux_boot_process.svg)
-> *Source: Wikimedia Commons — Linux boot sequence from BIOS to desktop*
+```mermaid
+graph LR
+    A[Power On] --> B[BIOS/UEFI]
+    B --> C[MBR/GPT]
+    C --> D[GRUB2]
+    D --> E[Kernel]
+    E --> F[initramfs]
+    F --> G[systemd PID 1]
+    G --> H[Login Prompt]
+```
+> *Linux boot sequence: Power → BIOS/UEFI → Bootloader → Kernel → Init → Login*
 
 Linux booting is the chain of events that takes a machine from power-on to a usable login prompt or service-ready state.
 
@@ -37,7 +46,7 @@ graph TD
     K --> L["Login Prompt or GUI"]
 ```
 
-## 4.2 BIOS vs UEFI
+## 3.2 BIOS vs UEFI
 
 ### BIOS
 
@@ -56,7 +65,7 @@ It supports:
 - EFI system partitions
 - more flexible boot management
 
-## 4.3 POST
+## 3.3 POST
 
 POST stands for Power-On Self-Test.
 
@@ -69,7 +78,7 @@ Common checks:
 - keyboard status on some systems
 - storage device presence
 
-## 4.4 Bootloader
+## 3.4 Bootloader
 
 The bootloader loads the Linux kernel into memory.
 
@@ -93,7 +102,7 @@ Important files often associated with GRUB:
 > Do not edit generated GRUB config files blindly.
 > On many systems you should update `/etc/default/grub` and regenerate configuration using the distro tools.
 
-## 4.5 Kernel Loading
+## 3.5 Kernel Loading
 
 The bootloader loads:
 
@@ -108,7 +117,7 @@ The kernel then:
 - loads built-in drivers
 - begins mounting the root environment
 
-## 4.6 initramfs
+## 3.6 initramfs
 
 `initramfs` is a temporary early userspace environment.
 
@@ -122,13 +131,13 @@ This is important when the root filesystem depends on:
 - unusual storage controllers
 - network boot features
 
-## 4.7 Root Filesystem Mount
+## 3.7 Root Filesystem Mount
 
 After early initialization, the real root filesystem is mounted.
 
 The system then switches from initramfs to the actual root filesystem.
 
-## 4.8 init and systemd
+## 3.8 init and systemd
 
 Historically, Linux systems used SysV init.
 
@@ -148,7 +157,7 @@ Common init responsibilities:
 - cleaning temporary state
 - responding to shutdown and reboot requests
 
-## 4.9 Runlevels vs systemd Targets
+## 3.9 Runlevels vs systemd Targets
 
 ### Traditional SysV runlevels
 
@@ -172,7 +181,7 @@ Common init responsibilities:
 | `graphical.target` | Graphical environment |
 | `reboot.target` | Reboot system |
 
-## 4.10 Inspecting the Boot Process
+## 3.10 Inspecting the Boot Process
 
 Useful commands:
 
@@ -194,7 +203,7 @@ What they help with:
 - inspect block devices
 - inspect kernel boot parameters
 
-## 4.11 Common Boot Problems
+## 3.11 Common Boot Problems
 
 ### GRUB menu not appearing
 
@@ -228,7 +237,7 @@ Possible causes:
 - missing network
 - missing dependencies
 
-## 4.12 Troubleshooting Boot Issues
+## 3.12 Troubleshooting Boot Issues
 
 Use these tools carefully:
 
@@ -247,7 +256,7 @@ Questions to ask:
 - Did systemd reach the expected target?
 - Which service failed first?
 
-## 4.13 Boot Process Summary
+## 3.13 Boot Process Summary
 
 1. Firmware starts.
 2. Hardware is initialized.

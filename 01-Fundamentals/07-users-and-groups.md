@@ -1,8 +1,8 @@
-# 9. Users and Groups
+# 7. Users and Groups
 
 Linux account administration relies on `sudo` (Super User Do), `su` (Switch User), UID (User ID), GID (Group ID), PAM (Pluggable Authentication Modules), and LDAP (Lightweight Directory Access Protocol) concepts that appear throughout this chapter.
 
-## 9.1 Why User Management Matters
+## 7.1 Why User Management Matters
 
 Linux separates identities to control access and accountability.
 
@@ -13,7 +13,7 @@ Users and groups are foundational for:
 - service isolation
 - multiuser collaboration
 
-## 9.2 Important Account Files
+## 7.2 Important Account Files
 
 ### `/etc/passwd`
 
@@ -57,7 +57,7 @@ Example:
 cat /etc/group
 ```
 
-## 9.3 UIDs and GIDs
+## 7.3 UIDs and GIDs
 
 - UID = user ID
 - GID = group ID
@@ -68,7 +68,7 @@ Special cases:
 - system/service accounts often use lower numeric ranges
 - normal interactive users usually have higher numeric ranges
 
-## 9.4 `useradd`
+## 7.4 `useradd`
 
 ### Purpose
 
@@ -93,7 +93,7 @@ sudo useradd -m -c "App User" -s /usr/sbin/nologin appuser
 | `-g` | Primary group |
 | `-G` | Supplementary groups |
 
-## 9.5 `usermod`
+## 7.5 `usermod`
 
 ### Purpose
 
@@ -113,7 +113,7 @@ Use `-aG` when adding supplementary groups.
 
 Without `-a`, group membership may be replaced.
 
-## 9.6 `userdel`
+## 7.6 `userdel`
 
 ### Purpose
 
@@ -132,7 +132,7 @@ sudo userdel -r olduser
 
 Use carefully.
 
-## 9.7 `groupadd`
+## 7.7 `groupadd`
 
 ### Purpose
 
@@ -145,7 +145,7 @@ sudo groupadd developers
 sudo groupadd -g 1500 analytics
 ```
 
-## 9.8 `passwd`
+## 7.8 `passwd`
 
 ### Purpose
 
@@ -165,7 +165,7 @@ sudo passwd -u alice
 - `-l` locks an account password
 - `-u` unlocks it
 
-## 9.9 Checking Identity
+## 7.9 Checking Identity
 
 Useful commands:
 
@@ -177,7 +177,7 @@ getent passwd alice
 getent group developers
 ```
 
-## 9.10 `su`
+## 7.10 `su`
 
 ### Purpose
 
@@ -194,7 +194,7 @@ su - alice
 
 `su -` starts a full login shell for the target user.
 
-## 9.11 `sudo`
+## 7.11 `sudo`
 
 ### Purpose
 
@@ -214,7 +214,7 @@ sudo -u postgres psql
 - creates audit trails
 - allows controlled delegation
 
-## 9.12 `visudo`
+## 7.12 `visudo`
 
 ### Purpose
 
@@ -231,7 +231,7 @@ Why use it:
 - syntax checking
 - prevents simultaneous unsafe edits
 
-## 9.13 Sudoers Concepts
+## 7.13 Sudoers Concepts
 
 Common sudo policy locations:
 
@@ -251,7 +251,7 @@ Meaning:
 - may run commands as all users
 - with password prompt unless configured otherwise
 
-## 9.14 Common Administrative Tasks
+## 7.14 Common Administrative Tasks
 
 ### Create a new admin user
 
@@ -275,7 +275,7 @@ sudo useradd -r -s /usr/sbin/nologin appsvc
 sudo -l
 ```
 
-## 9.15 Security Best Practices
+## 7.15 Security Best Practices
 
 - avoid direct root logins when possible
 - give sudo only to trusted admins
@@ -284,7 +284,7 @@ sudo -l
 - review group membership periodically
 - protect `/etc/shadow`
 
-## 9.16 Troubleshooting User Issues
+## 7.16 Troubleshooting User Issues
 
 Common questions:
 

@@ -316,8 +316,7 @@ Possible service-level indicators:
 
 ---
 
-### 12.9 Monitoring Checklist
-
+### 10.9 Monitoring Checklist
 - Node metrics collected
 - Web metrics collected
 - Database metrics collected
@@ -326,8 +325,7 @@ Possible service-level indicators:
 - Alerts routed to team
 - Dashboards reviewed
 
-### 13.9 Logs to Check
-
+### 10.9 Logs to Check
 - `/var/log/nginx/error.log`
 - `/var/log/nginx/access.log`
 - `/var/log/apache2/error.log`
@@ -337,8 +335,7 @@ Possible service-level indicators:
 - `/var/log/mail.log`
 - journal via `journalctl`
 
-### 15.6 Scenario: Prometheus Monitoring for Web Tier
-
+### 10.6 Scenario: Prometheus Monitoring for Web Tier
 ```yaml
 global:
   scrape_interval: 15s
@@ -359,8 +356,7 @@ scrape_configs:
 
 ---
 
-### 17.5 Monitoring Stack Comparison
-
+### 10.5 Monitoring Stack Comparison
 | Tool | Good Fit |
 |---|---|
 | Prometheus | Metrics and alerting |
@@ -371,30 +367,26 @@ scrape_configs:
 
 ---
 
-### 19.10 Monitoring Reinforcement
-
+### 10.10 Monitoring Reinforcement
 - Alert quality matters more than alert count.
 - Metrics, logs, and traces solve different questions.
 - Monitor from both inside and outside where possible.
 - Blackbox checks catch issues that internal metrics may miss.
 - Capacity dashboards help prevent incidents.
 
-### 20.6 Monitoring Commands
-
+### 10.6 Monitoring Commands
 ```bash
 curl -s http://127.0.0.1:9090/-/ready
 curl -s http://127.0.0.1:3000/api/health
 ```
 
-### 22.7 Validate Monitoring
-
+### 10.7 Validate Monitoring
 ```bash
 curl -s http://127.0.0.1:9090/-/ready
 curl -s http://127.0.0.1:3000/api/health
 ```
 
-### 24.14 Prometheus Blackbox Target Example
-
+### 10.14 Prometheus Blackbox Target Example
 ```yaml
 scrape_configs:
   - job_name: blackbox-http
@@ -413,8 +405,7 @@ scrape_configs:
         replacement: blackbox-exporter:9115
 ```
 
-### 24.15 Log Rotation Reminder
-
+### 10.15 Log Rotation Reminder
 If logs grow without rotation:
 
 - disk fills

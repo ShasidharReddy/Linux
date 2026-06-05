@@ -5,8 +5,7 @@
 
 Linux firewalling can be managed with `iptables`, `nftables`, `firewalld`, or `ufw` depending on the distribution and preference.
 
-## 4.1 Firewall concepts
-
+## 5.1 Firewall concepts
 A firewall filters traffic based on rules.
 
 Common actions:
@@ -19,8 +18,7 @@ Common actions:
 - DNAT
 - SNAT
 
-## 4.2 Packet filtering basics
-
+## 5.2 Packet filtering basics
 A packet may be filtered based on:
 
 - Source IP
@@ -32,8 +30,7 @@ A packet may be filtered based on:
 - Connection state
 - Packet marks
 
-## 4.3 Netfilter overview
-
+## 5.3 Netfilter overview
 The Linux kernel packet filtering framework is Netfilter.
 
 User-space tools include:
@@ -44,8 +41,7 @@ User-space tools include:
 - `firewalld`
 - `ufw`
 
-## 4.4 `iptables` tables
-
+## 5.4 `iptables` tables
 | Table | Purpose |
 |---|---|
 | `filter` | Packet filtering |
@@ -54,16 +50,14 @@ User-space tools include:
 | `raw` | Connection tracking exceptions |
 | `security` | SELinux-related hooks |
 
-## 4.5 `iptables` built-in chains
-
+## 5.5 `iptables` built-in chains
 | Table | Common Chains |
 |---|---|
 | `filter` | `INPUT`, `FORWARD`, `OUTPUT` |
 | `nat` | `PREROUTING`, `OUTPUT`, `POSTROUTING` |
 | `mangle` | `PREROUTING`, `INPUT`, `FORWARD`, `OUTPUT`, `POSTROUTING` |
 
-## 4.6 `iptables` packet flow Mermaid diagram
-
+## 5.6 `iptables` packet flow Mermaid diagram
 ### 📸 Netfilter/iptables Packet Flow
 ![iptables flow](https://upload.wikimedia.org/wikipedia/commons/3/37/Netfilter-packet-flow.svg)
 > *Source: Wikimedia Commons — Netfilter packet traversal through Linux networking*
@@ -81,49 +75,41 @@ graph TD
     G --> I["Packet leaves host"]
 ```
 
-## 4.7 List current `iptables` rules
-
+## 5.7 List current `iptables` rules
 ```bash
 sudo iptables -L -n -v
 sudo iptables -t nat -L -n -v
 ```
 
-## 4.8 Basic `iptables` rule examples
-
-### 4.8.1 Allow established traffic
-
+## 5.8 Basic `iptables` rule examples
+### 5.8.1 Allow established traffic
 ```bash
 sudo iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 ```
 
-### 4.8.2 Allow loopback
-
+### 5.8.2 Allow loopback
 ```bash
 sudo iptables -A INPUT -i lo -j ACCEPT
 ```
 
-### 4.8.3 Allow SSH
-
+### 5.8.3 Allow SSH
 ```bash
 sudo iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 ```
 
-### 4.8.4 Allow ICMP echo request
-
+### 5.8.4 Allow ICMP echo request
 ```bash
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 ```
 
-### 4.8.5 Default drop policy
-
+### 5.8.5 Default drop policy
 ```bash
 sudo iptables -P INPUT DROP
 sudo iptables -P FORWARD DROP
 sudo iptables -P OUTPUT ACCEPT
 ```
 
-## 4.9 Common `iptables` commands
-
+## 5.9 Common `iptables` commands
 | Task | Command |
 |---|---|
 | Append rule | `iptables -A` |
@@ -133,8 +119,7 @@ sudo iptables -P OUTPUT ACCEPT
 | Save rules | distro-specific |
 | Flush rules | `iptables -F` |
 
-## 4.10 Stateful firewalling
-
+## 5.10 Stateful firewalling
 Connection tracking allows rules like:
 
 ```bash
@@ -148,23 +133,19 @@ States commonly used:
 - `RELATED`
 - `INVALID`
 
-## 4.11 NAT with `iptables`
-
-### 4.11.1 Masquerading outbound traffic
-
+## 5.11 NAT with `iptables`
+### 5.11.1 Masquerading outbound traffic
 ```bash
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
-### 4.11.2 Port forwarding example
-
+### 5.11.2 Port forwarding example
 ```bash
 sudo iptables -t nat -A PREROUTING -p tcp --dport 8443 -j DNAT --to-destination 192.168.10.20:443
 sudo iptables -A FORWARD -p tcp -d 192.168.10.20 --dport 443 -j ACCEPT
 ```
 
-## 4.12 Persisting `iptables`
-
+## 5.12 Persisting `iptables`
 Approaches vary:
 
 - `iptables-save` and `iptables-restore`
@@ -179,8 +160,7 @@ sudo iptables-save
 sudo iptables-save > /etc/iptables/rules.v4
 ```
 
-## 4.13 `nftables` overview
-
+## 5.13 `nftables` overview
 `nftables` is the modern replacement for `iptables` in many environments.
 
 Advantages:
@@ -190,8 +170,7 @@ Advantages:
 - Better maintainability
 - Improved sets and maps
 
-## 4.14 `nftables` basic objects
-
+## 5.14 `nftables` basic objects
 - Tables
 - Chains
 - Rules
@@ -199,8 +178,7 @@ Advantages:
 - Maps
 - State tracking
 
-## 4.15 Minimal `nftables` example
-
+## 5.15 Minimal `nftables` example
 ```nft
 flush ruleset
 
@@ -235,8 +213,7 @@ sudo nft -f /etc/nftables.conf
 sudo nft list ruleset
 ```
 
-## 4.16 `firewalld` overview
-
+## 5.16 `firewalld` overview
 `firewalld` is common on RHEL-family distributions.
 
 Concepts:
@@ -247,8 +224,7 @@ Concepts:
 - Rich rules
 - Runtime vs permanent config
 
-## 4.17 `firewalld` zones
-
+## 5.17 `firewalld` zones
 Common zones:
 
 | Zone | Typical Trust Level |
@@ -261,51 +237,43 @@ Common zones:
 | `dmz` | Limited access public servers |
 | `trusted` | Highly trusted |
 
-## 4.18 `firewalld` examples
-
-### 4.18.1 Check state
-
+## 5.18 `firewalld` examples
+### 5.18.1 Check state
 ```bash
 sudo firewall-cmd --state
 ```
 
-### 4.18.2 List active zones
-
+### 5.18.2 List active zones
 ```bash
 sudo firewall-cmd --get-active-zones
 ```
 
-### 4.18.3 Allow SSH service
-
+### 5.18.3 Allow SSH service
 ```bash
 sudo firewall-cmd --permanent --add-service=ssh
 sudo firewall-cmd --reload
 ```
 
-### 4.18.4 Allow HTTP and HTTPS
-
+### 5.18.4 Allow HTTP and HTTPS
 ```bash
 sudo firewall-cmd --permanent --add-service=http
 sudo firewall-cmd --permanent --add-service=https
 sudo firewall-cmd --reload
 ```
 
-### 4.18.5 Open a custom port
-
+### 5.18.5 Open a custom port
 ```bash
 sudo firewall-cmd --permanent --add-port=8443/tcp
 sudo firewall-cmd --reload
 ```
 
-### 4.18.6 Add source network to internal zone
-
+### 5.18.6 Add source network to internal zone
 ```bash
 sudo firewall-cmd --permanent --zone=internal --add-source=10.10.0.0/16
 sudo firewall-cmd --reload
 ```
 
-## 4.19 `firewalld` rich rules
-
+## 5.19 `firewalld` rich rules
 Example:
 
 ```bash
@@ -313,39 +281,33 @@ sudo firewall-cmd --permanent --add-rich-rule='rule family="ipv4" source address
 sudo firewall-cmd --reload
 ```
 
-## 4.20 `ufw` overview
-
+## 5.20 `ufw` overview
 `ufw` is common on Ubuntu systems and simplifies common firewall tasks.
 
-### 4.20.1 Basic commands
-
+### 5.20.1 Basic commands
 ```bash
 sudo ufw status verbose
 sudo ufw enable
 sudo ufw disable
 ```
 
-### 4.20.2 Allow SSH
-
+### 5.20.2 Allow SSH
 ```bash
 sudo ufw allow ssh
 ```
 
-### 4.20.3 Allow HTTP and HTTPS
-
+### 5.20.3 Allow HTTP and HTTPS
 ```bash
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 ```
 
-### 4.20.4 Deny a port
-
+### 5.20.4 Deny a port
 ```bash
 sudo ufw deny 23/tcp
 ```
 
-## 4.21 Common firewall rules table
-
+## 5.21 Common firewall rules table
 | Use Case | iptables | nftables | firewalld | ufw |
 |---|---|---|---|---|
 | Allow SSH | `-A INPUT -p tcp --dport 22 -j ACCEPT` | `tcp dport 22 accept` | `--add-service=ssh` | `allow ssh` |
@@ -354,18 +316,15 @@ sudo ufw deny 23/tcp
 | Masquerade | `-t nat -A POSTROUTING -j MASQUERADE` | `masquerade` | `--add-masquerade` | limited direct approach |
 | Default deny | `-P INPUT DROP` | `policy drop` | zone policy model | default deny incoming |
 
-## 4.22 Safe firewall workflow on remote systems
-
+## 5.22 Safe firewall workflow on remote systems
 1. Confirm console or out-of-band access exists.
 2. Allow established traffic first.
 3. Allow SSH from your source before default drop.
 4. Apply changes in a rollback-friendly way.
 5. Test from a second session.
 
-## 4.23 Logging firewall hits
-
-### 4.23.1 `iptables` logging example
-
+## 5.23 Logging firewall hits
+### 5.23.1 `iptables` logging example
 ```bash
 sudo iptables -A INPUT -p tcp --dport 23 -j LOG --log-prefix "TELNET_DROP "
 sudo iptables -A INPUT -p tcp --dport 23 -j DROP
@@ -373,8 +332,7 @@ sudo iptables -A INPUT -p tcp --dport 23 -j DROP
 
 Be careful. Logging every packet can flood logs.
 
-## 4.24 IPv6 firewalling
-
+## 5.24 IPv6 firewalling
 Do not forget IPv6.
 
 Common mistake:
@@ -389,8 +347,7 @@ Use:
 - `firewalld`
 - `ufw` with IPv6 enabled
 
-## 4.25 Common firewall mistakes
-
+## 5.25 Common firewall mistakes
 - Dropping established traffic
 - Locking out SSH
 - Forgetting IPv6 rules
@@ -399,8 +356,7 @@ Use:
 - Overly broad allow rules
 - Blocking ICMP required for PMTU
 
-## 4.26 SELinux and firewalls
-
+## 5.26 SELinux and firewalls
 Sometimes the network is fine but SELinux blocks the service.
 
 Useful tools:
@@ -411,8 +367,7 @@ sudo ausearch -m AVC
 sudo semanage port -l | grep http
 ```
 
-## 4.27 Example baseline server policy
-
+## 5.27 Example baseline server policy
 Recommended baseline:
 
 - Allow loopback
@@ -422,8 +377,7 @@ Recommended baseline:
 - Default drop inbound
 - Log important denials selectively
 
-## 4.28 Example `nftables` production starter file
-
+## 5.28 Example `nftables` production starter file
 ```nft
 flush ruleset
 
@@ -451,8 +405,7 @@ table inet filter {
 }
 ```
 
-## 4.29 Firewall validation commands
-
+## 5.29 Firewall validation commands
 ```bash
 sudo iptables -L -n -v
 sudo nft list ruleset
@@ -462,8 +415,7 @@ ss -tulpen
 nmap -Pn <host>
 ```
 
-## 4.30 Summary
-
+## 5.30 Summary
 Choose one firewall management approach for operational clarity. On modern systems, `nftables` or `firewalld` is typically preferred. Always test remotely with caution.
 
 ---

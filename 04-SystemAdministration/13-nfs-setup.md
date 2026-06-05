@@ -2,8 +2,6 @@
 
 ## Full Forms & Terminology
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the protocol glossary.
-
 - **NFS — Network File System:** Shares directories across Linux systems.
 - **TCP — Transmission Control Protocol:** Main transport for NFSv4.
 - **NAS — Network Attached Storage:** Common platform that exposes NFS shares.

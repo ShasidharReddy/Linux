@@ -7,16 +7,14 @@ This file groups SSH tunneling, overlay tunnel concepts, VPN implementation deta
 
 ---
 
-## 5.13 SSH port forwarding overview
-
+## 7.13 SSH port forwarding overview
 Types:
 
 - Local forwarding `-L`
 - Remote forwarding `-R`
 - Dynamic forwarding `-D`
 
-## 5.14 Local port forwarding
-
+## 7.14 Local port forwarding
 Syntax:
 
 ```bash
@@ -34,8 +32,7 @@ Use cases:
 - Reach database consoles securely
 - Temporary admin access without exposing ports
 
-## 5.15 Remote port forwarding
-
+## 7.15 Remote port forwarding
 Syntax:
 
 ```bash
@@ -46,8 +43,7 @@ Use case:
 
 - Publish a local service to the remote side
 
-## 5.16 Dynamic forwarding with SOCKS proxy
-
+## 7.16 Dynamic forwarding with SOCKS proxy
 ```bash
 ssh -D 1080 user@bastion
 ```
@@ -56,15 +52,13 @@ This creates a SOCKS proxy for tunneling application traffic.
 
 ---
 
-## 9.24 TUN vs TAP
-
+## 7.24 TUN vs TAP
 | Type | Layer | Use Case |
 |---|---|---|
 | TUN | Layer 3 | Routed VPNs |
 | TAP | Layer 2 | Bridged VPNs, Ethernet emulation |
 
-## 9.25 GRE and VXLAN overview
-
+## 7.25 GRE and VXLAN overview
 Advanced overlays include:
 
 - GRE
@@ -78,8 +72,7 @@ Used in:
 - Cloud networking
 - SDN environments
 
-## 9.26 VXLAN conceptual note
-
+## 7.26 VXLAN conceptual note
 VXLAN extends Layer 2 over Layer 3 using VNI identifiers and UDP encapsulation.
 
 Often used with:
@@ -95,19 +88,24 @@ Often used with:
 VPNs securely connect remote users, sites, or workloads over untrusted networks.
 
 ### 📸 VPN Tunnel Concept
-![VPN Tunnel](https://upload.wikimedia.org/wikipedia/commons/0/0f/VPN_overview-en.svg)
+```mermaid
+graph LR
+    A[Client] -->|Encrypted Tunnel| B[VPN Server]
+    B --> C[Internet / Private Network]
+    style A fill:#e1f5fe
+    style B fill:#fff3e0
+    style C fill:#e8f5e9
+```
 > *Source: Wikimedia Commons — VPN tunnel overview*
 
-## 10.1 Common VPN use cases
-
+## 7.1 Common VPN use cases
 - Remote user access
 - Site-to-site connectivity
 - Cloud-to-datacenter links
 - Admin access to private networks
 - Secure overlay networks
 
-## 10.2 OpenVPN overview
-
+## 7.2 OpenVPN overview
 OpenVPN is mature, flexible, and widely deployed.
 
 Characteristics:
@@ -117,8 +115,7 @@ Characteristics:
 - User-space implementation
 - Good compatibility
 
-## 10.3 WireGuard overview
-
+## 7.3 WireGuard overview
 WireGuard is modern, lean, and high performance.
 
 Characteristics:
@@ -128,8 +125,7 @@ Characteristics:
 - Kernel integration on many platforms
 - Excellent site-to-site and remote access fit
 
-## 10.4 OpenVPN basic concepts
-
+## 7.4 OpenVPN basic concepts
 Files often used:
 
 - CA certificate
@@ -139,8 +135,7 @@ Files often used:
 - Client key
 - `ta.key` or TLS auth material in some setups
 
-## 10.5 Example OpenVPN server config
-
+## 7.5 Example OpenVPN server config
 ```conf
 port 1194
 proto udp
@@ -157,8 +152,7 @@ cipher AES-256-GCM
 verb 3
 ```
 
-## 10.6 Example OpenVPN client config
-
+## 7.6 Example OpenVPN client config
 ```conf
 client
 dev tun
@@ -172,8 +166,7 @@ cipher AES-256-GCM
 verb 3
 ```
 
-## 10.7 Start OpenVPN service
-
+## 7.7 Start OpenVPN service
 Depending on distro packaging:
 
 ```bash
@@ -186,8 +179,7 @@ or:
 sudo systemctl enable --now openvpn@server
 ```
 
-## 10.8 OpenVPN firewall and forwarding
-
+## 7.8 OpenVPN firewall and forwarding
 Typical requirements:
 
 - Allow UDP 1194
@@ -202,8 +194,7 @@ sudo firewall-cmd --permanent --add-masquerade
 sudo firewall-cmd --reload
 ```
 
-## 10.9 WireGuard basic concepts
-
+## 7.9 WireGuard basic concepts
 WireGuard uses:
 
 - Interface-based configuration
@@ -211,16 +202,14 @@ WireGuard uses:
 - Allowed IPs for routing
 - UDP transport
 
-## 10.10 Generate WireGuard keys
-
+## 7.10 Generate WireGuard keys
 ```bash
 wg genkey | tee privatekey | wg pubkey > publickey
 ```
 
 Protect the private key.
 
-## 10.11 Example WireGuard server config
-
+## 7.11 Example WireGuard server config
 File:
 
 ```text
@@ -246,8 +235,7 @@ PublicKey = CLIENT_PUBLIC_KEY
 AllowedIPs = 10.20.30.2/32
 ```
 
-## 10.12 Example WireGuard client config
-
+## 7.12 Example WireGuard client config
 ```ini
 [Interface]
 Address = 10.20.30.2/24
@@ -261,15 +249,13 @@ AllowedIPs = 0.0.0.0/0, ::/0
 PersistentKeepalive = 25
 ```
 
-## 10.13 Start WireGuard
-
+## 7.13 Start WireGuard
 ```bash
 sudo systemctl enable --now wg-quick@wg0
 sudo wg show
 ```
 
-## 10.14 Split tunnel vs full tunnel
-
+## 7.14 Split tunnel vs full tunnel
 | Mode | Description |
 |---|---|
 | Split tunnel | Only selected networks go through VPN |
@@ -282,8 +268,7 @@ Examples:
 - Split tunnel: `10.10.0.0/16, 10.20.0.0/16`
 - Full tunnel: `0.0.0.0/0, ::/0`
 
-## 10.15 Site-to-site VPN design
-
+## 7.15 Site-to-site VPN design
 Typical considerations:
 
 - Avoid overlapping subnets
@@ -292,8 +277,7 @@ Typical considerations:
 - Permit forwarding and firewall rules
 - Consider MTU and MSS clamping if needed
 
-## 10.16 Verify VPN operation
-
+## 7.16 Verify VPN operation
 Commands:
 
 ```bash
@@ -310,8 +294,7 @@ ip addr show tun0
 ss -lunp | grep 1194
 ```
 
-## 10.17 Common VPN issues
-
+## 7.17 Common VPN issues
 - UDP port blocked
 - Missing IP forwarding
 - Missing NAT
@@ -320,8 +303,7 @@ ss -lunp | grep 1194
 - Clock skew affecting TLS-based VPNs
 - DNS not pushed or configured correctly
 
-## 10.18 Security best practices for VPNs
-
+## 7.18 Security best practices for VPNs
 - Use modern crypto defaults
 - Rotate keys or certificates
 - Limit peer access
@@ -329,8 +311,7 @@ ss -lunp | grep 1194
 - Restrict management access to VPN endpoints
 - Patch VPN software promptly
 
-## 10.19 MTU and MSS tuning for VPNs
-
+## 7.19 MTU and MSS tuning for VPNs
 Encapsulation reduces effective MTU.
 
 Symptoms:
@@ -1145,16 +1126,14 @@ Operational cautions:
 7. Confirm return routes for site-to-site networks.
 8. Review service logs before changing crypto settings blindly.
 
-## 10.20 Summary
-
+## 7.20 Summary
 OpenVPN offers flexibility and broad compatibility. WireGuard offers simplicity and performance. Both require clean routing, forwarding, and firewall design.
 
 ---
 
 # Tunneling and VPN Scenarios
 
-## 12.2 Configure site-to-site VPN between office and AWS
-
+## 7.2 Configure site-to-site VPN between office and AWS
 Objective:
 
 - Connect office subnet `10.50.0.0/16` to AWS subnet `10.60.0.0/16`
@@ -1185,8 +1164,7 @@ sudo tcpdump -ni eth0 host 203.0.113.20
 
 ---
 
-## 12.8 Provide administrators with a WireGuard management overlay
-
+## 7.8 Provide administrators with a WireGuard management overlay
 Objective:
 
 - Reach SSH, monitoring, and web consoles over private tunnel addresses
@@ -1209,8 +1187,7 @@ curl -k https://10.20.30.51:3000/
 
 ---
 
-## 12.11 Troubleshoot: Site-to-site tunnel comes up but subnet traffic still fails
-
+## 7.11 Troubleshoot: Site-to-site tunnel comes up but subnet traffic still fails
 Checklist:
 
 ```bash

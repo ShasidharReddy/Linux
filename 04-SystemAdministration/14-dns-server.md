@@ -2,8 +2,6 @@
 
 ## Full Forms & Terminology
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the full DNS and protocol glossary.
-
 - **DNS — Domain Name System:** Resolves names into IP addresses and other records.
 - **A / AAAA — Address / IPv6 Address:** Point names to IPv4 or IPv6 addresses.
 - **CNAME — Canonical Name:** Alias that points to another hostname.

@@ -2,8 +2,6 @@
 
 ## Full Forms & Terminology
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the broader operations glossary.
-
 - **`systemctl` — System Control:** Main command for managing systemd units.
 - **`journalctl` — Journal Control:** Reads logs from the systemd journal.
 - **PID — Process ID:** Numeric identifier assigned to a running process.
@@ -400,8 +398,7 @@ Common problems:
 
 ---
 
-## 12.2 Service deployment checklist
-
+## 2.2 Service deployment checklist
 - Confirm package source or binary provenance.
 - Create service user.
 - Create directories with correct ownership.
@@ -416,8 +413,7 @@ Common problems:
 
 ---
 
-## 13.2 systemd commands reference
-
+## 2.2 systemd commands reference
 - `systemctl status <unit>`
 - `systemctl start <unit>`
 - `systemctl stop <unit>`

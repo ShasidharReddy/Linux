@@ -2,8 +2,7 @@
 
 Load balancers distribute traffic across multiple backend servers and improve scalability and availability.
 
-## 11.1 Load balancing concepts
-
+## 12.1 Load balancing concepts
 Core capabilities:
 
 - Traffic distribution
@@ -13,18 +12,15 @@ Core capabilities:
 - Failover
 - Reverse proxying
 
-## 11.2 Common Linux load balancers
-
+## 12.2 Common Linux load balancers
 - HAProxy
 - Nginx
 - Keepalived for VIP failover
 
-## 11.3 HAProxy overview
-
+## 12.3 HAProxy overview
 HAProxy is widely used for high-performance TCP and HTTP load balancing.
 
-## 11.4 Basic HAProxy config structure
-
+## 12.4 Basic HAProxy config structure
 Files commonly live at:
 
 ```text
@@ -39,8 +35,7 @@ Sections include:
 - `backend`
 - `listen`
 
-## 11.5 Example HAProxy HTTP load balancer
-
+## 12.5 Example HAProxy HTTP load balancer
 ```haproxy
 global
     log /dev/log local0
@@ -65,8 +60,7 @@ backend web_pool
     server web2 10.10.20.12:80 check
 ```
 
-## 11.6 Example HAProxy TCP load balancer
-
+## 12.6 Example HAProxy TCP load balancer
 ```haproxy
 frontend db_in
     bind *:5432
@@ -80,14 +74,12 @@ backend pg_pool
     server db2 10.10.30.12:5432 check backup
 ```
 
-## 11.7 Validate HAProxy config
-
+## 12.7 Validate HAProxy config
 ```bash
 sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 ```
 
-## 11.8 Nginx as a load balancer
-
+## 12.8 Nginx as a load balancer
 Nginx can proxy traffic to upstreams.
 
 Example:
@@ -111,8 +103,7 @@ server {
 }
 ```
 
-## 11.9 Common balancing algorithms
-
+## 12.9 Common balancing algorithms
 | Algorithm | Description |
 |---|---|
 | Round robin | Rotate across backends |
@@ -121,8 +112,7 @@ server {
 | URI hash | Sticky by request URI |
 | Random | Random distribution |
 
-## 11.10 Health checks
-
+## 12.10 Health checks
 Health checks determine if a backend should receive traffic.
 
 Types:
@@ -132,8 +122,7 @@ Types:
 - SSL handshake
 - Custom endpoint checks
 
-## 11.11 Session persistence
-
+## 12.11 Session persistence
 Some applications need stickiness.
 
 Methods:
@@ -144,8 +133,7 @@ Methods:
 
 Prefer stateless apps when possible.
 
-## 11.12 TLS termination at the load balancer
-
+## 12.12 TLS termination at the load balancer
 Benefits:
 
 - Centralized certificate management
@@ -154,8 +142,7 @@ Benefits:
 
 Remember to secure LB-to-backend traffic if needed.
 
-## 11.13 Keepalived overview
-
+## 12.13 Keepalived overview
 Keepalived provides VRRP-based failover for a virtual IP.
 
 Common design:
@@ -164,8 +151,7 @@ Common design:
 - One active, one standby
 - Shared VIP moves on failure
 
-## 11.14 Example Keepalived config
-
+## 12.14 Example Keepalived config
 ```conf
 vrrp_instance VI_1 {
     state MASTER
@@ -183,14 +169,12 @@ vrrp_instance VI_1 {
 }
 ```
 
-## 11.15 Keepalived with health checks
-
+## 12.15 Keepalived with health checks
 Keepalived can track services and lower priority if HAProxy or Nginx fails.
 
 This improves failover behavior.
 
-## 11.16 Load balancer troubleshooting
-
+## 12.16 Load balancer troubleshooting
 Check:
 
 - Frontend listener active?
@@ -209,8 +193,7 @@ journalctl -u haproxy
 journalctl -u keepalived
 ```
 
-## 11.17 High availability design notes
-
+## 12.17 High availability design notes
 Combine:
 
 - HAProxy or Nginx for balancing
@@ -218,8 +201,7 @@ Combine:
 - Monitoring for proactive alerting
 - Redundant upstream paths
 
-## 11.18 Example architecture pattern
-
+## 12.18 Example architecture pattern
 - VIP: `10.10.20.100`
 - LB1: `10.10.20.21`
 - LB2: `10.10.20.22`
@@ -232,16 +214,14 @@ Flow:
 3. HAProxy or Nginx selects healthy backend.
 4. Backend responds through load balancer.
 
-## 11.19 Security best practices for load balancers
-
+## 12.19 Security best practices for load balancers
 - Restrict admin stats pages
 - Enforce TLS best practices
 - Limit source networks for management
 - Validate health endpoints carefully
 - Monitor backend failures and response times
 
-## 11.20 Summary
-
+## 12.20 Summary
 Load balancing is not only about spreading traffic. It is also about health, failover, observability, and safe traffic mediation.
 
 ---

@@ -5,22 +5,19 @@
 
 > Includes Linux file types so no fundamentals content is lost during the split.
 
-## 5. File System Hierarchy (FHS)
-
+## 4. File System Hierarchy (FHS)
 ### 📸 Linux Filesystem Hierarchy
 ![FHS](https://upload.wikimedia.org/wikipedia/commons/f/f3/Standard-unix-filesystem-hierarchy.svg)
 > *Source: Wikimedia Commons — Standard Unix/Linux filesystem hierarchy*
 
-### 5.1 What Is FHS?
-
+### 4.1 What Is FHS?
 FHS stands for Filesystem Hierarchy Standard.
 
 It defines common directory purposes so Linux systems remain understandable and consistent.
 
 Even across distributions, the general layout is similar.
 
-### 5.2 Why the Hierarchy Matters
-
+### 4.2 Why the Hierarchy Matters
 When you know where things belong, you can:
 
 - find configuration files quickly
@@ -30,8 +27,7 @@ When you know where things belong, you can:
 - back up the right paths
 - troubleshoot services faster
 
-### 5.3 High-Level View
-
+### 4.3 High-Level View
 ```mermaid
 graph TD
     A["/"] --> B["/bin"]
@@ -53,8 +49,7 @@ graph TD
     A --> R["/run"]
 ```
 
-### 5.4 Root Directory `/`
-
+### 4.4 Root Directory `/`
 This is the top of the entire filesystem tree.
 
 Everything begins from `/`.
@@ -65,8 +60,7 @@ Examples:
 - `/var/log/messages`
 - `/home/user/.bashrc`
 
-### 5.5 `/bin`
-
+### 4.5 `/bin`
 Historically, `/bin` stored essential user commands required for booting and single-user mode.
 
 Typical commands once found here:
@@ -84,8 +78,7 @@ Why it exists conceptually:
 - essential commands available early in boot
 - standard location for core user binaries
 
-### 5.6 `/sbin`
-
+### 4.6 `/sbin`
 Historically, `/sbin` stored essential system administration commands.
 
 Examples:
@@ -98,8 +91,7 @@ Examples:
 
 On many systems, `/sbin` may also be merged into `/usr/sbin`.
 
-### 5.7 `/etc`
-
+### 4.7 `/etc`
 `/etc` contains system-wide configuration files.
 
 Examples:
@@ -120,8 +112,7 @@ Characteristics:
 > Warning:
 > Back up configuration files before editing critical items like `/etc/fstab`, SSH configs, or sudo policy files.
 
-### 5.8 `/var`
-
+### 4.8 `/var`
 `/var` stores variable data that changes during normal operation.
 
 Common subdirectories:
@@ -140,8 +131,7 @@ Examples:
 - database files
 - state data for applications
 
-### 5.9 `/tmp`
-
+### 4.9 `/tmp`
 `/tmp` stores temporary files.
 
 Important traits:
@@ -155,8 +145,7 @@ Security note:
 - permissions usually include the sticky bit
 - users typically cannot delete each other’s files there
 
-### 5.10 `/home`
-
+### 4.10 `/home`
 `/home` stores personal directories for normal users.
 
 Examples:
@@ -173,16 +162,14 @@ Typical contents:
 - SSH keys
 - user-specific application settings
 
-### 5.11 `/root`
-
+### 4.11 `/root`
 Although not in the requested list, `/root` is worth knowing.
 
 It is the home directory of the `root` user.
 
 It is separate from `/home`.
 
-### 5.12 `/usr`
-
+### 4.12 `/usr`
 `/usr` contains userland applications, libraries, and documentation.
 
 Common subdirectories:
@@ -228,8 +215,7 @@ Examples:
 - `/usr/local/lib`
 - `/usr/local/share`
 
-### 5.13 `/opt`
-
+### 4.13 `/opt`
 `/opt` stores optional add-on software packages.
 
 This is common for:
@@ -242,8 +228,7 @@ Example:
 
 - `/opt/vendor-app/`
 
-### 5.14 `/proc`
-
+### 4.14 `/proc`
 `/proc` is a virtual filesystem.
 
 It exposes kernel and process information.
@@ -265,8 +250,7 @@ cat /proc/cpuinfo
 cat /proc/meminfo
 ```
 
-### 5.15 `/sys`
-
+### 4.15 `/sys`
 `/sys` is another virtual filesystem.
 
 It exposes device and kernel object information.
@@ -279,8 +263,7 @@ Examples:
 - driver information
 - power settings
 
-### 5.16 `/dev`
-
+### 4.16 `/dev`
 `/dev` contains device files.
 
 These files represent hardware or pseudo-devices.
@@ -293,8 +276,7 @@ Examples:
 - `/dev/random`
 - `/dev/tty`
 
-### 5.17 `/mnt`
-
+### 4.17 `/mnt`
 `/mnt` is a traditional temporary mount point for administrators.
 
 It is often used when manually mounting filesystems.
@@ -305,8 +287,7 @@ Example:
 sudo mount /dev/sdb1 /mnt
 ```
 
-### 5.18 `/media`
-
+### 4.18 `/media`
 `/media` is commonly used for removable media.
 
 Examples:
@@ -317,8 +298,7 @@ Examples:
 
 Desktop environments often mount media here automatically.
 
-### 5.19 `/boot`
-
+### 4.19 `/boot`
 `/boot` contains files required for booting.
 
 Examples:
@@ -330,8 +310,7 @@ Examples:
 
 If `/boot` fills up, kernel updates may fail.
 
-### 5.20 `/lib`
-
+### 4.20 `/lib`
 `/lib` contains essential shared libraries and kernel modules.
 
 On many systems, this may be linked or merged with `/usr/lib`.
@@ -341,8 +320,7 @@ It remains conceptually important because:
 - early boot programs need libraries
 - kernel modules are stored under library trees
 
-### 5.21 `/srv`
-
+### 4.21 `/srv`
 `/srv` stores data served by system services.
 
 Examples:
@@ -356,8 +334,7 @@ Example layout:
 - `/srv/www/`
 - `/srv/ftp/`
 
-### 5.22 `/run`
-
+### 4.22 `/run`
 `/run` stores volatile runtime data.
 
 It exists only during booted runtime.
@@ -371,8 +348,7 @@ Common contents:
 
 `/run` is typically mounted as tmpfs.
 
-### 5.23 Common Subdirectories in `/var`
-
+### 4.23 Common Subdirectories in `/var`
 #### `/var/log`
 
 Stores logs.
@@ -411,8 +387,7 @@ Examples:
 
 Temporary files that may persist longer than `/tmp`.
 
-### 5.24 Inspecting the Hierarchy
-
+### 4.24 Inspecting the Hierarchy
 Useful commands:
 
 ```bash
@@ -423,8 +398,7 @@ ls /var/log
 find /etc -maxdepth 1 -type f | head
 ```
 
-### 5.25 Storage and Capacity Awareness
-
+### 4.25 Storage and Capacity Awareness
 Directories that often grow unexpectedly:
 
 - `/var/log`
@@ -440,8 +414,7 @@ df -h
 du -sh /var/* 2>/dev/null | sort -h
 ```
 
-### 5.26 FHS Quick Reference Table
-
+### 4.26 FHS Quick Reference Table
 | Path | Purpose | Typical Content |
 |---|---|---|
 | `/` | Root of filesystem | Everything starts here |
@@ -463,8 +436,7 @@ du -sh /var/* 2>/dev/null | sort -h
 | `/srv` | Service data | web content |
 | `/run` | Runtime state | PIDs, sockets |
 
-### 5.27 Practical Examples
-
+### 4.27 Practical Examples
 #### Example 1: Find SSH server config
 
 ```bash
@@ -497,18 +469,15 @@ cat /proc/cmdline
 
 ---
 
-## 6. Linux File Types
-
-### 6.1 Overview
-
+## 4. Linux File Types
+### 4.1 Overview
 Linux supports multiple file types.
 
 You can often identify them with `ls -l`, `stat`, or `file`.
 
 The first character of `ls -l` output is especially important.
 
-### 6.2 File Type Indicators in `ls -l`
-
+### 4.2 File Type Indicators in `ls -l`
 | Indicator | Type |
 |---|---|
 | `-` | Regular file |
@@ -519,8 +488,7 @@ The first character of `ls -l` output is especially important.
 | `p` | Named pipe |
 | `s` | Socket |
 
-### 6.3 Regular File
-
+### 4.3 Regular File
 A regular file stores data.
 
 Examples:
@@ -539,8 +507,7 @@ ls -l notes.txt
 file notes.txt
 ```
 
-### 6.4 Directory
-
+### 4.4 Directory
 A directory stores references to files and subdirectories.
 
 It organizes the filesystem tree.
@@ -552,8 +519,7 @@ mkdir project
 ls -ld project
 ```
 
-### 6.5 Symbolic Link
-
+### 4.5 Symbolic Link
 A symbolic link points to another path.
 
 It is similar to a shortcut.
@@ -571,8 +537,7 @@ ln -s /etc/hosts hosts-link
 ls -l hosts-link
 ```
 
-### 6.6 Hard Link
-
+### 4.6 Hard Link
 A hard link is an additional directory entry pointing to the same inode as another file.
 
 Properties:
@@ -590,8 +555,7 @@ ln original.txt hardlink.txt
 ls -li original.txt hardlink.txt
 ```
 
-### 6.7 Character Device
-
+### 4.7 Character Device
 Character devices transfer data as a stream of characters.
 
 Examples:
@@ -606,8 +570,7 @@ Example:
 ls -l /dev/null
 ```
 
-### 6.8 Block Device
-
+### 4.8 Block Device
 Block devices transfer data in blocks.
 
 They are used for storage devices.
@@ -625,8 +588,7 @@ ls -l /dev/sda
 lsblk
 ```
 
-### 6.9 Named Pipe
-
+### 4.9 Named Pipe
 A named pipe, or FIFO, allows one process to send data to another.
 
 Example:
@@ -636,8 +598,7 @@ mkfifo mypipe
 ls -l mypipe
 ```
 
-### 6.10 Socket
-
+### 4.10 Socket
 Sockets enable inter-process communication.
 
 They are common for:
@@ -652,8 +613,7 @@ Example:
 ss -lx
 ```
 
-### 6.11 Inspecting File Types
-
+### 4.11 Inspecting File Types
 Useful commands:
 
 ```bash
@@ -663,8 +623,7 @@ file /bin/ls
 find . -type l
 ```
 
-### 6.12 Why File Types Matter
-
+### 4.12 Why File Types Matter
 Understanding file types helps when:
 
 - diagnosing broken symlinks

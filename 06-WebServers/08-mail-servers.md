@@ -218,8 +218,7 @@ openssl s_client -connect mail.example.com:993
 
 ---
 
-### 12.7 Mail Checklist
-
+### 8.7 Mail Checklist
 - SMTP, IMAP submission ports planned
 - TLS cert for mail hostname installed
 - SPF published
@@ -228,16 +227,14 @@ openssl s_client -connect mail.example.com:993
 - PTR configured
 - Open relay test performed
 
-### 13.7 Mail Troubleshooting
-
+### 8.7 Mail Troubleshooting
 ```bash
 postqueue -p
 postfix check
 openssl s_client -connect mail.example.com:587 -starttls smtp
 ```
 
-### 15.5 Scenario: Basic Mail Host DNS Records
-
+### 8.5 Scenario: Basic Mail Host DNS Records
 ```dns
 example.com.            IN MX 10 mail.example.com.
 mail.example.com.       IN A 203.0.113.30
@@ -246,8 +243,7 @@ _dmarc.example.com.     IN TXT "v=DMARC1; p=quarantine; rua=mailto:dmarc@example
 mail2025._domainkey.example.com. IN TXT "v=DKIM1; k=rsa; p=MIIB..."
 ```
 
-### 19.8 Mail Reinforcement
-
+### 8.8 Mail Reinforcement
 - Mail is more than just SMTP service.
 - DNS identity records matter heavily for deliverability.
 - Open relays are disastrous.
@@ -255,16 +251,14 @@ mail2025._domainkey.example.com. IN TXT "v=DKIM1; k=rsa; p=MIIB..."
 - DKIM and DMARC help domain reputation.
 - TLS for submission is expected.
 
-### 20.7 Mail Commands
-
+### 8.7 Mail Commands
 ```bash
 postfix status
 postqueue -p
 doveadm who
 ```
 
-### 22.5 Validate Mail
-
+### 8.5 Validate Mail
 ```bash
 openssl s_client -connect mail.example.com:587 -starttls smtp
 ```

@@ -1,6 +1,6 @@
-# 10. I/O Redirection and Piping
+# 8. I/O Redirection and Piping
 
-## 10.1 Standard Streams
+## 8.1 Standard Streams
 
 Linux commands usually work with three standard streams.
 
@@ -10,7 +10,7 @@ Linux commands usually work with three standard streams.
 | stdout | 1 | Normal output |
 | stderr | 2 | Error output |
 
-## 10.2 Basic Output Redirection
+## 8.2 Basic Output Redirection
 
 ### `>`
 
@@ -29,7 +29,7 @@ Append stdout to a file.
 echo "next line" >> file.txt
 ```
 
-## 10.3 Input Redirection
+## 8.3 Input Redirection
 
 ### `<`
 
@@ -40,7 +40,7 @@ wc -l < /etc/passwd
 sort < names.txt
 ```
 
-## 10.4 Error Redirection
+## 8.4 Error Redirection
 
 ### `2>`
 
@@ -58,7 +58,7 @@ Append stderr to a file.
 command 2>> errors.log
 ```
 
-## 10.5 Redirect Both stdout and stderr
+## 8.5 Redirect Both stdout and stderr
 
 ### `2>&1`
 
@@ -82,7 +82,7 @@ This means something else:
 command 2>&1 > output.log
 ```
 
-## 10.6 Discard Output
+## 8.6 Discard Output
 
 Use `/dev/null`.
 
@@ -91,7 +91,7 @@ command > /dev/null
 command > /dev/null 2>&1
 ```
 
-## 10.7 Pipes `|`
+## 8.7 Pipes `|`
 
 A pipe sends stdout of one command into stdin of another.
 
@@ -104,7 +104,7 @@ ps aux | grep nginx
 journalctl -b | tail -n 50
 ```
 
-## 10.8 `tee`
+## 8.8 `tee`
 
 `tee` writes output to both the screen and a file.
 
@@ -121,7 +121,7 @@ Useful for:
 - logging command output
 - preserving troubleshooting sessions
 
-## 10.9 `xargs`
+## 8.9 `xargs`
 
 `xargs` builds command arguments from stdin.
 
@@ -139,7 +139,7 @@ Safer form for unusual filenames:
 find . -name '*.log' -print0 | xargs -0 ls -lh
 ```
 
-## 10.10 Here Strings and Here Documents
+## 8.10 Here Strings and Here Documents
 
 Even though not required, they are useful to know.
 
@@ -158,7 +158,7 @@ line2
 EOF
 ```
 
-## 10.11 Practical Examples
+## 8.11 Practical Examples
 
 ### Save command output for later review
 
@@ -190,7 +190,7 @@ ss -tln | wc -l
 ./deploy.sh 2>&1 | tee deploy.log
 ```
 
-## 10.12 Redirection Summary Table
+## 8.12 Redirection Summary Table
 
 | Operator | Meaning |
 |---|---|

@@ -1,9 +1,9 @@
-# 3. Linux Architecture
+# 2. Linux Architecture
 
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
 
-## 3.1 Big Picture
+## 2.1 Big Picture
 
 ### 📸 Linux Kernel Architecture
 ![Linux Kernel](https://upload.wikimedia.org/wikipedia/commons/5/5b/Linux_kernel_map.png)
@@ -27,7 +27,7 @@ graph TD
     D --> E["Applications"]
 ```
 
-## 3.2 Hardware Layer
+## 2.2 Hardware Layer
 
 This is the physical or virtual machine layer.
 
@@ -43,7 +43,7 @@ Examples:
 
 The kernel uses drivers to communicate with hardware.
 
-## 3.3 Kernel Layer
+## 2.3 Kernel Layer
 
 The kernel is the privileged core of the operating system.
 
@@ -61,7 +61,7 @@ The kernel runs in kernel space.
 
 Kernel space is protected from normal user applications.
 
-## 3.4 System Libraries
+## 2.4 System Libraries
 
 System libraries provide standard interfaces that applications call.
 
@@ -76,7 +76,7 @@ Applications usually do not talk directly to the kernel.
 
 They call libraries, and libraries use system calls to reach the kernel.
 
-## 3.5 Shell Layer
+## 2.5 Shell Layer
 
 The shell is a command interpreter.
 
@@ -96,7 +96,7 @@ A shell lets users:
 - script tasks
 - manage environment variables
 
-## 3.6 Application Layer
+## 2.6 Application Layer
 
 Applications sit on top of libraries and shell interfaces.
 
@@ -109,7 +109,7 @@ Examples:
 - `docker`
 - desktop browsers
 
-## 3.7 User Space vs Kernel Space
+## 2.7 User Space vs Kernel Space
 
 ### Kernel space
 
@@ -123,7 +123,7 @@ Examples:
 - isolated from kernel internals
 - crashes usually affect only the program
 
-## 3.8 System Calls
+## 2.8 System Calls
 
 System calls are the boundary between applications and the kernel.
 
@@ -144,7 +144,7 @@ Examples of system call concepts:
 - exec
 - socket
 
-## 3.9 Why Architecture Matters
+## 2.9 Why Architecture Matters
 
 Understanding the architecture helps you troubleshoot problems.
 
@@ -155,7 +155,7 @@ Examples:
 - process denied because permissions are insufficient
 - shell command fails because PATH is incorrect
 
-## 3.10 Linux Architecture Summary Table
+## 2.10 Linux Architecture Summary Table
 
 | Layer | Role | Examples |
 |---|---|---|

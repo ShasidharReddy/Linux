@@ -259,10 +259,8 @@ graph LR
 
 ---
 
-# 16. Extended Redis Operations Guide
-
-## 16.1 Key inspection
-
+# 5. Extended Redis Operations Guide
+## 5.1 Key inspection
 ```bash
 redis-cli DBSIZE
 redis-cli INFO memory
@@ -270,43 +268,37 @@ redis-cli INFO stats
 redis-cli INFO keyspace
 ```
 
-## 16.2 Slow log review
-
+## 5.2 Slow log review
 ```bash
 redis-cli SLOWLOG LEN
 redis-cli SLOWLOG GET 20
 ```
 
-## 16.3 Latency diagnostics
-
+## 5.3 Latency diagnostics
 ```bash
 redis-cli LATENCY DOCTOR
 redis-cli LATENCY LATEST
 ```
 
-## 16.4 ACL example
-
+## 5.4 ACL example
 ```bash
 redis-cli ACL SETUSER appuser on >StrongPassword ~app:* +@read +@write -FLUSHALL -FLUSHDB
 ```
 
-## 16.5 Persistence checklist
-
+## 5.5 Persistence checklist
 - Decide RDB, AOF, or hybrid.
 - Measure fsync latency.
 - Validate restart time from persistence files.
 - Back up persistence files off-host.
 
-## 16.6 Eviction policy decision hints
-
+## 5.6 Eviction policy decision hints
 | Pattern | Policy |
 |---|---|
 | Pure cache | allkeys-lru or allkeys-lfu |
 | Cache with TTL-managed keys | volatile-lru |
 | No data loss allowed | noeviction with proper app handling |
 
-## 16.7 Queue design caution
-
+## 5.7 Queue design caution
 Redis is convenient for queues but not a universal message broker replacement.
 
 Consider:
@@ -316,22 +308,19 @@ Consider:
 - Ordering guarantees.
 - Replay requirements.
 
-## 16.8 Operational anti-patterns
-
+## 5.8 Operational anti-patterns
 - Running with unlimited memory.
 - Exposing instance publicly.
 - Storing very large binary blobs.
 - Using `KEYS *` in production.
 - Forgetting TTLs on cache keys.
 
-## 16.9 Safe key scanning
-
+## 5.9 Safe key scanning
 ```bash
 redis-cli SCAN 0 MATCH app:* COUNT 100
 ```
 
-## 16.10 Replication monitoring hints
-
+## 5.10 Replication monitoring hints
 - Monitor replication offset gaps.
 - Track failover event history in Sentinel.
 - Confirm client libraries support Sentinel or Cluster discovery.

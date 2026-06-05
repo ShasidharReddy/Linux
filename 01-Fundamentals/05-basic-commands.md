@@ -1,8 +1,8 @@
-# 7. Basic Commands
+# 5. Basic Commands
 
 This chapter introduces `pwd` (Print Working Directory), `ls` (List), `cd` (Change Directory), `mkdir` (Make Directory), `cp` (Copy), `mv` (Move), `rm` (Remove), `cat` (Concatenate), `vi` (Visual Interface), `vim` (Vi IMproved), `grep` (Global Regular Expression Print), `awk` (Aho, Weinberger, Kernighan), `sed` (Stream Editor), `chmod` (Change Mode), `chown` (Change Owner), `df` (Disk Free), `du` (Disk Usage), `ps` (Process Status), `top` (Table of Processes), `lsof` (List Open Files), and `ss` (Socket Statistics) so you can recognize them when they appear in daily administration work.
 
-## 7.1 Command Usage Principles
+## 5.1 Command Usage Principles
 
 Before learning individual commands, remember these patterns:
 
@@ -13,7 +13,7 @@ Before learning individual commands, remember these patterns:
 - Linux is case-sensitive
 - relative paths and absolute paths behave differently
 
-## 7.2 `pwd`
+## 5.2 `pwd`
 
 ### Purpose
 
@@ -44,7 +44,7 @@ cd /etc && pwd
 
 Use `pwd` whenever you are unsure where you are before using `rm`, `cp`, or `mv`.
 
-## 7.3 `ls`
+## 5.3 `ls`
 
 ### Purpose
 
@@ -86,7 +86,7 @@ Hidden files begin with `.`.
 
 Examples include `.bashrc` and `.ssh`.
 
-## 7.4 `cd`
+## 5.4 `cd`
 
 ### Purpose
 
@@ -121,7 +121,7 @@ cd -
 
 `cd` is a shell built-in in most shells.
 
-## 7.5 `mkdir`
+## 5.5 `mkdir`
 
 ### Purpose
 
@@ -155,7 +155,7 @@ mkdir -pv /home/user/test/a/b/c
 
 `mkdir -p` is safe for automation because it will not fail if directories already exist.
 
-## 7.6 `rmdir`
+## 5.6 `rmdir`
 
 ### Purpose
 
@@ -187,7 +187,7 @@ rmdir -p a/b/c
 
 Use `rm -r` only when you intend recursive removal.
 
-## 7.7 `cp`
+## 5.7 `cp`
 
 ### Purpose
 
@@ -225,7 +225,7 @@ cp -u report.txt archive/
 
 Use `cp -a` for backups when you want to preserve metadata.
 
-## 7.8 `mv`
+## 5.8 `mv`
 
 ### Purpose
 
@@ -259,7 +259,7 @@ mv -n data.csv existing.csv
 
 A rename within the same filesystem is usually fast.
 
-## 7.9 `rm`
+## 5.9 `rm`
 
 ### Purpose
 
@@ -301,7 +301,7 @@ Always confirm the path with `pwd` and `ls` first.
 > There is no recycle bin in standard shell usage.
 > A mistaken `rm` can permanently remove data.
 
-## 7.10 `touch`
+## 5.10 `touch`
 
 ### Purpose
 
@@ -335,7 +335,7 @@ touch -t 202401011200 sample.txt
 
 `touch` is often used to create placeholder files quickly.
 
-## 7.11 `cat`
+## 5.11 `cat`
 
 ### Purpose
 
@@ -370,7 +370,7 @@ Use `cat` for short files.
 
 Use `less` for longer files.
 
-## 7.12 `less`
+## 5.12 `less`
 
 ### Purpose
 
@@ -403,7 +403,7 @@ less +G app.log
 
 `less` is safer and more practical for large text files.
 
-## 7.13 `more`
+## 5.13 `more`
 
 ### Purpose
 
@@ -421,7 +421,7 @@ more README.txt
 
 Most administrators prefer `less`.
 
-## 7.14 `head`
+## 5.14 `head`
 
 ### Purpose
 
@@ -452,7 +452,7 @@ head -c 100 file.bin
 
 Useful for quickly inspecting file structure.
 
-## 7.15 `tail`
+## 5.15 `tail`
 
 ### Purpose
 
@@ -486,7 +486,7 @@ tail -F /var/log/messages
 
 `tail -f` is essential for real-time log monitoring.
 
-## 7.16 `wc`
+## 5.16 `wc`
 
 ### Purpose
 
@@ -519,7 +519,7 @@ wc -w article.txt
 
 Useful in scripts for quick file metrics.
 
-## 7.17 `file`
+## 5.17 `file`
 
 ### Purpose
 
@@ -550,7 +550,7 @@ file -i image.png
 
 Very helpful when an unknown file lacks a useful extension.
 
-## 7.18 `stat`
+## 5.18 `stat`
 
 ### Purpose
 
@@ -581,7 +581,7 @@ stat -c '%n %a %U %G' myfile
 
 `stat` is excellent for permissions, timestamps, inode numbers, and ownership details.
 
-## 7.19 `which`
+## 5.19 `which`
 
 ### Purpose
 
@@ -605,7 +605,7 @@ which ls
 
 Works only for commands found in your executable path.
 
-## 7.20 `whereis`
+## 5.20 `whereis`
 
 ### Purpose
 
@@ -628,7 +628,7 @@ whereis ssh
 
 Unlike `which`, it can return man page and source locations too.
 
-## 7.21 `find`
+## 5.21 `find`
 
 ### Purpose
 
@@ -671,7 +671,7 @@ find . -type f -exec ls -lh {} \;
 
 Be cautious with `-delete` and `-exec rm`.
 
-## 7.22 `locate`
+## 5.22 `locate`
 
 ### Purpose
 
@@ -700,7 +700,7 @@ Database refresh often uses:
 sudo updatedb
 ```
 
-## 7.23 Combining Basic Commands
+## 5.23 Combining Basic Commands
 
 ### Example: find the largest logs
 
@@ -727,7 +727,7 @@ ls -lah
 tail -f /var/log/app/app.log
 ```
 
-## 7.24 Path Concepts
+## 5.24 Path Concepts
 
 ### Absolute path
 
@@ -750,7 +750,7 @@ Example:
 ../logs/app.log
 ```
 
-## 7.25 Globbing Basics
+## 5.25 Globbing Basics
 
 The shell expands wildcards before the command runs.
 
@@ -769,7 +769,7 @@ rm file?.log
 cp report[0-9].txt archive/
 ```
 
-## 7.26 Safe Command Habits
+## 5.26 Safe Command Habits
 
 - run `pwd` before destructive commands
 - use `ls` to confirm target paths
@@ -778,7 +778,7 @@ cp report[0-9].txt archive/
 - prefer `rm -i` when learning
 - avoid running as `root` unless needed
 
-## 7.27 Practice Examples
+## 5.27 Practice Examples
 
 ### Create and inspect a workspace
 
@@ -920,7 +920,7 @@ $ ss -tulpn
 # tcp    LISTEN  0       128     0.0.0.0:80          0.0.0.0:*          users:(("nginx",pid=5678,fd=6))
 ```
 
-## 7.28 Command Summary Table
+## 5.28 Command Summary Table
 
 | Command | Primary Use | Common Example |
 |---|---|---|

@@ -4,8 +4,7 @@
 
 Task scheduling on Linux can be handled by cron, anacron, at, and systemd timers.
 
-## 7.1 cron basics
-
+## 9.1 cron basics
 Cron runs commands on a schedule.
 
 System-wide files:
@@ -24,8 +23,7 @@ crontab -l
 crontab -r
 ```
 
-## 7.2 Cron expression format
-
+## 9.2 Cron expression format
 Standard five fields:
 
 ```text
@@ -39,8 +37,7 @@ Standard five fields:
 +----------- minute
 ```
 
-## 7.3 Cron expression cheat sheet
-
+## 9.3 Cron expression cheat sheet
 | Expression | Meaning |
 |---|---|
 | `* * * * *` | Every minute |
@@ -54,8 +51,7 @@ Standard five fields:
 | `0 9 * * 1-5` | Weekdays at 09:00 |
 | `0 0 1,15 * *` | On day 1 and 15 each month |
 
-## 7.4 Cron examples
-
+## 9.4 Cron examples
 Daily backup:
 
 ```cron
@@ -78,8 +74,7 @@ Best practice:
 Use full paths in cron jobs.
 Cron runs with a limited environment.
 
-## 7.5 Environment in cron
-
+## 9.5 Environment in cron
 Cron does not run with your interactive shell environment.
 Set what you need explicitly.
 
@@ -93,8 +88,7 @@ MAILTO=ops@example.com
 0 1 * * * /usr/local/bin/job.sh
 ```
 
-## 7.6 anacron
-
+## 9.6 anacron
 `anacron` is useful for systems that may not be powered on continuously.
 It ensures periodic jobs are eventually run.
 
@@ -118,8 +112,7 @@ Meaning:
 - Job identifier.
 - Command.
 
-## 7.7 at and batch
-
+## 9.7 at and batch
 Use `at` for one-time future execution.
 
 Examples:
@@ -136,8 +129,7 @@ Use `batch` to run when system load is lower.
 echo "/usr/local/bin/report.sh" | batch
 ```
 
-## 7.8 systemd timers as an alternative
-
+## 9.8 systemd timers as an alternative
 Timers are often preferred on systemd systems.
 They offer:
 - Better logging.
@@ -151,8 +143,7 @@ Example timer schedule expressions:
 - `OnBootSec=15min`
 - `OnUnitActiveSec=1h`
 
-## 7.9 Example systemd timer setup
-
+## 9.9 Example systemd timer setup
 Service file:
 
 ```ini
@@ -186,8 +177,7 @@ sudo systemctl enable --now cache-rotate.timer
 systemctl list-timers --all
 ```
 
-## 7.10 Troubleshooting scheduled jobs
-
+## 9.10 Troubleshooting scheduled jobs
 Cron troubleshooting checklist:
 - Check service status for cron daemon.
 - Check syntax.
@@ -208,8 +198,7 @@ journalctl -u cron
 journalctl -u crond
 ```
 
-## 7.11 Scheduled task best practices
-
+## 9.11 Scheduled task best practices
 - Use absolute paths.
 - Redirect output intentionally.
 - Make scripts idempotent.
@@ -221,8 +210,7 @@ journalctl -u crond
 
 ---
 
-## 13.7 Scheduling commands reference
-
+## 9.7 Scheduling commands reference
 - `crontab -e`
 - `crontab -l`
 - `crontab -r`

@@ -7,8 +7,7 @@ SSH is the standard secure remote administration protocol on Linux.
 
 SSH deployments here use ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), and ECDSA (Elliptic Curve Digital Signature Algorithm) host or user keys depending on policy and compatibility.
 
-## 5.1 SSH components
-
+## 6.1 SSH components
 ### 📸 SSH Protocol Architecture
 ![SSH Layers](https://upload.wikimedia.org/wikipedia/commons/0/0f/Ssh_binary_packet_alt.svg)
 > *Source: Wikimedia Commons — SSH binary packet protocol*
@@ -25,16 +24,14 @@ SSH deployments here use ed25519 (Edwards-curve Digital Signature Algorithm usin
 | `sftp` | Secure file transfer |
 | `rsync` over SSH | Efficient sync over encrypted transport |
 
-## 5.2 Basic SSH usage
-
+## 6.2 Basic SSH usage
 ```bash
 ssh user@server
 ssh -p 2222 user@server
 ssh -i ~/.ssh/id_ed25519 user@192.168.10.20
 ```
 
-## 5.3 SSH host key verification
-
+## 6.3 SSH host key verification
 When connecting the first time, the client stores the server host key in:
 
 ```text
@@ -43,8 +40,7 @@ When connecting the first time, the client stores the server host key in:
 
 This protects against man-in-the-middle attacks.
 
-## 5.4 `sshd_config` location
-
+## 6.4 `sshd_config` location
 Common path:
 
 ```text
@@ -57,8 +53,7 @@ Some distributions also use:
 /etc/ssh/sshd_config.d/
 ```
 
-## 5.5 Important `sshd_config` settings
-
+## 6.5 Important `sshd_config` settings
 | Setting | Purpose |
 |---|---|
 | `Port` | SSH listening port |
@@ -72,8 +67,7 @@ Some distributions also use:
 | `ClientAliveInterval` | Idle keepalive |
 | `MaxAuthTries` | Failed auth threshold |
 
-## 5.6 Recommended hardened `sshd_config` example
-
+## 6.6 Recommended hardened `sshd_config` example
 ```conf
 Port 22
 Protocol 2
@@ -108,24 +102,20 @@ or on Debian/Ubuntu:
 sudo systemctl restart ssh
 ```
 
-## 5.7 Generate SSH keys
-
-### 5.7.1 Ed25519 key
-
+## 6.7 Generate SSH keys
+### 6.7.1 Ed25519 key
 ```bash
 ssh-keygen -t ed25519 -a 100 -C "admin@example.com"
 ```
 
-### 5.7.2 RSA key
-
+### 6.7.2 RSA key
 ```bash
 ssh-keygen -t rsa -b 4096 -C "admin@example.com"
 ```
 
 Ed25519 is generally preferred for modern use.
 
-## 5.8 Key files
-
+## 6.8 Key files
 Typical files:
 
 - `~/.ssh/id_ed25519`
@@ -134,8 +124,7 @@ Typical files:
 - `~/.ssh/known_hosts`
 - `~/.ssh/config`
 
-## 5.9 Install public key on server
-
+## 6.9 Install public key on server
 Easy method:
 
 ```bash
@@ -148,8 +137,7 @@ Manual method:
 cat ~/.ssh/id_ed25519.pub | ssh user@server 'umask 077 && mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys'
 ```
 
-## 5.10 Permissions matter
-
+## 6.10 Permissions matter
 Recommended permissions:
 
 ```bash
@@ -159,8 +147,7 @@ chmod 600 ~/.ssh/id_ed25519
 chmod 644 ~/.ssh/id_ed25519.pub
 ```
 
-## 5.11 `ssh-agent`
-
+## 6.11 `ssh-agent`
 Start agent and add key:
 
 ```bash
@@ -171,8 +158,7 @@ ssh-add -l
 
 Useful when managing multiple servers without repeatedly typing passphrases.
 
-## 5.12 SSH client config file
-
+## 6.12 SSH client config file
 Path:
 
 ```text
@@ -199,16 +185,14 @@ Benefits:
 - Consistent options
 - Easier use of bastions and identity files
 
-## 5.13 SSH port forwarding overview
-
+## 6.13 SSH port forwarding overview
 Types:
 
 - Local forwarding `-L`
 - Remote forwarding `-R`
 - Dynamic forwarding `-D`
 
-## 5.14 Local port forwarding
-
+## 6.14 Local port forwarding
 Syntax:
 
 ```bash
@@ -226,8 +210,7 @@ Use cases:
 - Reach database consoles securely
 - Temporary admin access without exposing ports
 
-## 5.15 Remote port forwarding
-
+## 6.15 Remote port forwarding
 Syntax:
 
 ```bash
@@ -238,16 +221,14 @@ Use case:
 
 - Publish a local service to the remote side
 
-## 5.16 Dynamic forwarding with SOCKS proxy
-
+## 6.16 Dynamic forwarding with SOCKS proxy
 ```bash
 ssh -D 1080 user@bastion
 ```
 
 This creates a SOCKS proxy for tunneling application traffic.
 
-## 5.17 `ProxyJump`
-
+## 6.17 `ProxyJump`
 `ProxyJump` simplifies bastion-based access.
 
 Example command:
@@ -265,8 +246,7 @@ Host app01
     ProxyJump admin@bastion.example.com
 ```
 
-## 5.18 `ProxyCommand`
-
+## 6.18 `ProxyCommand`
 Legacy but sometimes useful for custom transports.
 
 Example:
@@ -277,16 +257,14 @@ Host internal
     ProxyCommand ssh -W %h:%p bastion.example.com
 ```
 
-## 5.19 Copy files with `scp`
-
+## 6.19 Copy files with `scp`
 ```bash
 scp file.txt user@server:/tmp/
 scp user@server:/var/log/app.log .
 scp -r ./site/ user@server:/var/www/html/
 ```
 
-## 5.20 Transfer files with `sftp`
-
+## 6.20 Transfer files with `sftp`
 ```bash
 sftp user@server
 ```
@@ -300,8 +278,7 @@ Useful commands inside `sftp`:
 - `lcd`
 - `mkdir`
 
-## 5.21 `rsync` over SSH
-
+## 6.21 `rsync` over SSH
 ```bash
 rsync -avz -e ssh ./site/ user@server:/var/www/html/
 rsync -avz -e "ssh -i ~/.ssh/id_ed25519" ./backup/ user@server:/srv/backup/
@@ -313,8 +290,7 @@ Why `rsync` is excellent:
 - Preserves metadata
 - Efficient over slow links
 
-## 5.22 Restrict SSH access
-
+## 6.22 Restrict SSH access
 Techniques:
 
 - Disable root login
@@ -324,8 +300,7 @@ Techniques:
 - Use firewalls to restrict source IPs
 - Use MFA or SSO when available
 
-## 5.23 Testing SSH server config safely
-
+## 6.23 Testing SSH server config safely
 ```bash
 sudo sshd -t
 sudo systemctl reload sshd
@@ -335,8 +310,7 @@ Prefer reload over restart when safe.
 
 Keep an existing session open while validating new config.
 
-## 5.24 SSH keepalive settings
-
+## 6.24 SSH keepalive settings
 Client side example:
 
 ```conf
@@ -352,8 +326,7 @@ ClientAliveInterval 300
 ClientAliveCountMax 2
 ```
 
-## 5.25 Common SSH troubleshooting
-
+## 6.25 Common SSH troubleshooting
 | Symptom | Likely Cause |
 |---|---|
 | Connection refused | `sshd` not listening or firewall blocked |
@@ -362,8 +335,7 @@ ClientAliveCountMax 2
 | Connection timed out | Routing, firewall, security group, or host down |
 | No matching host key type | Old client/server crypto mismatch |
 
-## 5.26 Useful SSH debug options
-
+## 6.26 Useful SSH debug options
 ```bash
 ssh -v user@server
 ssh -vv user@server
@@ -377,8 +349,7 @@ sudo journalctl -u sshd
 sudo tail -f /var/log/auth.log
 ```
 
-## 5.27 Authorized key restrictions
-
+## 6.27 Authorized key restrictions
 In `authorized_keys`, you can restrict behavior.
 
 Example:
@@ -389,8 +360,7 @@ from="192.168.10.0/24",command="/usr/local/bin/backup.sh",no-port-forwarding ssh
 
 This is useful for automation keys.
 
-## 5.28 Agent forwarding
-
+## 6.28 Agent forwarding
 Enable only when necessary.
 
 Example:
@@ -405,8 +375,7 @@ Risk:
 
 Prefer `ProxyJump` over agent forwarding when possible.
 
-## 5.29 SSH multiplexing
-
+## 6.29 SSH multiplexing
 Client config example:
 
 ```conf
@@ -418,8 +387,7 @@ Host *
 
 This speeds up repeated SSH and SCP commands.
 
-## 5.30 SSH best practices
-
+## 6.30 SSH best practices
 - Use Ed25519 keys.
 - Use strong passphrases.
 - Disable password authentication on servers.
@@ -428,14 +396,12 @@ This speeds up repeated SSH and SCP commands.
 - Rotate keys when staff changes.
 - Use bastions for privileged environments.
 
-## 5.31 Summary
-
+## 6.31 Summary
 SSH is both a remote shell and a secure transport platform. Mastering authentication, configuration, and tunneling makes Linux administration safer and more efficient.
 
 ---
 
-## 12.1 Set up a jump host to access production servers
-
+## 6.1 Set up a jump host to access production servers
 Objective:
 
 - Keep application servers off the public Internet
@@ -480,8 +446,7 @@ Hardening steps:
 
 ---
 
-## 12.7 Expose a local development service safely to a remote tester
-
+## 6.7 Expose a local development service safely to a remote tester
 Preferred method:
 
 - Use SSH remote forwarding rather than opening inbound firewall holes broadly

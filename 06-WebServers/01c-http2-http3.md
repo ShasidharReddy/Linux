@@ -11,7 +11,13 @@ How a request reaches the server and how newer protocol versions improve transpo
 A browser does much more than “send a GET request”.
 
 ### 📸 HTTP Request-Response Cycle
-![HTTP Request Response](https://upload.wikimedia.org/wikipedia/commons/0/09/HTTP-request-response.png)
+```mermaid
+sequenceDiagram
+    participant C as Client
+    participant S as Server
+    C->>S: HTTP Request (GET /index.html)
+    S-->>C: HTTP Response (200 OK + HTML)
+```
 > *Source: Wikimedia Commons — HTTP request-response model*
 
 A real page load is a chain of dependent events.
@@ -290,7 +296,17 @@ Think in layers.
 Each new version tried to reduce latency and improve efficiency.
 
 ### 📸 HTTP/1.1 vs HTTP/2 Multiplexing
-![HTTP2 Multiplexing](https://upload.wikimedia.org/wikipedia/commons/0/09/HTTP_1.1_vs._HTTP_2.svg)
+```mermaid
+graph LR
+    subgraph "HTTP/1.1 — Sequential"
+        A1[Request 1] --> A2[Response 1]
+        A2 --> A3[Request 2]
+        A3 --> A4[Response 2]
+    end
+    subgraph "HTTP/2 — Multiplexed"
+        B1[Stream 1 + Stream 2 + Stream 3] --> B2[All responses interleaved]
+    end
+```
 > *Source: Wikimedia Commons — HTTP/1.1 sequential vs HTTP/2 multiplexed requests*
 
 ```mermaid

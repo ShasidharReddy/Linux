@@ -1,8 +1,8 @@
-# 14. SSH — Secure Shell
+# 12. SSH — Secure Shell
 
 SSH (Secure Shell) commonly uses ed25519 (Edwards-curve Digital Signature Algorithm using Curve25519 — named after mathematician Harold Edwards; the curve was designed by Daniel J. Bernstein using a 255-bit prime. It's fast, secure, and produces compact 256-bit keys), RSA (Rivest–Shamir–Adleman — named after its creators Ron Rivest, Adi Shamir, and Leonard Adleman, 1977. Based on the difficulty of factoring large prime numbers), and ECDSA (Elliptic Curve Digital Signature Algorithm) key types, plus MFA (Multi-Factor Authentication) where extra login verification is required.
 
-## 14.1 What is SSH?
+## 12.1 What is SSH?
 SSH stands for Secure Shell. It is the standard encrypted protocol for remote administration, secure command execution, port forwarding, and secure file transfer on Linux and Unix-like systems.
 Key facts:
 - SSH replaced older plaintext tools such as `telnet`, `rsh`, and `rlogin`.
@@ -22,14 +22,14 @@ Core components:
 | `ssh-agent` | Holds unlocked private keys in memory |
 | `ssh-add` | Loads keys into the agent |
 
-## 14.2 How SSH Login Works
+## 12.2 How SSH Login Works
 1. The client connects to the server on port `22` or a custom port.
 2. The server presents its host key.
 3. The client checks whether that host key is already trusted.
 4. A secure session is negotiated.
 5. The user authenticates with a password, public key, certificate, or another allowed method.
 6. The server starts a shell session or runs the requested command.
-## 14.3 How to Login to a Server
+## 12.3 How to Login to a Server
 Basic login:
 ```bash
 ssh username@server-ip
@@ -55,7 +55,7 @@ web01
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/vda2        80G   28G   49G  37% /
 ```
-## 14.4 First-Time Connection and `known_hosts`
+## 12.4 First-Time Connection and `known_hosts`
 The first time you connect, SSH asks whether you trust the host key. That fingerprint must be verified through a trusted channel before you accept it in production.
 Example prompt:
 ```text
@@ -70,7 +70,7 @@ ssh-keyscan -t ed25519 web01.example.com | ssh-keygen -lf -
 ssh-keygen -R web01.example.com
 ssh-keyscan -H web01.example.com >> ~/.ssh/known_hosts
 ```
-## 14.5 SSH Key Setup (Step-by-Step)
+## 12.5 SSH Key Setup (Step-by-Step)
 ### Step 1: Generate a key pair
 Recommended:
 ```bash
@@ -145,7 +145,7 @@ debug1: Offering public key: /home/user/.ssh/id_ed25519 ED25519
 debug1: Server accepts key: /home/user/.ssh/id_ed25519 ED25519
 debug1: Authentication succeeded (publickey).
 ```
-## 14.6 SSH Config File (`~/.ssh/config`)
+## 12.6 SSH Config File (`~/.ssh/config`)
 A client config file eliminates repeated usernames, ports, keys, and tunnel definitions.
 Minimal example:
 ```sshconfig
@@ -203,7 +203,7 @@ Connect through a bastion without a config file:
 ```bash
 ssh -J ops@203.0.113.20 admin@10.10.20.15
 ```
-## 14.7 SSH Server Configuration (`/etc/ssh/sshd_config`)
+## 12.7 SSH Server Configuration (`/etc/ssh/sshd_config`)
 Production servers should use explicit settings rather than relying only on defaults.
 Example hardened configuration:
 ```sshconfig
@@ -247,7 +247,7 @@ sudo systemctl restart ssh
 sudo systemctl status sshd --no-pager
 ```
 On Debian or Ubuntu, the service name is often `ssh`. Always keep one existing session open while testing changes so you do not lock yourself out.
-## 14.8 SSH Agent
+## 12.8 SSH Agent
 `ssh-agent` stores unlocked keys in memory so you can enter the passphrase once and reuse the key.
 Commands:
 ```bash
@@ -260,13 +260,13 @@ Typical output from the first command:
 ```text
 Agent pid 2487
 ```
-## 14.9 Agent Forwarding
+## 12.9 Agent Forwarding
 Agent forwarding lets a remote host use your local agent for onward connections.
 ```bash
 ssh -A bastion
 ```
 This is convenient, but use it carefully. A compromised intermediate host may ask your forwarded agent to authenticate while your session is active. Prefer `ProxyJump`, dedicated per-environment keys, or short-lived certificates when possible.
-## 14.10 SCP, SFTP, and `rsync` over SSH
+## 12.10 SCP, SFTP, and `rsync` over SSH
 Copy a file to a remote host:
 ```bash
 scp backup.tar.gz user@server:/path/
@@ -301,7 +301,7 @@ rsync -avz -e ssh source/ user@server:/dest/
 rsync -avz --delete --dry-run -e ssh ./release/ deploy@web01.example.com:/srv/www/release/
 rsync -avz -e "ssh -i ~/.ssh/prod-deploy-ed25519" ./release/ deploy@web01.example.com:/srv/www/release/
 ```
-## 14.11 Port Forwarding and Tunneling
+## 12.11 Port Forwarding and Tunneling
 Local port forwarding exposes a remote service on your workstation:
 ```bash
 ssh -L 8080:127.0.0.1:80 admin@web01.example.com
@@ -315,7 +315,7 @@ Dynamic forwarding creates a SOCKS proxy:
 ```bash
 ssh -D 1080 user@bastion
 ```
-## 14.12 How to Login to a Database Server
+## 12.12 How to Login to a Database Server
 A common production pattern is to SSH to the host or bastion first, then run the database client locally on that server, or create a local SSH tunnel from your workstation.
 MySQL or MariaDB directly on the DB server:
 ```bash
@@ -359,7 +359,7 @@ Redis tunnel:
 ssh -L 6379:localhost:6379 admin@redis-server
 redis-cli -h localhost
 ```
-## 14.13 SSH Security Best Practices
+## 12.13 SSH Security Best Practices
 - Disable direct root login.
 - Use Ed25519 or strong RSA keys.
 - Protect private keys with passphrases.
@@ -370,7 +370,7 @@ redis-cli -h localhost
 - Rotate keys when people or roles change.
 - Use bastion hosts for private network access.
 - Consider MFA or SSH certificates in larger environments.
-## 14.14 Common SSH Troubleshooting
+## 12.14 Common SSH Troubleshooting
 
 | Problem | Likely cause | Fix |
 |---|---|---|
@@ -388,7 +388,7 @@ sudo ss -tulpn | grep :22
 sudo firewall-cmd --list-services
 sudo ufw status verbose
 ```
-## 14.15 Mermaid: SSH Connection Flow
+## 12.15 Mermaid: SSH Connection Flow
 ```mermaid
 graph LR
     CLIENT["💻 Your Machine"] -->|"ssh -i key.pem user@server"| SSHD["🖥️ SSH Server<br/>Port 22"]

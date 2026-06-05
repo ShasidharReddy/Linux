@@ -643,10 +643,8 @@ Options:
 
 ---
 
-# 14. Extended PostgreSQL Command Cookbook
-
-## 14.1 Useful psql meta-commands
-
+# 3. Extended PostgreSQL Command Cookbook
+## 3.1 Useful psql meta-commands
 ```sql
 \l
 \du
@@ -657,16 +655,14 @@ Options:
 \timing on
 ```
 
-## 14.2 Database size reports
-
+## 3.2 Database size reports
 ```sql
 SELECT datname, pg_size_pretty(pg_database_size(datname))
 FROM pg_database
 ORDER BY pg_database_size(datname) DESC;
 ```
 
-## 14.3 Table and index size reports
-
+## 3.3 Table and index size reports
 ```sql
 SELECT schemaname,
        relname,
@@ -676,15 +672,13 @@ ORDER BY pg_total_relation_size(relid) DESC
 LIMIT 20;
 ```
 
-## 14.4 Cache hit ratio approximation
-
+## 3.4 Cache hit ratio approximation
 ```sql
 SELECT sum(blks_hit) / nullif(sum(blks_hit) + sum(blks_read), 0)::numeric AS cache_hit_ratio
 FROM pg_stat_database;
 ```
 
-## 14.5 Vacuum diagnostics
-
+## 3.5 Vacuum diagnostics
 ```sql
 SELECT relname,
        last_vacuum,
@@ -695,8 +689,7 @@ ORDER BY n_dead_tup DESC
 LIMIT 20;
 ```
 
-## 14.6 Connection pressure diagnostics
-
+## 3.6 Connection pressure diagnostics
 ```sql
 SELECT state, count(*)
 FROM pg_stat_activity
@@ -704,29 +697,25 @@ GROUP BY state
 ORDER BY count(*) DESC;
 ```
 
-## 14.7 WAL generation estimate
-
+## 3.7 WAL generation estimate
 ```sql
 SELECT pg_size_pretty(pg_wal_lsn_diff(pg_current_wal_lsn(), '0/0'));
 ```
 
-## 14.8 Replication slot review
-
+## 3.8 Replication slot review
 ```sql
 SELECT slot_name, slot_type, active, restart_lsn
 FROM pg_replication_slots;
 ```
 
-## 14.9 Postgres tuning heuristics
-
+## 3.9 Postgres tuning heuristics
 - Increase `shared_buffers` carefully.
 - Keep `work_mem` moderate due to concurrency multiplication.
 - Lower `random_page_cost` for SSD.
 - Enable `pg_stat_statements` early.
 - Use PgBouncer before raising `max_connections` too far.
 
-## 14.10 Failover checklist
-
+## 3.10 Failover checklist
 - Confirm standby health.
 - Check replay lag.
 - Promote standby.

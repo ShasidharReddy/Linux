@@ -8,8 +8,7 @@ Monitoring helps you answer four essential questions:
 - When did the issue begin?
 - Is the problem isolated or systemic?
 
-## 8.1 First-look commands
-
+## 10.1 First-look commands
 Start with these:
 
 ```bash
@@ -22,8 +21,7 @@ sar -u 1 5
 dmesg | tail -50
 ```
 
-## 8.2 Load average and uptime
-
+## 10.2 Load average and uptime
 `uptime` shows current time, system uptime, users, and load average.
 
 Example:
@@ -39,8 +37,7 @@ Rule of thumb:
 - Load below CPU count may be normal.
 - Load far above CPU count suggests contention or blocked tasks.
 
-## 8.3 Memory monitoring with free
-
+## 10.3 Memory monitoring with free
 ```bash
 free -h
 free -m
@@ -56,8 +53,7 @@ Important fields:
 Use `available` rather than raw `free` as the more useful quick indicator.
 Linux uses memory for caching aggressively.
 
-## 8.4 vmstat
-
+## 10.4 vmstat
 `vmstat` summarizes process, memory, paging, block I/O, traps, and CPU activity.
 
 Example:
@@ -82,8 +78,7 @@ Interpretation examples:
 - Non-zero continuous `si` and `so` suggests memory pressure.
 - High `wa` suggests storage wait.
 
-## 8.5 iostat
-
+## 10.5 iostat
 `iostat` from the `sysstat` package helps diagnose storage behavior.
 
 Example:
@@ -106,8 +101,7 @@ Interpretation:
 - High `await` means requests are waiting too long.
 - Compare throughput and latency together.
 
-## 8.6 sar
-
+## 10.6 sar
 `sar` provides historical performance data if enabled.
 
 Examples:
@@ -129,8 +123,7 @@ sar -r -f /var/log/sa/sa15
 
 `sar` is valuable when the issue already happened and you need history.
 
-## 8.7 mpstat
-
+## 10.7 mpstat
 `mpstat` shows per-CPU metrics.
 
 ```bash
@@ -142,8 +135,7 @@ Use it when:
 - Interrupt load is uneven.
 - NUMA or affinity issues are suspected.
 
-## 8.8 dmesg
-
+## 10.8 dmesg
 `dmesg` reads the kernel ring buffer.
 
 Examples:
@@ -161,8 +153,7 @@ Common findings:
 - Filesystem problems.
 - Hardware initialization messages.
 
-## 8.9 /proc exploration
-
+## 10.9 /proc exploration
 Quick checks:
 
 ```bash
@@ -176,8 +167,7 @@ cat /proc/vmstat | head
 
 Use `/proc` when you want raw kernel-provided counters.
 
-## 8.10 /sys exploration
-
+## 10.10 /sys exploration
 `/sys` exposes kernel device and subsystem data.
 
 Useful paths:
@@ -194,8 +184,7 @@ cat /sys/block/sda/queue/scheduler
 cat /sys/devices/system/cpu/online
 ```
 
-## 8.11 Monitoring decision tree
-
+## 10.11 Monitoring decision tree
 ```mermaid
 graph TD
     A["System feels slow"] --> B["Check load and uptime"]
@@ -210,8 +199,7 @@ graph TD
     H --> K["Investigate network, dependencies, or code path"]
 ```
 
-## 8.12 Network-adjacent monitoring quick notes
-
+## 10.12 Network-adjacent monitoring quick notes
 Although this guide is not a full networking manual, basic checks matter.
 
 Useful commands:
@@ -226,8 +214,7 @@ ping -c 4 8.8.8.8
 
 These checks help determine whether the problem is compute, storage, or network related.
 
-## 8.13 Capacity indicators to track
-
+## 10.13 Capacity indicators to track
 Track these over time:
 - CPU usage and run queue.
 - Memory available and swap activity.
@@ -238,8 +225,7 @@ Track these over time:
 - Service restart counts.
 - Log growth rates.
 
-## 8.14 Practical monitoring workflows
-
+## 10.14 Practical monitoring workflows
 Suspected memory pressure:
 
 ```bash
@@ -267,8 +253,7 @@ mpstat -P ALL 1 5
 ps -eo pid,%cpu,cmd --sort=-%cpu | head -20
 ```
 
-## 8.15 Monitoring best practices
-
+## 10.15 Monitoring best practices
 - Combine metrics with logs.
 - Keep historical data.
 - Alert on symptoms and causes.
@@ -279,8 +264,7 @@ ps -eo pid,%cpu,cmd --sort=-%cpu | head -20
 
 ---
 
-## 12.4 Incident triage checklist
-
+## 10.4 Incident triage checklist
 - Identify scope.
 - Check uptime and load.
 - Check CPU, memory, disk, and network basics.
@@ -294,8 +278,7 @@ ps -eo pid,%cpu,cmd --sort=-%cpu | head -20
 
 ---
 
-## 13.8 Monitoring commands reference
-
+## 10.8 Monitoring commands reference
 - `uptime`
 - `free -h`
 - `vmstat 1 5`

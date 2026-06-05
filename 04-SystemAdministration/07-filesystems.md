@@ -4,8 +4,7 @@
 
 Choosing the right filesystem matters for reliability, performance, scalability, and feature set.
 
-## 5.1 Common filesystem options
-
+## 7.1 Common filesystem options
 This guide focuses on:
 - ext4
 - XFS
@@ -14,8 +13,7 @@ This guide focuses on:
 - tmpfs
 - swap
 
-## 5.2 ext4
-
+## 7.2 ext4
 `ext4` is a mature, general-purpose Linux filesystem.
 
 Strengths:
@@ -60,8 +58,7 @@ Notes:
 - Reserved blocks can be useful on system volumes.
 - `tune2fs` is powerful and should be used carefully.
 
-## 5.3 XFS
-
+## 7.3 XFS
 `XFS` is a high-performance filesystem widely used in enterprise Linux.
 
 Strengths:
@@ -98,8 +95,7 @@ Common use cases:
 - Large LVM-backed volumes.
 - Enterprise servers with predictable growth only in the upward direction.
 
-## 5.4 Btrfs
-
+## 7.4 Btrfs
 `Btrfs` is a modern copy-on-write filesystem with advanced features.
 
 Features:
@@ -134,8 +130,7 @@ When to be cautious:
 - If your team lacks operational experience.
 - If vendor support policy limits filesystem choice.
 
-## 5.5 ZFS
-
+## 7.5 ZFS
 ZFS combines a filesystem and volume manager.
 It is feature-rich and highly respected for integrity-focused storage.
 
@@ -167,8 +162,7 @@ When to be cautious:
 - Operational complexity.
 - Distribution support expectations.
 
-## 5.6 tmpfs
-
+## 7.6 tmpfs
 `tmpfs` is a memory-backed filesystem.
 It can also use swap.
 
@@ -192,8 +186,7 @@ tmpfs /run/mycache tmpfs defaults,size=512M 0 0
 
 Be careful not to over-allocate memory-backed mounts.
 
-## 5.7 swap as virtual memory backing
-
+## 7.7 swap as virtual memory backing
 Swap is not a regular filesystem for user data.
 It is used by the kernel for memory management.
 
@@ -205,8 +198,7 @@ Use cases:
 Do not rely on swap to fix undersized systems.
 It is a safety margin, not a substitute for RAM.
 
-## 5.8 When to use which filesystem
-
+## 7.8 When to use which filesystem
 | Filesystem | Best for | Key strengths | Key cautions |
 |---|---|---|---|
 | ext4 | General-purpose servers | Stable, mature, easy recovery | Fewer modern features than Btrfs or ZFS |
@@ -216,8 +208,7 @@ It is a safety margin, not a substitute for RAM.
 | tmpfs | Temporary memory-backed data | Very fast | Consumes RAM and swap |
 | swap | Virtual memory | Helps with spikes | Slow compared to RAM |
 
-## 5.9 mkfs overview
-
+## 7.9 mkfs overview
 Common filesystem creation commands:
 
 ```bash
@@ -231,8 +222,7 @@ Warning:
 These commands destroy existing filesystem data on the target.
 Always verify the device first.
 
-## 5.10 fsck basics
-
+## 7.10 fsck basics
 `fsck` checks and repairs filesystems, usually while unmounted.
 
 Examples:
@@ -246,8 +236,7 @@ Notes:
 - Do not run generic `fsck` blindly on mounted filesystems unless the specific filesystem and scenario support it.
 - XFS uses `xfs_repair` rather than classic `fsck` repair logic.
 
-## 5.11 Tune and maintenance utilities
-
+## 7.11 Tune and maintenance utilities
 For ext-family:
 
 ```bash
@@ -275,8 +264,7 @@ sudo zpool scrub pool1
 sudo zpool status
 ```
 
-## 5.12 Mount options matter
-
+## 7.12 Mount options matter
 Common mount options:
 - `defaults`
 - `noatime`
@@ -296,8 +284,7 @@ UUID=3333-4444 /tmp ext4 defaults,nodev,nosuid,noexec 0 2
 
 Security and performance both depend on mount options.
 
-## 5.13 Filesystem troubleshooting
-
+## 7.13 Filesystem troubleshooting
 Symptoms:
 - Slow I/O.
 - Mount failures.
@@ -323,8 +310,7 @@ If the filesystem remounts read-only:
 - Back up what you can.
 - Schedule a proper repair.
 
-## 5.14 Filesystem best practices
-
+## 7.14 Filesystem best practices
 - Use ext4 or XFS for predictable server defaults.
 - Use UUIDs in `fstab`.
 - Keep recovery tools available.
@@ -336,8 +322,7 @@ If the filesystem remounts read-only:
 
 ---
 
-## 13.5 Filesystem commands reference
-
+## 7.5 Filesystem commands reference
 - `mkfs.ext4 /dev/sdb1`
 - `mkfs.xfs /dev/sdb1`
 - `mkfs.btrfs /dev/sdb1`

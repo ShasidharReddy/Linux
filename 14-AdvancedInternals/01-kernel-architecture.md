@@ -185,7 +185,6 @@ The Linux source tree is large but methodical.
 | `security/` | Linux Security Modules |
 | `sound/` | Audio stack |
 | `tools/` | User-space tools such as perf and bpftool |
-|
 
 ## 1.11 Kernel Build Artifacts
 

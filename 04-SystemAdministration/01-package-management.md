@@ -524,8 +524,7 @@ Use AppImage when:
 
 ---
 
-## 12.5 Patch window checklist
-
+## 1.5 Patch window checklist
 - Confirm maintenance window.
 - Confirm backups.
 - Review pending updates.
@@ -539,8 +538,7 @@ Use AppImage when:
 
 ---
 
-## 13.1 Package commands reference
-
+## 1.1 Package commands reference
 ### Debian and Ubuntu
 - `apt update`
 - `apt upgrade`

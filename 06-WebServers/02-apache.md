@@ -692,8 +692,7 @@ ss -tulpn | grep ':80\|:443'
 
 ---
 
-### 12.2 New Apache Site Checklist
-
+### 2.2 New Apache Site Checklist
 - Create document root
 - Create vhost config
 - Set `ServerName`
@@ -705,8 +704,7 @@ ss -tulpn | grep ':80\|:443'
 - Reload service
 - Validate HTTP and HTTPS
 
-### 13.2 Apache Troubleshooting
-
+### 2.2 Apache Troubleshooting
 ```bash
 apachectl configtest
 apachectl -S
@@ -722,8 +720,7 @@ Look for:
 - Permission or SELinux issues
 - Backend connection failures
 
-### 15.2 Scenario: PHP App on Apache with PHP-FPM
-
+### 2.2 Scenario: PHP App on Apache with PHP-FPM
 Requirements:
 
 - Legacy app
@@ -758,8 +755,7 @@ Example:
 </VirtualHost>
 ```
 
-### 19.2 Apache Reinforcement
-
+### 2.2 Apache Reinforcement
 - Apache excels at flexibility.
 - Apache can serve static content and proxy dynamic apps.
 - `mod_rewrite` is powerful but can become hard to maintain.
@@ -776,8 +772,7 @@ Example:
 - Avoid revealing server version details.
 - Validate TLS chain after certificate renewals.
 
-### 20.1 Apache Commands
-
+### 2.1 Apache Commands
 ```bash
 apachectl -V
 apachectl -M
@@ -786,16 +781,14 @@ apachectl configtest
 systemctl reload apache2
 ```
 
-### 22.1 Validate Apache
-
+### 2.1 Validate Apache
 ```bash
 apachectl configtest
 apachectl -S
 curl -H 'Host: example.com' http://127.0.0.1/
 ```
 
-### 24.2 Apache Redirect Canonical Host
-
+### 2.2 Apache Redirect Canonical Host
 ```apache
 <VirtualHost *:80>
     ServerName example.com
@@ -803,23 +796,20 @@ curl -H 'Host: example.com' http://127.0.0.1/
 </VirtualHost>
 ```
 
-### 24.4 Apache Deny by Default for Sensitive Path
-
+### 2.4 Apache Deny by Default for Sensitive Path
 ```apache
 <Directory /var/www/example.com/private>
     Require all denied
 </Directory>
 ```
 
-### 24.6 Apache Custom Error Pages
-
+### 2.6 Apache Custom Error Pages
 ```apache
 ErrorDocument 404 /404.html
 ErrorDocument 500 /50x.html
 ```
 
-### 24.8 Apache Request Body Limit
-
+### 2.8 Apache Request Body Limit
 ```apache
 LimitRequestBody 20971520
 ```

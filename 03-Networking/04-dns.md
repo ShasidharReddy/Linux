@@ -5,8 +5,7 @@
 
 DNS is one of the most critical services in Linux networking. Many “network problems” are actually DNS problems.
 
-## 3.1 What DNS does
-
+## 4.1 What DNS does
 DNS translates names into data such as:
 
 - A records for IPv4
@@ -18,8 +17,7 @@ DNS translates names into data such as:
 - PTR reverse lookup
 - SRV service discovery
 
-## 3.2 Name resolution components on Linux
-
+## 4.2 Name resolution components on Linux
 Important files and services:
 
 - `/etc/resolv.conf`
@@ -30,8 +28,7 @@ Important files and services:
 - Recursive resolvers
 - Authoritative DNS servers
 
-## 3.3 `/etc/resolv.conf`
-
+## 4.3 `/etc/resolv.conf`
 This file defines resolver behavior for many programs.
 
 Common entries:
@@ -43,8 +40,7 @@ search example.com corp.example.com
 options timeout:2 attempts:3 rotate
 ```
 
-### 3.3.1 Key directives
-
+### 4.3.1 Key directives
 | Directive | Meaning |
 |---|---|
 | `nameserver` | DNS server to query |
@@ -52,8 +48,7 @@ options timeout:2 attempts:3 rotate
 | `domain` | Default local domain |
 | `options` | Resolver behavior tuning |
 
-### 3.3.2 Common caveat
-
+### 4.3.2 Common caveat
 `/etc/resolv.conf` may be managed automatically by:
 
 - NetworkManager
@@ -63,8 +58,7 @@ options timeout:2 attempts:3 rotate
 
 Always verify ownership before editing.
 
-## 3.4 `/etc/hosts`
-
+## 4.4 `/etc/hosts`
 This file provides static name-to-address mappings.
 
 Example:
@@ -83,8 +77,7 @@ Use `/etc/hosts` for:
 
 Avoid relying on it for large-scale dynamic infrastructure.
 
-## 3.5 `/etc/nsswitch.conf`
-
+## 4.5 `/etc/nsswitch.conf`
 This file controls lookup order.
 
 Typical example:
@@ -99,8 +92,7 @@ Meaning:
 2. Query DNS
 3. Use local hostname plugin if applicable
 
-## 3.6 DNS resolution flow Mermaid diagram
-
+## 4.6 DNS resolution flow Mermaid diagram
 ### 📸 DNS Resolution Process
 ![DNS Resolution](https://upload.wikimedia.org/wikipedia/commons/a/a5/Example_of_an_iterative_DNS_resolver.svg)
 > *Source: Wikimedia Commons — Iterative DNS resolution*
@@ -123,44 +115,37 @@ graph TD
     J --> K["Application connects<br/>to resolved IP"]
 ```
 
-## 3.7 `dig`
-
+## 4.7 `dig`
 `dig` is the preferred DNS query tool.
 
-### 3.7.1 Query A record
-
+### 4.7.1 Query A record
 ```bash
 dig example.com
 ```
 
-### 3.7.2 Query specific server
-
+### 4.7.2 Query specific server
 ```bash
 dig @1.1.1.1 example.com
 ```
 
-### 3.7.3 Query record type
-
+### 4.7.3 Query record type
 ```bash
 dig example.com MX
 dig example.com AAAA
 dig -x 8.8.8.8
 ```
 
-### 3.7.4 Short output
-
+### 4.7.4 Short output
 ```bash
 dig +short example.com
 ```
 
-### 3.7.5 Trace delegation
-
+### 4.7.5 Trace delegation
 ```bash
 dig +trace example.com
 ```
 
-## 3.8 `nslookup`
-
+## 4.8 `nslookup`
 Still widely used, though `dig` is usually more detailed.
 
 Examples:
@@ -170,8 +155,7 @@ nslookup example.com
 nslookup example.com 8.8.8.8
 ```
 
-## 3.9 `host`
-
+## 4.9 `host`
 Simple and concise DNS lookup tool.
 
 Examples:
@@ -182,8 +166,7 @@ host 8.8.8.8
 host -t MX example.com
 ```
 
-## 3.10 Resolver testing workflow
-
+## 4.10 Resolver testing workflow
 Check in this order:
 
 1. `/etc/nsswitch.conf`
@@ -193,8 +176,7 @@ Check in this order:
 5. DNS server reachability
 6. Authoritative answer correctness
 
-## 3.11 `systemd-resolved`
-
+## 4.11 `systemd-resolved`
 Many modern distributions use `systemd-resolved`.
 
 Useful commands:
@@ -205,8 +187,7 @@ resolvectl status
 resolvectl query example.com
 ```
 
-### 3.11.1 Stub resolver behavior
-
+### 4.11.1 Stub resolver behavior
 `/etc/resolv.conf` may point to:
 
 ```text
@@ -215,14 +196,12 @@ resolvectl query example.com
 
 This is the local stub resolver provided by `systemd-resolved`.
 
-### 3.11.2 Flush DNS cache
-
+### 4.11.2 Flush DNS cache
 ```bash
 sudo resolvectl flush-caches
 ```
 
-## 3.12 Common DNS record types
-
+## 4.12 Common DNS record types
 | Record | Purpose | Example |
 |---|---|---|
 | A | IPv4 address | `web.example.com -> 192.0.2.10` |
@@ -234,8 +213,7 @@ sudo resolvectl flush-caches
 | TXT | Arbitrary text | SPF, DKIM, verification |
 | SRV | Service discovery | `_ldap._tcp.example.com` |
 
-## 3.13 Forward vs reverse DNS
-
+## 4.13 Forward vs reverse DNS
 Forward DNS:
 
 - Name to IP
@@ -251,14 +229,12 @@ Reverse lookups are commonly important for:
 - Monitoring
 - Identity checks
 
-## 3.14 Search domains and short names
-
+## 4.14 Search domains and short names
 If `search example.com` is configured, querying `web01` may expand to `web01.example.com`.
 
 This can be convenient but can also cause confusing delays or misresolutions in multi-domain environments.
 
-## 3.15 Split DNS
-
+## 4.15 Split DNS
 Split DNS returns different answers depending on client location or view.
 
 Examples:
@@ -272,8 +248,7 @@ Useful for:
 - Hybrid cloud
 - VPN users
 
-## 3.16 Caching and TTL
-
+## 4.16 Caching and TTL
 TTL defines how long a response may be cached.
 
 Short TTL:
@@ -286,8 +261,7 @@ Long TTL:
 - Better cache efficiency
 - Slower propagation of changes
 
-## 3.17 Diagnosing DNS failures
-
+## 4.17 Diagnosing DNS failures
 Symptoms:
 
 - `ping 8.8.8.8` works but `ping example.com` fails
@@ -304,8 +278,7 @@ cat /etc/resolv.conf
 cat /etc/nsswitch.conf
 ```
 
-## 3.18 BIND overview
-
+## 4.18 BIND overview
 BIND is a common DNS server implementation.
 
 Packages often include:
@@ -315,8 +288,7 @@ Packages often include:
 - `named`
 - `bind-utils`
 
-## 3.19 BIND configuration files
-
+## 4.19 BIND configuration files
 Typical paths vary by distro.
 
 Common files:
@@ -327,8 +299,7 @@ Common files:
 - `/etc/bind/named.conf.local`
 - Zone files under `/var/named/` or `/etc/bind/`
 
-## 3.20 Minimal BIND caching resolver example
-
+## 4.20 Minimal BIND caching resolver example
 Example excerpt:
 
 ```conf
@@ -345,8 +316,7 @@ options {
 };
 ```
 
-## 3.21 BIND authoritative zone example
-
+## 4.21 BIND authoritative zone example
 Zone declaration:
 
 ```conf
@@ -374,15 +344,13 @@ mail IN A   192.168.10.40
 @   IN  MX  10 mail.example.com.
 ```
 
-## 3.22 Validate BIND configuration
-
+## 4.22 Validate BIND configuration
 ```bash
 sudo named-checkconf
 sudo named-checkzone example.com /var/named/example.com.zone
 ```
 
-## 3.23 Start and enable BIND
-
+## 4.23 Start and enable BIND
 ```bash
 sudo systemctl enable --now named
 sudo systemctl status named
@@ -395,8 +363,7 @@ sudo systemctl enable --now bind9
 sudo systemctl status bind9
 ```
 
-## 3.24 DNS over UDP and TCP
-
+## 4.24 DNS over UDP and TCP
 DNS commonly uses UDP/53.
 
 It can also use TCP/53 for:
@@ -405,8 +372,7 @@ It can also use TCP/53 for:
 - Large responses
 - Fallback when truncation occurs
 
-## 3.25 EDNS and larger responses
-
+## 4.25 EDNS and larger responses
 Modern DNS often relies on EDNS to handle larger payloads.
 
 Watch for:
@@ -415,8 +381,7 @@ Watch for:
 - Misbehaving middleboxes
 - MTU issues on VPNs
 
-## 3.26 `/etc/hosts` vs DNS
-
+## 4.26 `/etc/hosts` vs DNS
 | Feature | `/etc/hosts` | DNS |
 |---|---|---|
 | Scale | Very small | Large-scale |
@@ -425,8 +390,7 @@ Watch for:
 | Reverse lookup | Manual and limited | Standardized |
 | Good for bootstrap | Yes | Yes |
 
-## 3.27 `getent` is your friend
-
+## 4.27 `getent` is your friend
 `getent` respects NSS configuration.
 
 Examples:
@@ -439,16 +403,14 @@ getent passwd root
 
 This is often better than assuming a program uses raw DNS directly.
 
-## 3.28 DNS security basics
-
+## 4.28 DNS security basics
 - Restrict recursion on public resolvers.
 - Use DNSSEC validation where appropriate.
 - Limit zone transfer access.
 - Avoid open resolvers.
 - Log query rates and anomalies.
 
-## 3.29 Common DNS issues
-
+## 4.29 Common DNS issues
 - Stale cache
 - Wrong search domain
 - Missing PTR record
@@ -886,8 +848,7 @@ sudo rndc flush
 - Tested forward and reverse records
 - Backup and recovery procedure for zone data
 
-## 3.30 Summary
-
+## 4.30 Summary
 Good DNS hygiene is essential. Before blaming the network, verify resolver order, local files, and the actual authoritative answer.
 
 ---
@@ -906,8 +867,7 @@ resolvectl status
 
 ---
 
-## 12.3 Set up DNS server for an internal domain
-
+## 4.3 Set up DNS server for an internal domain
 Objective:
 
 - Serve `corp.example.internal`
@@ -932,8 +892,7 @@ getent hosts app1.corp.example.internal
 
 ---
 
-## 12.10 Troubleshoot: DNS works with `dig` but applications still fail
-
+## 4.10 Troubleshoot: DNS works with `dig` but applications still fail
 This usually means the application is not using raw DNS in the same way you are testing.
 
 Workflow:

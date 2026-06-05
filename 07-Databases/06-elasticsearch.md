@@ -291,10 +291,8 @@ graph TD
 
 ---
 
-# 17. Extended Elasticsearch Operations Guide
-
-## 17.1 Cat APIs
-
+# 6. Extended Elasticsearch Operations Guide
+## 6.1 Cat APIs
 ```bash
 curl -u elastic:password -k https://localhost:9200/_cat/health?v
 curl -u elastic:password -k https://localhost:9200/_cat/nodes?v
@@ -302,16 +300,14 @@ curl -u elastic:password -k https://localhost:9200/_cat/shards?v
 curl -u elastic:password -k https://localhost:9200/_cat/indices?v
 ```
 
-## 17.2 Shard sizing guidance
-
+## 6.2 Shard sizing guidance
 General advice:
 
 - Avoid many tiny shards.
 - Avoid oversized shards that slow relocation and recovery.
 - Align shard count with node count and growth patterns.
 
-## 17.3 Bulk indexing example
-
+## 6.3 Bulk indexing example
 ```bash
 curl -u elastic:password -k -X POST https://localhost:9200/_bulk -H 'Content-Type: application/x-ndjson' -d '
 { "index": { "_index": "products", "_id": "1" } }
@@ -321,34 +317,29 @@ curl -u elastic:password -k -X POST https://localhost:9200/_bulk -H 'Content-Typ
 '
 ```
 
-## 17.4 Search performance tips
-
+## 6.4 Search performance tips
 - Use keyword fields for exact filters and aggregations.
 - Avoid expensive wildcard queries on large text fields.
 - Use index templates for consistent mappings.
 - Tune refresh interval during heavy ingestion.
 
-## 17.5 Snapshot policy ideas
-
+## 6.5 Snapshot policy ideas
 - Hourly snapshots for critical search platforms if RPO requires it.
 - Daily retention tiers for older snapshots.
 - Replicate snapshot repositories across regions when needed.
 
-## 17.6 Recovery considerations
-
+## 6.6 Recovery considerations
 - Snapshot restore is preferred for disaster recovery.
 - Reindex from source systems may be viable for derived search data.
 - Maintain mapping templates in version control.
 
-## 17.7 JVM and GC notes
-
+## 6.7 JVM and GC notes
 - Monitor old generation pressure.
 - Avoid swap.
 - Right-size heap and keep room for filesystem cache.
 - Review long GC pauses during incidents.
 
-## 17.8 Index template example
-
+## 6.8 Index template example
 ```bash
 curl -u elastic:password -k -X PUT https://localhost:9200/_index_template/logs-template -H 'Content-Type: application/json' -d '
 {
@@ -369,15 +360,13 @@ curl -u elastic:password -k -X PUT https://localhost:9200/_index_template/logs-t
 }'
 ```
 
-## 17.9 Common pitfalls
-
+## 6.9 Common pitfalls
 - Treating Elasticsearch as primary source of truth for transactional data.
 - Dynamic mappings exploding field counts.
 - Oversharding small clusters.
 - Ignoring snapshot restore tests.
 
-## 17.10 Rolling restart basics
-
+## 6.10 Rolling restart basics
 - Disable shard allocation if appropriate.
 - Restart one node at a time.
 - Wait for cluster to stabilize.

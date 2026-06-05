@@ -246,10 +246,8 @@ Real-world container architecture succeeds when responsibilities are separated c
 
 ---
 
-# 15. Further Reading & Practice Plan
-
-## 15.1 Suggested Learning Sequence
-
+# 12. Further Reading & Practice Plan
+## 12.1 Suggested Learning Sequence
 1. Run simple containers
 2. Build your own image
 3. Learn Dockerfile optimization
@@ -260,8 +258,7 @@ Real-world container architecture succeeds when responsibilities are separated c
 8. Explore rootless runtimes and Podman
 9. Learn orchestration basics with Swarm or Kubernetes
 
-## 15.2 Hands-On Labs
-
+## 12.2 Hands-On Labs
 ### Lab 1: Run NGINX
 
 ```bash
@@ -319,8 +316,7 @@ docker inspect <name>
 docker exec -it <name> sh
 ```
 
-## 15.3 Final Recommendations
-
+## 12.3 Final Recommendations
 - Learn the kernel primitives, not only the Docker commands
 - Keep images small and explicit
 - Treat runtime config and secrets carefully
@@ -328,8 +324,7 @@ docker exec -it <name> sh
 - Make health, logging, and graceful shutdown part of the design
 - Think about supply chain trust early
 
-## 15.4 Closing Summary
-
+## 12.4 Closing Summary
 Containers are one of the most important operational abstractions in modern software delivery.
 Mastering them means understanding both the developer workflow and the Linux primitives beneath it.
 With Docker, good Dockerfiles, disciplined networking/storage practices, and layered security, you can build portable and production-ready containerized systems.

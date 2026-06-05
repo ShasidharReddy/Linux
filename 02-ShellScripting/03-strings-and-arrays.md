@@ -283,10 +283,8 @@ Key points:
 
 ---
 
-## 4. Arrays
-
-### 4.1 Overview
-
+## 3. Arrays
+### 3.1 Overview
 Arrays are Bash features.
 
 POSIX `sh` does not support arrays the same way.
@@ -296,8 +294,7 @@ There are two main Bash array types:
 - Indexed arrays
 - Associative arrays
 
-### 4.2 Indexed Arrays
-
+### 3.2 Indexed Arrays
 ```bash
 fruits=(apple banana cherry)
 ```
@@ -308,22 +305,19 @@ Access an item:
 echo "${fruits[0]}"
 ```
 
-### 4.3 Explicit Index Assignment
-
+### 3.3 Explicit Index Assignment
 ```bash
 fruits[0]="apple"
 fruits[1]="banana"
 fruits[2]="cherry"
 ```
 
-### 4.4 All Elements
-
+### 3.4 All Elements
 ```bash
 echo "${fruits[@]}"
 ```
 
-### 4.5 Array Length
-
+### 3.5 Array Length
 Number of elements:
 
 ```bash
@@ -336,51 +330,44 @@ Length of a single element:
 echo "${#fruits[0]}"
 ```
 
-### 4.6 Append to Array
-
+### 3.6 Append to Array
 ```bash
 fruits+=(orange)
 ```
 
-### 4.7 Iterate Over Array
-
+### 3.7 Iterate Over Array
 ```bash
 for fruit in "${fruits[@]}"; do
   echo "$fruit"
 done
 ```
 
-### 4.8 Iterate Over Indexes
-
+### 3.8 Iterate Over Indexes
 ```bash
 for i in "${!fruits[@]}"; do
   echo "$i -> ${fruits[i]}"
 done
 ```
 
-### 4.9 Delete an Element
-
+### 3.9 Delete an Element
 ```bash
 unset 'fruits[1]'
 ```
 
 Note that this leaves a gap in indexes.
 
-### 4.10 Rebuild Dense Array
-
+### 3.10 Rebuild Dense Array
 ```bash
 fruits=("${fruits[@]}")
 ```
 
-### 4.11 Slice an Array
-
+### 3.11 Slice an Array
 ```bash
 numbers=(10 20 30 40 50)
 echo "${numbers[@]:1:3}"
 ```
 
-### 4.12 Read Command Output into Array
-
+### 3.12 Read Command Output into Array
 Preferred with `mapfile` or `readarray`:
 
 ```bash
@@ -393,8 +380,7 @@ Or from command output:
 mapfile -t services < <(systemctl list-units --type=service --no-legend | awk '{print $1}')
 ```
 
-### 4.13 Associative Arrays
-
+### 3.13 Associative Arrays
 Declare first:
 
 ```bash
@@ -414,37 +400,32 @@ Access:
 echo "${ages[alice]}"
 ```
 
-### 4.14 Iterate Associative Array Keys
-
+### 3.14 Iterate Associative Array Keys
 ```bash
 for key in "${!ages[@]}"; do
   echo "$key -> ${ages[$key]}"
 done
 ```
 
-### 4.15 Test If Key Exists
-
+### 3.15 Test If Key Exists
 ```bash
 if [[ -v 'ages[alice]' ]]; then
   echo "Key exists"
 fi
 ```
 
-### 4.16 Array from Positional Parameters
-
+### 3.16 Array from Positional Parameters
 ```bash
 args=("$@")
 ```
 
-### 4.17 Difference Between `${array[*]}` and `${array[@]}`
-
+### 3.17 Difference Between `${array[*]}` and `${array[@]}`
 Quoted:
 
 - `"${array[@]}"` preserves elements separately
 - `"${array[*]}"` joins elements into one string using `IFS`
 
-### 4.18 Array Example Script
-
+### 3.18 Array Example Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -455,8 +436,7 @@ for server in "${servers[@]}"; do
 done
 ```
 
-### 4.19 Common Array Operations Table
-
+### 3.19 Common Array Operations Table
 | Operation | Example |
 | --- | --- |
 | Create indexed array | `items=(a b c)` |
@@ -468,8 +448,7 @@ done
 | Declare associative | `declare -A map` |
 | Access map value | `${map[key]}` |
 
-### 4.20 Reading File into Array Safely
-
+### 3.20 Reading File into Array Safely
 ```bash
 mapfile -t users < users.txt
 for user in "${users[@]}"; do
@@ -477,14 +456,12 @@ for user in "${users[@]}"; do
 done
 ```
 
-### 4.21 Pitfalls
-
+### 3.21 Pitfalls
 - Arrays are Bash-specific
 - Unquoted array expansions can split unexpectedly
 - Sparse indexes may surprise you
 
-### 4.22 Section Summary
-
+### 3.22 Section Summary
 Arrays help manage grouped data cleanly in Bash.
 
 ---

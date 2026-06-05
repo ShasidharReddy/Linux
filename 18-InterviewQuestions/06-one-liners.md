@@ -27,8 +27,7 @@ pie showData
 
 This guide contains **248** categorized one-liners.
 
-## 1. File Management (16)
-
+## 6. File Management (16)
 **1. Find all files larger than 100MB** → `find / -type f -size +100M 2>/dev/null`
 **2. Find all empty files under a path** → `find /path -type f -empty`
 **3. Find all empty directories** → `find /path -type d -empty`
@@ -46,8 +45,7 @@ This guide contains **248** categorized one-liners.
 **15. Compare two directory trees briefly** → `diff -qr dir1 dir2`
 **16. Show the detected type of every file in a directory** → `find . -maxdepth 1 -type f -exec file {} +`
 
-## 2. Text Processing (22)
-
+## 6. Text Processing (22)
 **17. Search recursively for a pattern with line numbers** → `grep -Rni 'error' /var/log`
 **18. Count matching lines per file** → `grep -Rci 'timeout' /etc`
 **19. Print non-comment, non-empty lines from a config file** → `grep -Ev '^\s*(#|$)' /etc/ssh/sshd_config`
@@ -71,8 +69,7 @@ This guide contains **248** categorized one-liners.
 **37. Show common lines between two sorted files** → `comm -12 <(sort file1.txt) <(sort file2.txt)`
 **38. Search inside gzip-compressed logs** → `zgrep -i 'exception' /var/log/app.log*.gz`
 
-## 3. Disk & Storage (16)
-
+## 6. Disk & Storage (16)
 **39. Show human-readable filesystem usage** → `df -h`
 **40. Show inode usage on all filesystems** → `df -i`
 **41. Show the biggest directories on the current filesystem** → `du -xhd1 / | sort -h`
@@ -90,8 +87,7 @@ This guide contains **248** categorized one-liners.
 **53. Show logical volumes with backing devices** → `lvs -a -o lv_name,vg_name,lv_size,devices`
 **54. Print filesystem-specific details for an XFS mount** → `xfs_info /mountpoint`
 
-## 4. Process Management (16)
-
+## 6. Process Management (16)
 **55. Show the top 15 CPU-consuming processes** → `ps -eo pid,ppid,%cpu,%mem,cmd --sort=-%cpu | head -15`
 **56. Show the top 15 memory-consuming processes** → `ps -eo pid,ppid,%mem,%cpu,cmd --sort=-%mem | head -15`
 **57. Display the full process tree** → `ps -ef --forest`
@@ -109,8 +105,7 @@ This guide contains **248** categorized one-liners.
 **69. Show the start time and elapsed runtime of a PID** → `ps -p 1234 -o pid,lstart,etime,cmd`
 **70. Display environment variables of a running process** → `tr '\0' '\n' < /proc/1234/environ`
 
-## 5. Network (22)
-
+## 6. Network (22)
 **71. Show all IP addresses on the host** → `ip -br addr show`
 **72. Show the default route** → `ip route show default`
 **73. Show the route the kernel will use to reach a host** → `ip route get 8.8.8.8`
@@ -153,8 +148,7 @@ This guide contains **248** categorized one-liners.
 **107. Find world-writable files** → `find / -xdev -type f -perm -0002 2>/dev/null`
 **108. Find files owned by a specific user** → `find / -user deploy 2>/dev/null`
 
-## 7. System Info (10)
-
+## 6. System Info (10)
 **109. Show the running kernel version** → `uname -r`
 **110. Show full kernel, architecture, and hostname details** → `uname -a`
 **111. Display OS release information** → `cat /etc/os-release`
@@ -166,8 +160,7 @@ This guide contains **248** categorized one-liners.
 **117. Show recent kernel warnings and errors** → `dmesg --level=warn,err | tail -50`
 **118. Detect whether the system is virtualized** → `systemd-detect-virt`
 
-## 8. Package Management (10)
-
+## 6. Package Management (10)
 **119. Refresh apt package metadata** → `apt update`
 **120. List upgradable packages on Debian/Ubuntu** → `apt list --upgradable`
 **121. Search for a package in apt repositories** → `apt-cache search nginx`
@@ -179,8 +172,7 @@ This guide contains **248** categorized one-liners.
 **127. Show enabled repositories with yum compatibility** → `yum repolist enabled`
 **128. Verify the integrity of files installed by an RPM package** → `rpm -V bash`
 
-## 9. Service Management (10)
-
+## 6. Service Management (10)
 **129. Check the status of a service** → `systemctl status nginx`
 **130. Restart a service** → `systemctl restart nginx`
 **131. Reload a service without a full restart** → `systemctl reload nginx`
@@ -192,8 +184,7 @@ This guide contains **248** categorized one-liners.
 **137. Show which units slow down boot the most** → `systemd-analyze blame | head -20`
 **138. Prevent a service from being started manually or automatically** → `systemctl mask telnet.socket`
 
-## 10. Log Analysis (16)
-
+## 6. Log Analysis (16)
 **139. Show the last 100 lines of the main system log** → `tail -100 /var/log/messages /var/log/syslog 2>/dev/null`
 **140. Follow a log file in real time** → `tail -F /var/log/nginx/access.log`
 **141. Follow a log and filter for errors only** → `tail -F /var/log/nginx/error.log | grep --line-buffered -i error`
@@ -211,8 +202,7 @@ This guide contains **248** categorized one-liners.
 **153. Show log entries between two timestamps** → `journalctl --since '2024-01-01 10:00:00' --until '2024-01-01 11:00:00'`
 **154. Summarize ERROR lines per hour from a text log** → `grep 'ERROR' app.log | cut -d' ' -f1,2 | sort | uniq -c`
 
-## 11. Security & Firewall (16)
-
+## 6. Security & Firewall (16)
 **155. List the active nftables ruleset** → `nft list ruleset`
 **156. List active firewalld zones and allowed services** → `firewall-cmd --list-all`
 **157. Open HTTPS permanently in firewalld** → `firewall-cmd --add-service=https --permanent`
@@ -230,8 +220,7 @@ This guide contains **248** categorized one-liners.
 **169. Find world-writable directories without the sticky bit** → `find / -xdev -type d -perm -0002 ! -perm -1000 2>/dev/null`
 **170. Show locally listening ports with owning users** → `ss -tulpen`
 
-## 12. Docker & Containers (16)
-
+## 6. Docker & Containers (16)
 **171. List running containers** → `docker ps`
 **172. List all containers including stopped ones** → `docker ps -a`
 **173. List local images** → `docker images`
@@ -249,8 +238,7 @@ This guide contains **248** categorized one-liners.
 **185. Follow Docker events from the last 10 minutes** → `docker events --since 10m`
 **186. Set a restart policy on an existing container** → `docker update --restart unless-stopped myapp`
 
-## 13. Kubernetes (16)
-
+## 6. Kubernetes (16)
 **187. List all resources in a namespace** → `kubectl get all -n prod`
 **188. List pods with node placement and IPs** → `kubectl get pods -o wide -n prod`
 **189. Describe a pod for troubleshooting** → `kubectl describe pod web-abc123 -n prod`
@@ -268,8 +256,7 @@ This guide contains **248** categorized one-liners.
 **201. Port-forward a local port to a service** → `kubectl port-forward svc/web 8080:80 -n prod`
 **202. Decode a secret value from Kubernetes** → `kubectl get secret app-secret -n prod -o jsonpath='{.data.password}' | base64 -d && echo`
 
-## 14. Performance (10)
-
+## 6. Performance (10)
 **203. Sample CPU, run queue, and memory every second** → `vmstat 1 5`
 **204. Show per-device I/O utilization and latency** → `iostat -xz 1 5`
 **205. Show CPU usage for every core** → `mpstat -P ALL 1 5`
@@ -281,8 +268,7 @@ This guide contains **248** categorized one-liners.
 **211. Capture disk latency for a single process** → `iotop -oPa`
 **212. Quickly confirm load averages versus CPU count** → `echo 'load:' $(cut -d' ' -f1-3 /proc/loadavg) 'cpus:' $(nproc)`
 
-## 15. Shell Tricks (10)
-
+## 6. Shell Tricks (10)
 **213. Repeat the previous command with sudo** → `sudo !!`
 **214. Search command history for SSH commands** → `history | grep ssh`
 **215. Re-run the most recent command starting with systemctl** → `!systemctl`
@@ -294,8 +280,7 @@ This guide contains **248** categorized one-liners.
 **221. Strip the extension from a filename using parameter expansion** → `f=archive.tar.gz; echo ${f%%.*}`
 **222. Run a command on batches of files safely** → `find . -name '*.tmp' -print0 | xargs -0 -n 50 rm -f`
 
-## 16. Backup & Archive (10)
-
+## 6. Backup & Archive (10)
 **223. Create a compressed tar archive** → `tar -czf backup-$(date +%F).tar.gz /data`
 **224. Extract a compressed tar archive** → `tar -xzf backup-2024-01-01.tar.gz -C /restore`
 **225. Archive a directory while preserving ACLs and xattrs** → `tar --acls --xattrs -czf full-backup.tar.gz /srv`
@@ -307,8 +292,7 @@ This guide contains **248** categorized one-liners.
 **231. Create a compressed image from a disk** → `dd if=/dev/sda bs=64K status=progress | gzip > /backup/sda.img.gz`
 **232. Verify file integrity with SHA-256** → `sha256sum backup.tar.gz`
 
-## 17. Cron & Scheduling (6)
-
+## 6. Cron & Scheduling (6)
 **233. List the current user's cron jobs** → `crontab -l`
 **234. Edit the current user's cron table** → `crontab -e`
 **235. Install a cron job that runs every 5 minutes** → `(crontab -l 2>/dev/null; echo '*/5 * * * * /usr/local/bin/health-check.sh') | crontab -`
@@ -316,8 +300,7 @@ This guide contains **248** categorized one-liners.
 **237. Schedule a one-time job 10 minutes from now** → `echo '/usr/local/bin/cleanup.sh' | at now + 10 minutes`
 **238. Validate a systemd calendar expression** → `systemd-analyze calendar 'Mon..Fri *-*-* 02:00:00'`
 
-## 18. Miscellaneous / Pro Tips (10)
-
+## 6. Miscellaneous / Pro Tips (10)
 **239. Serve the current directory over HTTP quickly** → `python3 -m http.server 8000`
 **240. Pretty-print JSON from stdin** → `python3 -m json.tool`
 **241. Convert an epoch timestamp to human-readable time** → `date -d @1710000000`

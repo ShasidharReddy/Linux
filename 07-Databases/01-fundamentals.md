@@ -385,10 +385,8 @@ General advice:
 
 ---
 
-# 21. Database Architecture Patterns
-
-## 21.1 Single primary with replicas
-
+# 1. Database Architecture Patterns
+## 1.1 Single primary with replicas
 Good for:
 
 - Most transactional systems.
@@ -399,8 +397,7 @@ Trade-off:
 
 - Writes scale vertically unless sharded or re-architected.
 
-## 21.2 Multi-primary
-
+## 1.2 Multi-primary
 Good only when justified by workload and conflict model.
 
 Trade-offs:
@@ -409,8 +406,7 @@ Trade-offs:
 - Conflict handling.
 - More careful application semantics.
 
-## 21.3 Shared-nothing sharding
-
+## 1.3 Shared-nothing sharding
 Good for:
 
 - Large scale-out systems.
@@ -423,8 +419,7 @@ Trade-offs:
 - Complex rebalancing.
 - Cross-shard queries and transactions may be harder.
 
-## 21.4 CQRS and read replicas
-
+## 1.4 CQRS and read replicas
 Pattern:
 
 - Primary handles writes.
@@ -434,8 +429,7 @@ Caution:
 
 - Replica lag means stale reads.
 
-## 21.5 Search sidecar pattern
-
+## 1.5 Search sidecar pattern
 Common design:
 
 - PostgreSQL or MySQL is source of truth.
@@ -445,8 +439,7 @@ Benefit:
 
 - Each engine serves what it is best at.
 
-## 21.6 Cache-aside pattern
-
+## 1.6 Cache-aside pattern
 With Redis:
 
 1. App reads cache.
@@ -458,8 +451,7 @@ Main challenge:
 
 - Cache invalidation correctness.
 
-## 21.7 Event sourcing and append-only logs
-
+## 1.7 Event sourcing and append-only logs
 Useful when:
 
 - Full audit trail is essential.
@@ -469,16 +461,14 @@ Caution:
 
 - Querying current state usually needs projections or materialized views.
 
-## 21.8 Data tiering
-
+## 1.8 Data tiering
 Separate hot and cold data by:
 
 - Partitioning.
 - Different storage classes.
 - Archival tables or indices.
 
-## 21.9 Blue-green database migration concepts
-
+## 1.9 Blue-green database migration concepts
 Common pattern:
 
 - Build new target environment.
@@ -487,8 +477,7 @@ Common pattern:
 - Cut over traffic.
 - Keep rollback window.
 
-## 21.10 Architecture review checklist
-
+## 1.10 Architecture review checklist
 - Are read/write paths explicit?
 - Is failure mode understood?
 - Is backup/restore aligned to topology?
@@ -499,10 +488,8 @@ Common pattern:
 
 ---
 
-# 25. Practical Examples
-
-## 25.1 Example: designing a web app stack
-
+# 1. Practical Examples
+## 1.1 Example: designing a web app stack
 Recommended stack:
 
 - PostgreSQL for transactional source of truth.
@@ -518,8 +505,7 @@ Why:
 - Dedicated search engine.
 - Operationally mature components.
 
-## 25.2 Example: content platform with flexible schema
-
+## 1.2 Example: content platform with flexible schema
 Recommended stack:
 
 - MongoDB for primary content documents.
@@ -532,8 +518,7 @@ Watchouts:
 - Design shard key early if growth is expected.
 - Keep search indexing pipeline reliable.
 
-## 25.3 Example: small internal utility
-
+## 1.3 Example: small internal utility
 Recommended stack:
 
 - SQLite for local persistence.
@@ -544,8 +529,7 @@ Why:
 - Simple deployment.
 - Adequate for single-user or low-write concurrency.
 
-## 25.4 Example: high-read ecommerce platform
-
+## 1.4 Example: high-read ecommerce platform
 Recommended stack:
 
 - MySQL or PostgreSQL primary.

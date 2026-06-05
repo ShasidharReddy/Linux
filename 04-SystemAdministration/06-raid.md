@@ -7,8 +7,7 @@
 
 Software RAID (Redundant Array of Independent Disks) design should always be matched to the IOPS (Input/Output Operations Per Second) and resilience requirements of the workload before you build the array.
 
-## 4.14 RAID basics with mdadm
-
+## 6.14 RAID basics with mdadm
 Software RAID can be managed using `mdadm`.
 
 Common RAID levels:
@@ -18,8 +17,7 @@ Common RAID levels:
 - RAID 6: striping with double parity.
 - RAID 10: mirrored stripes.
 
-## 4.15 RAID levels comparison
-
+## 6.15 RAID levels comparison
 ### 📸 RAID Levels Comparison
 ![RAID 0](https://upload.wikimedia.org/wikipedia/commons/9/9b/RAID_0.svg)
 > *RAID 0 — Striping (performance, no redundancy)*
@@ -42,8 +40,7 @@ graph TD
     I["RAID 10<br/>Mirror plus stripe<br/>High performance"] --> J["Use for databases and critical workloads"]
 ```
 
-### 4.15.1 Create a RAID 1 array
-
+### 6.15.1 Create a RAID 1 array
 Example:
 
 ```bash

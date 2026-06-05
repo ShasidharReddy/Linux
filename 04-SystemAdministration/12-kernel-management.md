@@ -8,8 +8,7 @@
 The Linux kernel manages hardware, scheduling, memory, drivers, filesystems, and system calls.
 Administrators must know how to inspect the running kernel, manage modules, tune parameters, and handle upgrades.
 
-## 10.1 Kernel version checks
-
+## 12.1 Kernel version checks
 Useful commands:
 
 ```bash
@@ -24,8 +23,7 @@ Use these when:
 - Checking if a reboot applied the intended kernel.
 - Confirming architecture and build info.
 
-## 10.2 Kernel modules
-
+## 12.2 Kernel modules
 Modules are loadable pieces of kernel functionality.
 They commonly provide:
 - Hardware drivers.
@@ -47,8 +45,7 @@ What they do:
 - `modprobe` loads modules with dependency handling.
 - `modprobe -r` removes modules where safe.
 
-## 10.3 Module configuration
-
+## 12.3 Module configuration
 Persistent module options often go in:
 - `/etc/modprobe.d/*.conf`
 
@@ -61,8 +58,7 @@ blacklist firewire_ohci
 
 After changes, consider whether an initramfs rebuild is needed on your distribution.
 
-## 10.4 sysctl and kernel parameters
-
+## 12.4 sysctl and kernel parameters
 `sysctl` manages many runtime kernel parameters.
 
 View a value:
@@ -96,8 +92,7 @@ Apply settings:
 sudo sysctl --system
 ```
 
-## 10.5 Common sysctl examples
-
+## 12.5 Common sysctl examples
 Networking:
 
 ```conf
@@ -122,8 +117,7 @@ fs.file-max = 2097152
 
 Choose kernel tuning based on evidence, not folklore.
 
-## 10.6 Kernel package management basics
-
+## 12.6 Kernel package management basics
 Kernel updates are usually delivered by the OS package manager.
 
 Examples:
@@ -152,8 +146,7 @@ After a kernel upgrade:
 - Plan reboot.
 - Verify the new kernel after reboot.
 
-## 10.7 Initramfs and early boot images
-
+## 12.7 Initramfs and early boot images
 Many systems boot with an initramfs image.
 This contains drivers and tools needed early in boot.
 
@@ -171,8 +164,7 @@ sudo dracut -f
 sudo mkinitcpio -P
 ```
 
-## 10.8 GRUB basics for kernel admins
-
+## 12.8 GRUB basics for kernel admins
 Common tasks:
 - Review boot entries.
 - Set default kernel.
@@ -189,8 +181,7 @@ sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 Be careful editing bootloader settings remotely.
 A mistake can leave a system unbootable.
 
-## 10.9 Kernel logs and diagnostics
-
+## 12.9 Kernel logs and diagnostics
 Useful commands:
 
 ```bash
@@ -206,8 +197,7 @@ Look here for:
 - OOM events.
 - Module load failures.
 
-## 10.10 Kernel compilation basics
-
+## 12.10 Kernel compilation basics
 Most administrators do not compile custom kernels daily, but understanding the basics is useful.
 
 High-level steps:
@@ -240,8 +230,7 @@ Risks:
 - Supportability issues.
 - Boot failure if configuration is wrong.
 
-## 10.11 Kernel panic and crash basics
-
+## 12.11 Kernel panic and crash basics
 A kernel panic is a fatal kernel error.
 
 Actions:
@@ -256,8 +245,7 @@ Useful areas:
 - serial console logs
 - crash dumps if configured
 
-## 10.12 Kernel management best practices
-
+## 12.12 Kernel management best practices
 - Use vendor-supported kernels in production unless you have a strong reason not to.
 - Keep old known-good kernels available for rollback.
 - Tune sysctl values deliberately.
@@ -267,8 +255,7 @@ Useful areas:
 
 ---
 
-## 13.10 Kernel commands reference
-
+## 12.10 Kernel commands reference
 - `uname -a`
 - `uname -r`
 - `hostnamectl`

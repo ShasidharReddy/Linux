@@ -134,8 +134,7 @@ If load is high and CPU is low:
 
 ## Performance Degradation
 
-## 11.1 Use the USE method
-
+## 5.1 Use the USE method
 USE stands for:
 
 - Utilization.
@@ -149,8 +148,7 @@ Apply it to each resource:
 - Disk.
 - Network.
 
-## 11.2 Performance triage commands
-
+## 5.2 Performance triage commands
 ```bash
 uptime
 vmstat 1 5
@@ -161,38 +159,33 @@ sar -n DEV 1 5
 pidstat -dur 1 5
 ```
 
-## 11.3 CPU bottleneck indicators
-
+## 5.3 CPU bottleneck indicators
 - High run queue.
 - High user or system CPU.
 - Low idle.
 - Throttling.
 - High steal.
 
-## 11.4 Memory bottleneck indicators
-
+## 5.4 Memory bottleneck indicators
 - OOM events.
 - Swap activity.
 - Low `MemAvailable`.
 - Reclaim storms.
 
-## 11.5 Disk bottleneck indicators
-
+## 5.5 Disk bottleneck indicators
 - High `await`.
 - High `%util`.
 - Large queue depth.
 - D-state tasks.
 
-## 11.6 Network bottleneck indicators
-
+## 5.6 Network bottleneck indicators
 - Drops.
 - retransmits.
 - low throughput.
 - high latency.
 - conntrack saturation.
 
-## 11.7 Distinguish cause from victim
-
+## 5.7 Distinguish cause from victim
 A slow database can cause web workers to pile up.
 
 Those web workers may consume memory and threads.
@@ -201,24 +194,21 @@ The database may be the cause.
 
 The web tier may be the victim.
 
-## 11.8 Compare to baseline
-
+## 5.8 Compare to baseline
 Always ask:
 
 - What is normal for this host?
 - What changed compared to yesterday?
 - Is the issue absolute or relative to historical baseline?
 
-## 11.9 Workload awareness
-
+## 5.9 Workload awareness
 Some hosts are bursty by design.
 
 Some workloads are batch oriented.
 
 Do not confuse expected peaks with regressions.
 
-## 11.10 Performance checklist
-
+## 5.10 Performance checklist
 - Check CPU.
 - Check memory.
 - Check disk latency.

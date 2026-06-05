@@ -67,12 +67,12 @@ sequenceDiagram
     DNS-->>Gmail: mail.example.com priority 10
     Gmail->>Receiver: EHLO gmail.com
     Receiver-->>Gmail: 250 OK
-    Gmail->>Receiver: MAIL FROM:<sender@gmail.com>
+    Gmail->>Receiver: MAIL FROM:sender@gmail.com
     Receiver-->>Gmail: 250 OK
-    Gmail->>Receiver: RCPT TO:<user@example.com>
+    Gmail->>Receiver: RCPT TO:user@example.com
     Receiver-->>Gmail: 250 OK
     Gmail->>Receiver: DATA
-    Gmail->>Receiver: Subject: Hello...<CRLF>.<CRLF>
+    Gmail->>Receiver: Subject: Hello...[CRLF].[CRLF]
     Receiver-->>Gmail: 250 Message accepted
     Note over Receiver,Inbox: Mail delivered into mailbox store
     Inbox->>Receiver: IMAP fetch new mail
@@ -124,7 +124,7 @@ sequenceDiagram
     Client->>Server: RCPT TO:<bob@example.com>
     Server-->>Client: 250 OK
     Client->>Server: DATA
-    Server-->>Client: 354 End data with <CRLF>.<CRLF>
+    Server-->>Client: 354 End data with [CRLF].[CRLF]
     Client->>Server: Message body
     Client->>Server: .
     Server-->>Client: 250 queued as 12345

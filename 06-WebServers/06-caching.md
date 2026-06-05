@@ -299,8 +299,7 @@ Track:
 
 ---
 
-### 17.3 Cache Tool Comparison
-
+### 6.3 Cache Tool Comparison
 | Tool | Best Use |
 |---|---|
 | Nginx cache | Integrated simple reverse proxy caching |
@@ -309,8 +308,7 @@ Track:
 | Memcached | Simple in-memory object cache |
 | CDN | Global edge caching |
 
-### 19.6 Caching Reinforcement
-
+### 6.6 Caching Reinforcement
 - Long TTLs suit versioned assets.
 - Dynamic personalized pages require caution.
 - `Cache-Control` matters more than guesswork.

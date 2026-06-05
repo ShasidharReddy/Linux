@@ -2,22 +2,19 @@
 
 This section covers common Linux network services and the basics of configuring them.
 
-## 7.1 HTTP and HTTPS overview
-
+## 9.1 HTTP and HTTPS overview
 Common Linux web servers:
 
 - Apache HTTP Server
 - Nginx
 
-## 7.2 Apache basics
-
+## 9.2 Apache basics
 Common package names:
 
 - Debian/Ubuntu: `apache2`
 - RHEL/CentOS: `httpd`
 
-### 7.2.1 Start and enable Apache
-
+### 9.2.1 Start and enable Apache
 ```bash
 sudo systemctl enable --now apache2
 ```
@@ -28,21 +25,18 @@ or on RHEL:
 sudo systemctl enable --now httpd
 ```
 
-### 7.2.2 Check listening ports
-
+### 9.2.2 Check listening ports
 ```bash
 ss -tulpn | grep -E ':80|:443'
 ```
 
-### 7.2.3 Common config locations
-
+### 9.2.3 Common config locations
 | Distro | Path |
 |---|---|
 | Debian/Ubuntu | `/etc/apache2/` |
 | RHEL/CentOS | `/etc/httpd/` |
 
-### 7.2.4 Basic virtual host example
-
+### 9.2.4 Basic virtual host example
 ```apache
 <VirtualHost *:80>
     ServerName www.example.com
@@ -52,16 +46,13 @@ ss -tulpn | grep -E ':80|:443'
 </VirtualHost>
 ```
 
-## 7.3 Nginx basics
-
-### 7.3.1 Start and enable Nginx
-
+## 9.3 Nginx basics
+### 9.3.1 Start and enable Nginx
 ```bash
 sudo systemctl enable --now nginx
 ```
 
-### 7.3.2 Basic server block example
-
+### 9.3.2 Basic server block example
 ```nginx
 server {
     listen 80;
@@ -75,14 +66,12 @@ server {
 }
 ```
 
-### 7.3.3 Test config
-
+### 9.3.3 Test config
 ```bash
 sudo nginx -t
 ```
 
-## 7.4 TLS basics for HTTPS
-
+## 9.4 TLS basics for HTTPS
 Key elements:
 
 - Certificate
@@ -108,31 +97,26 @@ server {
 }
 ```
 
-## 7.5 FTP and vsftpd
-
+## 9.5 FTP and vsftpd
 FTP is legacy and often replaced by SFTP or HTTPS-based transfers.
 
 If FTP is required, `vsftpd` is common.
 
-### 7.5.1 Start and enable `vsftpd`
-
+### 9.5.1 Start and enable `vsftpd`
 ```bash
 sudo systemctl enable --now vsftpd
 ```
 
-### 7.5.2 Minimal config concepts
-
+### 9.5.2 Minimal config concepts
 - Local user access
 - Chroot jails
 - Passive ports
 - TLS for FTPS
 
-### 7.5.3 Passive mode note
-
+### 9.5.3 Passive mode note
 FTP passive mode requires a port range to be allowed in the firewall.
 
-## 7.6 NFS overview
-
+## 9.6 NFS overview
 NFS is common for Linux-to-Linux file sharing.
 
 Packages and services may include:
@@ -141,8 +125,7 @@ Packages and services may include:
 - `nfs-utils`
 - `rpcbind`
 
-### 7.6.1 Export example
-
+### 9.6.1 Export example
 File:
 
 ```text
@@ -161,24 +144,20 @@ Apply exports:
 sudo exportfs -rav
 ```
 
-### 7.6.2 Mount example
-
+### 9.6.2 Mount example
 ```bash
 sudo mount -t nfs server:/srv/nfs/share /mnt/share
 ```
 
-### 7.6.3 Persistent mount via `/etc/fstab`
-
+### 9.6.3 Persistent mount via `/etc/fstab`
 ```fstab
 server:/srv/nfs/share  /mnt/share  nfs  defaults,_netdev  0  0
 ```
 
-## 7.7 Samba/CIFS overview
-
+## 9.7 Samba/CIFS overview
 Samba provides SMB/CIFS file sharing for Windows and mixed environments.
 
-### 7.7.1 Basic share example
-
+### 9.7.1 Basic share example
 File:
 
 ```text
@@ -195,26 +174,22 @@ Example share:
     guest ok = no
 ```
 
-### 7.7.2 Manage Samba users
-
+### 9.7.2 Manage Samba users
 ```bash
 sudo smbpasswd -a alice
 ```
 
-### 7.7.3 Test config
-
+### 9.7.3 Test config
 ```bash
 testparm
 ```
 
-## 7.8 DHCP server overview
-
+## 9.8 DHCP server overview
 Common Linux DHCP service:
 
 - ISC DHCP server
 
-### 7.8.1 Example DHCP scope
-
+### 9.8.1 Example DHCP scope
 ```conf
 subnet 10.10.20.0 netmask 255.255.255.0 {
     range 10.10.20.100 10.10.20.200;
@@ -226,8 +201,7 @@ subnet 10.10.20.0 netmask 255.255.255.0 {
 }
 ```
 
-### 7.8.2 Static reservation example
-
+### 9.8.2 Static reservation example
 ```conf
 host web01 {
     hardware ethernet 52:54:00:12:34:56;
@@ -235,8 +209,7 @@ host web01 {
 }
 ```
 
-## 7.9 DNS server service overview
-
+## 9.9 DNS server service overview
 A DNS server may be:
 
 - Recursive resolver
@@ -250,8 +223,7 @@ Common implementations:
 - dnsmasq
 - PowerDNS
 
-## 7.10 `dnsmasq` for small environments
-
+## 9.10 `dnsmasq` for small environments
 `dnsmasq` is lightweight and excellent for labs and edge systems.
 
 Example config snippet:
@@ -264,8 +236,7 @@ dhcp-option=option:dns-server,10.10.20.1
 address=/lab.local/10.10.20.10
 ```
 
-## 7.11 Service binding and exposure
-
+## 9.11 Service binding and exposure
 When deploying services, always check:
 
 - Bind address
@@ -275,8 +246,7 @@ When deploying services, always check:
 - TLS configuration
 - Reverse proxy behavior
 
-## 7.12 Common service ports
-
+## 9.12 Common service ports
 | Service | Port | Protocol |
 |---|---:|---|
 | HTTP | 80 | TCP |
@@ -289,16 +259,14 @@ When deploying services, always check:
 | NFS | 2049 | TCP/UDP |
 | SMB | 445 | TCP |
 
-## 7.13 Reverse proxy pattern
-
+## 9.13 Reverse proxy pattern
 A common design is:
 
 - Nginx or Apache on ports 80 and 443
 - Application bound to localhost on 8080 or 3000
 - Reverse proxy handles TLS and client connections
 
-## 7.14 Health checks and monitoring
-
+## 9.14 Health checks and monitoring
 Monitor:
 
 - Port availability
@@ -308,8 +276,7 @@ Monitor:
 - NFS mount health
 - Samba authentication failures
 
-## 7.15 Logging locations
-
+## 9.15 Logging locations
 | Service | Common Logs |
 |---|---|
 | Apache | `/var/log/apache2/` or `/var/log/httpd/` |
@@ -319,8 +286,7 @@ Monitor:
 | Samba | `/var/log/samba/` |
 | DHCP | journal or syslog |
 
-## 7.16 SELinux notes for network services
-
+## 9.16 SELinux notes for network services
 Examples:
 
 ```bash
@@ -328,8 +294,7 @@ sudo semanage port -l | grep http
 sudo setsebool -P httpd_can_network_connect 1
 ```
 
-## 7.17 Quick deployment checklist
-
+## 9.17 Quick deployment checklist
 - Assign static IP or DHCP reservation
 - Confirm DNS record
 - Open firewall port
@@ -338,14 +303,12 @@ sudo setsebool -P httpd_can_network_connect 1
 - Test locally and remotely
 - Add monitoring
 
-## 7.18 Summary
-
+## 9.18 Summary
 Linux can host nearly every common network service. Reliability depends on clean configuration, correct exposure, and good observability.
 
 ---
 
-## 12.13 Build an internal reverse proxy for private applications
-
+## 9.13 Build an internal reverse proxy for private applications
 Objective:
 
 - Expose one HTTPS endpoint such as `portal.corp.example.internal`

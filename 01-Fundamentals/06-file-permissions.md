@@ -1,11 +1,11 @@
-# 8. File Permissions and Ownership
+# 6. File Permissions and Ownership
 
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
 
 This chapter explains `chmod` (Change Mode), `chown` (Change Owner), `chgrp` (Change Group), SUID (Set User ID), SGID (Set Group ID), ACL (Access Control List), DAC (Discretionary Access Control), and MAC (Mandatory Access Control) so permission changes are clear the first time you see them.
 
-## 8.1 Why Permissions Matter
+## 6.1 Why Permissions Matter
 
 Linux is a multiuser operating system.
 
@@ -18,7 +18,7 @@ They are central to:
 - service behavior
 - collaboration
 
-## 8.2 Ownership Basics
+## 6.2 Ownership Basics
 
 Every file has:
 
@@ -47,7 +47,7 @@ Breakdown:
 - first `root` = owner
 - second `root` = group
 
-## 8.3 Permission Types
+## 6.3 Permission Types
 
 | Symbol | Meaning |
 |---|---|
@@ -68,7 +68,7 @@ For directories:
 - write = create or remove entries
 - execute = enter directory and access items by name
 
-## 8.4 Permission Structure
+## 6.4 Permission Structure
 
 ### 📸 Linux File Permissions
 ![File Permissions](https://upload.wikimedia.org/wikipedia/commons/7/78/Unix_permissions.svg)
@@ -82,7 +82,7 @@ graph LR
     D --> E["r w x"]
 ```
 
-## 8.5 Numeric Values
+## 6.5 Numeric Values
 
 | Permission | Value |
 |---|---|
@@ -100,7 +100,7 @@ Examples:
 - `r--` = 4
 - `---` = 0
 
-## 8.6 Numeric Permission Calculation Table
+## 6.6 Numeric Permission Calculation Table
 
 | Numeric | Symbolic | Meaning |
 |---|---|---|
@@ -113,7 +113,7 @@ Examples:
 | 6 | `rw-` | Read and write |
 | 7 | `rwx` | Read, write, execute |
 
-## 8.7 Common Modes
+## 6.7 Common Modes
 
 | Mode | Typical Use |
 |---|---|
@@ -128,7 +128,7 @@ Examples:
 > Avoid `777` unless you fully understand the risk.
 > It grants write access to everyone.
 
-## 8.8 `chmod`
+## 6.8 `chmod`
 
 ### Purpose
 
@@ -170,7 +170,7 @@ Use recursive permission changes carefully.
 
 Directories and files often need different execute settings.
 
-## 8.9 `chown`
+## 6.9 `chown`
 
 ### Purpose
 
@@ -195,7 +195,7 @@ sudo chown -R www-data:www-data /var/www/html
 
 Usually requires root privileges.
 
-## 8.10 `chgrp`
+## 6.10 `chgrp`
 
 ### Purpose
 
@@ -214,7 +214,7 @@ sudo chgrp developers app.conf
 sudo chgrp -R www-data /srv/www
 ```
 
-## 8.11 `umask`
+## 6.11 `umask`
 
 ### Purpose
 
@@ -251,7 +251,7 @@ umask 077
 
 A stricter umask is useful for private environments and automation.
 
-## 8.12 Special Permission Bits
+## 6.12 Special Permission Bits
 
 ### SUID
 
@@ -299,7 +299,7 @@ Example permission form:
 
 - `1777`
 
-## 8.13 Special Bits Table
+## 6.13 Special Bits Table
 
 | Numeric Prefix | Special Bit | Example | Meaning |
 |---|---|---|---|
@@ -307,7 +307,7 @@ Example permission form:
 | 2 | SGID | `2755` | Run with group identity or inherit group on dir |
 | 1 | Sticky | `1777` | Protected deletion in directory |
 
-## 8.14 Viewing ACLs
+## 6.14 Viewing ACLs
 
 Traditional permissions are simple but limited.
 
@@ -329,7 +329,7 @@ setfacl -x u:alice file.txt
 setfacl -b file.txt
 ```
 
-## 8.15 When ACLs Are Useful
+## 6.15 When ACLs Are Useful
 
 Use ACLs when:
 
@@ -337,7 +337,7 @@ Use ACLs when:
 - multiple teams share a directory
 - standard owner/group/other is too coarse
 
-## 8.16 Directory Permission Behavior
+## 6.16 Directory Permission Behavior
 
 This is a common beginner confusion.
 
@@ -349,7 +349,7 @@ For directories:
 
 A directory without execute permission may be unreadable in practice even if read is set.
 
-## 8.17 Practical Permission Examples
+## 6.17 Practical Permission Examples
 
 ### Private SSH directory
 
@@ -373,7 +373,7 @@ sudo chmod 2775 /srv/shared
 chmod u+x backup.sh
 ```
 
-## 8.18 Auditing Permissions
+## 6.18 Auditing Permissions
 
 Useful commands:
 
@@ -385,7 +385,7 @@ find /tmp -maxdepth 1 -type d -ls
 namei -l /path/to/file
 ```
 
-## 8.19 Permission Troubleshooting
+## 6.19 Permission Troubleshooting
 
 Questions to ask:
 
@@ -396,7 +396,7 @@ Questions to ask:
 - is SELinux or AppArmor involved?
 - are ACLs present?
 
-## 8.20 Best Practices
+## 6.20 Best Practices
 
 - grant least privilege
 - avoid world-writable files

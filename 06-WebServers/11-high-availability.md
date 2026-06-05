@@ -265,8 +265,7 @@ Possible resources:
 
 ---
 
-### 12.10 HA Checklist
-
+### 11.10 HA Checklist
 - No single point of failure in entry path
 - VIP or DNS failover strategy defined
 - Health checks validated
@@ -276,8 +275,7 @@ Possible resources:
 
 ---
 
-### 19.11 HA Reinforcement
-
+### 11.11 HA Reinforcement
 - HA adds complexity.
 - Complexity without testing creates false confidence.
 - VIP failover is simple for edge tiers.
@@ -287,8 +285,7 @@ Possible resources:
 
 ---
 
-### 22.8 Validate HA
-
+### 11.8 Validate HA
 - Simulate node service stop.
 - Confirm VIP or routing failover.
 - Confirm client connectivity.
@@ -297,8 +294,7 @@ Possible resources:
 
 ---
 
-### 24.13 Keepalived Script Considerations
-
+### 11.13 Keepalived Script Considerations
 - Script should be quick.
 - Script should reflect actual service readiness.
 - Script failure should meaningfully reduce priority.

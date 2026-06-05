@@ -5,8 +5,7 @@
 Backups are only useful if they can be restored reliably.
 Recovery planning matters as much as backup creation.
 
-## 9.1 Core backup goals
-
+## 11.1 Core backup goals
 A sound backup plan addresses:
 - Recovery point objective.
 - Recovery time objective.
@@ -16,10 +15,8 @@ A sound backup plan addresses:
 - Security and encryption.
 - Restore testing.
 
-## 9.2 Backup strategy types
-
-### 9.2.1 Full backup
-
+## 11.2 Backup strategy types
+### 11.2.1 Full backup
 A full backup copies everything in scope.
 
 Pros:
@@ -29,8 +26,7 @@ Pros:
 Cons:
 - Largest time and storage cost.
 
-### 9.2.2 Incremental backup
-
+### 11.2.2 Incremental backup
 An incremental backup copies data changed since the last backup of any type.
 
 Pros:
@@ -40,8 +36,7 @@ Pros:
 Cons:
 - Restore may require full plus many increments.
 
-### 9.2.3 Differential backup
-
+### 11.2.3 Differential backup
 A differential backup copies data changed since the last full backup.
 
 Pros:
@@ -50,15 +45,13 @@ Pros:
 Cons:
 - Grows larger over time until next full backup.
 
-## 9.3 The 3-2-1 principle
-
+## 11.3 The 3-2-1 principle
 A classic backup rule:
 - Keep at least 3 copies of data.
 - Store them on at least 2 different media types or systems.
 - Keep at least 1 copy offsite or logically isolated.
 
-## 9.4 rsync
-
+## 11.4 rsync
 `rsync` is one of the most useful Linux backup and synchronization tools.
 
 Basic example:
@@ -93,8 +86,7 @@ Dry run first:
 rsync -avhn --delete /srv/data/ /backup/data/
 ```
 
-## 9.5 tar
-
+## 11.5 tar
 `tar` archives files and can compress them.
 
 Create archive:
@@ -123,8 +115,7 @@ tar -tvf backup.tar.gz
 
 Use `tar` when you need a portable archive bundle.
 
-## 9.6 dd
-
+## 11.6 dd
 `dd` copies raw data block by block.
 It is powerful and dangerous.
 
@@ -145,8 +136,7 @@ Warnings:
 - Verify source and destination carefully.
 - Prefer safer high-level tools when possible.
 
-## 9.7 dump and restore
-
+## 11.7 dump and restore
 On some ext-family systems, `dump` and `restore` may still be used.
 
 Example:
@@ -159,8 +149,7 @@ sudo restore -t -f /backup/root.dump
 Availability and relevance vary by distribution and filesystem choice.
 Check support before standardizing on it.
 
-## 9.8 LVM snapshots for backup support
-
+## 11.8 LVM snapshots for backup support
 LVM snapshots can freeze a consistent point-in-time view.
 
 Typical workflow:
@@ -179,8 +168,7 @@ sudo umount /mnt/snap
 sudo lvremove /dev/vg0/rootsnap
 ```
 
-## 9.9 Btrfs and ZFS snapshots
-
+## 11.9 Btrfs and ZFS snapshots
 Btrfs and ZFS include native snapshot capabilities.
 
 Btrfs example:
@@ -200,8 +188,7 @@ Snapshot benefits:
 - Efficient point-in-time capture.
 - Support for rollback or replication workflows.
 
-## 9.10 What to back up
-
+## 11.10 What to back up
 Common backup scope includes:
 - `/etc`
 - Application data under `/srv`, `/var/lib`, or custom paths
@@ -216,8 +203,7 @@ Often not worth backing up directly:
 - Ephemeral container layers unless specially required
 - Reconstructable build artifacts
 
-## 9.11 Restore testing
-
+## 11.11 Restore testing
 A backup without restore testing is only a hope.
 
 Test these regularly:
@@ -233,8 +219,7 @@ Document:
 - Expected recovery time.
 - Validation steps.
 
-## 9.12 Backup verification
-
+## 11.12 Backup verification
 Verification methods:
 - Compare checksums.
 - Run `rsync --checksum` when appropriate.
@@ -250,8 +235,7 @@ rsync -avhn --checksum /source/ /backup-copy/
 tar -tvf backup.tar.gz | head
 ```
 
-## 9.13 Common backup mistakes
-
+## 11.13 Common backup mistakes
 - No restore test.
 - Backups stored on same host only.
 - Credentials not backed up or recoverable.
@@ -261,8 +245,7 @@ tar -tvf backup.tar.gz | head
 - `rsync --delete` used without care.
 - Snapshots created but never removed.
 
-## 9.14 Practical backup patterns
-
+## 11.14 Practical backup patterns
 Config backup:
 
 ```bash
@@ -281,8 +264,7 @@ Compressed archive of app directory:
 tar -czvf /backup/app-$(date +%F).tar.gz /opt/myapp
 ```
 
-## 9.15 Recovery planning checklist
-
+## 11.15 Recovery planning checklist
 - Define critical systems.
 - Define acceptable data loss.
 - Define acceptable downtime.
@@ -294,8 +276,7 @@ tar -czvf /backup/app-$(date +%F).tar.gz /opt/myapp
 
 ---
 
-## 13.9 Backup commands reference
-
+## 11.9 Backup commands reference
 - `rsync -avh /src/ /dst/`
 - `rsync -avhn --delete /src/ /dst/`
 - `tar -cvf backup.tar /path`

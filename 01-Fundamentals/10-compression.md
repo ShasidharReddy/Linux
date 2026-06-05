@@ -1,6 +1,6 @@
-# 12. Compression and Archiving
+# 10. Compression and Archiving
 
-## 12.1 Archive vs Compression
+## 10.1 Archive vs Compression
 
 These are related but not identical.
 
@@ -11,7 +11,7 @@ These are related but not identical.
 
 `gzip`, `bzip2`, and `xz` are compressors.
 
-## 12.2 `tar`
+## 10.2 `tar`
 
 ### Purpose
 
@@ -41,7 +41,7 @@ tar -xzvf project.tar.gz
 tar -cJvf logs.tar.xz /var/log
 ```
 
-## 12.3 `gzip`
+## 10.3 `gzip`
 
 ### Purpose
 
@@ -59,7 +59,7 @@ gzip -d file.txt.gz
 
 By default, `gzip` replaces the original file unless `-k` is used.
 
-## 12.4 `bzip2`
+## 10.4 `bzip2`
 
 ### Purpose
 
@@ -76,7 +76,7 @@ bzip2 -dk report.txt.bz2
 
 Often compresses better than gzip, but can be slower.
 
-## 12.5 `xz`
+## 10.5 `xz`
 
 ### Purpose
 
@@ -93,7 +93,7 @@ xz -dk bigfile.log.xz
 
 `xz` is common for distribution images and large text archives.
 
-## 12.6 `zip` and `unzip`
+## 10.6 `zip` and `unzip`
 
 ### Purpose
 
@@ -111,7 +111,7 @@ unzip -l project.zip
 
 ZIP is very common for cross-platform exchange.
 
-## 12.7 `zcat` and `zgrep`
+## 10.7 `zcat` and `zgrep`
 
 ### Purpose
 
@@ -124,7 +124,7 @@ zcat app.log.gz | head
 zgrep -i error app.log.gz
 ```
 
-## 12.8 Common Archive Extensions
+## 10.8 Common Archive Extensions
 
 | Extension | Meaning |
 |---|---|
@@ -137,7 +137,7 @@ zgrep -i error app.log.gz
 | `.bz2` | bzip2-compressed single file |
 | `.xz` | xz-compressed single file |
 
-## 12.9 Practical Examples
+## 10.9 Practical Examples
 
 ### Back up a configuration directory
 
@@ -164,7 +164,7 @@ mkdir restore
  tar -xvf project.tar -C restore
 ```
 
-## 12.10 Best Practices
+## 10.10 Best Practices
 
 - use `tar -tvf` before extraction if archive contents are unknown
 - extract into a dedicated directory when unsure

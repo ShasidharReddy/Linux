@@ -2,8 +2,7 @@
 
 Linux provides several ways to configure network interfaces depending on the distribution and age of the system.
 
-## 2.1 Core configuration tasks
-
+## 3.1 Core configuration tasks
 Typical interface configuration includes:
 
 - Setting link state
@@ -13,75 +12,63 @@ Typical interface configuration includes:
 - Configuring DNS resolvers
 - Enabling DHCP or static addressing
 
-## 2.2 Modern `ip` command suite
-
+## 3.2 Modern `ip` command suite
 The `ip` command from `iproute2` is the standard tool on modern Linux.
 
-### 2.2.1 Show addresses
-
+### 3.2.1 Show addresses
 ```bash
 ip addr show
 ip a
 ```
 
-### 2.2.2 Show one interface
-
+### 3.2.2 Show one interface
 ```bash
 ip addr show dev eth0
 ```
 
-### 2.2.3 Bring interface up or down
-
+### 3.2.3 Bring interface up or down
 ```bash
 sudo ip link set dev eth0 up
 sudo ip link set dev eth0 down
 ```
 
-### 2.2.4 Add an IPv4 address
-
+### 3.2.4 Add an IPv4 address
 ```bash
 sudo ip addr add 192.168.10.20/24 dev eth0
 ```
 
-### 2.2.5 Remove an IPv4 address
-
+### 3.2.5 Remove an IPv4 address
 ```bash
 sudo ip addr del 192.168.10.20/24 dev eth0
 ```
 
-### 2.2.6 Add a default route
-
+### 3.2.6 Add a default route
 ```bash
 sudo ip route add default via 192.168.10.1
 ```
 
-### 2.2.7 Add a static route
-
+### 3.2.7 Add a static route
 ```bash
 sudo ip route add 10.20.30.0/24 via 192.168.10.1 dev eth0
 ```
 
-### 2.2.8 Show routing table
-
+### 3.2.8 Show routing table
 ```bash
 ip route show
 ip r
 ```
 
-### 2.2.9 Show IPv6 routes
-
+### 3.2.9 Show IPv6 routes
 ```bash
 ip -6 route show
 ```
 
-### 2.2.10 Show link details
-
+### 3.2.10 Show link details
 ```bash
 ip -details link show
 ```
 
-## 2.3 Understanding `ip addr` output
-
+## 3.3 Understanding `ip addr` output
 Example:
 
 ```text
@@ -99,8 +86,7 @@ Meaning:
 - `inet` is the IPv4 address.
 - `inet6` is the IPv6 address.
 
-## 2.4 `ip link`
-
+## 3.4 `ip link`
 Use `ip link` for Layer 2 interface operations.
 
 Examples:
@@ -111,8 +97,7 @@ sudo ip link set dev eth0 mtu 9000
 sudo ip link set dev eth0 address 00:11:22:33:44:55
 ```
 
-## 2.5 `ip route`
-
+## 3.5 `ip route`
 Routing commands are frequently used in troubleshooting and system bootstrap.
 
 Examples:
@@ -123,8 +108,7 @@ ip route add 172.16.0.0/16 via 192.168.10.1
 ip route del 172.16.0.0/16 via 192.168.10.1
 ```
 
-## 2.6 `ifconfig` and `route` legacy commands
-
+## 3.6 `ifconfig` and `route` legacy commands
 Older systems may still have `ifconfig` and `route` via `net-tools`.
 
 Examples:
@@ -142,8 +126,7 @@ Why legacy tools are discouraged:
 - Limited support for modern features
 - Inconsistent behavior across distros
 
-## 2.7 Persistent configuration methods by distribution
-
+## 3.7 Persistent configuration methods by distribution
 Different Linux distributions persist network settings differently.
 
 | Distribution Family | Common Method |
@@ -154,8 +137,7 @@ Different Linux distributions persist network settings differently.
 | RHEL 8/9 | NetworkManager with `nmcli` |
 | Desktop distros | NetworkManager |
 
-## 2.8 NetworkManager overview
-
+## 3.8 NetworkManager overview
 NetworkManager is a service that manages interfaces, connections, routing, and DNS integration.
 
 Useful commands:
@@ -166,34 +148,28 @@ nmcli device status
 nmcli connection show
 ```
 
-## 2.9 `nmcli` command examples
-
-### 2.9.1 Show devices
-
+## 3.9 `nmcli` command examples
+### 3.9.1 Show devices
 ```bash
 nmcli device status
 ```
 
-### 2.9.2 Show connections
-
+### 3.9.2 Show connections
 ```bash
 nmcli connection show
 ```
 
-### 2.9.3 Bring a connection up
-
+### 3.9.3 Bring a connection up
 ```bash
 sudo nmcli connection up "System eth0"
 ```
 
-### 2.9.4 Bring a connection down
-
+### 3.9.4 Bring a connection down
 ```bash
 sudo nmcli connection down "System eth0"
 ```
 
-### 2.9.5 Configure static IPv4
-
+### 3.9.5 Configure static IPv4
 ```bash
 sudo nmcli connection modify eth0 \
   ipv4.addresses 192.168.10.20/24 \
@@ -202,21 +178,18 @@ sudo nmcli connection modify eth0 \
   ipv4.method manual
 ```
 
-### 2.9.6 Enable DHCP
-
+### 3.9.6 Enable DHCP
 ```bash
 sudo nmcli connection modify eth0 ipv4.method auto
 ```
 
-### 2.9.7 Apply changes
-
+### 3.9.7 Apply changes
 ```bash
 sudo nmcli connection down eth0
 sudo nmcli connection up eth0
 ```
 
-## 2.10 `nmtui`
-
+## 3.10 `nmtui`
 `nmtui` is a text-based UI for NetworkManager.
 
 Good use cases:
@@ -237,8 +210,7 @@ Menu options generally include:
 - Activate a connection
 - Set system hostname
 
-## 2.11 Netplan overview
-
+## 3.11 Netplan overview
 Netplan is common on Ubuntu Server.
 
 YAML files are typically stored in:
@@ -253,23 +225,20 @@ Common file names:
 - `50-cloud-init.yaml`
 - `01-netcfg.yaml`
 
-### 2.11.1 Apply configuration
-
+### 3.11.1 Apply configuration
 ```bash
 sudo netplan generate
 sudo netplan apply
 ```
 
-### 2.11.2 Test configuration safely
-
+### 3.11.2 Test configuration safely
 ```bash
 sudo netplan try
 ```
 
 `netplan try` is safer for remote servers because it can roll back if connectivity is lost.
 
-## 2.12 Netplan DHCP example for Ubuntu
-
+## 3.12 Netplan DHCP example for Ubuntu
 ```yaml
 network:
   version: 2
@@ -279,8 +248,7 @@ network:
       dhcp6: false
 ```
 
-## 2.13 Netplan static IP example for Ubuntu
-
+## 3.13 Netplan static IP example for Ubuntu
 ```yaml
 network:
   version: 2
@@ -300,8 +268,7 @@ network:
           - example.local
 ```
 
-## 2.14 Netplan static IPv6 example
-
+## 3.14 Netplan static IPv6 example
 ```yaml
 network:
   version: 2
@@ -319,8 +286,7 @@ network:
           - 2001:4860:4860::8888
 ```
 
-## 2.15 `/etc/network/interfaces` overview
-
+## 3.15 `/etc/network/interfaces` overview
 Older Debian and Ubuntu systems often use this file.
 
 Typical path:
@@ -329,15 +295,13 @@ Typical path:
 /etc/network/interfaces
 ```
 
-### 2.15.1 DHCP example
-
+### 3.15.1 DHCP example
 ```ini
 auto eth0
 iface eth0 inet dhcp
 ```
 
-### 2.15.2 Static IPv4 example
-
+### 3.15.2 Static IPv4 example
 ```ini
 auto eth0
 iface eth0 inet static
@@ -348,22 +312,19 @@ iface eth0 inet static
     dns-search example.local
 ```
 
-### 2.15.3 Bring interface down and up
-
+### 3.15.3 Bring interface down and up
 ```bash
 sudo ifdown eth0 && sudo ifup eth0
 ```
 
-## 2.16 CentOS/RHEL legacy ifcfg scripts
-
+## 3.16 CentOS/RHEL legacy ifcfg scripts
 Older RHEL/CentOS systems use files such as:
 
 ```text
 /etc/sysconfig/network-scripts/ifcfg-eth0
 ```
 
-### 2.16.1 Static example
-
+### 3.16.1 Static example
 ```ini
 TYPE=Ethernet
 BOOTPROTO=none
@@ -377,8 +338,7 @@ DNS1=1.1.1.1
 DNS2=8.8.8.8
 ```
 
-### 2.16.2 DHCP example
-
+### 3.16.2 DHCP example
 ```ini
 TYPE=Ethernet
 BOOTPROTO=dhcp
@@ -399,8 +359,7 @@ or on older systems:
 sudo systemctl restart network
 ```
 
-## 2.17 Static vs DHCP
-
+## 3.17 Static vs DHCP
 | Aspect | Static | DHCP |
 |---|---|---|
 | Address stability | Fixed | May change |
@@ -424,10 +383,8 @@ Use DHCP for:
 - Ephemeral test VMs
 - Lab environments
 
-## 2.18 Ubuntu examples: static and DHCP
-
-### 2.18.1 Ubuntu static example with Netplan
-
+## 3.18 Ubuntu examples: static and DHCP
+### 3.18.1 Ubuntu static example with Netplan
 ```yaml
 network:
   version: 2
@@ -448,8 +405,7 @@ network:
           - corp.example.com
 ```
 
-### 2.18.2 Ubuntu DHCP example with Netplan
-
+### 3.18.2 Ubuntu DHCP example with Netplan
 ```yaml
 network:
   version: 2
@@ -460,10 +416,8 @@ network:
       dhcp-identifier: mac
 ```
 
-## 2.19 CentOS/RHEL examples: static and DHCP
-
-### 2.19.1 RHEL static with `nmcli`
-
+## 3.19 CentOS/RHEL examples: static and DHCP
+### 3.19.1 RHEL static with `nmcli`
 ```bash
 sudo nmcli connection add type ethernet ifname ens160 con-name ens160 \
   ipv4.method manual \
@@ -473,16 +427,14 @@ sudo nmcli connection add type ethernet ifname ens160 con-name ens160 \
   autoconnect yes
 ```
 
-### 2.19.2 RHEL DHCP with `nmcli`
-
+### 3.19.2 RHEL DHCP with `nmcli`
 ```bash
 sudo nmcli connection add type ethernet ifname ens160 con-name ens160 \
   ipv4.method auto \
   autoconnect yes
 ```
 
-## 2.20 Configuring multiple IPs on one interface
-
+## 3.20 Configuring multiple IPs on one interface
 ```bash
 sudo ip addr add 192.168.10.21/24 dev eth0
 sudo ip addr add 192.168.10.22/24 dev eth0
@@ -495,8 +447,7 @@ Common uses:
 - Testing
 - Legacy app coexistence
 
-## 2.21 Temporary vs persistent changes
-
+## 3.21 Temporary vs persistent changes
 Commands like `ip addr add` are temporary.
 
 They usually disappear after reboot or service restart.
@@ -508,8 +459,7 @@ Persistent configuration should be set through:
 - `/etc/network/interfaces`
 - Distribution-specific configuration files
 
-## 2.22 Hostname configuration
-
+## 3.22 Hostname configuration
 Show hostname:
 
 ```bash
@@ -524,8 +474,7 @@ sudo hostnamectl set-hostname web01.example.com
 
 Ensure DNS and reverse DNS align with hostname standards in production environments.
 
-## 2.23 Interface statistics and errors
-
+## 3.23 Interface statistics and errors
 ```bash
 ip -s link show dev eth0
 ```
@@ -538,8 +487,7 @@ Look for:
 - Overruns
 - Carrier errors
 
-## 2.24 MAC address changes
-
+## 3.24 MAC address changes
 Example:
 
 ```bash
@@ -550,8 +498,7 @@ sudo ip link set dev eth0 up
 
 Use carefully. Some networks enforce port security or DHCP reservations.
 
-## 2.25 MTU changes
-
+## 3.25 MTU changes
 Temporary MTU change:
 
 ```bash
@@ -571,8 +518,7 @@ network:
       dhcp4: true
 ```
 
-## 2.26 Routing metrics
-
+## 3.26 Routing metrics
 Metrics determine route preference when multiple routes exist.
 
 Example:
@@ -584,8 +530,7 @@ sudo ip route add default via 192.168.20.1 metric 200
 
 The lower metric is preferred.
 
-## 2.27 Policy routing overview
-
+## 3.27 Policy routing overview
 Advanced routing may use multiple routing tables and rules.
 
 Examples:
@@ -602,28 +547,23 @@ ip route show table main
 ip route show table all
 ```
 
-## 2.28 Static route examples
-
-### 2.28.1 Temporary route
-
+## 3.28 Static route examples
+### 3.28.1 Temporary route
 ```bash
 sudo ip route add 10.50.0.0/16 via 192.168.10.1 dev eth0
 ```
 
-### 2.28.2 Host route
-
+### 3.28.2 Host route
 ```bash
 sudo ip route add 203.0.113.50/32 via 192.168.10.254
 ```
 
-### 2.28.3 Blackhole route
-
+### 3.28.3 Blackhole route
 ```bash
 sudo ip route add blackhole 198.51.100.0/24
 ```
 
-## 2.29 DHCP client tools
-
+## 3.29 DHCP client tools
 Common tools:
 
 - `dhclient`
@@ -637,8 +577,7 @@ sudo dhclient -v eth0
 sudo dhclient -r eth0
 ```
 
-## 2.30 Name resolution and networking services
-
+## 3.30 Name resolution and networking services
 When network settings change, verify these layers too:
 
 - DNS resolver settings
@@ -647,8 +586,7 @@ When network settings change, verify these layers too:
 - Service bind address
 - SELinux or AppArmor policy if relevant
 
-## 2.31 Safe remote change workflow
-
+## 3.31 Safe remote change workflow
 When changing remote server networking:
 
 1. Open a persistent SSH session.
@@ -658,8 +596,7 @@ When changing remote server networking:
 5. Prefer `netplan try` or staged `nmcli` changes.
 6. Validate before logging out.
 
-## 2.32 Validation commands after configuration
-
+## 3.32 Validation commands after configuration
 ```bash
 ip addr show
 ip route show
@@ -669,8 +606,7 @@ dig example.com
 curl -I https://example.com
 ```
 
-## 2.33 Common configuration mistakes
-
+## 3.33 Common configuration mistakes
 - Wrong prefix length
 - Wrong gateway
 - Duplicate IP
@@ -680,8 +616,7 @@ curl -I https://example.com
 - Route added to wrong interface
 - Persistent config differs from runtime config
 
-## 2.34 Quick comparison table
-
+## 3.34 Quick comparison table
 | Tool | Best For | Notes |
 |---|---|---|
 | `ip` | Runtime changes and inspection | Preferred modern tool |
@@ -691,8 +626,7 @@ curl -I https://example.com
 | Netplan | Ubuntu Server | YAML-based |
 | `/etc/network/interfaces` | Older Debian/Ubuntu | Legacy but still encountered |
 
-## 2.35 Summary
-
+## 3.35 Summary
 Use `iproute2` for day-to-day inspection and temporary changes. Use the distribution-native persistence mechanism for durable configuration.
 
 ---
@@ -761,8 +695,7 @@ sudo ip route del 10.50.0.0/16 via 192.168.10.1
 
 ---
 
-## 12.9 Connect a Linux host to multiple VLANs on one NIC
-
+## 3.9 Connect a Linux host to multiple VLANs on one NIC
 Objective:
 
 - Use a trunk port from the switch

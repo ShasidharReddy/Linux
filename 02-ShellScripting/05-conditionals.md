@@ -2,10 +2,8 @@
 
 > Branching with if, elif, else, case, and shell test forms.
 
-## 6. Conditional Statements
-
-### 6.1 `if` Statement
-
+## 5. Conditional Statements
+### 5.1 `if` Statement
 Basic form:
 
 ```bash
@@ -22,8 +20,7 @@ if [[ -f /etc/passwd ]]; then
 fi
 ```
 
-### 6.2 `if/else`
-
+### 5.2 `if/else`
 ```bash
 if [[ -d logs ]]; then
   echo "logs exists"
@@ -32,8 +29,7 @@ else
 fi
 ```
 
-### 6.3 `if/elif/else`
-
+### 5.3 `if/elif/else`
 ```bash
 score=82
 
@@ -46,8 +42,7 @@ else
 fi
 ```
 
-### 6.4 `test`, `[ ]`, and `[[ ]]`
-
+### 5.4 `test`, `[ ]`, and `[[ ]]`
 | Form | Notes |
 | --- | --- |
 | `test expr` | Old style |
@@ -60,8 +55,7 @@ Prefer `[[ ]]` in Bash because it:
 - Avoids some word-splitting issues
 - Supports `&&`, `||`, and regex `=~`
 
-### 6.5 `case` Statement
-
+### 5.5 `case` Statement
 Use `case` for multiple pattern-based branches.
 
 ```bash
@@ -81,8 +75,7 @@ case "$1" in
 esac
 ```
 
-### 6.6 Pattern Matching in `case`
-
+### 5.6 Pattern Matching in `case`
 ```bash
 case "$file" in
   *.log)
@@ -97,8 +90,7 @@ case "$file" in
 esac
 ```
 
-### 6.7 Nested Conditions
-
+### 5.7 Nested Conditions
 ```bash
 if [[ -n ${user:-} ]]; then
   if [[ $user == admin ]]; then
@@ -107,8 +99,7 @@ if [[ -n ${user:-} ]]; then
 fi
 ```
 
-### 6.8 One-Line Conditions
-
+### 5.8 One-Line Conditions
 ```bash
 [[ -f config.yml ]] && echo "Found"
 [[ -f config.yml ]] || echo "Missing"
@@ -116,16 +107,14 @@ fi
 
 Be careful when chaining commands that may fail for reasons other than condition logic.
 
-### 6.9 Arithmetic Conditions
-
+### 5.9 Arithmetic Conditions
 ```bash
 if (( retries < max_retries )); then
   ((retries++))
 fi
 ```
 
-### 6.10 File-Based Decision Example
-
+### 5.10 File-Based Decision Example
 ```bash
 if [[ -s app.log ]]; then
   echo "Log has data"
@@ -134,8 +123,7 @@ else
 fi
 ```
 
-### 6.11 Choosing Between `if` and `case`
-
+### 5.11 Choosing Between `if` and `case`
 | Situation | Better Choice |
 | --- | --- |
 | One simple true/false decision | `if` |
@@ -143,8 +131,7 @@ fi
 | Many fixed options | `case` |
 | Pattern-based branching | `case` |
 
-### 6.12 Decision Tree for Shell Constructs
-
+### 5.12 Decision Tree for Shell Constructs
 ```mermaid
 graph TD
 A["Need a decision"] --> B["Single true or false?"]
@@ -155,8 +142,7 @@ D -->|"Arithmetic"| F["Use if with (( ))"]
 D -->|"String or file tests"| G["Use if with [[ ]] or [ ]"]
 ```
 
-### 6.13 Common Mistakes
-
+### 5.13 Common Mistakes
 Incorrect spacing:
 
 ```bash
@@ -173,16 +159,14 @@ if [ "$x" = 1 ]; then
 fi
 ```
 
-### 6.14 Comparing Strings Safely
-
+### 5.14 Comparing Strings Safely
 ```bash
 if [[ ${role:-} == "admin" ]]; then
   echo "Privileged"
 fi
 ```
 
-### 6.15 Matching Multiple Patterns in `case`
-
+### 5.15 Matching Multiple Patterns in `case`
 ```bash
 case "$env" in
   dev|test)
@@ -194,8 +178,7 @@ case "$env" in
 esac
 ```
 
-### 6.16 Fallthrough Behavior in Bash `case`
-
+### 5.16 Fallthrough Behavior in Bash `case`
 Bash supports `;&` and `;;&` in advanced cases.
 
 ```bash
@@ -209,8 +192,7 @@ case "$value" in
 esac
 ```
 
-### 6.17 Section Summary
-
+### 5.17 Section Summary
 Conditional constructs let scripts react to:
 
 - input
