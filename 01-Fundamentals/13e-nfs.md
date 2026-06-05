@@ -2,7 +2,6 @@
 
 NFS lets Linux systems consume shared storage as mounted filesystems. This file keeps the original 13.10.x numbering and the practical troubleshooting examples.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **NFS** — *Network File System*: Remote file sharing protocol common in Linux environments.

@@ -2,7 +2,6 @@
 
 SSH is the standard secure remote administration protocol for Linux. This file preserves the original 13.7.x numbering and groups the transport, authentication, tunneling, and hardening material in one place.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **SSH** — *Secure Shell*: Encrypted remote login, command, and tunneling protocol.

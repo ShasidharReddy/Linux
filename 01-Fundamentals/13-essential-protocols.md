@@ -4,7 +4,6 @@ This chapter is now a compact protocol index. It keeps the shared foundations, t
 
 > **📌 Disclaimer**: Any third-party logos, screenshots, or diagrams referenced in this document are used for educational purposes only. All trademarks belong to their respective owners.
 
-Use the [master glossary](../00-glossary-and-full-forms.md) for full forms and terminology used across this chapter.
 
 This chapter is a practical field guide to the core protocols that Linux administrators meet every day.
 It focuses on what the protocol does.

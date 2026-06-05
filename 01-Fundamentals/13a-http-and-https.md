@@ -2,7 +2,6 @@
 
 HTTP and HTTPS carry web pages, APIs, package downloads, and countless service-to-service calls. This split chapter keeps the original 13.6.x numbering so existing references remain accurate.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **HTTP** — *HyperText Transfer Protocol*: Web request and response protocol.

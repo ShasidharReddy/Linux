@@ -2,7 +2,6 @@
 
 Email delivery is a workflow made of multiple protocols rather than one service. This file keeps the original 13.11.x numbering for backward compatibility.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **SMTP** — *Simple Mail Transfer Protocol*: Sends and relays email.

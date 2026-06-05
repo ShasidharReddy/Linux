@@ -2,7 +2,6 @@
 
 DNS is one of the highest-leverage protocols in Linux operations because so many other services depend on it. This file keeps the original 13.8.x numbering for backward compatibility.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **DNS** — *Domain Name System*: Translates names into addresses and other records.

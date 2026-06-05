@@ -2,7 +2,6 @@
 
 These file-transfer names sound similar but behave very differently on the wire. This file preserves the original 13.12.x numbering and the security comparison.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **FTP** — *File Transfer Protocol*: Legacy plaintext file transfer protocol.

@@ -2,7 +2,6 @@
 
 SNMP remains a foundational protocol for monitoring network devices, power systems, and legacy server stacks. This file preserves the original 13.14.x numbering.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **SNMP** — *Simple Network Management Protocol*: Monitoring and management protocol for devices.

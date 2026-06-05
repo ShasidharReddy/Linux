@@ -2,7 +2,6 @@
 
 LDAP provides structured directory lookup for users, groups, hosts, and service accounts. This file keeps the original 13.13.x numbering.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **LDAP** — *Lightweight Directory Access Protocol*: Directory query and update protocol.

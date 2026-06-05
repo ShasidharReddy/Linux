@@ -2,7 +2,6 @@
 
 DHCP automates IP configuration so hosts can join a network quickly and consistently. This file preserves the original 13.9.x numbering.
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the complete abbreviation reference used across the repo.
 
 > **Key Terms**
 > - **DHCP** — *Dynamic Host Configuration Protocol*: Automatically assigns IP settings to clients.
