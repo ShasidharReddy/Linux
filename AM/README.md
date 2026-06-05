@@ -247,6 +247,7 @@ flowchart TD
 | VM factory | [05-vm-provisioning-and-hardening.md](./05-vm-provisioning-and-hardening.md) | [../Virtual-Setup/08-ci-cd-and-automation.md](../Virtual-Setup/08-ci-cd-and-automation.md) |
 | Linux operations baseline | [06-linux-os-layer.md](./06-linux-os-layer.md) | [../Physical-Setup/02-os-installation-and-hardening.md](../Physical-Setup/02-os-installation-and-hardening.md) |
 | Containers and observability | [07-containers-and-monitoring.md](./07-containers-and-monitoring.md) | [../Virtual-Setup/07-production-kubernetes-setup.md](../Virtual-Setup/07-production-kubernetes-setup.md) |
+| [08-pricing-comparison-baremetal-vs-cloud.md](./08-pricing-comparison-baremetal-vs-cloud.md) | TCO & comparison | Cost, performance, security, operations compared |
 | Incident handling | [08-troubleshooting-guide.md](./08-troubleshooting-guide.md) | [../13-Troubleshooting/](../13-Troubleshooting/) |
 | Kubernetes deployment | [09-kubernetes-deployment.md](./09-kubernetes-deployment.md) | [../Virtual-Setup/07-production-kubernetes-setup.md](../Virtual-Setup/07-production-kubernetes-setup.md) |
 
