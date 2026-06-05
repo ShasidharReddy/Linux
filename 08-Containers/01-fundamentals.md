@@ -405,10 +405,8 @@ Understanding that they are isolated processes rather than mini-VMs is the found
 
 ---
 
-# 14. Glossary
-
-## 14.1 Terms
-
+# 1. Glossary
+## 1.1 Terms
 | Term | Definition |
 |---|---|
 | OCI | Open Container Initiative |

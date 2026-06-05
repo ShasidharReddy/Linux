@@ -353,8 +353,7 @@ lsof -p 4321 | wc -l
 
 ---
 
-## 13.3 Process commands reference
-
+## 3.3 Process commands reference
 - `ps aux`
 - `ps -ef`
 - `ps -eo pid,ppid,user,%cpu,%mem,stat,cmd`

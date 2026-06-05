@@ -2,10 +2,8 @@
 
 > getopts, signals, temporary files, locking, debugging, and coprocesses.
 
-## 13. Advanced Techniques
-
-### 13.1 Argument Parsing with `getopts`
-
+## 12. Advanced Techniques
+### 12.1 Argument Parsing with `getopts`
 Use `getopts` for short options.
 
 ```bash
@@ -26,8 +24,7 @@ done
 shift $((OPTIND - 1))
 ```
 
-### 13.2 Long Options Pattern
-
+### 12.2 Long Options Pattern
 `getopts` does not support long options directly.
 
 A common manual pattern:
@@ -51,8 +48,7 @@ while [[ $# -gt 0 ]]; do
 done
 ```
 
-### 13.3 Signal Handling
-
+### 12.3 Signal Handling
 ```bash
 handle_int() {
   echo "Caught SIGINT"
@@ -62,8 +58,7 @@ handle_int() {
 trap handle_int INT
 ```
 
-### 13.4 Temporary Files with `mktemp`
-
+### 12.4 Temporary Files with `mktemp`
 ```bash
 temp_file=$(mktemp)
 trap 'rm -f -- "$temp_file"' EXIT
@@ -76,8 +71,7 @@ temp_dir=$(mktemp -d)
 trap 'rm -rf -- "$temp_dir"' EXIT
 ```
 
-### 13.5 Lock Files with `flock`
-
+### 12.5 Lock Files with `flock`
 Prevent concurrent runs.
 
 ```bash
@@ -88,8 +82,7 @@ flock -n 9 || {
 }
 ```
 
-### 13.6 Debugging with `set -x`
-
+### 12.6 Debugging with `set -x`
 ```bash
 set -x
 ```
@@ -100,15 +93,13 @@ Disable later:
 set +x
 ```
 
-### 13.7 Customize Debug Output with `PS4`
-
+### 12.7 Customize Debug Output with `PS4`
 ```bash
 export PS4='+ ${BASH_SOURCE}:${LINENO}:${FUNCNAME[0]}: '
 set -x
 ```
 
-### 13.8 Logging to File and Console
-
+### 12.8 Logging to File and Console
 ```bash
 log_file="app.log"
 log() {
@@ -116,8 +107,7 @@ log() {
 }
 ```
 
-### 13.9 Structured Logging Levels
-
+### 12.9 Structured Logging Levels
 ```bash
 log_msg() {
   local level=$1
@@ -126,8 +116,7 @@ log_msg() {
 }
 ```
 
-### 13.10 Command-Line Usage Function
-
+### 12.10 Command-Line Usage Function
 ```bash
 usage() {
   cat <<'EOF'
@@ -138,8 +127,7 @@ EOF
 }
 ```
 
-### 13.11 Config File Loading
-
+### 12.11 Config File Loading
 Example `.env`-style loading:
 
 ```bash
@@ -150,15 +138,13 @@ set +a
 
 Only do this for trusted files.
 
-### 13.12 Safe Directory Changes
-
+### 12.12 Safe Directory Changes
 ```bash
 script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 cd "$script_dir"
 ```
 
-### 13.13 Detect OS
-
+### 12.13 Detect OS
 ```bash
 case "$(uname -s)" in
   Linux) echo "Linux" ;;
@@ -167,22 +153,19 @@ case "$(uname -s)" in
 esac
 ```
 
-### 13.14 Timeout Pattern
-
+### 12.14 Timeout Pattern
 ```bash
 if ! timeout 5s curl -fsS https://example.com; then
   echo "Timed out or failed" >&2
 fi
 ```
 
-### 13.15 Reading Script Directory Reliably
-
+### 12.15 Reading Script Directory Reliably
 ```bash
 SCRIPT_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 ```
 
-### 13.16 Advanced Redirection with `exec`
-
+### 12.16 Advanced Redirection with `exec`
 Redirect all output:
 
 ```bash
@@ -195,8 +178,7 @@ Or both together:
 exec > >(tee -a script.log) 2>&1
 ```
 
-### 13.17 Coprocesses
-
+### 12.17 Coprocesses
 Bash supports `coproc` for advanced two-way communication.
 
 ```bash
@@ -206,8 +188,7 @@ read -r line <&"${MYCOPROC[0]}"
 echo "$line"
 ```
 
-### 13.18 Null-Delimited Safety
-
+### 12.18 Null-Delimited Safety
 Use null delimiters for filenames.
 
 ```bash
@@ -217,8 +198,7 @@ while IFS= read -r -d '' file; do
 done
 ```
 
-### 13.19 Rate Limiting Loops
-
+### 12.19 Rate Limiting Loops
 ```bash
 for item in "${items[@]}"; do
   process "$item"
@@ -226,8 +206,7 @@ for item in "${items[@]}"; do
 done
 ```
 
-### 13.20 Retry Helper with Backoff
-
+### 12.20 Retry Helper with Backoff
 ```bash
 retry_backoff() {
   local max_attempts=$1
@@ -246,8 +225,7 @@ retry_backoff() {
 }
 ```
 
-### 13.21 Section Summary
-
+### 12.21 Section Summary
 Advanced techniques improve:
 
 - robustness

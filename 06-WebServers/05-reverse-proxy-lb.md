@@ -883,8 +883,7 @@ RestartSec=5
 
 ---
 
-### 12.5 Reverse Proxy Checklist
-
+### 5.5 Reverse Proxy Checklist
 - Upstream health endpoint exists
 - `Host` and `X-Forwarded-*` headers forwarded
 - Timeouts match workload
@@ -893,8 +892,7 @@ RestartSec=5
 - Sticky sessions used only if needed
 - Draining plan exists
 
-### 15.3 Scenario: API Reverse Proxy with Nginx
-
+### 5.3 Scenario: API Reverse Proxy with Nginx
 Requirements:
 
 - Proxy to app pool
@@ -939,8 +937,7 @@ server {
 }
 ```
 
-### 15.4 Scenario: HAProxy in Front of Two App Servers
-
+### 5.4 Scenario: HAProxy in Front of Two App Servers
 ```haproxy
 global
     log /dev/log local0
@@ -966,16 +963,14 @@ backend be_apps
     server app2 10.20.1.12:8080 check
 ```
 
-### 17.2 Load Balancer Comparison
-
+### 5.2 Load Balancer Comparison
 | Tool | Strength |
 |---|---|
 | Nginx | Simple HTTP reverse proxy and edge server |
 | HAProxy | Advanced balancing, health checks, performance |
 | Traefik | Dynamic modern environments |
 
-### 19.5 Reverse Proxy Reinforcement
-
+### 5.5 Reverse Proxy Reinforcement
 - Health checks are essential.
 - Stateless backends simplify scaling.
 - Sticky sessions are sometimes necessary but often avoidable.
@@ -985,8 +980,7 @@ backend be_apps
 - WebSockets require special header handling.
 - Load balancing can improve both scale and resilience.
 
-### 24.12 HAProxy HTTPS Redirect Example
-
+### 5.12 HAProxy HTTPS Redirect Example
 ```haproxy
 frontend fe_http
     bind *:80

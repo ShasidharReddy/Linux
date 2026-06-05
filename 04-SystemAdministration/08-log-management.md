@@ -4,8 +4,7 @@
 
 Logs are the primary evidence trail for operations, failures, access, and system behavior.
 
-## 6.1 Why logs matter
-
+## 8.1 Why logs matter
 Logs help you:
 - Diagnose incidents.
 - Investigate security events.
@@ -13,8 +12,7 @@ Logs help you:
 - Understand performance trends.
 - Satisfy compliance requirements.
 
-## 6.2 Common log locations under /var/log
-
+## 8.2 Common log locations under /var/log
 Examples:
 - `/var/log/messages`
 - `/var/log/syslog`
@@ -30,8 +28,7 @@ Examples:
 
 Exact files vary by distribution.
 
-## 6.3 journald
-
+## 8.3 journald
 `journald` stores structured logs for systemd-managed systems.
 
 Useful commands:
@@ -60,8 +57,7 @@ Important settings:
 
 Persistent logging is typically enabled by storing journals under `/var/log/journal/`.
 
-## 6.4 syslog and rsyslog
-
+## 8.4 syslog and rsyslog
 Traditional syslog-based logging is still common.
 `rsyslog` is a widely used implementation.
 
@@ -85,8 +81,7 @@ Reload after changes:
 sudo systemctl restart rsyslog
 ```
 
-## 6.5 Classic log viewing tools
-
+## 8.5 Classic log viewing tools
 Use these tools constantly:
 
 ```bash
@@ -104,8 +99,7 @@ zgrep -i panic /var/log/messages.*.gz
 zless /var/log/syslog.2.gz
 ```
 
-## 6.6 logrotate
-
+## 8.6 logrotate
 `logrotate` manages log rotation, compression, retention, and post-rotate actions.
 
 Main config locations:
@@ -135,8 +129,7 @@ sudo logrotate -d /etc/logrotate.conf
 sudo logrotate -f /etc/logrotate.conf
 ```
 
-## 6.7 Centralized logging
-
+## 8.7 Centralized logging
 Centralized logging is strongly recommended for production.
 
 Benefits:
@@ -154,8 +147,7 @@ Common stacks:
 - Splunk.
 - Cloud-native logging platforms.
 
-## 6.8 Logging design principles
-
+## 8.8 Logging design principles
 - Log in structured formats where possible.
 - Synchronize time with NTP.
 - Protect logs from unauthorized modification.
@@ -164,8 +156,7 @@ Common stacks:
 - Separate application, access, and audit logs.
 - Ensure central forwarding on critical systems.
 
-## 6.9 Common log analysis patterns
-
+## 8.9 Common log analysis patterns
 Authentication failures:
 
 ```bash
@@ -193,8 +184,7 @@ journalctl -k | grep -i oom
 dmesg | grep -i "killed process"
 ```
 
-## 6.10 Disk usage and retention control
-
+## 8.10 Disk usage and retention control
 Check journal disk use:
 
 ```bash
@@ -213,8 +203,7 @@ Find large logs:
 find /var/log -type f -exec du -h {} + | sort -h | tail -20
 ```
 
-## 6.11 Security-sensitive logs
-
+## 8.11 Security-sensitive logs
 Pay special attention to:
 - SSH authentication logs.
 - sudo usage.
@@ -228,8 +217,7 @@ Typical paths:
 - `/var/log/secure`
 - `/var/log/audit/audit.log`
 
-## 6.12 Log management best practices
-
+## 8.12 Log management best practices
 - Enable persistent journaling where useful.
 - Rotate logs before disks fill.
 - Forward critical logs centrally.
@@ -241,8 +229,7 @@ Typical paths:
 
 ---
 
-## 13.6 Logging commands reference
-
+## 8.6 Logging commands reference
 - `journalctl`
 - `journalctl -b`
 - `journalctl -k`

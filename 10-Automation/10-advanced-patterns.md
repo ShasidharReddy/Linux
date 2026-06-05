@@ -912,8 +912,7 @@ Why this works:
 
 The following numbered notes provide additional structured coverage to extend this guide into a broad study and reference document.
 
-## 100 Practical Notes for Linux Automation
-
+## 10 Practical Notes for Linux Automation
 1. Automation quality improves when the underlying Linux fundamentals are well understood.
 2. File ownership mistakes are among the most common automation defects.
 3. Service restart strategy matters as much as package installation strategy.

@@ -398,8 +398,7 @@ Always test restore procedures.
 
 ---
 
-### 12.6 Database Checklist
-
+### 7.6 Database Checklist
 - Binds only on required addresses
 - App user has least privilege
 - Backups scheduled
@@ -408,8 +407,7 @@ Always test restore procedures.
 - Disk free space monitored
 - Replication monitored if used
 
-### 13.5 Database Troubleshooting
-
+### 7.5 Database Troubleshooting
 MySQL/MariaDB:
 
 ```bash
@@ -424,15 +422,13 @@ sudo -u postgres pg_isready
 sudo -u postgres psql -c 'SELECT now();'
 ```
 
-### 17.4 Database Comparison
-
+### 7.4 Database Comparison
 | Database | Good Fit |
 |---|---|
 | MySQL/MariaDB | Traditional web apps, many CMS stacks |
 | PostgreSQL | Feature-rich SQL, complex applications |
 
-### 19.7 Database Reinforcement
-
+### 7.7 Database Reinforcement
 - Replication is not a backup.
 - Backups are not valid until restore is tested.
 - Least-privilege database users reduce blast radius.
@@ -442,8 +438,7 @@ sudo -u postgres psql -c 'SELECT now();'
 - Measure before tuning buffers.
 - Watch disk growth on WAL, binlogs, and backups.
 
-### 20.5 Database Commands
-
+### 7.5 Database Commands
 ```bash
 mysql -e 'SHOW DATABASES;'
 mysqladmin ping
@@ -451,22 +446,19 @@ sudo -u postgres psql -c 'SELECT version();'
 pg_isready
 ```
 
-### 22.6 Validate Database
-
+### 7.6 Validate Database
 ```bash
 mysqladmin ping
 sudo -u postgres pg_isready
 ```
 
-### 24.9 PostgreSQL HBA Example for App and Replica
-
+### 7.9 PostgreSQL HBA Example for App and Replica
 ```conf
 host    appdb          appuser       10.0.0.0/24      scram-sha-256
 host    replication    replicator    10.0.1.0/24      scram-sha-256
 ```
 
-### 24.10 MySQL Bind and Logging Example
-
+### 7.10 MySQL Bind and Logging Example
 ```ini
 [mysqld]
 bind-address = 10.0.0.10

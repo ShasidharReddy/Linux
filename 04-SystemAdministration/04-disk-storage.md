@@ -246,8 +246,7 @@ journalctl -b | grep -i -E "mount|xfs|ext4|md|lvm"
 
 ---
 
-## 12.3 Disk expansion checklist
-
+## 4.3 Disk expansion checklist
 - Confirm backup or snapshot exists.
 - Confirm hypervisor or cloud disk is enlarged.
 - Rescan device if needed.
@@ -261,8 +260,7 @@ journalctl -b | grep -i -E "mount|xfs|ext4|md|lvm"
 
 ---
 
-## 13.4 Storage commands reference
-
+## 4.4 Storage commands reference
 - `lsblk`
 - `lsblk -f`
 - `blkid`

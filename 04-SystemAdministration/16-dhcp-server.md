@@ -2,8 +2,6 @@
 
 ## Full Forms & Terminology
 
-See the [master glossary](../00-glossary-and-full-forms.md) for the networking glossary.
-
 - **DHCP — Dynamic Host Configuration Protocol:** Automatically assigns network settings.
 - **DORA — Discover, Offer, Request, Acknowledge:** The standard DHCP lease exchange.
 - **DNS — Domain Name System:** One of the most common options sent by DHCP.

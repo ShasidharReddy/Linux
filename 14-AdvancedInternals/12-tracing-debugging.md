@@ -555,7 +555,6 @@ The sections above provide structure. The following extended notes expand the ma
 | `D` | Uninterruptible sleep | Waiting on I/O or kernel completion |
 | `T` | Stopped | Signal or debugger stop |
 | `Z` | Zombie | Exited, not yet reaped |
-|
 ## R.2 Scheduling Policy Reference
 
 | Policy | Area | Notes |

@@ -155,18 +155,15 @@ Depending on industry requirements, document controls for:
 
 ---
 
-# 20. Database Security Deep Dive
-
-## 20.1 TLS deployment checklist
-
+# 9. Database Security Deep Dive
+## 9.1 TLS deployment checklist
 - CA chain deployed.
 - Correct SAN/CN values.
 - Key permissions restricted.
 - Client verification policy decided.
 - Rotation procedure documented.
 
-## 20.2 Least-privilege role examples
-
+## 9.2 Least-privilege role examples
 Example service account needs only:
 
 - CONNECT on target database.
@@ -180,8 +177,7 @@ Avoid granting:
 - Global wildcard privileges.
 - Schema modification unless required.
 
-## 20.3 Network segmentation
-
+## 9.3 Network segmentation
 Recommended pattern:
 
 - Clients connect from app subnets only.
@@ -189,8 +185,7 @@ Recommended pattern:
 - Replication traffic isolated when possible.
 - Backup endpoints restricted.
 
-## 20.4 Audit review process
-
+## 9.4 Audit review process
 At least periodically:
 
 - Review failed login spikes.
@@ -199,8 +194,7 @@ At least periodically:
 - Review unusual export patterns.
 - Review dormant accounts.
 
-## 20.5 Data masking and non-production safety
-
+## 9.5 Data masking and non-production safety
 Before restoring production data to lower environments:
 
 - Mask PII.
@@ -208,16 +202,14 @@ Before restoring production data to lower environments:
 - Rotate keys and tokens.
 - Restrict access.
 
-## 20.6 Decommissioning storage safely
-
+## 9.6 Decommissioning storage safely
 When retiring disks or volumes:
 
 - Follow media sanitization policy.
 - Verify encryption key destruction where applicable.
 - Remove from asset inventory.
 
-## 20.7 Shared responsibility note
-
+## 9.7 Shared responsibility note
 In managed services, some controls are handled by provider, but you still own:
 
 - Access management.

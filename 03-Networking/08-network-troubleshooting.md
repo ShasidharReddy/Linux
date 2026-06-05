@@ -5,8 +5,7 @@
 
 Troubleshooting becomes much easier when you move layer by layer.
 
-## 6.1 Troubleshooting mindset
-
+## 8.1 Troubleshooting mindset
 Always ask:
 
 1. Is the interface up?
@@ -18,8 +17,7 @@ Always ask:
 7. Is a firewall blocking traffic?
 8. Is the application healthy?
 
-## 6.2 Mermaid troubleshooting decision tree
-
+## 8.2 Mermaid troubleshooting decision tree
 ```mermaid
 graph TD
     A["Problem reported"] --> B["Check link and interface state"]
@@ -33,8 +31,7 @@ graph TD
     I --> J["Inspect application logs"]
 ```
 
-## 6.3 `ping`
-
+## 8.3 `ping`
 `ping` tests ICMP reachability.
 
 Examples:
@@ -51,8 +48,7 @@ Interpretation:
 - Success means path and remote response are working.
 - Failure can be routing, firewall, link, or policy.
 
-## 6.4 `traceroute`
-
+## 8.4 `traceroute`
 Shows hop-by-hop path.
 
 ### 📸 Traceroute Visualization
@@ -72,8 +68,7 @@ Useful for:
 - Finding where packets stop
 - Identifying asymmetric or unexpected paths
 
-## 6.5 `mtr`
-
+## 8.5 `mtr`
 `mtr` combines `ping` and `traceroute` for continuous path analysis.
 
 ```bash
@@ -82,8 +77,7 @@ mtr -rwzc 20 example.com
 
 Great for intermittent packet loss or latency.
 
-## 6.6 `netstat`
-
+## 8.6 `netstat`
 Legacy tool for connections and listeners.
 
 ```bash
@@ -93,36 +87,30 @@ netstat -rn
 
 Prefer `ss` on modern systems, but `netstat` is still widely known.
 
-## 6.7 `ss`
-
+## 8.7 `ss`
 `ss` is the modern socket statistics tool.
 
-### 6.7.1 Show listening TCP and UDP sockets
-
+### 8.7.1 Show listening TCP and UDP sockets
 ```bash
 ss -tulpen
 ```
 
-### 6.7.2 Show active TCP sessions
-
+### 8.7.2 Show active TCP sessions
 ```bash
 ss -tan
 ```
 
-### 6.7.3 Filter by port
-
+### 8.7.3 Filter by port
 ```bash
 ss -tulpen | grep :443
 ```
 
-### 6.7.4 Show process info
-
+### 8.7.4 Show process info
 ```bash
 sudo ss -tulpn
 ```
 
-## 6.8 `lsof -i`
-
+## 8.8 `lsof -i`
 Shows open files related to network sockets.
 
 Examples:
@@ -135,49 +123,41 @@ sudo lsof -iTCP -sTCP:LISTEN -nP
 
 Useful when you need to know which process owns a port.
 
-## 6.9 `tcpdump`
-
+## 8.9 `tcpdump`
 One of the most important troubleshooting tools.
 
-### 6.9.1 Capture on interface
-
+### 8.9.1 Capture on interface
 ```bash
 sudo tcpdump -i eth0
 ```
 
-### 6.9.2 Capture by host
-
+### 8.9.2 Capture by host
 ```bash
 sudo tcpdump -i eth0 host 192.168.10.20
 ```
 
-### 6.9.3 Capture by port
-
+### 8.9.3 Capture by port
 ```bash
 sudo tcpdump -i eth0 port 443
 ```
 
-### 6.9.4 Capture by protocol
-
+### 8.9.4 Capture by protocol
 ```bash
 sudo tcpdump -i eth0 icmp
 sudo tcpdump -i eth0 udp port 53
 ```
 
-### 6.9.5 Write capture to file
-
+### 8.9.5 Write capture to file
 ```bash
 sudo tcpdump -i eth0 -w capture.pcap
 ```
 
-### 6.9.6 Read a pcap file
-
+### 8.9.6 Read a pcap file
 ```bash
 tcpdump -r capture.pcap
 ```
 
-## 6.10 `nmap`
-
+## 8.10 `nmap`
 Use `nmap` to discover open ports and services.
 
 Examples:
@@ -190,8 +170,7 @@ nmap -sV 192.168.10.20
 
 Be careful with production and security policies.
 
-## 6.11 `curl`
-
+## 8.11 `curl`
 Powerful application-layer testing tool.
 
 Examples:
@@ -212,8 +191,7 @@ Use `curl` to verify:
 - Headers
 - Response timing
 
-## 6.12 `wget`
-
+## 8.12 `wget`
 Examples:
 
 ```bash
@@ -221,8 +199,7 @@ wget https://example.com/file.tar.gz
 wget --server-response https://example.com/
 ```
 
-## 6.13 `nc` or netcat
-
+## 8.13 `nc` or netcat
 Netcat is extremely useful for TCP or UDP testing.
 
 Examples:
@@ -234,8 +211,7 @@ nc -ul 9999
 nc -l 8080
 ```
 
-## 6.14 `telnet`
-
+## 8.14 `telnet`
 Legacy but still useful for quick TCP connection tests.
 
 ```bash
@@ -244,8 +220,7 @@ telnet 192.168.10.20 25
 
 If it connects, the TCP port is open.
 
-## 6.15 `ip addr`, `ip route`, and `ip neigh`
-
+## 8.15 `ip addr`, `ip route`, and `ip neigh`
 First-line inspection commands:
 
 ```bash
@@ -254,8 +229,7 @@ ip route
 ip neigh
 ```
 
-## 6.16 `ethtool`
-
+## 8.16 `ethtool`
 Inspect NIC link settings and offloads.
 
 Examples:
@@ -273,8 +247,7 @@ Look for:
 - Driver issues
 - Interface counters
 
-## 6.17 `journalctl`
-
+## 8.17 `journalctl`
 Check service and kernel logs.
 
 Examples:
@@ -286,8 +259,7 @@ journalctl -u systemd-resolved
 journalctl -k
 ```
 
-## 6.18 `dmesg`
-
+## 8.18 `dmesg`
 Useful for driver or link state issues.
 
 ```bash
@@ -295,10 +267,8 @@ dmesg | grep -i eth
 dmesg | grep -i link
 ```
 
-## 6.19 Troubleshooting by symptom
-
-### 6.19.1 No network connectivity at all
-
+## 8.19 Troubleshooting by symptom
+### 8.19.1 No network connectivity at all
 Check:
 
 - Cable or virtual NIC state
@@ -307,8 +277,7 @@ Check:
 - Default route
 - Hypervisor or cloud network attachments
 
-### 6.19.2 Can ping gateway but not Internet
-
+### 8.19.2 Can ping gateway but not Internet
 Check:
 
 - Default route
@@ -316,8 +285,7 @@ Check:
 - NAT
 - DNS if only names fail
 
-### 6.19.3 Can ping IP but not hostname
-
+### 8.19.3 Can ping IP but not hostname
 Check:
 
 - `/etc/resolv.conf`
@@ -325,8 +293,7 @@ Check:
 - DNS server reachability
 - `/etc/nsswitch.conf`
 
-### 6.19.4 Service not reachable remotely
-
+### 8.19.4 Service not reachable remotely
 Check:
 
 - Is the service listening?
@@ -335,8 +302,7 @@ Check:
 - Is upstream load balancer or security group allowing it?
 - Is SELinux blocking the port?
 
-## 6.20 Check service bind address
-
+## 8.20 Check service bind address
 Example:
 
 ```bash
@@ -345,8 +311,7 @@ ss -tulpn | grep :8080
 
 If it listens only on `127.0.0.1:8080`, remote hosts cannot connect.
 
-## 6.21 TCP handshake troubleshooting with `tcpdump`
-
+## 8.21 TCP handshake troubleshooting with `tcpdump`
 Look for:
 
 - SYN sent
@@ -359,16 +324,14 @@ Patterns:
 - SYN then RST: port closed or active reject
 - Full handshake then app error: higher-layer issue
 
-## 6.22 DNS troubleshooting checklist
-
+## 8.22 DNS troubleshooting checklist
 - Does `dig @resolver name` work?
 - Does `getent hosts name` work?
 - Is `/etc/resolv.conf` correct?
 - Is `systemd-resolved` active?
 - Are search domains causing wrong results?
 
-## 6.23 Routing troubleshooting
-
+## 8.23 Routing troubleshooting
 Useful commands:
 
 ```bash
@@ -383,8 +346,7 @@ Check for:
 - Missing return route
 - Source-based routing mismatch
 
-## 6.24 MTU troubleshooting
-
+## 8.24 MTU troubleshooting
 Symptoms:
 
 - Small pings work, large HTTPS stalls
@@ -399,8 +361,7 @@ ping -M do -s 1472 8.8.8.8
 
 Reduce payload until it works.
 
-## 6.25 Packet capture strategy
-
+## 8.25 Packet capture strategy
 Capture on the right place:
 
 - Client interface
@@ -416,16 +377,14 @@ Ask:
 - Was there a reply?
 - Was the reply dropped on the return path?
 
-## 6.26 Analyze listening services
-
+## 8.26 Analyze listening services
 ```bash
 sudo ss -lntup
 sudo systemctl status nginx
 sudo systemctl status sshd
 ```
 
-## 6.27 `arping`
-
+## 8.27 `arping`
 Useful for Layer 2 address resolution tests.
 
 ```bash
@@ -438,8 +397,7 @@ Good for:
 - Local subnet reachability
 - ARP validation
 
-## 6.28 `tracepath`
-
+## 8.28 `tracepath`
 Often available by default on Linux.
 
 ```bash
@@ -448,8 +406,7 @@ tracepath example.com
 
 It can help identify PMTU changes.
 
-## 6.29 Common troubleshooting workflow example
-
+## 8.29 Common troubleshooting workflow example
 Problem:
 
 - Users cannot access `https://app.example.com`
@@ -466,8 +423,7 @@ Step-by-step:
 8. On server: `sudo tcpdump -i eth0 port 443`
 9. Check application logs
 
-## 6.30 Useful one-liners
-
+## 8.30 Useful one-liners
 ```bash
 ip -br addr
 ip -br link
@@ -476,8 +432,7 @@ curl -I https://example.com
 nmap -Pn -p 80,443 example.com
 ```
 
-## 6.31 When to suspect upstream issues
-
+## 8.31 When to suspect upstream issues
 Suspect upstream devices when:
 
 - Host config looks correct
@@ -493,8 +448,7 @@ Possible causes:
 - Router ACL
 - ISP issue
 
-## 6.32 Documentation during incidents
-
+## 8.32 Documentation during incidents
 Capture:
 
 - Time of issue
@@ -505,8 +459,7 @@ Capture:
 - Firewall state
 - Packet capture summary
 
-## 6.33 Summary
-
+## 8.33 Summary
 Troubleshooting is a process of narrowing scope. Start with the basics, move layer by layer, and validate assumptions using observable data.
 
 ---
@@ -556,8 +509,7 @@ Steps:
 
 ---
 
-## 12.5 Troubleshoot: Server can ping gateway but not Internet
-
+## 8.5 Troubleshoot: Server can ping gateway but not Internet
 Interpretation:
 
 - Layer 2 and local subnet connectivity probably work
@@ -584,8 +536,7 @@ Likely causes:
 
 ---
 
-## 12.6 Troubleshoot: Service listens locally but remote clients cannot connect
-
+## 8.6 Troubleshoot: Service listens locally but remote clients cannot connect
 Key checks:
 
 ```bash
@@ -604,8 +555,7 @@ Common root causes:
 
 ---
 
-## 12.12 Troubleshoot: HTTPS works for small pages but large downloads stall
-
+## 8.12 Troubleshoot: HTTPS works for small pages but large downloads stall
 This pattern strongly suggests MTU or MSS trouble on a tunnel, overlay, or mis-sized path.
 
 Workflow:
@@ -625,8 +575,7 @@ Potential fixes:
 
 ---
 
-## 12.15 Build a lightweight packet-capture workflow during incidents
-
+## 8.15 Build a lightweight packet-capture workflow during incidents
 Goal:
 
 - Capture enough information to explain the failure without collecting noise forever
@@ -648,8 +597,7 @@ Best practices:
 
 ---
 
-## 12.16 Scenario selection cheat sheet
-
+## 8.16 Scenario selection cheat sheet
 | If you need to... | Start with... |
 |---|---|
 | Reach a private server from a laptop | Scenario 12.1 or 12.8 |
@@ -668,8 +616,7 @@ Best practices:
 
 ---
 
-## 12.17 Summary
-
+## 8.17 Summary
 Real-world networking work is usually about combining a few simple components correctly: addressing, routing, DNS, security policy, and observability. When incidents happen, use the most direct commands first, prove each layer, and change one variable at a time.
 
 ---

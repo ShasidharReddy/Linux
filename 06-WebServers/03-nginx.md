@@ -1288,8 +1288,7 @@ graph TD
 
 ---
 
-### 12.3 New Nginx Site Checklist
-
+### 3.3 New Nginx Site Checklist
 - Create server block
 - Set `server_name`
 - Set root or proxy upstream
@@ -1300,8 +1299,7 @@ graph TD
 - Reload service
 - Validate headers and redirects
 
-### 13.3 Nginx Troubleshooting
-
+### 3.3 Nginx Troubleshooting
 ```bash
 nginx -t
 nginx -T
@@ -1317,8 +1315,7 @@ Look for:
 - File permission issues
 - Upstream timeout or connection refused
 
-### 15.1 Scenario: Static Website on Nginx
-
+### 3.1 Scenario: Static Website on Nginx
 Requirements:
 
 - Public website
@@ -1357,8 +1354,7 @@ server {
 }
 ```
 
-### 19.3 Nginx Reinforcement
-
+### 3.3 Nginx Reinforcement
 - Nginx is efficient for many concurrent connections.
 - `server` and `location` matching logic must be understood precisely.
 - `try_files` is central to many static and framework setups.
@@ -1373,8 +1369,7 @@ server {
 - Avoid giant unbounded request body sizes.
 - Ensure both HA nodes have the same certificates if using VIP failover.
 
-### 20.2 Nginx Commands
-
+### 3.2 Nginx Commands
 ```bash
 nginx -v
 nginx -V
@@ -1383,16 +1378,14 @@ nginx -T
 systemctl reload nginx
 ```
 
-### 22.2 Validate Nginx
-
+### 3.2 Validate Nginx
 ```bash
 nginx -t
 curl -H 'Host: example.com' http://127.0.0.1/
 curl -kI https://127.0.0.1 -H 'Host: example.com'
 ```
 
-### 24.1 Nginx Redirect Canonical Host
-
+### 3.1 Nginx Redirect Canonical Host
 ```nginx
 server {
     listen 80;
@@ -1401,8 +1394,7 @@ server {
 }
 ```
 
-### 24.3 Nginx Basic Auth Protected Location
-
+### 3.3 Nginx Basic Auth Protected Location
 ```nginx
 location /admin/ {
     auth_basic "Restricted";
@@ -1411,8 +1403,7 @@ location /admin/ {
 }
 ```
 
-### 24.5 Nginx Custom Error Pages
-
+### 3.5 Nginx Custom Error Pages
 ```nginx
 error_page 404 /404.html;
 error_page 500 502 503 504 /50x.html;
@@ -1422,8 +1413,7 @@ location = /404.html {
 }
 ```
 
-### 24.7 Nginx Client Upload Limit
-
+### 3.7 Nginx Client Upload Limit
 ```nginx
 client_max_body_size 20m;
 ```

@@ -2,10 +2,8 @@
 
 > Arithmetic, comparison, logical, string, and file test operators.
 
-## 5. Operators
-
-### 5.1 Overview
-
+## 4. Operators
+### 4.1 Overview
 Shell scripts use operators for:
 
 - Arithmetic
@@ -14,8 +12,7 @@ Shell scripts use operators for:
 - File tests
 - Logical evaluation
 
-### 5.2 Arithmetic Operators
-
+### 4.2 Arithmetic Operators
 | Operator | Meaning | Example |
 | --- | --- | --- |
 | `+` | Addition | `$((a + b))` |
@@ -35,8 +32,7 @@ echo $((a + b))
 echo $((a % b))
 ```
 
-### 5.3 Numeric Comparison Operators
-
+### 4.3 Numeric Comparison Operators
 Used with `test`, `[ ]`, or `[[ ]]`.
 
 | Operator | Meaning |
@@ -56,8 +52,7 @@ if [ "$a" -gt "$b" ]; then
 fi
 ```
 
-### 5.4 String Comparison Operators
-
+### 4.4 String Comparison Operators
 | Operator | Meaning |
 | --- | --- |
 | `=` or `==` | Equal |
@@ -73,8 +68,7 @@ if [[ $name == "admin" ]]; then
 fi
 ```
 
-### 5.5 File Test Operators
-
+### 4.5 File Test Operators
 | Operator | Meaning |
 | --- | --- |
 | `-f` | Regular file exists |
@@ -94,8 +88,7 @@ Examples:
 [[ -x ./deploy.sh ]]
 ```
 
-### 5.6 Additional File Tests
-
+### 4.6 Additional File Tests
 | Operator | Meaning |
 | --- | --- |
 | `-b` | Block device |
@@ -108,8 +101,7 @@ Examples:
 | `file1 -nt file2` | Newer than |
 | `file1 -ot file2` | Older than |
 
-### 5.7 Logical Operators
-
+### 4.7 Logical Operators
 In Bash `[[ ]]`:
 
 ```bash
@@ -118,8 +110,7 @@ In Bash `[[ ]]`:
 [[ ! -f missing.txt ]]
 ```
 
-### 5.8 Arithmetic Evaluation with `(( ))`
-
+### 4.8 Arithmetic Evaluation with `(( ))`
 ```bash
 count=5
 if (( count > 3 )); then
@@ -127,8 +118,7 @@ if (( count > 3 )); then
 fi
 ```
 
-### 5.9 Operator Precedence
-
+### 4.9 Operator Precedence
 Use parentheses to make logic clear.
 
 ```bash
@@ -137,8 +127,7 @@ if [[ ($role == admin || $role == ops) && $enabled == yes ]]; then
 fi
 ```
 
-### 5.10 Common Comparison Examples
-
+### 4.10 Common Comparison Examples
 #### Number comparison
 
 ```bash
@@ -163,8 +152,7 @@ if [[ -e $config_file ]]; then
 fi
 ```
 
-### 5.11 Old `expr` Tool
-
+### 4.11 Old `expr` Tool
 Historically used for arithmetic:
 
 ```bash
@@ -177,8 +165,7 @@ Modern Bash prefers:
 echo $((5 + 2))
 ```
 
-### 5.12 Section Summary
-
+### 4.12 Section Summary
 Use:
 
 - `(( ))` for arithmetic

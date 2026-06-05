@@ -57,8 +57,8 @@ flowchart LR
     A[Clients] --> B[Relay or VLAN]
     B --> C[DHCP primary]
     B --> D[DHCP secondary]
-    C <---> E[Failover state sync]
-    D <---> E
+    C <--> E[Failover state sync]
+    D <--> E
 ```
 
 #### Primary server example

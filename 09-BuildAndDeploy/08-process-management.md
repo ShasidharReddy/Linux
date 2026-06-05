@@ -304,10 +304,8 @@ KillSignal=SIGTERM
 
 ---
 
-# 13. Configuration Management
-
-## 13.1 Why Configuration Management Matters
-
+# 8. Configuration Management
+## 8.1 Why Configuration Management Matters
 Configuration separates deployable code from environment-specific behavior.
 
 Examples of environment-specific settings:
@@ -320,8 +318,7 @@ Examples of environment-specific settings:
 - Queue names
 - Port bindings
 
-## 13.2 Environment-Based Configuration
-
+## 8.2 Environment-Based Configuration
 Typical environments:
 
 - Development
@@ -334,8 +331,7 @@ Best practice:
 - Same code artifact across environments
 - Different configuration injected per environment
 
-## 13.3 Configuration Approaches
-
+## 8.3 Configuration Approaches
 Common options:
 
 - Environment variables
@@ -345,8 +341,7 @@ Common options:
 - Secret management systems
 - Service discovery/config platforms
 
-## 13.4 Configuration File Management
-
+## 8.4 Configuration File Management
 Recommended pattern:
 
 ```text
@@ -364,16 +359,14 @@ Keep mutable config in `shared/config/`.
 
 Release directories should remain immutable.
 
-## 13.5 Environment Variables vs Config Files
-
+## 8.5 Environment Variables vs Config Files
 | Approach | Best For | Pros | Cons |
 |---|---|---|---|
 | Environment variables | Simple app settings, secrets injection | Standard, easy to automate | Can become unwieldy at scale |
 | Config files | Larger structured configuration | Easier to read, version, template | Need secure distribution |
 | Mixed model | Most real systems | Balanced flexibility | Needs discipline |
 
-## 13.6 Secrets Management
-
+## 8.6 Secrets Management
 Secrets include:
 
 - Database passwords
@@ -397,8 +390,7 @@ Prefer:
 - Kubernetes secrets with appropriate safeguards
 - systemd EnvironmentFile with restricted permissions for simpler setups
 
-## 13.7 Secret Injection Patterns
-
+## 8.7 Secret Injection Patterns
 Patterns include:
 
 - Env vars populated at service start
@@ -406,8 +398,7 @@ Patterns include:
 - Sidecar or agent injection
 - App runtime fetch with caching
 
-## 13.8 Feature Flags
-
+## 8.8 Feature Flags
 Feature flags enable controlled release behavior.
 
 Use cases:
@@ -424,8 +415,7 @@ Best practices:
 - Monitor flag impact
 - Separate operational kill switches from product experiments
 
-## 13.9 Templating Configuration
-
+## 8.9 Templating Configuration
 Tools may include:
 
 - `envsubst`
@@ -441,8 +431,7 @@ $ export APP_PORT=8080
 $ envsubst < app.env.template > app.env
 ```
 
-## 13.10 Config Validation
-
+## 8.10 Config Validation
 Validate before deployment.
 
 Examples:
@@ -458,8 +447,7 @@ Simple Bash pattern:
 : "${APP_ENV:?APP_ENV is required}"
 ```
 
-## 13.11 Multi-Environment Config Example
-
+## 8.11 Multi-Environment Config Example
 Development:
 
 ```bash
@@ -484,8 +472,7 @@ LOG_LEVEL=warn
 DATABASE_URL=postgresql://prod:secret@prod-db.internal/proddb
 ```
 
-## 13.12 Configuration Drift Prevention
-
+## 8.12 Configuration Drift Prevention
 Prevent drift by:
 
 - Storing config templates in version control
@@ -494,8 +481,7 @@ Prevent drift by:
 - Auditing live config regularly
 - Avoiding manual hotfix changes on servers
 
-## 13.13 Configuration Reloading
-
+## 8.13 Configuration Reloading
 Some apps can reload config without full restart.
 
 Patterns:
@@ -506,8 +492,7 @@ Patterns:
 
 If live reload is unsupported, prefer controlled restart plus health checks.
 
-## 13.14 Common Configuration Mistakes
-
+## 8.14 Common Configuration Mistakes
 - Mixing dev and prod credentials
 - Using relative file paths
 - Putting mutable config inside release directories
@@ -515,8 +500,7 @@ If live reload is unsupported, prefer controlled restart plus health checks.
 - No schema or validation for config structure
 - Leaving stale feature flags enabled forever
 
-## 13.15 Production Configuration Checklist
-
+## 8.15 Production Configuration Checklist
 - Required variables documented
 - Secrets stored securely
 - Config separated from artifact

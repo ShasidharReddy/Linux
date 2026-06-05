@@ -1,15 +1,13 @@
 # Recovery Procedures
 
-## 12.1 Recovery priorities
-
+## 11.1 Recovery priorities
 1. Protect data.
 2. Restore service safely.
 3. Preserve evidence.
 4. Reduce time pressure.
 5. Implement durable repair.
 
-## 12.2 Live USB or ISO rescue workflow
-
+## 11.2 Live USB or ISO rescue workflow
 1. Boot rescue media.
 2. Confirm disks are visible.
 3. Identify root, boot, EFI, LVM, and RAID devices.
@@ -21,8 +19,7 @@
 9. Exit and cleanly unmount.
 10. Reboot and validate.
 
-## 12.3 Discover storage layout
-
+## 11.3 Discover storage layout
 ```bash
 lsblk -f
 blkid
@@ -32,8 +29,7 @@ lvs
 cat /proc/mdstat
 ```
 
-## 12.4 Mount and chroot example
-
+## 11.4 Mount and chroot example
 ```bash
 mount /dev/mapper/vg-root /mnt
 mount /dev/sdX1 /mnt/boot
@@ -44,8 +40,7 @@ mount --bind /sys /mnt/sys
 chroot /mnt /bin/bash
 ```
 
-## 12.5 Password reset
-
+## 11.5 Password reset
 Method 1 using rescue shell:
 
 ```bash
@@ -66,8 +61,7 @@ SELinux relabel hint:
 touch /.autorelabel
 ```
 
-## 12.6 Filesystem repair workflow
-
+## 11.6 Filesystem repair workflow
 - Identify filesystem type.
 - Ensure it is unmounted.
 - Capture current error messages.
@@ -75,8 +69,7 @@ touch /.autorelabel
 - Repair.
 - Mount read-only for validation if prudent.
 
-## 12.7 Package repair from rescue
-
+## 11.7 Package repair from rescue
 Inside chroot:
 
 ```bash
@@ -91,8 +84,7 @@ dnf reinstall kernel grub2
 dracut -f
 ```
 
-## 12.8 Restoring from backup
-
+## 11.8 Restoring from backup
 Checklist:
 
 - Verify backup age.
@@ -102,15 +94,13 @@ Checklist:
 - Verify ownership, ACLs, and contexts.
 - Test before cutover.
 
-## 12.9 Recovering deleted but open files
-
+## 11.9 Recovering deleted but open files
 If a deleted file is still open:
 
 - Prefer service restart or reopen signal.
 - In rare cases inspect `/proc/<pid>/fd/`.
 
-## 12.10 Rebuild initramfs and GRUB after recovery
-
+## 11.10 Rebuild initramfs and GRUB after recovery
 ```bash
 update-initramfs -u -k all && update-grub
 ```
@@ -122,8 +112,7 @@ dracut -f --regenerate-all
 grub2-mkconfig -o /boot/grub2/grub.cfg
 ```
 
-## 12.11 Validate after recovery
-
+## 11.11 Validate after recovery
 - Boot succeeds.
 - Filesystems mount read-write as expected.
 - Critical services start.
@@ -131,8 +120,7 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 - Monitoring is green.
 - Backups still run.
 
-## 12.12 Recovery checklist
-
+## 11.12 Recovery checklist
 - Protect data.
 - Assemble storage layers.
 - Mount the system.

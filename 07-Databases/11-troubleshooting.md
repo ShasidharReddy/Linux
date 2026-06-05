@@ -160,10 +160,8 @@ curl -u elastic:password -k https://localhost:9200/_nodes/stats?pretty
 
 ---
 
-# 24. Sample Runbooks
-
-## 24.1 MySQL restore runbook summary
-
+# 11. Sample Runbooks
+## 11.1 MySQL restore runbook summary
 1. Provision host.
 2. Install same compatible version.
 3. Stop service.
@@ -173,8 +171,7 @@ curl -u elastic:password -k https://localhost:9200/_nodes/stats?pretty
 7. Validate data.
 8. Repoint application if part of failover.
 
-## 24.2 PostgreSQL restore runbook summary
-
+## 11.2 PostgreSQL restore runbook summary
 1. Provision host and storage.
 2. Restore base backup.
 3. Configure WAL archive access.
@@ -183,8 +180,7 @@ curl -u elastic:password -k https://localhost:9200/_nodes/stats?pretty
 6. Validate recovery completion.
 7. Promote if needed.
 
-## 24.3 MongoDB node replacement summary
-
+## 11.3 MongoDB node replacement summary
 1. Confirm replica set health.
 2. Remove failed member if necessary.
 3. Rebuild node.
@@ -192,16 +188,14 @@ curl -u elastic:password -k https://localhost:9200/_nodes/stats?pretty
 5. Wait for initial sync.
 6. Validate replication lag clears.
 
-## 24.4 Redis failover summary
-
+## 11.4 Redis failover summary
 1. Confirm primary failure.
 2. Validate Sentinel or Cluster election result.
 3. Ensure clients reconnect correctly.
 4. Check persistence state.
 5. Rebuild failed node as replica.
 
-## 24.5 Elasticsearch red cluster summary
-
+## 11.5 Elasticsearch red cluster summary
 1. Check cluster health.
 2. Identify unassigned shards.
 3. Confirm disk watermark status.

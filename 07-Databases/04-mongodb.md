@@ -362,37 +362,31 @@ graph TD
 
 ---
 
-# 15. Extended MongoDB Operations Guide
-
-## 15.1 Replica set health checks
-
+# 4. Extended MongoDB Operations Guide
+## 4.1 Replica set health checks
 ```javascript
 rs.status()
 rs.printReplicationInfo()
 rs.printSecondaryReplicationInfo()
 ```
 
-## 15.2 Database statistics
-
+## 4.2 Database statistics
 ```javascript
 db.stats()
 db.serverStatus()
 ```
 
-## 15.3 Collection stats
-
+## 4.3 Collection stats
 ```javascript
 db.orders.stats()
 ```
 
-## 15.4 Index review
-
+## 4.4 Index review
 ```javascript
 db.orders.getIndexes()
 ```
 
-## 15.5 Profiling strategy
-
+## 4.5 Profiling strategy
 Use profiling only as needed and with awareness of workload overhead.
 
 Levels:
@@ -401,36 +395,31 @@ Levels:
 - 1: slow operations
 - 2: all operations
 
-## 15.6 Common admin patterns
-
+## 4.6 Common admin patterns
 - Keep admin database credentials separate from app credentials.
 - Prefer replica sets even for small production deployments.
 - Avoid arbiters unless you really need them.
 - Validate shard rebalancing after capacity changes.
 
-## 15.7 Backup checklist for MongoDB
-
+## 4.7 Backup checklist for MongoDB
 - Use auth-enabled backup user.
 - Take backups from a secondary when possible.
 - Ensure oplog coverage if consistent point restore is needed.
 - Test restore into isolated environment.
 
-## 15.8 Storage considerations
-
+## 4.8 Storage considerations
 - Monitor WiredTiger cache utilization.
 - Watch filesystem free space.
 - Separate journal and data only when justified by platform design.
 - Use XFS where vendor guidance recommends it.
 
-## 15.9 Common anti-patterns
-
+## 4.9 Common anti-patterns
 - Giant unbounded arrays in one document.
 - Missing indexes on shard key prefixes.
 - Treating MongoDB like a generic dump for arbitrary blobs.
 - Ignoring schema validation when applications evolve.
 
-## 15.10 Schema validation example
-
+## 4.10 Schema validation example
 ```javascript
 db.createCollection('customers', {
   validator: {

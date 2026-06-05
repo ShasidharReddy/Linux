@@ -121,13 +121,10 @@ Collect:
 
 ---
 
-## 11. SRE Practices
+## 10. SRE Practices
+### 10.1 SRE and DevOps relationshipSRE applies software engineering to operations. DevOps emphasizes collaboration and automation. In practice, strong DevOps organizations adopt many SRE principles.
 
-### 11.1 SRE and DevOps relationship
-SRE applies software engineering to operations. DevOps emphasizes collaboration and automation. In practice, strong DevOps organizations adopt many SRE principles.
-
-### 11.2 SLI, SLO, SLA definitions
-- SLI: Service Level Indicator, a measured signal.
+### 10.2 SLI, SLO, SLA definitions- SLI: Service Level Indicator, a measured signal.
 - SLO: Service Level Objective, a target for the SLI.
 - SLA: Service Level Agreement, an external contractual commitment.
 
@@ -136,16 +133,14 @@ Example:
 - SLO: 99.9 percent success over 30 days.
 - SLA: 99.5 percent contractual uptime.
 
-### 11.3 Error budgets
-Error budget = acceptable unreliability within an SLO period.
+### 10.3 Error budgetsError budget = acceptable unreliability within an SLO period.
 
 Why it matters:
 - Balances delivery speed and reliability.
 - Helps decide when to slow feature releases.
 - Supports objective reliability decisions.
 
-### 11.4 Toil reduction
-Toil is repetitive, manual, automatable work tied to service operation.
+### 10.4 Toil reductionToil is repetitive, manual, automatable work tied to service operation.
 
 Examples:
 - Repeated restarts.
@@ -159,8 +154,7 @@ Reduce toil with:
 - Runbooks turned into scripts.
 - Platform abstractions.
 
-### 11.5 Postmortems
-Good postmortems are:
+### 10.5 PostmortemsGood postmortems are:
 - Blameless.
 - Specific.
 - Focused on system causes.
@@ -176,22 +170,19 @@ Typical sections:
 - What went poorly.
 - Action items.
 
-### 11.6 Chaos engineering
-Chaos engineering tests system resilience under controlled failure.
+### 10.6 Chaos engineeringChaos engineering tests system resilience under controlled failure.
 
 Goals:
 - Validate assumptions.
 - Discover weak points.
 - Improve recovery confidence.
 
-### 11.7 Chaos tools
-- Litmus
+### 10.7 Chaos tools- Litmus
 - Chaos Monkey
 - Gremlin
 - PowerfulSeal
 
-### 11.8 SRE feedback loop diagram
-```mermaid
+### 10.8 SRE feedback loop diagram```mermaid
 graph TD
 A["User Experience Signals"] --> B["SLI Measurement"]
 B --> C["SLO Evaluation"]
@@ -202,8 +193,7 @@ F --> G["Deploy Changes"]
 G --> A
 ```
 
-### 11.9 Example SLI formulas
-Availability:
+### 10.9 Example SLI formulasAvailability:
 ```text
 successful requests / valid requests
 ```
@@ -213,11 +203,9 @@ Latency:
 percentage of requests below threshold
 ```
 
-### 11.10 Multi-window burn rate alerts
-Burn-rate alerts detect when error budget is consumed too quickly using short and long windows.
+### 10.10 Multi-window burn rate alertsBurn-rate alerts detect when error budget is consumed too quickly using short and long windows.
 
-### 11.11 Capacity planning basics
-Watch:
+### 10.11 Capacity planning basicsWatch:
 - CPU growth
 - Memory pressure
 - Storage growth
@@ -225,31 +213,27 @@ Watch:
 - Queue depth
 - Replica utilization
 
-### 11.12 Reliability design patterns
-- Retries with backoff.
+### 10.12 Reliability design patterns- Retries with backoff.
 - Circuit breakers.
 - Bulkheads.
 - Timeouts.
 - Idempotency.
 - Graceful degradation.
 
-### 11.13 Deployment safety patterns
-- Feature flags.
+### 10.13 Deployment safety patterns- Feature flags.
 - Canary releases.
 - Blue/green deployments.
 - Automatic rollback.
 - Progressive delivery.
 
-### 11.14 Operational maturity checklist
-- Services have owners.
+### 10.14 Operational maturity checklist- Services have owners.
 - SLOs defined.
 - Alerts tied to symptoms.
 - Runbooks exist.
 - Postmortems drive improvements.
 - Toil is tracked and reduced.
 
-### 11.15 Example postmortem action items
-- Add DB latency alert.
+### 10.15 Example postmortem action items- Add DB latency alert.
 - Add canary analysis to deployment.
 - Reduce pod startup time.
 - Improve secret rotation automation.
@@ -259,10 +243,8 @@ Watch:
 
 ---
 
-## 12. Linux Command Reference for DevOps
-
-### 12.1 File and directory operations
-```bash
+## 10. Linux Command Reference for DevOps
+### 10.1 File and directory operations```bash
 pwd
 ls -lah
 mkdir -p /opt/myapp/releases
@@ -272,16 +254,14 @@ rm -rf old_directory
 ln -s /opt/myapp/current /srv/myapp
 ```
 
-### 12.2 Permissions and ownership
-```bash
+### 10.2 Permissions and ownership```bash
 chmod 755 script.sh
 chmod 640 app.conf
 chown -R app:app /opt/myapp
 chgrp ops /var/log/myapp.log
 ```
 
-### 12.3 Search and text processing
-```bash
+### 10.3 Search and text processing```bash
 grep -R "ERROR" /var/log/myapp
 awk '{print $1}' access.log
 sed -n '1,20p' file.txt
@@ -289,15 +269,13 @@ cut -d: -f1 /etc/passwd
 sort data.txt | uniq -c
 ```
 
-### 12.4 Archives and compression
-```bash
+### 10.4 Archives and compression```bash
 tar -czf backup.tar.gz /etc/myapp
 unzip archive.zip
 gzip app.log
 ```
 
-### 12.5 Process inspection
-```bash
+### 10.5 Process inspection```bash
 ps aux
 ps -ef
 pgrep nginx
@@ -307,16 +285,14 @@ kill -9 1234
 nice -n 10 ./batch-job
 ```
 
-### 12.6 Service management
-```bash
+### 10.6 Service management```bash
 systemctl list-units --type=service
 systemctl restart nginx
 systemctl is-enabled docker
 journalctl -xe --no-pager
 ```
 
-### 12.7 Networking
-```bash
+### 10.7 Networking```bash
 ip addr
 ip route
 ss -tulpn
@@ -326,8 +302,7 @@ curl -fsS https://example.com/health
 dig example.com +short
 ```
 
-### 12.8 Storage and memory
-```bash
+### 10.8 Storage and memory```bash
 df -h
 du -sh /var/lib/* | sort -h
 lsblk
@@ -337,8 +312,7 @@ vmstat 1 5
 iostat -xz 1 5
 ```
 
-### 12.9 User and group management
-```bash
+### 10.9 User and group management```bash
 id
 whoami
 sudo useradd -m deploy
@@ -347,22 +321,19 @@ sudo usermod -aG sudo deploy
 sudo groupadd appgroup
 ```
 
-### 12.10 SSH and transfer
-```bash
+### 10.10 SSH and transfer```bash
 ssh user@host
 scp file.txt user@host:/tmp/
 rsync -avz ./build/ user@host:/opt/app/
 ```
 
-### 12.11 Scheduling
-```bash
+### 10.11 Scheduling```bash
 crontab -l
 crontab -e
 systemctl list-timers
 ```
 
-### 12.12 Container tooling
-```bash
+### 10.12 Container tooling```bash
 docker ps
 docker logs container_id
 docker exec -it container_id /bin/sh
@@ -371,8 +342,7 @@ ctr containers ls
 crictl pods
 ```
 
-### 12.13 Security inspection
-```bash
+### 10.13 Security inspection```bash
 sudo -l
 getenforce
 sestatus
@@ -380,14 +350,12 @@ ufw status
 iptables -L -n
 ```
 
-### 12.14 JSON and YAML tooling
-```bash
+### 10.14 JSON and YAML tooling```bash
 jq . response.json
 yq '.spec.template.spec.containers[0].image' deploy.yaml
 ```
 
-### 12.15 Performance troubleshooting starters
-```bash
+### 10.15 Performance troubleshooting starters```bash
 top
 htop
 sar -u 1 5
@@ -400,56 +368,48 @@ lsof -i :443
 
 ---
 
-## 13. Practical DevOps Scenarios on Linux
-
-### 13.1 Investigating a failing web service
-Checklist:
+## 10. Practical DevOps Scenarios on Linux
+### 10.1 Investigating a failing web serviceChecklist:
 1. `systemctl status service`
 2. `journalctl -u service -n 200 --no-pager`
 3. `ss -tulpn`
 4. `curl -v localhost:port/health`
 5. Check config and recent deployment changes.
 
-### 13.2 Investigating high disk usage
-```bash
+### 10.2 Investigating high disk usage```bash
 df -h
 du -xhd1 /var | sort -h
 find /var/log -type f -size +100M
 journalctl --disk-usage
 ```
 
-### 13.3 Investigating DNS issues
-```bash
+### 10.3 Investigating DNS issues```bash
 cat /etc/resolv.conf
 dig api.example.com
 dig @8.8.8.8 api.example.com
 nslookup api.example.com
 ```
 
-### 13.4 Investigating TLS issues
-```bash
+### 10.4 Investigating TLS issues```bash
 openssl s_client -connect example.com:443 -servername example.com
 curl -vk https://example.com
 ```
 
-### 13.5 Investigating Kubernetes pod crashes
-```bash
+### 10.5 Investigating Kubernetes pod crashes```bash
 kubectl get pods -A
 kubectl describe pod POD -n NS
 kubectl logs POD -n NS --previous
 kubectl get events -n NS --sort-by=.lastTimestamp
 ```
 
-### 13.6 Investigating CI runner failures
-```bash
+### 10.6 Investigating CI runner failures```bash
 systemctl status gitlab-runner
 journalctl -u gitlab-runner -n 200 --no-pager
 df -h
 free -h
 ```
 
-### 13.7 Rolling out a new app version safely
-- Build immutable artifact.
+### 10.7 Rolling out a new app version safely- Build immutable artifact.
 - Scan it.
 - Deploy to staging.
 - Run smoke tests.
@@ -457,19 +417,16 @@ free -h
 - Monitor golden signals.
 - Keep rollback ready.
 
-### 13.8 Backing up configuration
-```bash
+### 10.8 Backing up configuration```bash
 tar -czf etc-backup-$(date +%F).tar.gz /etc
 ```
 
-### 13.9 Shipping logs to a central platform
-- Standardize log paths or stdout usage.
+### 10.9 Shipping logs to a central platform- Standardize log paths or stdout usage.
 - Deploy collectors.
 - Parse and enrich.
 - Set retention and alert queries.
 
-### 13.10 Hardening a Linux CI host
-- Minimal packages.
+### 10.10 Hardening a Linux CI host- Minimal packages.
 - Separate runner user.
 - Restricted sudo.
 - Automatic updates where allowed.
@@ -480,10 +437,8 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 
 ---
 
-## 14. DevOps Checklists
-
-### 14.1 Linux host baseline checklist
-- Time sync enabled.
+## 10. DevOps Checklists
+### 10.1 Linux host baseline checklist- Time sync enabled.
 - SSH hardened.
 - sudo access reviewed.
 - Monitoring agent installed.
@@ -492,45 +447,39 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 - Backups validated.
 - Patch policy defined.
 
-### 14.2 Git repository checklist
-- Branch protection enabled.
+### 10.2 Git repository checklist- Branch protection enabled.
 - CODEOWNERS defined.
 - Secret scanning enabled.
 - CI required on pull requests.
 - Release tagging standard documented.
 
-### 14.3 CI/CD checklist
-- Pipelines version controlled.
+### 10.3 CI/CD checklist- Pipelines version controlled.
 - Secrets externalized.
 - Artifacts immutable.
 - Rollback path tested.
 - Staging environment available.
 - Deployment approvals where needed.
 
-### 14.4 Kubernetes checklist
-- Resource requests set.
+### 10.4 Kubernetes checklist- Resource requests set.
 - Liveness/readiness probes set.
 - RBAC least privilege.
 - Ingress TLS configured.
 - Monitoring and logs integrated.
 - Backup plan for stateful workloads.
 
-### 14.5 Observability checklist
-- Metrics dashboards exist.
+### 10.5 Observability checklist- Metrics dashboards exist.
 - Logs searchable centrally.
 - Tracing enabled for critical paths.
 - Alerts routed correctly.
 - Runbooks linked from alerts.
 
-### 14.6 Incident management checklist
-- On-call rotation current.
+### 10.6 Incident management checklist- On-call rotation current.
 - Escalations tested.
 - Incident templates ready.
 - Status communication template ready.
 - Postmortem process defined.
 
-### 14.7 SRE checklist
-- SLOs defined.
+### 10.7 SRE checklist- SLOs defined.
 - Error budget reviewed.
 - Toil tracked.
 - Reliability roadmap maintained.
@@ -540,58 +489,49 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 
 ---
 
-## 15. Best Practices Summary
-
-### 15.1 Linux best practices
-- Automate repeatable work.
+## 10. Best Practices Summary
+### 10.1 Linux best practices- Automate repeatable work.
 - Standardize service management with systemd.
 - Prefer package-managed installs or controlled binaries.
 - Log consistently.
 - Minimize privilege.
 
-### 15.2 Git best practices
-- Keep branches short-lived.
+### 10.2 Git best practices- Keep branches short-lived.
 - Review everything important.
 - Protect mainline branches.
 - Tag releases consistently.
 - Avoid secret commits.
 
-### 15.3 CI/CD best practices
-- Build once, promote many.
+### 10.3 CI/CD best practices- Build once, promote many.
 - Fail fast.
 - Keep pipelines observable.
 - Use ephemeral agents when possible.
 - Treat pipelines as production systems.
 
-### 15.4 IaC best practices
-- Use remote state.
+### 10.4 IaC best practices- Use remote state.
 - Review every change.
 - Detect drift.
 - Standardize modules.
 - Embed policy checks.
 
-### 15.5 Kubernetes best practices
-- Define requests and limits.
+### 10.5 Kubernetes best practices- Define requests and limits.
 - Use health probes.
 - Secure service accounts.
 - Prefer declarative deployment.
 - Keep add-ons versioned.
 
-### 15.6 Observability best practices
-- Alert on user impact.
+### 10.6 Observability best practices- Alert on user impact.
 - Correlate metrics, logs, and traces.
 - Avoid noisy dashboards.
 - Keep runbooks close to alerts.
 
-### 15.7 Security best practices
-- Store secrets centrally.
+### 10.7 Security best practices- Store secrets centrally.
 - Rotate credentials.
 - Scan code and images.
 - Log access to critical systems.
 - Prefer short-lived credentials.
 
-### 15.8 Reliability best practices
-- Set SLOs before over-optimizing.
+### 10.8 Reliability best practices- Set SLOs before over-optimizing.
 - Automate rollback.
 - Practice incidents.
 - Write blameless postmortems.
@@ -601,10 +541,8 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 
 ---
 
-## 16. Extended Reference Tables
-
-### 16.1 Git command quick table
-| Task | Command |
+## 10. Extended Reference Tables
+### 10.1 Git command quick table| Task | Command |
 |---|---|
 | New repo | `git init` |
 | Clone repo | `git clone URL` |
@@ -613,8 +551,7 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 | Stash work | `git stash push -m "msg"` |
 | Tag release | `git tag -a v1.0.0 -m "Release"` |
 
-### 16.2 kubectl quick table
-| Task | Command |
+### 10.2 kubectl quick table| Task | Command |
 |---|---|
 | List pods | `kubectl get pods -A` |
 | Describe pod | `kubectl describe pod NAME -n NS` |
@@ -623,8 +560,7 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 | Rollout status | `kubectl rollout status deploy/NAME -n NS` |
 | Scale deploy | `kubectl scale deploy/NAME --replicas=3 -n NS` |
 
-### 16.3 systemd quick table
-| Task | Command |
+### 10.3 systemd quick table| Task | Command |
 |---|---|
 | Start service | `systemctl start NAME` |
 | Stop service | `systemctl stop NAME` |
@@ -632,8 +568,7 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 | Enable service | `systemctl enable NAME` |
 | View logs | `journalctl -u NAME --no-pager` |
 
-### 16.4 Network quick table
-| Task | Command |
+### 10.4 Network quick table| Task | Command |
 |---|---|
 | Listen ports | `ss -tulpn` |
 | Routes | `ip route` |
@@ -641,8 +576,7 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 | HTTP test | `curl -I URL` |
 | Packet capture | `tcpdump -i eth0 port 443` |
 
-### 16.5 Observability component comparison
-| Component | Purpose |
+### 10.5 Observability component comparison| Component | Purpose |
 |---|---|
 | Prometheus | Metrics collection and alerting |
 | Grafana | Visualization |
@@ -654,31 +588,26 @@ tar -czf etc-backup-$(date +%F).tar.gz /etc
 
 ---
 
-## 17. Learning Path
-
-### 17.1 Beginner path
-- Learn shell basics.
+## 10. Learning Path
+### 10.1 Beginner path- Learn shell basics.
 - Learn files, permissions, and processes.
 - Learn Git basics.
 - Learn systemd and logs.
 - Learn basic networking.
 
-### 17.2 Intermediate path
-- Build CI pipelines.
+### 10.2 Intermediate path- Build CI pipelines.
 - Learn Terraform basics.
 - Learn container builds.
 - Learn Kubernetes fundamentals.
 - Learn metrics and logging.
 
-### 17.3 Advanced path
-- Operate self-hosted runners.
+### 10.3 Advanced path- Operate self-hosted runners.
 - Build reusable IaC modules.
 - Tune Prometheus and Grafana.
 - Manage secrets and policy as code.
 - Define SLOs and error budgets.
 
-### 17.4 Practice routine
-Each week:
+### 10.4 Practice routineEach week:
 - Write one Bash script.
 - Debug one service failure.
 - Review one CI pipeline.
@@ -689,8 +618,7 @@ Each week:
 
 ---
 
-## 18. Conclusion
-
+## 10. Conclusion
 Linux is the operational backbone of DevOps. If you master Linux fundamentals and connect them to Git, CI/CD, infrastructure as code, Kubernetes, observability, secrets, artifacts, ChatOps, and SRE practices, you become effective across the full software delivery lifecycle.
 
 The essential pattern is consistent:
@@ -707,8 +635,7 @@ Keep practicing commands, building pipelines, deploying services, and documentin
 
 ---
 
-## 19. Appendix A: 100 Practical Linux One-Liners for DevOps
-
+## 10. Appendix A: 100 Practical Linux One-Liners for DevOps
 1. `uptime`
 2. `free -h`
 3. `df -h`
@@ -814,10 +741,8 @@ Keep practicing commands, building pipelines, deploying services, and documentin
 
 ---
 
-## 20. Appendix B: Extended Notes and Study Prompts
-
-### 20.1 Study prompt list
-- Explain the Linux boot process from firmware to systemd.
+## 10. Appendix B: Extended Notes and Study Prompts
+### 10.1 Study prompt list- Explain the Linux boot process from firmware to systemd.
 - Compare `ss`, `netstat`, and `lsof` for port debugging.
 - Explain how cgroups and namespaces support containers.
 - Explain why immutable artifacts improve deployment confidence.
@@ -826,8 +751,7 @@ Keep practicing commands, building pipelines, deploying services, and documentin
 - Explain why Kubernetes secrets are not enough without broader secret strategy.
 - Explain how SLOs influence release velocity.
 
-### 20.2 Mini labs
-1. Install Nginx on a Linux VM and expose a health endpoint.
+### 10.2 Mini labs1. Install Nginx on a Linux VM and expose a health endpoint.
 2. Create a Git repo and simulate feature branching plus hotfix.
 3. Build a Jenkins pipeline that runs `make test`.
 4. Write a GitHub Actions workflow using a Linux runner.
@@ -838,8 +762,7 @@ Keep practicing commands, building pipelines, deploying services, and documentin
 9. Encrypt a file with SOPS.
 10. Define one SLI and one SLO for a sample API.
 
-### 20.3 Interview topics
-- How do you debug a service outage on Linux?
+### 10.3 Interview topics- How do you debug a service outage on Linux?
 - What is the difference between merge and rebase?
 - How do you secure self-hosted CI runners?
 - How do you manage Terraform state safely?
@@ -847,19 +770,16 @@ Keep practicing commands, building pipelines, deploying services, and documentin
 - How do you design actionable alerts?
 - How do you reduce operational toil?
 
-### 20.4 Final reminder
-DevOps is not about memorizing tools. It is about using Linux-centered operational knowledge to build secure, automated, observable, and reliable delivery systems.
+### 10.4 Final reminderDevOps is not about memorizing tools. It is about using Linux-centered operational knowledge to build secure, automated, observable, and reliable delivery systems.
 
 ---
 
 ---
 
-## 21. Line Expansion Reference
-
+## 10. Line Expansion Reference
 The following section intentionally expands the guide with concise production reminders so the document can serve as a long-form study reference and quick handbook.
 
-### 21.1 Reminders
-- Prefer reproducible automation over ad hoc commands.
+### 10.1 Reminders- Prefer reproducible automation over ad hoc commands.
 - Record operational assumptions explicitly.
 - Treat CI/CD outages as production-impacting platform incidents.
 - Keep infrastructure state under version control.
@@ -967,8 +887,7 @@ The following section intentionally expands the guide with concise production re
 - Learn enough SQL to inspect operational databases safely.
 - Build confidence through drills, not only theory.
 
-### 21.2 Additional command ideas
-- `find /etc -type f | wc -l`
+### 10.2 Additional command ideas- `find /etc -type f | wc -l`
 - `journalctl --since today --no-pager`
 - `grep -R "Listen" /etc/nginx`
 - `kubectl api-resources`
@@ -1023,8 +942,7 @@ The following section intentionally expands the guide with concise production re
 - `zgrep ERROR /var/log/*.gz`
 - `strings binary | head`
 
-### 21.3 Platform engineering tie-in
-Platform engineering extends DevOps by building paved roads:
+### 10.3 Platform engineering tie-inPlatform engineering extends DevOps by building paved roads:
 - Standard CI templates.
 - Standard golden paths for services.
 - Reusable Helm charts.
@@ -1033,5 +951,4 @@ Platform engineering extends DevOps by building paved roads:
 - Central observability patterns.
 - Secure defaults.
 
-### 21.4 Final study advice
-Read this guide section by section, then practice each domain on Linux. The fastest way to become strong in DevOps is to connect command-line confidence to delivery systems, reliability patterns, and production discipline.
+### 10.4 Final study adviceRead this guide section by section, then practice each domain on Linux. The fastest way to become strong in DevOps is to connect command-line confidence to delivery systems, reliability patterns, and production discipline.

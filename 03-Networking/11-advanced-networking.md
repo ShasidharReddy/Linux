@@ -2,8 +2,7 @@
 
 This section covers Linux features often used in container platforms, routers, lab environments, and high-control network designs.
 
-## 9.1 Network namespaces overview
-
+## 11.1 Network namespaces overview
 A network namespace provides an isolated network stack.
 
 Each namespace can have its own:
@@ -21,28 +20,24 @@ Use cases:
 - Tenant isolation
 - Advanced testing
 
-## 9.2 Create a namespace
-
+## 11.2 Create a namespace
 ```bash
 sudo ip netns add ns1
 sudo ip netns list
 ```
 
-## 9.3 Run a command in a namespace
-
+## 11.3 Run a command in a namespace
 ```bash
 sudo ip netns exec ns1 ip addr
 sudo ip netns exec ns1 ping -c 2 127.0.0.1
 ```
 
-## 9.4 `veth` pairs
-
+## 11.4 `veth` pairs
 A `veth` pair acts like a virtual cable.
 
 Packets entering one end exit the other.
 
-## 9.5 Create a `veth` pair and attach to namespace
-
+## 11.5 Create a `veth` pair and attach to namespace
 ```bash
 sudo ip link add veth-host type veth peer name veth-ns
 sudo ip link set veth-ns netns ns1
@@ -53,23 +48,20 @@ sudo ip netns exec ns1 ip link set veth-ns up
 sudo ip netns exec ns1 ip link set lo up
 ```
 
-## 9.6 Test namespace connectivity
-
+## 11.6 Test namespace connectivity
 ```bash
 ping -c 3 10.200.1.2
 sudo ip netns exec ns1 ping -c 3 10.200.1.1
 ```
 
-## 9.7 Mermaid namespace connectivity diagram
-
+## 11.7 Mermaid namespace connectivity diagram
 ```mermaid
 graph LR
     A["Root namespace<br/>veth-host<br/>10.200.1.1/24"] --- B["veth pair"]
     B --- C["Namespace ns1<br/>veth-ns<br/>10.200.1.2/24"]
 ```
 
-## 9.8 Add Internet access to namespace via NAT
-
+## 11.8 Add Internet access to namespace via NAT
 Steps:
 
 1. Enable IP forwarding.
@@ -86,8 +78,7 @@ sudo iptables -A FORWARD -i eth0 -o veth-host -m conntrack --ctstate ESTABLISHED
 sudo iptables -A FORWARD -i veth-host -o eth0 -j ACCEPT
 ```
 
-## 9.9 Enable persistent IP forwarding
-
+## 11.9 Enable persistent IP forwarding
 Temporary:
 
 ```bash
@@ -120,8 +111,7 @@ Apply:
 sudo sysctl --system
 ```
 
-## 9.10 NAT concepts
-
+## 11.10 NAT concepts
 Types:
 
 - SNAT
@@ -135,30 +125,26 @@ Use cases:
 - Publishing internal services
 - Lab connectivity
 
-## 9.11 Masquerading example recap
-
+## 11.11 Masquerading example recap
 ```bash
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
 Masquerade is convenient when the outbound IP can change.
 
-## 9.12 Static SNAT example
-
+## 11.12 Static SNAT example
 ```bash
 sudo iptables -t nat -A POSTROUTING -o eth0 -j SNAT --to-source 203.0.113.10
 ```
 
 Use SNAT when the external IP is stable.
 
-## 9.13 DNAT example
-
+## 11.13 DNAT example
 ```bash
 sudo iptables -t nat -A PREROUTING -p tcp -d 203.0.113.10 --dport 443 -j DNAT --to-destination 10.10.20.15:443
 ```
 
-## 9.14 Linux router use case
-
+## 11.14 Linux router use case
 A Linux host can act as:
 
 - Edge router
@@ -174,8 +160,7 @@ Basic requirements:
 - Correct routes
 - Firewall/NAT rules
 
-## 9.15 Traffic shaping with `tc`
-
+## 11.15 Traffic shaping with `tc`
 `tc` controls queueing, shaping, delay, and loss injection.
 
 Common uses:
@@ -185,14 +170,12 @@ Common uses:
 - Simulating bad networks
 - Prioritizing traffic
 
-## 9.16 Show `tc` qdisc settings
-
+## 11.16 Show `tc` qdisc settings
 ```bash
 tc qdisc show dev eth0
 ```
 
-## 9.17 Add simple traffic shaping
-
+## 11.17 Add simple traffic shaping
 Limit egress to 10 Mbit:
 
 ```bash
@@ -205,16 +188,14 @@ Delete qdisc:
 sudo tc qdisc del dev eth0 root
 ```
 
-## 9.18 Simulate delay and packet loss with `netem`
-
+## 11.18 Simulate delay and packet loss with `netem`
 ```bash
 sudo tc qdisc add dev eth0 root netem delay 100ms loss 2%
 ```
 
 Very useful for testing app behavior under non-ideal conditions.
 
-## 9.19 Packet capture analysis workflow
-
+## 11.19 Packet capture analysis workflow
 1. Capture relevant traffic.
 2. Check handshake behavior.
 3. Check retransmissions.
@@ -223,8 +204,7 @@ Very useful for testing app behavior under non-ideal conditions.
 6. Check MSS and MTU-related signs.
 7. Correlate with app logs.
 
-## 9.20 Read TCP flags in packet traces
-
+## 11.20 Read TCP flags in packet traces
 Common flags:
 
 - SYN
@@ -239,8 +219,7 @@ Interpretation examples:
 - RST: closed port or reject behavior
 - Repeated retransmissions: loss or congestion
 
-## 9.21 Policy routing example
-
+## 11.21 Policy routing example
 Suppose a host has two uplinks.
 
 Use source-based routing:
@@ -254,8 +233,7 @@ sudo ip rule add from 192.168.10.10/32 table uplink1
 sudo ip rule add from 192.168.20.10/32 table uplink2
 ```
 
-## 9.22 Reverse path filtering
-
+## 11.22 Reverse path filtering
 Kernel reverse path filtering may drop packets that appear to arrive through the wrong interface.
 
 Check settings:
@@ -267,8 +245,7 @@ sysctl net.ipv4.conf.eth0.rp_filter
 
 This is important in asymmetric or multi-homed setups.
 
-## 9.23 Bridges in advanced networking
-
+## 11.23 Bridges in advanced networking
 Linux bridges are central to:
 
 - KVM networking
@@ -283,15 +260,13 @@ bridge fdb show
 bridge vlan show
 ```
 
-## 9.24 TUN vs TAP
-
+## 11.24 TUN vs TAP
 | Type | Layer | Use Case |
 |---|---|---|
 | TUN | Layer 3 | Routed VPNs |
 | TAP | Layer 2 | Bridged VPNs, Ethernet emulation |
 
-## 9.25 GRE and VXLAN overview
-
+## 11.25 GRE and VXLAN overview
 Advanced overlays include:
 
 - GRE
@@ -305,8 +280,7 @@ Used in:
 - Cloud networking
 - SDN environments
 
-## 9.26 VXLAN conceptual note
-
+## 11.26 VXLAN conceptual note
 VXLAN extends Layer 2 over Layer 3 using VNI identifiers and UDP encapsulation.
 
 Often used with:
@@ -315,8 +289,7 @@ Often used with:
 - Kubernetes CNIs
 - EVPN fabrics
 
-## 9.27 Packet path analysis tips
-
+## 11.27 Packet path analysis tips
 When analyzing a packet path, identify:
 
 - Original source and destination
@@ -325,8 +298,7 @@ When analyzing a packet path, identify:
 - Firewall policy points
 - Encapsulation and decapsulation boundaries
 
-## 9.28 Performance tuning considerations
-
+## 11.28 Performance tuning considerations
 Watch:
 
 - MTU
@@ -344,8 +316,7 @@ ethtool -g eth0
 sar -n DEV 1 5
 ```
 
-## 9.29 Namespace cleanup
-
+## 11.29 Namespace cleanup
 ```bash
 sudo ip netns del ns1
 sudo ip link del veth-host
@@ -353,22 +324,19 @@ sudo ip link del veth-host
 
 Delete in the right order if objects remain attached.
 
-## 9.30 Advanced networking best practices
-
+## 11.30 Advanced networking best practices
 - Make small, reversible changes.
 - Document route tables and policy rules.
 - Test from both sides of a path.
 - Capture packets near the suspected failure point.
 - Keep firewall and routing design aligned.
 
-## 9.31 Summary
-
+## 11.31 Summary
 Advanced Linux networking is powerful because the kernel exposes composable building blocks. Namespaces, routes, bridges, NAT, and shaping can model almost any scenario.
 
 ---
 
-## 12.14 Troubleshoot: Dual-homed server replies through the wrong interface
-
+## 11.14 Troubleshoot: Dual-homed server replies through the wrong interface
 Symptoms:
 
 - Requests arrive on interface A

@@ -265,10 +265,8 @@ Start with these building blocks:
 
 ---
 
-## 2. Linux Distributions
-
-### 2.1 What Is a Distribution?
-
+## 1. Linux Distributions
+### 1.1 What Is a Distribution?
 A Linux distribution, or distro, is a packaged operating system built around the Linux kernel.
 
 A distro provides:
@@ -281,8 +279,7 @@ A distro provides:
 - installer
 - defaults for networking, services, and storage
 
-### 2.2 Why So Many Distros Exist
-
+### 1.2 Why So Many Distros Exist
 Different distributions optimize for different goals.
 
 Common goals include:
@@ -296,8 +293,7 @@ Common goals include:
 - container use
 - customization
 
-### 2.3 Major Distribution Comparison
-
+### 1.3 Major Distribution Comparison
 | Distribution | Family | Package Manager | Release Style | Best For | Notes |
 |---|---|---|---|---|---|
 | Ubuntu | Debian | `apt` | Regular LTS and interim | Beginners, servers, cloud | Large community and docs |
@@ -313,8 +309,7 @@ Common goals include:
 | openSUSE Tumbleweed | SUSE | `zypper` | Rolling release | Latest packages with testing | Strong for developers |
 | Linux Mint | Ubuntu/Debian | `apt` | Stable desktop focus | Desktop users | Friendly user experience |
 
-### 2.4 Distribution Families
-
+### 1.4 Distribution Families
 Distributions often inherit packages, design choices, or release policies from parent projects.
 
 ```mermaid
@@ -337,8 +332,7 @@ graph TD
     D --> Q["openSUSE Tumbleweed"]
 ```
 
-### 2.5 Debian and Debian-Based Systems
-
+### 1.5 Debian and Debian-Based Systems
 Debian is known for stability and a strong free software culture.
 
 It is common in:
@@ -361,8 +355,7 @@ Mint focuses on desktop usability.
 
 Kali focuses on security testing tools.
 
-### 2.6 Red Hat Family
-
+### 1.6 Red Hat Family
 Fedora is often the innovation platform.
 
 RHEL is the enterprise product with certification and support.
@@ -379,8 +372,7 @@ Typical uses:
 - regulated environments
 - certification-based deployments
 
-### 2.7 SUSE Family
-
+### 1.7 SUSE Family
 SUSE and openSUSE are well known in enterprise and data center environments.
 
 They are respected for:
@@ -390,8 +382,7 @@ They are respected for:
 - enterprise integration
 - stable server workflows
 
-### 2.8 Arch Family
-
+### 1.8 Arch Family
 Arch Linux prioritizes simplicity, user control, and a rolling release model.
 
 Arch is attractive for:
@@ -403,8 +394,7 @@ Arch is attractive for:
 
 Arch users are expected to read documentation carefully and manage upgrades actively.
 
-### 2.9 Alpine Linux
-
+### 1.9 Alpine Linux
 Alpine Linux is extremely small.
 
 It is popular in:
@@ -424,8 +414,7 @@ Key traits:
 > Alpine can behave differently from glibc-based systems.
 > Some binaries compiled for Ubuntu or Debian may not run without adjustment.
 
-### 2.10 Choosing the Right Distribution
-
+### 1.10 Choosing the Right Distribution
 Choose a distribution based on workload.
 
 #### For beginners
@@ -459,8 +448,7 @@ Choose a distribution based on workload.
 - Debian slim images
 - Ubuntu minimal images
 
-### 2.11 Package Manager Cheat Sheet
-
+### 1.11 Package Manager Cheat Sheet
 | Family | Commands | Notes |
 |---|---|---|
 | Debian/Ubuntu | `apt install`, `apt remove`, `apt update`, `apt upgrade` | High-level package manager |
@@ -469,8 +457,7 @@ Choose a distribution based on workload.
 | Alpine | `apk add`, `apk del`, `apk update`, `apk upgrade` | Fast and lightweight |
 | SUSE | `zypper install`, `zypper remove`, `zypper refresh`, `zypper update` | Strong dependency handling |
 
-### 2.12 Repository Concepts
-
+### 1.12 Repository Concepts
 Most Linux packages are installed from signed repositories.
 
 This provides:
@@ -488,8 +475,7 @@ Repository concepts to know:
 - package metadata cache
 - stable vs testing channels
 
-### 2.13 LTS vs Rolling Release
-
+### 1.13 LTS vs Rolling Release
 #### LTS
 
 Long-term support releases prioritize stability.
@@ -518,8 +504,7 @@ Tradeoff:
 - more change risk
 - higher maintenance attention
 
-### 2.14 Practical Distro Selection Examples
-
+### 1.14 Practical Distro Selection Examples
 #### Small web server in production
 
 Recommended options:
@@ -562,8 +547,7 @@ Recommended options:
 - Alpine Linux
 - Debian slim
 
-### 2.15 Distro Command Examples
-
+### 1.15 Distro Command Examples
 ```bash
 ## Ubuntu or Debian
 sudo apt update

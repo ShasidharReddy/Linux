@@ -2,10 +2,8 @@
 
 > Background jobs, wait, job control, subshells, and process substitution.
 
-## 12. Process Management in Scripts
-
-### 12.1 Background Processes
-
+## 11. Process Management in Scripts
+### 11.1 Background Processes
 Run a command in the background with `&`.
 
 ```bash
@@ -14,8 +12,7 @@ pid=$!
 echo "PID: $pid"
 ```
 
-### 12.2 `wait`
-
+### 11.2 `wait`
 Wait for a background job.
 
 ```bash
@@ -25,8 +22,7 @@ wait "$pid"
 echo "Done"
 ```
 
-### 12.3 Capture Exit Status from `wait`
-
+### 11.3 Capture Exit Status from `wait`
 ```bash
 some_command &
 pid=$!
@@ -37,8 +33,7 @@ else
 fi
 ```
 
-### 12.4 Multiple Background Jobs
-
+### 11.4 Multiple Background Jobs
 ```bash
 pids=()
 for host in host1 host2 host3; do
@@ -51,8 +46,7 @@ for pid in "${pids[@]}"; do
 done
 ```
 
-### 12.5 `jobs`
-
+### 11.5 `jobs`
 Lists current jobs in an interactive shell.
 
 ```bash
@@ -61,15 +55,13 @@ jobs
 
 Note that job control is mostly relevant for interactive shells.
 
-### 12.6 `fg` and `bg`
-
+### 11.6 `fg` and `bg`
 These are job-control builtins used interactively.
 
 - `fg` moves a job to foreground
 - `bg` resumes in background
 
-### 12.7 Subshells
-
+### 11.7 Subshells
 Commands in parentheses run in a subshell.
 
 ```bash
@@ -81,8 +73,7 @@ Commands in parentheses run in a subshell.
 
 Changes do not affect the parent shell.
 
-### 12.8 Group Commands Without Subshell
-
+### 11.8 Group Commands Without Subshell
 Use braces:
 
 ```bash
@@ -92,22 +83,19 @@ Use braces:
 } > output.txt
 ```
 
-### 12.9 Process Substitution
-
+### 11.9 Process Substitution
 Useful for comparing command output.
 
 ```bash
 diff <(sort file1.txt) <(sort file2.txt)
 ```
 
-### 12.10 Named Pipes vs Process Substitution
-
+### 11.10 Named Pipes vs Process Substitution
 Process substitution often uses FIFOs or `/dev/fd` internally depending on the platform.
 
 It is convenient for commands that expect filenames.
 
-### 12.11 Disowning Jobs
-
+### 11.11 Disowning Jobs
 Interactive shell feature:
 
 ```bash
@@ -115,8 +103,7 @@ long_running_command &
 disown
 ```
 
-### 12.12 Monitoring Child Processes
-
+### 11.12 Monitoring Child Processes
 ```bash
 run_worker() {
   sleep 3
@@ -130,8 +117,7 @@ if wait "$worker_pid"; then
 fi
 ```
 
-### 12.13 Parallel Execution Pattern
-
+### 11.13 Parallel Execution Pattern
 ```bash
 pids=()
 for file in *.log; do
@@ -145,14 +131,12 @@ for pid in "${pids[@]}"; do
 done
 ```
 
-### 12.14 Beware of Race Conditions
-
+### 11.14 Beware of Race Conditions
 When multiple processes write to the same file or resource, you may get corruption or unexpected order.
 
 Use locks when necessary.
 
-### 12.15 Section Summary
-
+### 11.15 Section Summary
 Process management enables:
 
 - concurrency

@@ -2,16 +2,14 @@
 
 Bonding, teaming, VLAN tagging, and bridges are common in servers, hypervisors, and virtualization stacks.
 
-## 8.1 Why bonding?
-
+## 10.1 Why bonding?
 Bonding combines multiple physical NICs into one logical interface for:
 
 - Redundancy
 - Higher throughput in some scenarios
 - Cleaner management
 
-## 8.2 Bonding modes overview
-
+## 10.2 Bonding modes overview
 | Mode | Name | Description |
 |---|---|---|
 | 0 | balance-rr | Round-robin |
@@ -22,22 +20,19 @@ Bonding combines multiple physical NICs into one logical interface for:
 | 5 | balance-tlb | Adaptive transmit load balancing |
 | 6 | balance-alb | Adaptive load balancing |
 
-## 8.3 Choosing a bond mode
-
+## 10.3 Choosing a bond mode
 General guidance:
 
 - Use `active-backup` for simple redundancy.
 - Use `802.3ad` when switches support LACP.
 - Use other modes only with clear design intent.
 
-## 8.4 Inspect bonding status
-
+## 10.4 Inspect bonding status
 ```bash
 cat /proc/net/bonding/bond0
 ```
 
-## 8.5 `active-backup` conceptual behavior
-
+## 10.5 `active-backup` conceptual behavior
 - One NIC carries traffic.
 - Another waits in standby.
 - Failover occurs if the active link fails.
@@ -48,8 +43,7 @@ Good for:
 - High compatibility
 - Minimal switch configuration
 
-## 8.6 LACP and 802.3ad
-
+## 10.6 LACP and 802.3ad
 LACP dynamically negotiates link aggregation between host and switch.
 
 Requirements:
@@ -67,8 +61,7 @@ Note:
 
 A single TCP flow usually does not exceed one member’s bandwidth due to hashing.
 
-## 8.7 NetworkManager bond example
-
+## 10.7 NetworkManager bond example
 Create bond:
 
 ```bash
@@ -79,8 +72,7 @@ sudo nmcli connection modify bond0 ipv4.addresses 10.10.20.10/24 ipv4.gateway 10
 sudo nmcli connection up bond0
 ```
 
-## 8.8 Netplan bond example
-
+## 10.8 Netplan bond example
 ```yaml
 network:
   version: 2
@@ -102,8 +94,7 @@ network:
           - 1.1.1.1
 ```
 
-## 8.9 VLAN basics
-
+## 10.9 VLAN basics
 A VLAN logically separates Layer 2 networks using 802.1Q tags.
 
 Benefits:
@@ -113,8 +104,7 @@ Benefits:
 - Reduced broadcast domain size
 - Multi-tenant designs
 
-## 8.10 Access vs trunk ports
-
+## 10.10 Access vs trunk ports
 | Port Type | Behavior |
 |---|---|
 | Access | Carries one untagged VLAN |
@@ -122,29 +112,25 @@ Benefits:
 
 Linux can tag frames on trunk-connected interfaces.
 
-## 8.11 Create VLAN interface with `ip`
-
+## 10.11 Create VLAN interface with `ip`
 ```bash
 sudo ip link add link eth0 name eth0.10 type vlan id 10
 sudo ip addr add 192.168.10.20/24 dev eth0.10
 sudo ip link set dev eth0.10 up
 ```
 
-## 8.12 Show VLANs
-
+## 10.12 Show VLANs
 ```bash
 ip -d link show type vlan
 ```
 
-## 8.13 NetworkManager VLAN example
-
+## 10.13 NetworkManager VLAN example
 ```bash
 sudo nmcli connection add type vlan con-name vlan10 dev eth0 id 10 ifname eth0.10 \
   ipv4.addresses 192.168.10.20/24 ipv4.gateway 192.168.10.1 ipv4.method manual
 ```
 
-## 8.14 Netplan VLAN example
-
+## 10.14 Netplan VLAN example
 ```yaml
 network:
   version: 2
@@ -161,8 +147,7 @@ network:
           via: 192.168.10.1
 ```
 
-## 8.15 Bridge interfaces
-
+## 10.15 Bridge interfaces
 A bridge connects interfaces at Layer 2.
 
 Common use cases:
@@ -171,8 +156,7 @@ Common use cases:
 - Container networking
 - Software switching
 
-## 8.16 Create bridge with `ip`
-
+## 10.16 Create bridge with `ip`
 ```bash
 sudo ip link add name br0 type bridge
 sudo ip link set dev br0 up
@@ -181,8 +165,7 @@ sudo ip link set dev eth0 master br0
 
 Assign IP to the bridge instead of the slave interface when using bridge-host routing.
 
-## 8.17 Bridge example with NetworkManager
-
+## 10.17 Bridge example with NetworkManager
 ```bash
 sudo nmcli connection add type bridge ifname br0 con-name br0
 sudo nmcli connection add type bridge-slave ifname ens3 master br0
@@ -190,8 +173,7 @@ sudo nmcli connection modify br0 ipv4.addresses 10.10.20.50/24 ipv4.gateway 10.1
 sudo nmcli connection up br0
 ```
 
-## 8.18 Bond plus VLAN designs
-
+## 10.18 Bond plus VLAN designs
 Common pattern:
 
 - Physical NICs bonded into `bond0`
@@ -205,8 +187,7 @@ Example objects:
 - `bond0.20`
 - `br-mgmt`
 
-## 8.19 Bridge plus VLAN awareness
-
+## 10.19 Bridge plus VLAN awareness
 Modern Linux bridges can be VLAN-aware.
 
 Useful in:
@@ -215,8 +196,7 @@ Useful in:
 - Container platforms
 - Multi-network VM environments
 
-## 8.20 Typical hypervisor design
-
+## 10.20 Typical hypervisor design
 Example:
 
 - `bond0` for physical redundancy
@@ -225,8 +205,7 @@ Example:
 - `bond0.300` tenant network trunk
 - `br0` as VM bridge
 
-## 8.21 Validate bonding and VLANs
-
+## 10.21 Validate bonding and VLANs
 Commands:
 
 ```bash
@@ -237,8 +216,7 @@ bridge link
 bridge vlan show
 ```
 
-## 8.22 Common mistakes
-
+## 10.22 Common mistakes
 - Switch not configured for LACP
 - Wrong native VLAN
 - IP assigned to slave instead of bridge
@@ -246,8 +224,7 @@ bridge vlan show
 - MTU inconsistency across bonded or tagged path
 - Using unsupported bond mode with switch config
 
-## 8.23 Troubleshooting bond issues
-
+## 10.23 Troubleshooting bond issues
 Check:
 
 - Member links up?
@@ -256,8 +233,7 @@ Check:
 - MAC flapping on switch?
 - `cat /proc/net/bonding/bond0`
 
-## 8.24 Troubleshooting VLAN issues
-
+## 10.24 Troubleshooting VLAN issues
 Check:
 
 - VLAN exists on switch trunk?
@@ -266,14 +242,12 @@ Check:
 - Gateway in same VLAN?
 - Firewall blocking?
 
-## 8.25 Summary
-
+## 10.25 Summary
 Bonding and VLANs are foundational for resilient and segmented Linux infrastructure. Validate both host and switch-side settings together.
 
 ---
 
-## 12.9 Connect a Linux host to multiple VLANs on one NIC
-
+## 10.9 Connect a Linux host to multiple VLANs on one NIC
 Objective:
 
 - Use a trunk port from the switch

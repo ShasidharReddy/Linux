@@ -379,10 +379,8 @@ Start with logs and inspect output; escalate to `exec`, `nsenter`, and runtime i
 
 ---
 
-# 13. Command Cheat Sheet
-
-## 13.1 Image Commands
-
+# 11. Command Cheat Sheet
+## 11.1 Image Commands
 ```bash
 docker pull nginx:stable
 ```
@@ -403,8 +401,7 @@ docker build -t myapp:latest .
 docker push registry.example.com/team/myapp:1.0.0
 ```
 
-## 13.2 Container Commands
-
+## 11.2 Container Commands
 ```bash
 docker run --rm hello-world
 ```
@@ -445,8 +442,7 @@ docker inspect web
 docker stats
 ```
 
-## 13.3 Network Commands
-
+## 11.3 Network Commands
 ```bash
 docker network ls
 ```
@@ -463,8 +459,7 @@ docker network inspect app-net
 docker network connect app-net api
 ```
 
-## 13.4 Volume Commands
-
+## 11.4 Volume Commands
 ```bash
 docker volume ls
 ```
@@ -477,8 +472,7 @@ docker volume create pgdata
 docker volume inspect pgdata
 ```
 
-## 13.5 Compose Commands
-
+## 11.5 Compose Commands
 ```bash
 docker compose up -d
 ```
@@ -495,8 +489,7 @@ docker compose logs -f
 docker compose down
 ```
 
-## 13.6 Cleanup Commands
-
+## 11.6 Cleanup Commands
 ```bash
 docker container prune
 ```

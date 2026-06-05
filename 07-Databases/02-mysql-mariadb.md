@@ -752,10 +752,8 @@ After upgrade:
 
 ---
 
-# 13. Extended MySQL Command Cookbook
-
-## 13.1 Server introspection
-
+# 2. Extended MySQL Command Cookbook
+## 2.1 Server introspection
 ```sql
 SHOW VARIABLES;
 SHOW STATUS;
@@ -763,15 +761,13 @@ SHOW FULL PROCESSLIST;
 SHOW ENGINE INNODB STATUS\G
 ```
 
-## 13.2 Session troubleshooting
-
+## 2.2 Session troubleshooting
 ```sql
 SELECT * FROM performance_schema.threads LIMIT 10;
 SELECT * FROM performance_schema.events_statements_summary_by_digest ORDER BY SUM_TIMER_WAIT DESC LIMIT 10;
 ```
 
-## 13.3 Table size report
-
+## 2.3 Table size report
 ```sql
 SELECT table_schema,
        table_name,
@@ -781,14 +777,12 @@ ORDER BY size_mb DESC
 LIMIT 20;
 ```
 
-## 13.4 Index inspection
-
+## 2.4 Index inspection
 ```sql
 SHOW INDEX FROM appdb.customers;
 ```
 
-## 13.5 Find long-running queries
-
+## 2.5 Find long-running queries
 ```sql
 SELECT ID, USER, HOST, DB, COMMAND, TIME, STATE, INFO
 FROM information_schema.PROCESSLIST
@@ -796,15 +790,13 @@ WHERE COMMAND <> 'Sleep'
 ORDER BY TIME DESC;
 ```
 
-## 13.6 Transaction and lock investigation tips
-
+## 2.6 Transaction and lock investigation tips
 - Review InnoDB status for lock waits.
 - Use Performance Schema tables when enabled.
 - Correlate with application request IDs.
 - Check whether missing indexes are widening lock scope.
 
-## 13.7 Sample `my.cnf` profiles
-
+## 2.7 Sample `my.cnf` profiles
 ### Small VM profile
 
 ```ini
@@ -835,15 +827,13 @@ max_connections = 500
 open_files_limit = 65535
 ```
 
-## 13.8 Backup media strategy
-
+## 2.8 Backup media strategy
 - Local fast restore copies for immediate recovery.
 - Remote encrypted copies for disaster recovery.
 - Immutable backup tier where supported.
 - Separate retention for daily, weekly, monthly backups.
 
-## 13.9 MySQL replication pre-flight checklist
-
+## 2.9 MySQL replication pre-flight checklist
 - Unique `server_id` on every node.
 - Binary logging enabled on source.
 - Time synchronized with NTP.
@@ -852,8 +842,7 @@ open_files_limit = 65535
 - Replication user tested.
 - Backup seeded correctly.
 
-## 13.10 MySQL failover considerations
-
+## 2.10 MySQL failover considerations
 - Confirm replica fully caught up.
 - Freeze application writes if needed.
 - Promote chosen replica.

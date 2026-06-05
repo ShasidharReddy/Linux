@@ -2,12 +2,10 @@
 
 > Production-style examples for rotation, backup, monitoring, deployment, and more.
 
-## 15. Real-World Scripts
-
+## 14. Real-World Scripts
 This section provides practical examples you can adapt for production use.
 
-### 15.1 Log Rotation Script
-
+### 14.1 Log Rotation Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -35,8 +33,7 @@ How it works:
 - adds a timestamp
 - compresses archived logs
 
-### 15.2 Backup Script
-
+### 14.2 Backup Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -60,8 +57,7 @@ Possible improvements:
 - remote sync
 - exclude patterns
 
-### 15.3 Monitoring Script
-
+### 14.3 Monitoring Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -76,8 +72,7 @@ else
 fi
 ```
 
-### 15.4 Deployment Script
-
+### 14.4 Deployment Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -99,8 +94,7 @@ fi
 echo "Deployment completed for branch $branch"
 ```
 
-### 15.5 CSV Parser Script
-
+### 14.5 CSV Parser Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -120,8 +114,7 @@ It does not fully support quoted commas or embedded newlines.
 
 For complex CSV, use dedicated tools such as Python's CSV module.
 
-### 15.6 More Robust Backup Script with Logging
-
+### 14.6 More Robust Backup Script with Logging
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -150,8 +143,7 @@ tar -czf "$archive" -C "$src" .
 log "Backup complete"
 ```
 
-### 15.7 Health Check Script
-
+### 14.7 Health Check Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -165,8 +157,7 @@ else
 fi
 ```
 
-### 15.8 File Cleanup Script
-
+### 14.8 File Cleanup Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -177,8 +168,7 @@ days=${2:-7}
 find "$dir" -type f -mtime "+$days" -print -delete
 ```
 
-### 15.9 Batch Rename Script
-
+### 14.9 Batch Rename Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -194,8 +184,7 @@ for file in ./*.jpg; do
 done
 ```
 
-### 15.10 Config-Driven Script Pattern
-
+### 14.10 Config-Driven Script Pattern
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -213,8 +202,7 @@ set +a
 echo "Running for env: ${APP_ENV:-unknown}"
 ```
 
-### 15.11 Parallel Ping Script
-
+### 14.11 Parallel Ping Script
 ```bash
 #!/usr/bin/env bash
 set -euo pipefail
@@ -241,8 +229,7 @@ for pid in "${pids[@]}"; do
 done
 ```
 
-### 15.12 Deployment Flow Diagram
-
+### 14.12 Deployment Flow Diagram
 ```mermaid
 graph TD
 A["Start deployment"] --> B["Parse arguments"]
@@ -256,8 +243,7 @@ H --> I["Verify health"]
 I --> J["Finish deployment"]
 ```
 
-### 15.13 Real-World Patterns to Reuse
-
+### 14.13 Real-World Patterns to Reuse
 - `die` function for failures
 - `log` function with timestamps
 - `cleanup` trap
@@ -265,8 +251,7 @@ I --> J["Finish deployment"]
 - lock files for singleton execution
 - retry wrappers around network operations
 
-### 15.14 Production Readiness Checklist
-
+### 14.14 Production Readiness Checklist
 | Area | Questions |
 | --- | --- |
 | Input validation | Are all arguments validated? |
@@ -277,8 +262,7 @@ I --> J["Finish deployment"]
 | Security | Are inputs quoted and trusted? |
 | Portability | Does syntax match the shebang? |
 
-### 15.15 Section Summary
-
+### 14.15 Section Summary
 Real-world scripts should balance:
 
 - readability

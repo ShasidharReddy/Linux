@@ -7,8 +7,7 @@ LVM (Logical Volume Manager) organizes storage through PV (Physical Volume), VG 
 
 ---
 
-## 4.7 LVM concepts
-
+## 5.7 LVM concepts
 LVM stands for Logical Volume Manager.
 It abstracts storage into flexible layers.
 
@@ -23,8 +22,7 @@ Benefits:
 - Flexible allocation across disks.
 - Better storage abstraction.
 
-## 4.8 LVM architecture
-
+## 5.8 LVM architecture
 ### 📸 LVM Architecture
 ![LVM](https://upload.wikimedia.org/wikipedia/commons/e/e6/Lvm.svg)
 > *Source: Wikimedia Commons — Logical Volume Manager architecture*
@@ -41,8 +39,7 @@ graph LR
     G --> I["Filesystem<br/>ext4 or XFS"]
 ```
 
-## 4.9 Creating LVM storage
-
+## 5.9 Creating LVM storage
 Create physical volumes:
 
 ```bash
@@ -76,8 +73,7 @@ sudo mount /dev/vgdata/lvdata /data
 
 Persist it using `/etc/fstab`.
 
-## 4.10 LVM inspection commands
-
+## 5.10 LVM inspection commands
 ```bash
 pvs
 vgs
@@ -123,8 +119,7 @@ $ lsblk
 #   └─vgdata-lvdata   253:0    0  120G  0 lvm  /data
 ```
 
-## 4.11 Extending LVM volumes
-
+## 5.11 Extending LVM volumes
 Extend the logical volume:
 
 ```bash
@@ -151,8 +146,7 @@ sudo lvextend -r -L +50G /dev/vgdata/lvdata
 
 `-r` attempts to resize the filesystem automatically.
 
-## 4.12 Reducing LVM volumes
-
+## 5.12 Reducing LVM volumes
 Reducing storage is riskier than extending it.
 
 Rules:
@@ -174,8 +168,7 @@ sudo mount /data
 Never reduce XFS.
 Migrate data instead.
 
-## 4.13 LVM snapshots
-
+## 5.13 LVM snapshots
 Snapshots capture a point-in-time state for backup or maintenance.
 
 Example:

@@ -86,10 +86,8 @@ It provides declarative management for containerized workloads at scale.
 | StatefulSet | Stateful workload management |
 | DaemonSet | One pod per node pattern |
 | Ingress | HTTP/S routing into cluster |
-|
-Node | Worker machine |
-|
-Namespace | Logical cluster grouping |
+| Node | Worker machine |
+| Namespace | Logical cluster grouping |
 
 ## 10.8 Pod Concept
 
